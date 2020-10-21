@@ -1,30 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Consol</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <h1>Logo</h1>
-        <h3>name_admin</h3>
-        <img src="#" alt="perfil">
+<body class="body">
+    <header class="header--container">
+        <div>
+            <img src="./Images/title_logo.png" alt="Title-Logo" class="header--container-logo">
+        </div>
+        <div class="header--detail-admin">
+            <h3>name_admin</h3>
+            <img src="https://lh3.googleusercontent.com/ogw/ADGmqu_ksm6Ql15mCzcSRiahXsgeljHqXoPqOfDWWnlo=s32-c-mo" alt="face account">
+        </div>
     </header>
-    <main>
-        <section>
+    <main class="main--container">
+        <section class="sideBar">
             <ul>
-                <li>Organizations</li>
-                <li>Organizers</li>
-                <li>Attenders</li>
-                <li>Diffusion</li>
-                <li>Publish</li>
-                <li>Analitics</li>
+                <li><span class="img-organizations"></span><a href="#"></a>Organizations</a></li>
+                <li><span class="img-organizers"></span><a href="#"></a>Organizers</a></li>
+                <li><span class="img-attenders"></span><a href="#"></a>Attenders</a></li>
+                <li><span class="img-diffusion"></span><a href="#"></a>Diffusion</a></li>
+                <li><span class="img-publish"></span><a href="#"></a>Publish</a></li>
+                <li><span class="img-analitics"></span><a href="#"></a>Analitics</a></li>
             </ul>
         </section>
-        <section>
-            <div>
-                <button>Add Organizator</button>
+        <section class="main--container-list">
+            <div class="main--container-buttons">
+                
+                <button><span class="main--button-icon">Add Organizator</span></button>
                 <input type="text" placeholder="Search"/>
             </div>
             <div>

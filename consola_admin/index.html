@@ -19,47 +19,65 @@
     <main class="main--container">
         <section class="sideBar">
             <ul>
-                <li><span class="img-organizations"></span><a href="#"></a>Organizations</a></li>
-                <li><span class="img-organizers"></span><a href="#"></a>Organizers</a></li>
-                <li><span class="img-attenders"></span><a href="#"></a>Attenders</a></li>
-                <li><span class="img-diffusion"></span><a href="#"></a>Diffusion</a></li>
-                <li><span class="img-publish"></span><a href="#"></a>Publish</a></li>
-                <li><span class="img-analitics"></span><a href="#"></a>Analitics</a></li>
+                <li><span class="img-organizations"></span><a href="#">Organizations</a></li>
+                <li><span class="img-organizers"></span><a href="#">Organizers</a></li>
+                <li><span class="img-attenders"></span><a href="#">Attenders</a></li>
+                <li><span class="img-diffusion"></span><a href="#">Diffusion</a></li>
+                <li><span class="img-publish"></span><a href="#">Publish</a></li>
+                <li><span class="img-analitics"></span><a href="#">Analitics</a></li>
             </ul>
         </section>
         <section class="main--container-list">
             <div class="main--container-buttons">
-                
-                <button><span class="main--button-icon">Add Organizator</span></button>
-                <input type="text" placeholder="Search"/>
+                <!-- <span class="main--button-icon"></span> -->
+                <button>Add Organizator</button>
+                <input type="text" placeholder="Search" class="main--input-search">
+                <!-- <span class="input--icon-search"></span> -->
             </div>
-            <div>
-                <div class="item">
-                    <input type="checkbox">
-                    <p>id</p>
-                    <p>Name</p>
+            <div class="second--main">
+                <div class="second--main-table">
+                        <input type="checkbox">
+                        <p>id</p>
+                        <p>Name</p>
                     <p>Email</p>
-                    <p><img src="#" alt="configuration"></p>
+                    <img src="./Images/icons/ajustes.svg" alt="configuration" class="icon-ajustes">
                 </div>
-                <div class="item">
-                    <input type="text" placeholder="Search"/>
-                    <p>112</p>
-                    <p>Francisco Araujo</p>
-                    <p>pan.x92@gmail.com</p>
-                    <div>
-                        <img src="#" alt="icon_edit">
-                        <img src="#" alt="icon_delete">
+                <div class="second--main-content">
+                    <div class="second--main-details">
+                        <input type="checkbox">
+                        <p>112</p>
+                        <p>Francisco Araujo</p>
+                        <p>pan.x92@gmail.com</p>
+                        <div>
+                            <img src="./Images/icons/crear-nuevo-boton-de-lapiz.svg" alt="icon_edit" class="icon-details">
+                            <img src="./Images/icons/borrar.svg" alt="icon_delete" class="icon-details">
+                        </div>
+                    </div>
+                    <div class="second--main-details">
+                        <input type="checkbox">
+                        <p>10</p>
+                        <p>Nancy Salazar</p>
+                        <p>nancysalazar@platzi.com</p>
+                        <div>
+                            <a href="#"><img src="./Images/icons/crear-nuevo-boton-de-lapiz.svg" alt="icon_edit" class="icon-details"></a>
+                            <img src="./Images/icons/borrar.svg" alt="icon_delete" class="icon-details">
+                        </div>
                     </div>
                 </div>
-                <div class="item">
-                    <input type="text" placeholder="Search"/>
-                    <p>112</p>
-                    <p>Francisco Araujo</p>
-                    <p>pan.x92@gmail.com</p>
-                    <div>
-                        <img src="#" alt="icon_edit">
-                        <img src="#" alt="icon_delete">
-                    </div>
+            </div>
+            <div class="show--details">
+                <div>
+                    <select class="select">
+                        <option value="value1" selected>10</option> 
+                        <option value="value2">15</option>
+                        <option value="value3">20</option>
+                    </select>
+                    <small>entries per page</small>
+                </div>
+                <div>
+                    <button><img src="./Images/icons/boton-de-flecha-izquierda-del-teclado.svg" alt="" class="icon-details"></button>
+                    <input type="text" value="1" class="input-page-value"/>
+                    <button><img src="./Images/icons/flecha-derecha.svg" alt="" class="icon-details"></button>
                 </div>
             </div>
         </section>

@@ -60,11 +60,13 @@ $template1-deg: linear-gradient(180deg, #284A7C 0%, #1D3558 100%);
 $template1-btn: #6094E2;
 
 //Pages
+@import "pages/home";
 @import "pages/signup2";
 @import "pages/signup";
 @import "pages/login";
 
 //Components
-@import "components/navbar";
-@import "components/footer"
+@import "components/header";
+@import "components/footer";
+@import "components/eventCard";
 

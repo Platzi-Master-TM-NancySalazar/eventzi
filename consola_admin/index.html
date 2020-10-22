@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Consol</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./Images/icomoon/style.css">
 </head>
 <body class="body">
     <header class="header--container">
@@ -18,39 +19,37 @@
     </header>
     <main class="main--container">
         <section class="sideBar">
-            <ul>
-                <li><span class="img-organizations"></span><a href="#">Organizations</a></li>
-                <li><span class="img-organizers"></span><a href="#">Organizers</a></li>
-                <li><span class="img-attenders"></span><a href="#">Attenders</a></li>
-                <li><span class="img-diffusion"></span><a href="#">Diffusion</a></li>
-                <li><span class="img-publish"></span><a href="#">Publish</a></li>
-                <li><span class="img-analitics"></span><a href="#">Analitics</a></li>
-            </ul>
+            <a href="#" class="link"><span class="icon-bell">Organizations</span></a>
+            <a href="#" class="link"><span class="icon-user">Organizers</span></a>
+            <a href="#" class="link"><span class="icon-users">Attenders</span></a>
+            <a href="#" class="link"><span class="icon-rss">Diffusion</span></a>
+            <a href="#" class="link"><span class="icon-copy">Publish</span></a>
+            <a href="#" class="link"><span class="icon-stats-bars">Analitics</span></a>
         </section>
         <section class="main--container-list">
             <div class="main--container-buttons">
                 <!-- <span class="main--button-icon"></span> -->
-                <button>Add Organizator</button>
-                <input type="text" placeholder="Search" class="main--input-search">
+                <button><span class="icon-add-outline"></span>Add Organizator</button>
+                <span class="icon-search"><input type="text" placeholder="Search" class="main--input-search"></span>
                 <!-- <span class="input--icon-search"></span> -->
             </div>
             <div class="second--main">
                 <div class="second--main-table">
                         <input type="checkbox">
-                        <p>id</p>
+                        <p>Id</p>
                         <p>Name</p>
                     <p>Email</p>
                     <img src="./Images/icons/ajustes.svg" alt="configuration" class="icon-ajustes">
                 </div>
                 <div class="second--main-content">
                     <div class="second--main-details">
-                        <input type="checkbox">
+                        <input type="checkbox"/>
                         <p>112</p>
                         <p>Francisco Araujo</p>
                         <p>pan.x92@gmail.com</p>
                         <div>
-                            <img src="./Images/icons/crear-nuevo-boton-de-lapiz.svg" alt="icon_edit" class="icon-details">
-                            <img src="./Images/icons/borrar.svg" alt="icon_delete" class="icon-details">
+                            <a href="#"><img src="./Images/icons/crear-nuevo-boton-de-lapiz.svg" alt="icon_edit" class="icon-details"></a>
+                            <a href="#"><img src="./Images/icons/borrar.svg" alt="icon_delete" class="icon-details"></a>
                         </div>
                     </div>
                     <div class="second--main-details">
@@ -60,7 +59,7 @@
                         <p>nancysalazar@platzi.com</p>
                         <div>
                             <a href="#"><img src="./Images/icons/crear-nuevo-boton-de-lapiz.svg" alt="icon_edit" class="icon-details"></a>
-                            <img src="./Images/icons/borrar.svg" alt="icon_delete" class="icon-details">
+                            <a href="#"><img src="./Images/icons/borrar.svg" alt="icon_delete" class="icon-details"></a>
                         </div>
                     </div>
                 </div>
@@ -82,5 +81,21 @@
             </div>
         </section>
     </main>
+    <section class="popup--container">
+        <div class="popup--container-details">
+            <h1>Add Organizations to event</h1>
+            <p>No trabajes solo, agrega organizadores al evento para que te den una mano</p>
+            <div class="popup--details-form">
+                <input type="text">
+                <button>Add</button>
+            </div>
+            <div class="container--details">
+                <img src="https://lh3.googleusercontent.com/ogw/ADGmqu_ksm6Ql15mCzcSRiahXsgeljHqXoPqOfDWWnlo=s32-c-mo" alt="">
+                <p>Jairo Ramirez Castaño</p>
+                <span class="icon-close"></span>
+            </div>
+            <button>Close</button>
+        </div>
+    </section>
 </body>
 </html>

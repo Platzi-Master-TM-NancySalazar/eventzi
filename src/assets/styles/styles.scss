@@ -59,6 +59,15 @@ $template1-light: #F2F7FF;
 $template1-deg: linear-gradient(180deg, #284A7C 0%, #1D3558 100%);
 $template1-btn: #6094E2;
 
+
+$screen-sm-min: 676px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+//mixins
+@import "mixins";
+
 //Pages
 @import "pages/home";
 @import "pages/signup2";

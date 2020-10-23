@@ -32,10 +32,15 @@
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  
-  &--cards{
+
+  &--cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, 280px);
     justify-content: space-between;
+
+    @include md {
+      justify-content: center;
+    }
   }
 }

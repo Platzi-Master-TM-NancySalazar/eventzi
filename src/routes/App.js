@@ -6,6 +6,7 @@ import Home from '../pages/Home'
 import SignUp from '../pages/SignUp'
 import SignUp2 from '../pages/SignUp2'
 import Login from '../pages/Login'
+import Template1 from '../pages/Template1'
 
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
                 <Route exact path='/singup' component={SignUp} />
                 <Route exact path='/signup2' component={SignUp2} />
                 <Route exact path='/login' component={Login} />
+                <Route exact path='/template1' component={Template1} />
             </Switch>
         </Layout>
     </BrowserRouter>

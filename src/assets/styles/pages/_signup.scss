@@ -13,6 +13,11 @@
         margin-left: 40%;
     }
 }
+.negro2{
+    background: rgba(0,0,0, .5);  
+    height: 100%;  
+}
+
 
 .signup__container{
     display: flex;
@@ -21,6 +26,12 @@
     padding-top: 200px;
     justify-content: center;
     align-items: center;
+    label{
+        span{
+            font-size: 30px;
+            color: $white-color;
+        }
+    }
     input{
         background: none;
         border-right: 0px;
@@ -33,7 +44,7 @@
     }
     &-more{
         color: $white-color;
-        font-size: 1.8rem;
+        font-size: 2rem;
         display: flex;
         flex-direction: row;
         align-items: flex-end;
@@ -42,15 +53,45 @@
     button{
         width: 300px;
         height: 60px;
-        background-color: rgba(167, 161, 161, 0.39);
+        background-color: $auxiliar-color2;
         margin: 50px auto;
         border-radius: 5px;
         border: none;
         color: $white-color;
         opacity: 1;
+        font-size: 2rem;
     }
 }
 
 .italic{
     font-style: italic;
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+@media screen and(max-width: 480px){
+    .signup{
+        height: 100vh;
+    }
+    .signup__container{
+        padding-top: 130px;
+        input{
+            width: 300px;
+        }
+        button{
+            width: 200px;
+            height: 50px;
+        }
+        &-more{
+            width: auto;
+            display: contents;
+            p input{
+                width: 20px;
+            }
+        }
+    }
 }

@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { MdLockOutline, MdMailOutline } from "react-icons/md"
 import axios from "axios"
-// import qs 'qs');
-import https from 'https'
-
 
 import { Context } from '../context/Context'
 
 
 const Login = () => {
+    let history = useHistory()
     const { activateAuth } = useContext(Context)
     // const [email, setEmail] = useState('')
     // const [password, setPassword] = useState('')
@@ -29,112 +28,24 @@ const Login = () => {
         // console.log('form', form)
     }
 
-    // const loginUser = () => {
-    //     let data = qs.stringify({
-    //         'email': 'luis@hotmail.com',
-    //         'psswd': '123'
-    //     });
-
-    // headers: {
-    //     'Content-Type': "application/x-www-form-urlencoded"
-    // },
-
-
-
-
-    // const loginUser = ({ name, password }, redirectUrl) => {
-    const loginUser = () => {
-        // axios({
-        //     method: 'post',
-        //     url: 'https://www.eventziapp.com:3000/users/validate',
-        //     httpsAgent: new https.Agent({
-        //         rejectUnauthorized: false,
-        //     }),
-        //     data: {
-        //         email: 'luis@hotmail.com',
-        //         psswd: '123',
-        //     },
-        // })
-        //     .then(({ data }) => {
-        //         console.log('exitoso', data)
-        //     })
-        //     .catch(err => console.log('Fallo la peticion', err))
+    const loginUser = ({email, password }, redirectUrl) => {
+        console.log(email, password)
         axios({
-            method: 'post',
+            method: 'POST',
             url: 'https://www.eventziapp.com:3000/users/validate',
-            httpsAgent: new https.Agent({
-                rejectUnauthorized: false,
-            }),
             data: {
-                email: 'luis@hotmail.com',
-                psswd: '123',
-            },
+                email: email,
+                psswd: password,
+            }
         })
-            .then((data) => console.log(data.data))
-            .catch((err) => console.log(err))
+        .then((data) => {
+            console.log(data.data)
+            if (data.data.data.length > 0) {
+                history.push(redirectUrl)
+            }
+        })
+        .catch((err) => console.log(err))
     }
-
-    // const loginUser = async ({ name, password }) => {
-    //     try {
-    //         usuarios = await axios({
-    //             method: 'post',
-    //             url: 'https://www.eventziapp.com:3000/users/validate',
-    //             httpsAgent: new https.Agent({
-    //                 rejectUnauthorized: false,
-    //             }),
-    //             data: {
-    //                 email: 'luis@hotmail.com',
-    //                 psswd: '123',
-    //             },
-    //         })
-    //     } catch (error) {
-    //         console.log('error', error)
-    //     }
-    // }
-
-
-
-
-
-    // axios(config)
-    // .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
-    // })
-    // .catch(function (error) {
-    //     console.log(error);
-    // });
-
-
-    // let usuarios = []
-
-    // try {
-    //   usuarios = await axios.get('https://3.137.109.12:3000/users', {
-    //     httpsAgent: new https.Agent({
-    //       rejectUnauthorized: false,
-    //     }),
-    //   })
-    // } catch (error) {
-    //   console.log('error', error)
-    // }
-
-    // const async loginUser = () => {
-    //     try {
-    //         usuarios = await axios.get('https://3.137.109.12:3000/users', {
-    //             httpsAgent: new https.Agent({
-    //                 rejectUnauthorized: false,
-    //             }),
-    //         })
-    //     } catch (error) {
-    //         console.log('error', error)
-
-    //     }
-
-
-
-
-
-
-
 
     return (
         <div className="login">
@@ -160,8 +71,6 @@ const Login = () => {
                 <Link to="/" className="login__bottom">
                     <p>Create a new account</p>
                 </Link>
-
-
 
             </div>
 

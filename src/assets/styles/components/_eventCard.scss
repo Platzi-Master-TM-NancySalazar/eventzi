@@ -1,0 +1,27 @@
+.event_card {
+  height: 280px;
+  background-color: white;
+  border-radius: 8px 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.14);
+  color: #2E384D;
+
+  &--description{
+    padding: 10px;
+  }
+
+  &--img{
+    width: 100%;
+    height: 180px;
+  }
+
+  &--title{
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  &--text{
+    font-size: 1.6rem;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+}

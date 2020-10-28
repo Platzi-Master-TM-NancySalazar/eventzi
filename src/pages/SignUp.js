@@ -7,9 +7,12 @@ import React from 'react'
 import { MdLockOutline, MdMailOutline } from "react-icons/md";
 import { FiUser } from "react-icons/fi";
 
+// import Context from '../Context'
+
 
 
 export default function SignUp() {
+
     return (
         <div className="signup">
             <div className="negro2">

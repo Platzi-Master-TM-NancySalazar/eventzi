@@ -23,7 +23,7 @@ class Event extends React.Component {
                 height="100px"
                 id="eventLogo"
               />
-              <h1 id="eventName">Hola alalala</h1>
+              <h1 id="eventName">Name</h1>
             </div>
             <div className="cover__info">
               <div className="cover-buttons">

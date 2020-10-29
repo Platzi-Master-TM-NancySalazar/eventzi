@@ -11,7 +11,7 @@ const Countdown = () => {
       <h1 id="hours">00</h1>
       <h3>Hours</h3>
     </div>
-    <div className="countdon__minutes">
+    <div className="countdown__minutes">
       <h1 id="minutes">00</h1>
       <h3>Minutes</h3>
     </div>

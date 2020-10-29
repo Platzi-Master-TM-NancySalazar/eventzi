@@ -1,0 +1,140 @@
+@import "../styles.scss";
+@import "../components/_speaker.scss";
+@import "../components/_asociate.scss";
+
+.cover {
+  display: flex;
+  align-items: center;
+  color: $white-color;
+  background-image: url("https://taiocchiwebmaster.altervista.org/public/headerx/125091.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 930px;
+  padding-left: 8%;
+  padding-right: 8%;
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__content {
+    width: 100%;
+  }
+  &__title {
+    margin-bottom: 100px;
+  }
+  &__buttons {
+    margin-bottom: 60px;
+  }
+}
+
+.date {
+  &__container {
+    display: flex;
+  }
+  &__item {
+    margin-left: 50px;
+  }
+}
+
+.countdown {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  & div {
+    margin-left: 30px;
+  }
+}
+
+.template1 {
+  &__btn {
+    font-size: 3.2rem;
+    color: $white-color;
+    background-color: transparent;
+    border: 3px solid $white-color;
+    border-radius: 18px;
+    width: 215px;
+    padding: 13px;
+    cursor: pointer;
+    margin-right: 30px;
+  }
+
+  &__btn:focus {
+    outline-style: none;
+  }
+  &__btn:hover {
+    background-color: $primary-color;
+  }
+}
+
+.main {
+  padding: 8%;
+}
+
+.title {
+  text-align: center;
+  color: $template1-text;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+}
+.about {
+  margin: 50px;
+  &__info {
+    display: flex;
+    align-items: center;
+    margin: auto 8%;
+  }
+  &__info img {
+    max-height: 320px;
+  }
+  &__info p {
+    text-align: center;
+    padding-left: 15rem;
+  }
+}
+
+.talk {
+  display: grid;
+  grid-template-columns: 15% 15% 20% 50%;
+  margin-bottom: 1.5rem;
+}
+
+.speakers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  gap: 15px;
+  justify-content: center;
+}
+
+.register {
+  text-align: center;
+  padding: 1rem;
+  background: rgb(29, 53, 88);
+  background: linear-gradient($template1-deg);
+}
+.register .title {
+  color: $white-color;
+}
+
+.form__btn {
+  color: $white-color;
+  background-color: $template1-btn;
+}
+
+.schedule {
+  margin: auto 8%;
+}
+
+.asociates {
+  padding: 1px 50px 50px 50px;
+  margin-top: 100px;
+  background-color: $template1-lightbg;
+}
+.asociates__container {
+  display: flex;
+  justify-content: center;
+}
+
+.cover__logo {
+  max-height: 100px;
+}

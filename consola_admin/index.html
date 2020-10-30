@@ -1,62 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Consol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./Images/icomoon/style.css">
 </head>
 <body>
-    <header>
-        <h1>Logo</h1>
-        <h3>name_admin</h3>
-        <img src="#" alt="perfil">
+    <header class="header--container">
+        <div>
+            <img src="./Images/title_logo.png" alt="Title-Logo" class="header--container-logo">
+        </div>
+        <div class="header--detail-admin">
+            <h3>name_admin</h3>
+            <img src="https://lh3.googleusercontent.com/ogw/ADGmqu_ksm6Ql15mCzcSRiahXsgeljHqXoPqOfDWWnlo=s32-c-mo" alt="face account">
+        </div>
     </header>
-    <main>
-        <section>
-            <ul>
-                <li>Organizations</li>
-                <li>Organizers</li>
-                <li>Attenders</li>
-                <li>Diffusion</li>
-                <li>Publish</li>
-                <li>Analitics</li>
-            </ul>
+    <main class="main--container">
+        <section class="sideBar">
+            <a href="#" class="link"><span class="icon-bell">Organizations</span></a>
+            <a href="#" class="link"><span class="icon-user">Organizers</span></a>
+            <a href="#" class="link"><span class="icon-users">Attenders</span></a>
+            <a href="#" class="link"><span class="icon-rss">Diffusion</span></a>
+            <a href="#" class="link"><span class="icon-copy">Publish</span></a>
+            <a href="#" class="link"><span class="icon-stats-bars">Analitics</span></a>
         </section>
-        <section>
-            <div>
-                <button>Add Organizator</button>
-                <input type="text" placeholder="Search"/>
+        <section class="main--container-list">
+            <div class="main--container-buttons">
+                <button id="btn-addOrganizator"><span class="icon-add-outline"></span>Add Organizator</button>
+                <span class="icon-search"><input type="text" placeholder="Search" class="main--input-search"></span>
             </div>
-            <div>
-                <div class="item">
-                    <input type="checkbox">
-                    <p>id</p>
-                    <p>Name</p>
+            <div class="second--main">
+                <div class="second--main-table">
+                        <input type="checkbox">
+                        <p>Id</p>
+                        <p>Name</p>
                     <p>Email</p>
-                    <p><img src="#" alt="configuration"></p>
+                    <img src="./Images/icons/ajustes.svg" alt="configuration" class="icon-ajustes">
                 </div>
-                <div class="item">
-                    <input type="text" placeholder="Search"/>
-                    <p>112</p>
-                    <p>Francisco Araujo</p>
-                    <p>pan.x92@gmail.com</p>
-                    <div>
-                        <img src="#" alt="editar">
-                        <img src="#" alt="eliminar">
+                <div class="second--main-content">
+                    <div class="second--main-details">
+                        <input type="checkbox"/>
+                        <p>112</p>
+                        <p>Francisco Araujo</p>
+                        <p>pan.x92@gmail.com</p>
+                        <div>
+                            <a href="#"><img src="./Images/icons/crear-nuevo-boton-de-lapiz.svg" alt="icon_edit" class="icon-details"></a>
+                            <a href="#"><img src="./Images/icons/borrar.svg" alt="icon_delete" class="icon-details"></a>
+                        </div>
+                    </div>
+                    <div class="second--main-details">
+                        <input type="checkbox">
+                        <p>10</p>
+                        <p>Nancy Salazar</p>
+                        <p>nancysalazar@platzi.com</p>
+                        <div>
+                            <a href="#"><img src="./Images/icons/crear-nuevo-boton-de-lapiz.svg" alt="icon_edit" class="icon-details"></a>
+                            <a href="#"><img src="./Images/icons/borrar.svg" alt="icon_delete" class="icon-details"></a>
+                        </div>
                     </div>
                 </div>
-                <div class="item">
-                    <input type="text" placeholder="Search"/>
-                    <p>112</p>
-                    <p>Francisco Araujo</p>
-                    <p>pan.x92@gmail.com</p>
-                    <div>
-                        <img src="#" alt="editar">
-                        <img src="#" alt="eliminar">
-                    </div>
+            </div>
+            <div class="show--details">
+                <div>
+                    <select class="select">
+                        <option value="value1" selected>10</option> 
+                        <option value="value2">15</option>
+                        <option value="value3">20</option>
+                    </select>
+                    <small>entries per page</small>
+                </div>
+                <div>
+                    <button><img src="./Images/icons/boton-de-flecha-izquierda-del-teclado.svg" alt="" class="icon-details"></button>
+                    <input type="text" value="1" class="input-page-value"/>
+                    <button><img src="./Images/icons/flecha-derecha.svg" alt="" class="icon-details"></button>
                 </div>
             </div>
         </section>
     </main>
+    <!-- Primer popup -->
+    <section class="overlay" id="overlay">
+        <div class="popup--container-details" id="popup--container-details">
+            <h1>Add Organizations to event</h1>
+            <p>No trabajes solo, agrega organizadores al evento para que te den una mano</p>
+            <div class="popup--details-form">
+                <input id="input_text" class="popup--input" type="text" placeholder="Escribe un nombre" autocomplete="off"/>
+                <span class="popup--input-focus"></span>
+                <button class="button-popup">Add</button>
+            </div>
+
+            <div class="newOrganizator">
+                <span class="icon-user-plus"></span>
+                <a href="#" id="newOrganizator">Add Jairo Ramirez Castaño as Organizer</a>
+                <!-- <button id="newOrganizator">Add Jairo</button> -->
+            </div>
+            
+            <div class="container--details">
+                <img src="https://lh3.googleusercontent.com/ogw/ADGmqu_ksm6Ql15mCzcSRiahXsgeljHqXoPqOfDWWnlo=s32-c-mo" alt="">
+                <p>Jairo Ramirez Castaño</p>
+                <a href="#"><span class="icon-close-outline"></span></a>
+            </div>
+            <div class="section-close">
+                <div></div>
+                <button class="button--popup-close" id="btn-popup-close">Close</button>
+            </div>
+        </div>
+    </section>
+    <!-- Segundo popup -->
+    <section class="overlay-second" id="overlay-second">
+        <div class="popup--container-add" id="popup--container-add">
+            <div>
+                <img src="./Images/image-AddOragnizator.jpg" alt="">
+            </div>
+            <div>
+                <h1>Invita a personas como organizador de tu evento</h1>
+                <p>¡Juntarse es un comienzo. Seguir juntos es un progreso. Trabajar juntos es un éxito!</p>
+                <p>Escriba los correos de las personas con las que quieres trabajar.</p>
+            </div>
+            <div class="popup--input-add">
+                <input type="text" value="Jairo Ramirez Castaño"><input type="text" value="sicomono@gmail.com">
+            </div>
+            <div>
+                <span class="icon-add-outline"></span><a href="#">Add More</a>
+            </div>
+            <div>
+                <button>Cancel</button>
+                <button>Send Invitation</button>
+            </div>
+        </div>
+    </section>
+    <script src="./popup.js"></script>
 </body>
 </html>

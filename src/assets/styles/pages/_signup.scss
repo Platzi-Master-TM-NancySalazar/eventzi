@@ -39,8 +39,14 @@
         border-top: 0px;        
         border-bottom: 1px solid $white-color;
         width: 400px;
+        color: $white-color;
+        padding-left: 50px;
     }::placeholder{
         color: $white-color;
+        padding-left: 0px;
+    }
+    :focus{
+        background-color: rgba(0, 0, 0, 0.3)
     }
     &-more{
         color: $white-color;

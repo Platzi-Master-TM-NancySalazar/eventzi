@@ -7,12 +7,15 @@ import SignUp from '../pages/SignUp'
 import SignUp2 from '../pages/SignUp2'
 import Login from '../pages/Login'
 import Template1 from '../pages/Template1'
+import EventPanel from '../pages/EventPanel'
+import NotFound from '../pages/NotFound'
+
+
 import { Context } from '../context/Context'
 
 
 const App = () => {
     const { isAuth } = useContext(Context)
-    // const isAuth = false
 
     return (
         <BrowserRouter>
@@ -22,7 +25,10 @@ const App = () => {
                     <Route exact path='/singup' component={SignUp} />
                     <Route exact path='/signup2' component={SignUp2} />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/eventPanel' component={EventPanel} />
                     <Route exact path='/' component={Home} />
+                    <Route component={NotFound} />
+
                 </Switch>
             </Layout>
         </BrowserRouter>

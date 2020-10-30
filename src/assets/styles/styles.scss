@@ -55,9 +55,12 @@ $white-color: #ffffff;
 $auxiliar-color1: #ff00ba;
 $auxiliar-color2: #2d9cdb;
 $template1-text: #284a7c;
+$template2-text: #9c2a12;
 $template1-lightbg: #f2f7ff;
+$template2-lightbg: #fbf0ee;
 $template1-deg: linear-gradient(180deg, #284a7c 0%, #1d3558 100%);
 $template1-btn: #6094e2;
+$template2-btn: #d4471b;
 $template1-deg: 0deg, rgba(29, 53, 88, 1) 0%, rgba(40, 74, 124, 1) 100%;
 
 $screen-sm-min: 676px;
@@ -73,8 +76,13 @@ $screen-xl-min: 1200px;
 @import "pages/signup2";
 @import "pages/signup";
 @import "pages/login";
+@import "pages/template1";
+@import "pages/template2";
 
 //Components
 @import "components/header";
 @import "components/footer";
 @import "components/eventCard";
+
+@import "components/_speaker.scss";
+@import "components/_asociate.scss";

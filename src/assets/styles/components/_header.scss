@@ -1,0 +1,41 @@
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(54, 54, 54);
+  color: white;
+  height: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  &--img {
+    margin-left: 10px;
+    height: 30px;
+  }
+
+  &--search {
+    width: 200px;
+    height: 25px;
+    border-radius: 20px;
+    padding-left: 8px;
+    border: none;
+    outline: 0;
+
+    @include md {
+      display: none;
+    }
+  }
+
+  &--nav {
+    display: flex;
+
+    &-link {
+      display: inline-block;
+      font-size: 1.6rem;
+      margin: 0 15px;
+    }
+  }
+}

@@ -79,14 +79,21 @@
             </div>
         </section>
     </main>
+    <!-- Primer popup -->
     <section class="overlay" id="overlay">
         <div class="popup--container-details" id="popup--container-details">
             <h1>Add Organizations to event</h1>
             <p>No trabajes solo, agrega organizadores al evento para que te den una mano</p>
             <div class="popup--details-form">
-                <input id="input_text" class="popup--input" type="text" placeholder="Escribe un nombre"/>
+                <input id="input_text" class="popup--input" type="text" placeholder="Escribe un nombre" autocomplete="off"/>
                 <span class="popup--input-focus"></span>
                 <button class="button-popup">Add</button>
+            </div>
+
+            <div class="newOrganizator">
+                <span class="icon-user-plus"></span>
+                <a href="#" id="newOrganizator">Add Jairo Ramirez Castaño as Organizer</a>
+                <!-- <button id="newOrganizator">Add Jairo</button> -->
             </div>
             
             <div class="container--details">
@@ -97,6 +104,29 @@
             <div class="section-close">
                 <div></div>
                 <button class="button--popup-close" id="btn-popup-close">Close</button>
+            </div>
+        </div>
+    </section>
+    <!-- Segundo popup -->
+    <section class="overlay-second" id="overlay-second">
+        <div class="popup--container-add" id="popup--container-add">
+            <div>
+                <img src="./Images/image-AddOragnizator.jpg" alt="">
+            </div>
+            <div>
+                <h1>Invita a personas como organizador de tu evento</h1>
+                <p>¡Juntarse es un comienzo. Seguir juntos es un progreso. Trabajar juntos es un éxito!</p>
+                <p>Escriba los correos de las personas con las que quieres trabajar.</p>
+            </div>
+            <div class="popup--input-add">
+                <input type="text" value="Jairo Ramirez Castaño"><input type="text" value="sicomono@gmail.com">
+            </div>
+            <div>
+                <span class="icon-add-outline"></span><a href="#">Add More</a>
+            </div>
+            <div>
+                <button>Cancel</button>
+                <button>Send Invitation</button>
             </div>
         </div>
     </section>

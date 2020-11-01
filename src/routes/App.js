@@ -16,17 +16,21 @@ import { Context } from '../context/Context'
 
 const App = () => {
     const { isAuth } = useContext(Context)
-
+    console.log(isAuth)
     return (
         <BrowserRouter>
             <Layout>
                 <Switch>
                     {isAuth ? <Route exact path='/template1' component={Template1} /> : <Route exact path='/template1' component={Login} />}
-                    <Route exact path='/singup' component={SignUp} />
+                    {isAuth ? <Route exact path='/' component={Home} /> : <Route exact path='/' component={Login} />}
+                    {isAuth ? <Route exact path='/eventPanel' component={EventPanel} /> : <Route exact path='/eventPanel' component={Login} />}
+
+
+                    <Route exact path='/signup' component={SignUp} />
                     <Route exact path='/signup2' component={SignUp2} />
                     <Route exact path='/login' component={Login} />
-                    <Route exact path='/eventPanel' component={EventPanel} />
-                    <Route exact path='/' component={Home} />
+                    {/* <Route exact path='/eventPanel' component={EventPanel} /> */}
+                    {/* <Route exact path='/' component={Home} /> */}
                     <Route component={NotFound} />
 
                 </Switch>

@@ -28,7 +28,7 @@ const Login = () => {
         console.log(email, password)
         axios({
             method: 'POST',
-            url: 'https://www.eventziapp.com:3000/users/validate',
+            url: 'https://eventziapi.herokuapp.com/users/validate',
             data: {
                 email: email,
                 psswd: password,
@@ -64,7 +64,7 @@ const Login = () => {
                     <button onClick={() => activateAuth()}>LOGIN</button>
 
                 </form>
-                <Link to="/" className="login__bottom">
+                <Link to="/signup" className="login__bottom">
                     <p>Create a new account</p>
                 </Link>
 

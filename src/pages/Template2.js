@@ -7,9 +7,9 @@ import EventAbout from "../components/EventAbout";
 import Countdown from "../components/Countdown";
 import logo from "../assets/static/logo-white.svg";
 
-const Template1 = () => {
+const Template2 = () => {
   return (
-    <div className="template1">
+    <div className="template2">
       <div className="cover">
         <div className="cover__content">
           <div className="cover__title">
@@ -23,14 +23,6 @@ const Template1 = () => {
             <h1 id="eventName">event_name</h1>
           </div>
           <div className="cover__info">
-            <div className="cover-buttons">
-              <a className="template1__btn" href="#schedule">
-                Schedule
-              </a>
-              <a className="template1__btn" href="#register">
-                Register
-              </a>
-            </div>
             <Countdown />
           </div>
           <div className="date__container">
@@ -41,6 +33,7 @@ const Template1 = () => {
               url
             </h3>
           </div>
+          <SuscribeForm />
         </div>
       </div>
 
@@ -50,16 +43,9 @@ const Template1 = () => {
           image="https://www.revistaneo.com/sites/default/files/2019-06/Team%20Platzi-2.jpg"
           description="Transformamos la economía de nuestros países entrenando a la próxima generación de profesionales en tecnología."
         />
+        <h2 className="title">Schedule</h2>
         <section className="schedule" id="schedule">
-          <h2 className="title">Schedule</h2>
           <div className="Schedule__grid">
-            <Talk
-              day="Day 1"
-              time="12:12"
-              name="presentation"
-              description="event presentation for all students"
-              speaker="Elon Musk"
-            />
             <Talk
               day="Day 1"
               time="12:12"
@@ -78,10 +64,25 @@ const Template1 = () => {
             twitter="elonmusk"
             image="https://cdn.britannica.com/54/188754-050-A3613741/Elon-Musk-2010.jpg"
           />
+          <Speaker
+            description="Elon Reeve Musk is the founder, CEO, CTO and chief designer of SpaceX"
+            name="Elon Musk"
+            title="CEO of SpaceX"
+            twitter="elonmusk"
+            image="https://cdn.britannica.com/54/188754-050-A3613741/Elon-Musk-2010.jpg"
+          />
+          <Speaker
+            description="Elon Reeve Musk is the founder, CEO, CTO and chief designer of SpaceX"
+            name="Elon Musk"
+            title="CEO of SpaceX"
+            twitter="elonmusk"
+            image="https://cdn.britannica.com/54/188754-050-A3613741/Elon-Musk-2010.jpg"
+          />
         </section>
       </main>
+
       <section className="asociates">
-        <h3 className="title">Asociates</h3>
+        <h2 className="title">Asociates</h2>
         <div className="asociates__container">
           <Asociate
             logo="https://static.platzi.com/media/learningpath/badges/6475ba11-ef6a-401f-9144-d40f615e0cfc.jpg"
@@ -93,12 +94,8 @@ const Template1 = () => {
           />
         </div>
       </section>
-      <section className="register" id="register">
-        <h2 className="title">Register with email</h2>
-        <SuscribeForm />
-      </section>
     </div>
   );
 };
 
-export default Template1;
+export default Template2;

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Template1 from "./Template1";
 import Template2 from "./Template2";
-
-const eventId = "49";
+import axios from "axios";
 
 const Event = () => {
-  const [event, setEvent] = useState();
+  const id = "51";
 
-  useEffect(() => {
-    fetch(`http://www.eventziapp.com:3000/events/${eventId}`)
-      .then((response) => response.json())
-      .then((data) => setEvent(data));
-  }, []);
-  console.log(event);
+  axios
+    .get(`https://eventziapi.herokuapp.com/events/${id}`)
+    .then((response) => {
+      let event = response.data.data[0];
+      console.log(event.event_name, event.url, event.date_, event.description_);
+    })
+    .catch((err) => console.log(err));
 
   return <Template1 />;
 };
+
 export default Event;

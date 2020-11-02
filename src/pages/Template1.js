@@ -4,10 +4,11 @@ import Talk from "../components/Talk";
 import Asociate from "../components/Asociate";
 import SuscribeForm from "../components/SuscribeForm";
 import EventAbout from "../components/EventAbout";
-import Countdown from "../components/Countdown";
+import Countdown from "react-countdown";
 import logo from "../assets/static/logo-white.svg";
 
-const Template1 = () => {
+const Template1 = (props) => {
+  console.log("dentro de template" + props.name);
   return (
     <div className="template1">
       <div className="cover">
@@ -20,7 +21,7 @@ const Template1 = () => {
               height="100px"
               id="eventLogo"
             />
-            <h1 id="eventName">event_name</h1>
+            <h1 id="eventName">{props.name}</h1>
           </div>
           <div className="cover__info">
             <div className="cover-buttons">
@@ -31,14 +32,17 @@ const Template1 = () => {
                 Register
               </a>
             </div>
-            <Countdown />
+            <div className="countdown">
+              <Countdown date={props.date_} />
+              <h3>Days / Hours / Minutes / Seconds</h3>
+            </div>
           </div>
           <div className="date__container">
             <h3 className="date__item" id="date">
-              date
+              {props.date_}
             </h3>
             <h3 className="date__item" id="url">
-              url
+              {props.url}
             </h3>
           </div>
         </div>
@@ -46,9 +50,9 @@ const Template1 = () => {
 
       <main>
         <EventAbout
-          name="Eventzi presentation"
+          name={props.name}
           image="https://www.revistaneo.com/sites/default/files/2019-06/Team%20Platzi-2.jpg"
-          description="Transformamos la economía de nuestros países entrenando a la próxima generación de profesionales en tecnología."
+          description={props.description_}
         />
         <section className="schedule" id="schedule">
           <h2 className="title">Schedule</h2>

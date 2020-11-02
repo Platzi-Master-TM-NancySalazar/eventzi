@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/static/logo_full.png'
+import { Context } from '../context/Context'
+
 
 export default function NavBar() {
+  const { removeAuth } = useContext(Context)
+
+  // const handleLogout = (event) => {
+  //   event.preventDefault()
+
+  // }
+
+
   return (
     <header className='header'>
       <Link to='/'>
@@ -17,12 +27,16 @@ export default function NavBar() {
             placeholder='Search event'
           />
         </ul>
-        <Link to='/singup' className='header--nav-link'>
+        <Link to='/signup' className='header--nav-link'>
           <ul>Sign up</ul>
         </Link>
 
         <Link to='/login'>
           <ul className='header--nav-link'>Log in</ul>
+        </Link>
+
+        <Link to="/login">
+          <ul className='header--nav-link' onClick={() => removeAuth()}>Cerrar Sesión</ul>
         </Link>
       </nav>
     </header>

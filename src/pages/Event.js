@@ -1,6 +1,9 @@
 import React from "react";
 import Template1 from "./Template1";
 import Template2 from "./Template2";
+import Loading from "./Loading";
+import Error from "./Error";
+import NotFound from "./NotFound";
 
 class Event extends React.Component {
   state = {
@@ -44,13 +47,16 @@ class Event extends React.Component {
 
   render() {
     if (this.state.loading === true) {
-      return null;
+      return <Loading />;
     }
 
     if (this.state.error) {
-      return `Error: ${this.state.error.message}`;
+      return <Error />;
     }
 
+    if (this.state.data.data[0] == undefined) {
+      return <NotFound />;
+    }
     return (
       <Template1
         data={this.state.data.data[0]}

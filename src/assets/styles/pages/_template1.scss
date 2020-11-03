@@ -98,6 +98,9 @@
     display: grid;
     grid-template-columns: 15% 15% 20% 50%;
     margin-bottom: 1.5rem;
+    &__name--strong {
+      font-weight: bold;
+    }
   }
 
   .speakers {

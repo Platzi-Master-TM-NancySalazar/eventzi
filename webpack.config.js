@@ -21,8 +21,22 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-react", "@babel/preset-env"],
-            plugins: ["@babel/plugin-proposal-optional-chaining"],
+            // presets: ["@babel/preset-react", "@babel/preset-env"],
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  targets: {
+                    node: "10",
+                  },
+                },
+              ],
+              "@babel/preset-react",
+            ],
+            plugins: [
+              "@babel/plugin-proposal-optional-chaining",
+              "@babel/plugin-proposal-class-properties",
+            ],
           },
         },
       },

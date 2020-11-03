@@ -10,9 +10,6 @@ import { Context } from '../context/Context'
 const Login = () => {
     let history = useHistory()
     const { activateAuth } = useContext(Context)
-    // const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
-
     const [form, setForm] = useState(null)
 
     const handleInput = (event) => {
@@ -25,26 +22,25 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         loginUser(form, "/")
-        // console.log('form', form)
     }
 
-    const loginUser = ({email, password }, redirectUrl) => {
+    const loginUser = ({ email, password }, redirectUrl) => {
         console.log(email, password)
         axios({
             method: 'POST',
-            url: 'https://www.eventziapp.com:3000/users/validate',
+            url: 'https://eventziapi.herokuapp.com/users/validate',
             data: {
                 email: email,
                 psswd: password,
             }
         })
-        .then((data) => {
-            console.log(data.data)
-            if (data.data.data.length > 0) {
-                history.push(redirectUrl)
-            }
-        })
-        .catch((err) => console.log(err))
+            .then((data) => {
+                console.log(data.data)
+                if (data.data.data.length > 0) {
+                    history.push(redirectUrl)
+                }
+            })
+            .catch((err) => console.log(err))
     }
 
     return (
@@ -68,7 +64,7 @@ const Login = () => {
                     <button onClick={() => activateAuth()}>LOGIN</button>
 
                 </form>
-                <Link to="/" className="login__bottom">
+                <Link to="/signup" className="login__bottom">
                     <p>Create a new account</p>
                 </Link>
 
@@ -79,3 +75,4 @@ const Login = () => {
 }
 
 export default Login
+

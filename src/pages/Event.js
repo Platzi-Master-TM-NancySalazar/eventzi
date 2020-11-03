@@ -58,7 +58,7 @@ class Event extends React.Component {
       return <NotFound />;
     }
     return (
-      <Template1
+      <Template2
         data={this.state.data.data[0]}
         speakers={this.state.speakers.data}
         talks={this.state.talks.data}

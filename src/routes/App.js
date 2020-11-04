@@ -7,6 +7,7 @@ import SignUp from '../pages/SignUp'
 import Login from '../pages/Login'
 import Template1 from '../pages/Template1'
 import EventPanel from '../pages/EventPanel'
+import AnalyticsPanel from '../pages/AnalyticsPanel'
 import NotFound from '../pages/NotFound'
 
 import { Context } from '../context/Context'
@@ -21,8 +22,11 @@ const App = () => {
         <Switch>
           {isAuth ? <Route exact path='/template1' component={Template1} /> : <Route exact path='/template1' component={Login} />}
           {isAuth ? <Route exact path='/' component={Home} /> : <Route exact path='/' component={Login} />}
-          {isAuth ? <Route exact path='/eventPanel' component={EventPanel} /> : <Route exact path='/eventPanel' component={Login} />}
+          {/* {isAuth ? <Route exact path='/eventPanel' component={EventPanel} /> : <Route exact path='/eventPanel' component={Login} />} */}
           <Route exact path='/signup' component={SignUp} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/analyticsPanel' component={AnalyticsPanel} />
+          <Route exact path='/eventPanel' component={EventPanel} />
           <Route component={NotFound} />
 
         </Switch>

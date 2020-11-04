@@ -79,9 +79,9 @@ export default function SignUp() {
                         <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" onChange={handleInput} />
                     </label>
 
-                    {/* <Link to="/login"> */}
-                    <button>SIGN UP</button>
-                    {/* </Link> */}
+                    <Link to="/login">
+                        <button type="submit">SIGN UP</button>
+                    </Link>
 
                 </form>
             </div>

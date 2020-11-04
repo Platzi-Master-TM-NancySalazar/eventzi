@@ -10,6 +10,7 @@ import EventPanel from "../pages/EventPanel";
 import NotFound from "../pages/NotFound";
 import AdminConsol from "../pages/AdminConsol"
 import Charts from "../pages/Charts"
+import Admin from "../pages/Admin"
 
 import { Context } from "../context/Context";
 
@@ -33,6 +34,7 @@ const App = () => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/event" component={Event} />
           <Route exact path="/admin" component={AdminConsol} />
+          <Route exact path="/admin2" component={Admin} />
           <Route exact path="/charts" component={Charts} />
           <Route component={NotFound} />
         </Switch>

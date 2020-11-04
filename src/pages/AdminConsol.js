@@ -1,5 +1,4 @@
 import React from 'react'
-import '../assets/styles/admin-console.css'
 // import popupFirst from '../components/PopupFirst'
 
 const AdminConsol = () => {

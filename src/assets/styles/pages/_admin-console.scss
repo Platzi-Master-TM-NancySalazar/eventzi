@@ -1,20 +1,18 @@
-html{
-    font-size: 62.5%;
-}
-
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 .main--container{
     display: flex;
     height: 100vh;
-}
+    
+    &-list{
+        width: 80%;
+        margin-left: 35px;
+        padding-top: 20px;
+    }
 
-a{
-    text-decoration: none;
+    &-buttons{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
 }
 
 .sideBar{
@@ -29,30 +27,18 @@ a{
     display: flex;
     border-bottom: 1px solid #C4C4C4;
     padding: 30px;
-}
 
-.link:hover{
-    color: #2D9CDB;
+    &:hover{
+    color: $auxiliar-color2;
     padding: 30px;
-}
+    }
 
-.link:focus{
-    background-color: white;
-    color: #0096D6;
-    /* font-weight: 900; */
-    border-left: 4px solid #0096D6;
-}
-
-.main--container-list{
-    width: 80%;
-    margin-left: 35px;
-    padding-top: 20px;
-}
-
-.main--container-buttons{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+    &:focus{
+        background-color: white;
+        color: $auxiliar-color2;
+        /* font-weight: 900; */
+        border-left: 4px solid $auxiliar-color2;
+    }
 }
 
 .main--container-buttons > button{

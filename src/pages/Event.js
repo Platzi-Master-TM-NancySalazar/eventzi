@@ -1,7 +1,7 @@
 import React from "react";
 import Template1 from "./Template1";
 import Template2 from "./Template2";
-import Loading from "./Loading";
+import Loader from "../components/Loader";
 import Error from "./Error";
 import NotFound from "./NotFound";
 
@@ -47,7 +47,7 @@ class Event extends React.Component {
 
   render() {
     if (this.state.loading === true) {
-      return <Loading />;
+      return <Loader />;
     }
 
     if (this.state.error) {
@@ -58,7 +58,7 @@ class Event extends React.Component {
       return <NotFound />;
     }
     return (
-      <Template2
+      <Template1
         data={this.state.data.data[0]}
         speakers={this.state.speakers.data}
         talks={this.state.talks.data}

@@ -1,4 +1,8 @@
-.notFound{
-    padding-top: 150px;
-    height: 100vh;
+.notFound {
+  padding-top: 150px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

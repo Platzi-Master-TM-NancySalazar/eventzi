@@ -73,6 +73,7 @@ $screen-xl-min: 1200px;
 
 //Pages
 @import "pages/home";
+@import "pages/admin";
 @import "pages/signup2";
 @import "pages/signup";
 @import "pages/login";
@@ -80,7 +81,7 @@ $screen-xl-min: 1200px;
 @import "pages/notFound";
 @import "pages/template1";
 @import "pages/template2";
-@import "pages/analyticsPanel";
+// @import "pages/analyticsPanel";
 
 //Components
 @import "components/header";

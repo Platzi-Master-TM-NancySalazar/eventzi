@@ -5,16 +5,17 @@ class Talk extends React.Component {
     return (
       <div className="talk">
         <div className="talk__day">
-          <p id="talkDay">{this.props.day}</p>
+          <p>{this.props.day}</p>
         </div>
         <div className="talk__time">
-          <p id="talkTime">{this.props.time}</p>
+          <p>{this.props.time}</p>
         </div>
         <div className="talk__name">
-          <p id="talkName">{`${this.props.name}- ${this.props.speaker}`}</p>
+          <p className="talk__name--strong">{this.props.title}</p>
+          <p>{this.props.speaker}</p>
         </div>
         <div className="talk__description">
-          <p id="talkDescription">{this.props.description}</p>
+          <p>{this.props.description}</p>
         </div>
       </div>
     );

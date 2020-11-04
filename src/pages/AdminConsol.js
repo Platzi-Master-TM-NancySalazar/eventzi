@@ -1,13 +1,10 @@
 import React from 'react'
-import Header from '../components/Header'
-import '../assets/styles/admin_consol.css'
-import popupFirst from '../components/PopupFirst'
-import Footer from '../components/Footer'
+import '../assets/styles/admin-console.css'
+// import popupFirst from '../components/PopupFirst'
 
-const adminConsol = () => {
+const AdminConsol = () => {
     return(
     <>
-        <Header/>
         <main className='main--container'>
             <section className='sideBar'>
                 <a href="#" className="link"><span className="icon-bell">Organizations</span></a>
@@ -70,9 +67,9 @@ const adminConsol = () => {
                 </div>
             </section>
         </main>
-        <Footer/>
+
     </>
     )
 }
 
-export default adminConsol
+export default AdminConsol

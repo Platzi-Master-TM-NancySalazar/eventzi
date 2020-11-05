@@ -81,11 +81,14 @@ $screen-xl-min: 1200px;
 @import "pages/notFound";
 @import "pages/template1";
 @import "pages/template2";
+@import "pages/admin-console";
+// @import "pages/analyticsPanel";
 
 //Components
 @import "components/header";
 @import "components/footer";
 @import "components/eventCard";
+@import "components/leftContainer";
 
 @import "components/_speaker.scss";
 @import "components/_asociate.scss";

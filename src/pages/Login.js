@@ -25,6 +25,7 @@ const Login = () => {
     }
 
     const loginUser = ({ email, password }, redirectUrl) => {
+        console.log('aqui')
         console.log(email, password)
         axios({
             method: 'POST',
@@ -35,10 +36,12 @@ const Login = () => {
             }
         })
             .then((data) => {
-                console.log(data.data)
+                console.log('llegaste')
+                console.log('tu info es: ', data)
                 if (data.data.data.length > 0) {
                     history.push(redirectUrl)
                 }
+                activateAuth()
             })
             .catch((err) => console.log(err))
     }
@@ -61,7 +64,7 @@ const Login = () => {
                         <p className="italic">Forgot Password?</p>
                     </div>
 
-                    <button onClick={() => activateAuth()}>LOGIN</button>
+                    <button type="submit">LOGIN</button>
 
                 </form>
                 <Link to="/signup" className="login__bottom">

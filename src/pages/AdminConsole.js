@@ -1,7 +1,13 @@
 import React from 'react'
+<<<<<<< HEAD:src/pages/AdminConsole.js
 import '../assets/styles/admin-console.css'
 
 const AdminConsole = () => {
+=======
+// import popupFirst from '../components/PopupFirst'
+
+const AdminConsol = () => {
+>>>>>>> 48785e396bc8856ae2f18ae454377500ab8ed468:src/pages/AdminConsol.js
     return(
     <>
         <main className='main--container'>
@@ -66,8 +72,16 @@ const AdminConsole = () => {
                 </div>
             </section>
         </main>
+<<<<<<< HEAD:src/pages/AdminConsole.js
+=======
+
+>>>>>>> 48785e396bc8856ae2f18ae454377500ab8ed468:src/pages/AdminConsol.js
     </>
     )
 }
 
+<<<<<<< HEAD:src/pages/AdminConsole.js
 export default AdminConsole
+=======
+export default AdminConsol
+>>>>>>> 48785e396bc8856ae2f18ae454377500ab8ed468:src/pages/AdminConsol.js

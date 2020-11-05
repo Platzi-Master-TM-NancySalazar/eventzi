@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Loading() {
   return (
-    <div class="notFound">
-      <div class="lds-spinner">
+    <div className="notFound">
+      <div className="lds-spinner">
         <div></div>
         <div></div>
         <div></div>

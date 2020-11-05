@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter, Switch, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import Home from "../pages/Home";
@@ -8,9 +8,7 @@ import Login from "../pages/Login";
 import Event from "../pages/Event";
 import EventPanel from "../pages/EventPanel";
 import NotFound from "../pages/NotFound";
-import AdminConsole from "../pages/AdminConsole"
-import Charts from "../pages/Charts"
-import Admin from "../pages/Admin"
+import AdminPanel from "../pages/AdminPanel"
 
 import { Context } from "../context/Context";
 
@@ -33,9 +31,7 @@ const App = () => {
             )}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/event" component={Event} />
-          <Route exact path="/admin" component={AdminConsole} />
-          <Route exact path="/admin2" component={Admin} />
-          <Route exact path="/charts" component={Charts} />
+          <Route exact path="/admin_panel" component={AdminPanel} />
           <Route component={NotFound} />
         </Switch>
       </Layout>

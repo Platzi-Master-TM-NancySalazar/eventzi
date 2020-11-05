@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SideBar from '../components/SideBar'
-import LeftContainer from '../components/LeftContainer'
 
 const AdminConsole = () => {
+
+    const [option, setOption] = useState()
 
     // handleChange= ()=>{
     //     console.log('btn-addOrganizator')
     // }onClick={this.handleChange}
 
+    const handleOption = (selectOption) => {
+        console.log(selectOption)
+    }
+
     return(
     <>
         <main className='main--container'>
-            <SideBar/>
+            <SideBar handleOption={handleOption} />
             {/* <LeftContainer/> */}
             <section className="main--container-list">
                 <div className="main--container-buttons">

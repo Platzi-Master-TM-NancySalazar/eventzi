@@ -1,5 +1,6 @@
 import React from 'react'
 import LeftContainer from '../components/LeftContainer'
+import MenuAdmin from '../components/MenuAdmin'
 
 const Admin = () => {
   return (
@@ -24,7 +25,8 @@ const Admin = () => {
     //       <li>Analytics</li>
     //     </ul>
     //   </div>
-<LeftContainer />
+      <MenuAdmin/>
+      {/* <LeftContainer /> */}
       <div className='admin_content'>
       
       </div>

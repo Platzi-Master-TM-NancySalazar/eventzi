@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SideBar from '../components/SideBar'
 import { HiCog } from "react-icons/hi";
 import { HiPencil } from "react-icons/hi";
@@ -8,13 +8,14 @@ import { HiOutlineTrash } from "react-icons/hi";
 
 const AdminConsole = () => {
 
-    // const handleClick = ()=>{
-    //     console.log('btn-addOrganizator')
-    // }onClick={this.handleClick}
+    const [option, setOption] = useState()
+
+    const handleOption = (selectOption) => {
+        console.log(selectOption)
+    }
 
     return(
         <main className='main--container'>
-            <SideBar/>
             <section className="main--container-list">
                 <div className="main--container-buttons">
                     <button ><HiSearch className="icon-add-outline"/>Add Organizator</button>

@@ -1,7 +1,7 @@
 import React from "react";
 import Template1 from "./Template1";
 import Template2 from "./Template2";
-import Loading from "./Loading";
+import Loader from "../components/Loader";
 import Error from "./Error";
 import NotFound from "./NotFound";
 
@@ -21,7 +21,7 @@ class Event extends React.Component {
   fetchData = async () => {
     this.setState({ loading: true, error: null });
     const API = "https://eventziapi.herokuapp.com/";
-    let eventId = "51";
+    let eventId = this.props.match.params.eventId;
     try {
       const response = await fetch(`${API}events/${eventId}`);
       const response2 = await fetch(`${API}events/${eventId}/speakers`);
@@ -47,7 +47,7 @@ class Event extends React.Component {
 
   render() {
     if (this.state.loading === true) {
-      return <Loading />;
+      return <Loader />;
     }
 
     if (this.state.error) {
@@ -57,14 +57,25 @@ class Event extends React.Component {
     if (this.state.data.data[0] == undefined) {
       return <NotFound />;
     }
-    return (
-      <Template1
-        data={this.state.data.data[0]}
-        speakers={this.state.speakers.data}
-        talks={this.state.talks.data}
-        partners={this.state.partners.data}
-      />
-    );
+    if (this.state.data.data[0].id_organization == 2) {
+      return (
+        <Template1
+          data={this.state.data.data[0]}
+          speakers={this.state.speakers.data}
+          talks={this.state.talks.data}
+          partners={this.state.partners.data}
+        />
+      );
+    } else {
+      return (
+        <Template2
+          data={this.state.data.data[0]}
+          speakers={this.state.speakers.data}
+          talks={this.state.talks.data}
+          partners={this.state.partners.data}
+        />
+      );
+    }
   }
 }
 export default Event;

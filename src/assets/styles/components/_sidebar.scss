@@ -1,13 +1,17 @@
 .sideBar {
   background-color: #f8f8f8;
   border-right: 1px solid #c4c4c4;
-  width: 200px;
+  width: 250px;
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.25);
 }
 
 .link {
   font-size: 2rem;
+  font-weight: 700;
   color: #313131;
-  display: flex;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  gap: 10px;
   border-bottom: 1px solid #c4c4c4;
   padding: 23px;
 
@@ -16,10 +20,11 @@
     padding: 23px;
   }
 
-  &:focus {
+  &-active {
+    font-size: 2rem;
+    font-weight: 700;
     background-color: white;
     color: $auxiliar-color2;
-    font-weight: 900;
     border-left: 4px solid $auxiliar-color2;
   }
 }

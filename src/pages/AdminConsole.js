@@ -1,25 +1,21 @@
 import React from 'react'
-import Header from '../components/Header'
-import '../assets/styles/admin_consol.css'
-import popupFirst from '../components/PopupFirst'
-import Footer from '../components/Footer'
+import SideBar from '../components/SideBar'
+import LeftContainer from '../components/LeftContainer'
 
-const adminConsol = () => {
+const AdminConsole = () => {
+
+    // handleChange= ()=>{
+    //     console.log('btn-addOrganizator')
+    // }onClick={this.handleChange}
+
     return(
     <>
-        <Header/>
         <main className='main--container'>
-            <section className='sideBar'>
-                <a href="#" className="link"><span className="icon-bell">Organizations</span></a>
-                <a href="#" className="link"><span className="icon-user">Organizers</span></a>
-                <a href="#" className="link"><span className="icon-users">Attenders</span></a>
-                <a href="#" className="link"><span className="icon-rss">Diffusion</span></a>
-                <a href="#" className="link"><span className="icon-copy">Publish</span></a>
-                <a href="#" className="link"><span className="icon-stats-bars">Analitics</span></a>
-            </section>
+            <SideBar/>
+            {/* <LeftContainer/> */}
             <section className="main--container-list">
                 <div className="main--container-buttons">
-                    <button id="btn-addOrganizator"><span className="icon-add-outline"></span>Add Organizator</button>
+                    <button ><span className="icon-add-outline"></span>Add Organizator</button>
                     <span className="icon-search"><input type="text" placeholder="Search" className="main--input-search"/></span>
                 </div>
                 <div className="second--main">
@@ -70,9 +66,8 @@ const adminConsol = () => {
                 </div>
             </section>
         </main>
-        <Footer/>
     </>
     )
 }
 
-export default adminConsol
+export default AdminConsole

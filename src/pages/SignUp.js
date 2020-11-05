@@ -106,9 +106,9 @@ export default function SignUp() {
             />
           </label>
 
-          {/* <Link to="/login"> */}
-          <button>SIGN UP</button>
-          {/* </Link> */}
+          <Link to="/login">
+            <button type="submit">SIGN UP</button>
+          </Link>
         </form>
       </div>
     </div>

@@ -1,0 +1,25 @@
+.sideBar {
+  background-color: #f8f8f8;
+  border-right: 1px solid #c4c4c4;
+  width: 200px;
+}
+
+.link {
+  font-size: 2rem;
+  color: #313131;
+  display: flex;
+  border-bottom: 1px solid #c4c4c4;
+  padding: 23px;
+
+  &:hover {
+    color: $auxiliar-color2;
+    padding: 23px;
+  }
+
+  &:focus {
+    background-color: white;
+    color: $auxiliar-color2;
+    font-weight: 900;
+    border-left: 4px solid $auxiliar-color2;
+  }
+}

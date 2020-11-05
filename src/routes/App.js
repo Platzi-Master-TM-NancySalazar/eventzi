@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Event from "../pages/Event";
 import EventPanel from "../pages/EventPanel";
 import NotFound from "../pages/NotFound";
-import AdminConsol from "../pages/AdminConsol"
+import AdminConsole from "../pages/AdminConsole"
 import Charts from "../pages/Charts"
 import Admin from "../pages/Admin"
 
@@ -33,7 +33,7 @@ const App = () => {
             )}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/event" component={Event} />
-          <Route exact path="/admin" component={AdminConsol} />
+          <Route exact path="/admin" component={AdminConsole} />
           <Route exact path="/admin2" component={Admin} />
           <Route exact path="/charts" component={Charts} />
           <Route component={NotFound} />

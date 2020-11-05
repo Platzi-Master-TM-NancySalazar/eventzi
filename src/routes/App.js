@@ -19,16 +19,13 @@ const App = () => {
     <BrowserRouter>
       <Layout>
         <Switch>
-          {isAuth ? (
-            <Route exact path="/" component={Home} />
-          ) : (
-              <Route exact path="/" component={Login} />
-            )}
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
           {isAuth ? (
             <Route exact path="/eventPanel" component={EventPanel} />
           ) : (
-              <Route exact path="/eventPanel" component={Login} />
-            )}
+            <Route exact path="/eventPanel" component={Login} />
+          )}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/event" component={Event} />
           <Route exact path="/admin_panel" component={AdminPanel} />

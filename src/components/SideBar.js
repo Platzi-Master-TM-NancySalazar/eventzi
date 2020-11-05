@@ -9,34 +9,13 @@ import { MdInsertChart } from 'react-icons/md'
 const SideBar = ({ handleOption, select }) => {
   return (
     <section className='sideBar'>
-      <a onClick={() => handleOption('Events')} className='link'>
-        <MdPermIdentity />
-        <span className='icon-user'>Events</span>
-      </a>
-      <a onClick={() => handleOption('Edit')} className='link'>
-        <MdPermIdentity />
-        <span className='icon-user'>Edit</span>
-      </a>
-      <a onClick={() => handleOption('Organizers')} className='link'>
-        <MdPermIdentity />
-        <span className='icon-user'>Organizers</span>
-      </a>
-      <a onClick={() => handleOption('Attenders')} className='link'>
-        <MdSupervisorAccount />
-        <span className='icon-users'>Attenders</span>
-      </a>
-      <a onClick={() => handleOption('Diffusion')} className='link'>
-        <MdSettingsInputAntenna />
-        <span className='icon-rss'>Diffusion</span>
-      </a>
-      <a onClick={() => handleOption('Publish')} className='link'>
-        <MdContentCopy />
-        <span className='icon-copy'>Publish</span>
-      </a>
-      <a onClick={() => handleOption('Analitics')} className='link'>
-        <MdInsertChart />
-        <span className='icon-stats-bars'>Analitics</span>
-      </a>
+      <a onClick={() => handleOption('Events')} className={`link ${select == 'Events' ? 'link-active': ''}`}><MdPermIdentity />Events</a>
+      <a onClick={() => handleOption('Edit')} className={`link ${select == 'Edit' ? 'link-active': ''}`}><MdPermIdentity />Edit</a>
+      <a onClick={() => handleOption('Organizers')} className={`link ${select == 'Organizers' ? 'link-active': ''}`}><MdPermIdentity />Organizers</a>
+      <a onClick={() => handleOption('Attenders')} className={`link ${select == 'Attenders' ? 'link-active': ''}`}><MdSupervisorAccount />Attenders</a>
+      <a onClick={() => handleOption('Diffusion')} className={`link ${select == 'Diffusion' ? 'link-active': ''}`}><MdSettingsInputAntenna />Diffusion</a>
+      <a onClick={() => handleOption('Publish')} className={`link ${select == 'Publish' ? 'link-active': ''}`}><MdContentCopy />Publish</a>
+      <a onClick={() => handleOption('Analitics')} className={`link ${select == 'Analitics' ? 'link-active': ''}`}><MdInsertChart />Analitics</a>
     </section>
   )
 }

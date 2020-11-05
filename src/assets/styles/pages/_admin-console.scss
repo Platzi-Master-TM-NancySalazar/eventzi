@@ -1,94 +1,68 @@
-.main--container{
+.main--container {
+  margin-top: 50px;
+  display: flex;
+  height: 100vh;
+
+  &-list {
+    width: 80%;
+    margin-left: 35px;
+    padding-top: 20px;
+  }
+
+  &-buttons {
     display: flex;
-    height: 100vh;
-    
-    &-list{
-        width: 80%;
-        margin-left: 35px;
-        padding-top: 20px;
-    }
-
-    &-buttons{
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-    }
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
-.sideBar{
-    background-color: #F8F8F8;
-    border-right:1px solid #C4C4C4;
-    width: 200px;
-}
+.main--container-buttons > button {
+  height: 30px;
+  width: 130px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2d9cdb;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  transition: 0.4s ease all;
 
-.link{
-    font-size: 2rem;
-    color: #313131;
-    display: flex;
-    border-bottom: 1px solid #C4C4C4;
-    padding: 30px;
-
-    &:hover{
-    color: $auxiliar-color2;
-    padding: 30px;
-    }
-
-    &:focus{
-        background-color: white;
-        color: $auxiliar-color2;
-        /* font-weight: 900; */
-        border-left: 4px solid $auxiliar-color2;
-    }
-}
-
-.main--container-buttons > button{
-    height: 30px;
-    width: 130px;
-    border-radius: 5px;
-    border: none;
-    background-color: #2D9CDB;
-    color: white;
-    cursor: pointer;
-    outline: none;
-    transition: .4s ease all;
-}
-
-.icon-add-outline{
-    margin-right: 6px;
-}
-
-.main--container-buttons > button:hover{
+  &:hover {
     background-color: white;
-    color: #2D9CDB;
-    border: 1px solid #2D9CDB;
-}
+    color: #2d9cdb;
+    border: 1px solid #2d9cdb;
+  }
 
-.main--container-buttons > button:focus{
+  &:focus {
     border: none;
+  }
 }
 
-.main--input-search{
-    border: none;
-    border-bottom: 1px solid #2D9CDB;
-    color: #2D9CDB;
-    outline: none;
-    padding: 5px;
+.icon-add-outline {
+  margin-right: 6px;
 }
 
-.icon-search{
-    font-size: 1.6rem;
-    color: #2D9CDB;
+.main--input-search {
+  border: none;
+  border-bottom: 1px solid #2d9cdb;
+  color: #2d9cdb;
+  outline: none;
+  padding: 5px;
 }
 
-.second--main{
-    background-color: #F8F8F8;
-    border: 1px solid #ACACAC;
-    border-radius: 10px;
-    margin-top: 20px;
-    padding: 10px;
+.icon-search {
+  font-size: 1.6rem;
+  color: #2d9cdb;
 }
 
-.second--main-table{
+.second--main {
+  background-color: #f8f8f8;
+  border: 1px solid #acacac;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px;
+
+  &-table {
     display: grid;
     grid-template: repeat(1, 40px) / repeat(5, 180px);
     align-items: center;
@@ -98,55 +72,56 @@
     color: #313131;
     font-size: 1.4rem;
     font-weight: 600;
+  }
 }
 
-.icon-ajustes{
-    height: 20px;
-    width: 20px;
+.icon-ajustes {
+  height: 20px;
+  width: 20px;
 }
 
-.icon-details{
-    height: 17px;
-    width: 17px;
+.icon-details {
+  height: 17px;
+  width: 17px;
 }
 
-.second--main-content{
-    border: 1px solid #ACACAC;
-    background-color: white;
-    font-size: 1.2rem;
+.second--main-content {
+  border: 1px solid #acacac;
+  background-color: white;
+  font-size: 1.2rem;
 }
 
-.second--main-details{
-    display: grid;
-    grid-template: repeat(1, 40px) / repeat(5, 180px);
-    align-items: center;
-    justify-content: right;
-    text-align: left;
-    grid-gap: 20px;
+.second--main-details {
+  display: grid;
+  grid-template: repeat(1, 40px) / repeat(5, 180px);
+  align-items: center;
+  justify-content: right;
+  text-align: left;
+  grid-gap: 20px;
 }
 
-.show--details{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.show--details {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-.select{
-    height: 30px;
-    width: 50px;
-}
-
-.show--details  div > button{
+  &div > button {
     border: none;
+  }
 }
 
-.input-page-value{
-    width: 20px;
-    border: none;
+.select {
+  height: 30px;
+  width: 50px;
 }
 
-small{
-    font-size: 1.2rem;
-    font-style: italic;
+.input-page-value {
+  width: 20px;
+  border: none;
+}
+
+small {
+  font-size: 1.2rem;
+  font-style: italic;
 }

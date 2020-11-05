@@ -1,27 +1,21 @@
 import React from 'react'
-<<<<<<< HEAD:src/pages/AdminConsole.js
-import '../assets/styles/admin-console.css'
+import SideBar from '../components/SideBar'
+import LeftContainer from '../components/LeftContainer'
 
 const AdminConsole = () => {
-=======
-// import popupFirst from '../components/PopupFirst'
 
-const AdminConsol = () => {
->>>>>>> 48785e396bc8856ae2f18ae454377500ab8ed468:src/pages/AdminConsol.js
+    // handleChange= ()=>{
+    //     console.log('btn-addOrganizator')
+    // }onClick={this.handleChange}
+
     return(
     <>
         <main className='main--container'>
-            <section className='sideBar'>
-                <a href="#" className="link"><span className="icon-bell">Organizations</span></a>
-                <a href="#" className="link"><span className="icon-user">Organizers</span></a>
-                <a href="#" className="link"><span className="icon-users">Attenders</span></a>
-                <a href="#" className="link"><span className="icon-rss">Diffusion</span></a>
-                <a href="#" className="link"><span className="icon-copy">Publish</span></a>
-                <a href="#" className="link"><span className="icon-stats-bars">Analitics</span></a>
-            </section>
+            <SideBar/>
+            {/* <LeftContainer/> */}
             <section className="main--container-list">
                 <div className="main--container-buttons">
-                    <button id="btn-addOrganizator"><span className="icon-add-outline"></span>Add Organizator</button>
+                    <button ><span className="icon-add-outline"></span>Add Organizator</button>
                     <span className="icon-search"><input type="text" placeholder="Search" className="main--input-search"/></span>
                 </div>
                 <div className="second--main">
@@ -72,16 +66,8 @@ const AdminConsol = () => {
                 </div>
             </section>
         </main>
-<<<<<<< HEAD:src/pages/AdminConsole.js
-=======
-
->>>>>>> 48785e396bc8856ae2f18ae454377500ab8ed468:src/pages/AdminConsol.js
     </>
     )
 }
 
-<<<<<<< HEAD:src/pages/AdminConsole.js
 export default AdminConsole
-=======
-export default AdminConsol
->>>>>>> 48785e396bc8856ae2f18ae454377500ab8ed468:src/pages/AdminConsol.js

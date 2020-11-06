@@ -17,7 +17,7 @@ class Template2 extends React.Component {
             <div className="cover__title">
               <img
                 className="cover__logo"
-                src=""
+                src={this.props.data.logo}
                 alt="Event logo"
                 height="100px"
                 id="eventLogo"
@@ -46,7 +46,7 @@ class Template2 extends React.Component {
         <main>
           <EventAbout
             name={this.props.data.event_name}
-            image="https://www.revistaneo.com/sites/default/files/2019-06/Team%20Platzi-2.jpg"
+            image={this.props.data.banner}
             description={this.props.data.description_}
           />
           <h2 className="title">Schedule</h2>

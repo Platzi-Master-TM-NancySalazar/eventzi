@@ -6,7 +6,6 @@ import Home from "../pages/Home";
 import SignUp from "../pages/SignUp";
 import Login from "../pages/Login";
 import Event from "../pages/Event";
-import EventPanel from "../pages/EventPanel";
 import NotFound from "../pages/NotFound";
 import AdminPanel from "../pages/AdminPanel";
 
@@ -21,11 +20,11 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          {isAuth ? (
+          {/* {isAuth ? (
             <Route exact path="/eventPanel" component={EventPanel} />
           ) : (
             <Route exact path="/eventPanel" component={Login} />
-          )}
+          )} */}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/events/:eventId" component={Event} />
           <Route exact path="/admin_panel" component={AdminPanel} />

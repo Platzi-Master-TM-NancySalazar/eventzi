@@ -2,12 +2,6 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
-// import { Link } from 'react-router-dom'
-// import user from '../assets/static/user-icon.png'
-// import candado from '../assets/static/candado.svg'
-// import email from '../assets/static/mensaje.svg'
-
 import { MdLockOutline, MdMailOutline } from "react-icons/md";
 import { FiUser } from "react-icons/fi";
 

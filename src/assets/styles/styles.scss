@@ -50,6 +50,7 @@ a.link-unstyled:hover {
 //Variables
 $primary-color: #313131;
 $secondary-color: #8f8ea7;
+$bg-color: #f8f8f8;
 $gray-color: #acacac;
 $white-color: #ffffff;
 $auxiliar-color1: #ff00ba;
@@ -75,7 +76,6 @@ $screen-xl-min: 1200px;
 @import "pages/home";
 @import "pages/admin";
 @import "pages/login";
-@import "pages/eventPanel";
 @import "pages/notFound";
 @import "pages/template1";
 @import "pages/template2";
@@ -83,14 +83,15 @@ $screen-xl-min: 1200px;
 // @import "pages/analyticsPanel";
 
 //Components
+@import "components/diffusion";
 @import "components/header";
 @import "components/footer";
 @import "components/eventCard";
 @import "components/loader";
 @import "components/leftContainer";
 @import "components/sidebar";
-@import "components/_speaker.scss";
-@import "components/_asociate.scss";
+@import "components/speaker";
+@import "components/asociate";
 @import "components/analitics";
 @import "components/events";
 @import "components/modal";

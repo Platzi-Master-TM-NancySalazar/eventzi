@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Event from "../pages/Event";
 import EventPanel from "../pages/EventPanel";
 import NotFound from "../pages/NotFound";
-import AdminPanel from "../pages/AdminPanel"
+import AdminPanel from "../pages/AdminPanel";
 
 import { Context } from "../context/Context";
 
@@ -27,7 +27,7 @@ const App = () => {
             <Route exact path="/eventPanel" component={Login} />
           )}
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/event" component={Event} />
+          <Route exact path="/events/:eventId" component={Event} />
           <Route exact path="/admin_panel" component={AdminPanel} />
           <Route component={NotFound} />
         </Switch>

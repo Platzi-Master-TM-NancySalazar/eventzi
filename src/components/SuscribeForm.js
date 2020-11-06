@@ -16,7 +16,9 @@ class SuscribeForm extends React.Component {
   handleClick = (e) => {};
   handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Se a registrado el correo ${this.state.email}`);
+    if (this.state.email.value != undefined || "")
+      alert(`Email ${this.state.email} was regitered`);
+    alert(`Enter a valid mail`);
   };
   render() {
     return (

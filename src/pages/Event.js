@@ -57,7 +57,7 @@ class Event extends React.Component {
     if (this.state.data.data[0] == undefined) {
       return <NotFound />;
     }
-    if (this.state.data.data[0].id_organization == 2) {
+    if (this.state.data.data[0].template == "Template 2") {
       return (
         <Template1
           data={this.state.data.data[0]}

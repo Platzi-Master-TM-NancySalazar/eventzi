@@ -5,12 +5,18 @@
   height: 100vh;
 
   &-list {
+<<<<<<< HEAD
+    width: 80%;
+    margin-left: 35px;
+    // padding-top: 10px;
+=======
     width: 90%;
     margin-top: 0;
     margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 50px;
+>>>>>>> b8f886d275e4c86586229b65ce79f93e5368cefb
   }
 
   &-buttons {
@@ -28,6 +34,7 @@
   background-color: #2d9cdb;
   color: white;
   cursor: pointer;
+  margin-top: 10px;
   outline: none;
   transition: 0.4s ease all;
 
@@ -44,6 +51,8 @@
 
 .icon-add-outline {
   margin-right: 6px;
+  // height: 20px;
+  // width: 20px;
 }
 
 .main--input-search {
@@ -71,37 +80,52 @@
     grid-template: repeat(1, 40px) / repeat(5, 180px);
     align-items: center;
     justify-content: right;
-    text-align: left;
+    // text-align: left;
     grid-gap: 20px;
     color: #313131;
-    font-size: 1.4rem;
-    font-weight: 600;
+    border: 1px solid red;
+
+    & p {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  &-content {
+    border: 1px solid #acacac;
+    background-color: white;
+    font-size: 1.2rem;
+  }
+
+  &-details {
+    display: grid;
+    grid-template: repeat(1, 40px) / repeat(5, 180px);
+    align-items: center;
+    justify-content: right;
+    text-align: left;
+    grid-gap: 20px;
   }
 }
 
+.item--iconConfig {
+  border: 1px solid red;
+}
+
 .icon-ajustes {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
+  margin-left: 80px;
 }
 
 .icon-details {
-  height: 17px;
-  width: 17px;
-}
+  height: 20px;
+  width: 20px;
 
-.second--main-content {
-  border: 1px solid #acacac;
-  background-color: white;
-  font-size: 1.2rem;
-}
-
-.second--main-details {
-  display: grid;
-  grid-template: repeat(1, 40px) / repeat(5, 180px);
-  align-items: center;
-  justify-content: right;
-  text-align: left;
-  grid-gap: 20px;
+  &-pencil {
+    height: 20px;
+    width: 20px;
+    margin-left: 70px;
+  }
 }
 
 .show--details {

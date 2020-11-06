@@ -36,6 +36,7 @@
     position: fixed;
     left: -300px;
     transition: 850ms;
+    z-index: 2;
   }
   .nav-menu.active {
     left: 0px;
@@ -51,6 +52,7 @@
     font-size: 25px;
     cursor: pointer;
     position: fixed;
+    z-index: 3;
   }
   .nav-menu__menuButon.active {
     display: block;

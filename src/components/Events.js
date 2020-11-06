@@ -24,9 +24,7 @@ const Events = () => {
       eventId: 2
     }
   ]
-
-
-
+  
   return (
     <div className='events'>
       {
@@ -53,7 +51,7 @@ const Events = () => {
       }
 
     </div>
-  )
+    )
 }
 
 export default Events

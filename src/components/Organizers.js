@@ -7,78 +7,64 @@ import { HiOutlineTrash } from "react-icons/hi";
 import { MdKeyboardArrowLeft } from "react-icons/hi";
 import { MdKeyboardArrowRight } from "react-icons/hi";
 import { HiOutlinePlusCircle } from "react-icons/hi";
-import ReactDOM from 'react-dom'
+import PopupFirst from './PopupFirst'
 
-class Modal extends React.Component{
-  render(){
-    return ReactDOM.createPortal(
-      <section class="overlay" id="overlay">
-        <div class="popup--container-details" id="popup--container-details">
-            <h1>Add Organizations to event</h1>
-            <p>No trabajes solo, agrega organizadores al evento para que te den una mano</p>
-            <div class="popup--details-form">
-                <input id="input_text" class="popup--input" type="text" placeholder="Escribe un nombre" autocomplete="off"/>
-                <span class="popup--input-focus"></span>
-                <button class="button-popup">Add</button>
-            </div>
+// class Modal extends React.Component{
+//   render(){
+//     return ReactDOM.createPortal(
+//       <section class="overlay" id="overlay">
+//         <div class="popup--container-details" id="popup--container-details">
+//             <h1>Add Organizations to event</h1>
+//             <p>No trabajes solo, agrega organizadores al evento para que te den una mano</p>
+//             <div class="popup--details-form">
+//                 <input id="input_text" class="popup--input" type="text" placeholder="Escribe un nombre" autocomplete="off"/>
+//                 <span class="popup--input-focus"></span>
+//                 <button class="button-popup">Add</button>
+//             </div>
 
-            <div class="newOrganizator">
-                <span class="icon-user-plus"></span>
-                <a href="#" id="newOrganizator">Add Jairo Ramirez Castaño as Organizer</a>
-            </div>
+//             <div class="newOrganizator">
+//                 <span class="icon-user-plus"></span>
+//                 <a href="#" id="newOrganizator">Add Jairo Ramirez Castaño as Organizer</a>
+//             </div>
             
-            <div class="container--details">
-                <img src="https://lh3.googleusercontent.com/ogw/ADGmqu_ksm6Ql15mCzcSRiahXsgeljHqXoPqOfDWWnlo=s32-c-mo" alt=""/>
-                <p>Jairo Ramirez Castaño</p>
-                <a href="#"><span class="icon-close-outline"></span></a>
-            </div>
-            <div class="section-close">
-                <div></div>
-                <button class="button--popup-close" id="btn-popup-close">Close</button>
-            </div>
-        </div>
-    </section>, document.getElementById('modal')
-    )
+//             <div class="container--details">
+//                 <img src="https://lh3.googleusercontent.com/ogw/ADGmqu_ksm6Ql15mCzcSRiahXsgeljHqXoPqOfDWWnlo=s32-c-mo" alt=""/>
+//                 <p>Jairo Ramirez Castaño</p>
+//                 <a href="#"><span class="icon-close-outline"></span></a>
+//             </div>
+//             <div class="section-close">
+//                 <div></div>
+//                 <button class="button--popup-close" id="btn-popup-close">Close</button>
+//             </div>
+//         </div>
+//     </section>, document.getElementById('modal')
+//     )
+//   }
+// }
+
+
+const Organizers = () => {
+
+  const [Omodal, ModalOpen] = useState(false)
+
+  const openModal = () =>{
+    // console.log('botonactivado')
+    ModalOpen(true)
   }
-}
-
-
-const Events = () => {
-
-  const [state,setState]= useState({ModalOpen:false})
-  
-
-  const openModal = () => {
-    console.log('boton accionado')
-      setState({
-    ModalOpen:true
-  })
-}
 
   const closeModal = () => {
-    setState({
-    ModalOpen:false
-  })
-}
-
+    ModalOpen(false)
+  }
   
   return (
     <>
       <div className='main--container-buttons'>
-        <button>
-          <HiOutlinePlusCircle className='icon-add-outline' onClick={openModal}/>Add Organizator
+        <button onClick={openModal}>
+          <HiOutlinePlusCircle className='icon-add-outline'/>Add Organizator
         </button>
-        {state.ModalOpen &&
-    <Modal onClick={closeModal}/>
-  }
-        {/* <span className='icon-search'>
-          <HiSearch/>
-          <input
-            type='text'
-            placeholder='Search'
-            className='main--input-search'
-          />
-        </span> */}
+        {
+          Omodal && <PopupFirst closeModal={closeModal}/>
+        }
       </div>
       <div className='second--main'>
         <div className='second--main-table'>
@@ -140,4 +126,4 @@ const Events = () => {
   )
 }
 
-export default Events
+export default Organizers

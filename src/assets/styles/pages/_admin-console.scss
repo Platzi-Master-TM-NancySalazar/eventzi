@@ -1,12 +1,22 @@
 .main--container {
   margin-top: 50px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 250px 1fr;
   height: 100vh;
 
   &-list {
+<<<<<<< HEAD
     width: 80%;
     margin-left: 35px;
     // padding-top: 10px;
+=======
+    width: 90%;
+    margin-top: 0;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+>>>>>>> b8f886d275e4c86586229b65ce79f93e5368cefb
   }
 
   &-buttons {

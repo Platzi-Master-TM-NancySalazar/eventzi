@@ -51,7 +51,6 @@ const AdminPanel = () => {
   return (
     <main className='main--container'>
       <SideBar handleOption={handleOption} select={option} />
-
       <section className='main--container-list'>{handleRender()}</section>
     </main>
   )

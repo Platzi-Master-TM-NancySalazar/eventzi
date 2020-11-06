@@ -1,8 +1,42 @@
 import React from 'react'
 
+import logo_white from '../assets/static/logo-white.svg'
+
 const Events = () => {
+
+  const eventsList = [
+    {
+      eventName: 'Eventzi Team',
+      eventId: 1
+    },
+    {
+      eventName: 'Platzi',
+      eventId: 2
+    }
+  ]
   return (
-    <h1>Events</h1>
+    <div className='events'>
+      <div className='events_buttons'>
+        <button className='events_button'>Create organization</button>
+        <button className='events_button events_button-light'>
+          Organizations
+        </button>
+      </div>
+
+      {
+        eventsList.map((event) => {
+          return (
+            <div className='events_organization' key={event.eventId}>
+            <figure className='events_container_logo'>
+              <img src={logo_white} className='events_logo' />
+            </figure>
+          <h4 className='events_organization-title'>{event.eventName}</h4>
+          </div>
+          )
+        })
+      }
+
+    </div>
   )
 }
 

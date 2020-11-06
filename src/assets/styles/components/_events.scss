@@ -1,0 +1,73 @@
+.events {
+
+  &_buttons{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 3px solid $gray-color;
+  }
+
+  &_button {
+    height: 30px;
+    width: 130px;
+    border-radius: 5px;
+    border: none;
+    background-color: $auxiliar-color2;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    transition: 0.4s ease all;
+
+    
+    &:hover {
+      background-color: white;
+      color: $auxiliar-color2;
+      border: 1px solid $auxiliar-color2;
+    }
+
+    &:focus {
+      border: none;
+    }
+
+    &-light{
+      background-color: $gray-color;
+    }
+
+  }
+  
+  &_organization{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid $secondary-color;
+    
+    display: flex;
+    align-items: center;
+
+    &-title{
+      margin-left: 10px;
+      font-size: 2.5rem;
+      letter-spacing: 1.1px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+  }
+
+
+
+  &_container_logo{
+    width: 50px;
+    height: 50px;
+    background-color: $gray-color;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  &_logo{
+    width: 40px;
+    height: 40px;
+  }
+
+}

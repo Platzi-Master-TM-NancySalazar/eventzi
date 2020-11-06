@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom'
 const Portal2 = ({children}) =>{
     return(
         <>
-            {ReactDOM.createPortal(children, document.getElementById('modal'))}
+            {children}
+            {/* {ReactDOM.createPortal(children, document.getElementById('modal'))} */}
         </>
     )
 }

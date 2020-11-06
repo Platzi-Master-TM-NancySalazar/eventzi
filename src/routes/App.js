@@ -9,6 +9,7 @@ import Event from "../pages/Event";
 import EventPanel from "../pages/EventPanel";
 import NotFound from "../pages/NotFound";
 import AdminPanel from "../pages/AdminPanel";
+import ModalPopup from '../components/ModalPopup'
 
 import { Context } from "../context/Context";
 
@@ -29,6 +30,7 @@ const App = () => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/events/:eventId" component={Event} />
           <Route exact path="/admin_panel" component={AdminPanel} />
+          <Route exact path="/modalapp" component={ModalPopup} />
           {/* <Route exact path="/admin" component={admin} /> */}
           <Route component={NotFound} />
         </Switch>

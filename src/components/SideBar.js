@@ -1,10 +1,13 @@
 import React from "react";
-import { MdAccountBalance } from "react-icons/md";
-import { MdPermIdentity } from "react-icons/md";
-import { MdSupervisorAccount } from "react-icons/md";
-import { MdSettingsInputAntenna } from "react-icons/md";
-import { MdContentCopy } from "react-icons/md";
-import { MdInsertChart, MdDehaze } from "react-icons/md";
+import {
+  MdPermIdentity,
+  MdSettingsInputAntenna,
+  MdInsertChart,
+  MdDehaze,
+  MdPeopleOutline,
+  MdEventNote,
+  MdEdit,
+} from "react-icons/md";
 import { useState } from "react";
 
 const SideBar = ({ handleOption, select }) => {
@@ -18,29 +21,22 @@ const SideBar = ({ handleOption, select }) => {
           onClick={() => handleOption("Events")}
           className={`link ${select == "Events" ? "link-active" : ""}`}
         >
-          <MdPermIdentity />
+          <MdEventNote />
           Events
         </a>
         <a
           onClick={() => handleOption("Edit")}
           className={`link ${select == "Edit" ? "link-active" : ""}`}
         >
-          <MdPermIdentity />
+          <MdEdit />
           Edit
         </a>
         <a
           onClick={() => handleOption("Organizers")}
           className={`link ${select == "Organizers" ? "link-active" : ""}`}
         >
-          <MdPermIdentity />
+          <MdPeopleOutline />
           Organizers
-        </a>
-        <a
-          onClick={() => handleOption("Attenders")}
-          className={`link ${select == "Attenders" ? "link-active" : ""}`}
-        >
-          <MdSupervisorAccount />
-          Attenders
         </a>
         <a
           onClick={() => handleOption("Diffusion")}
@@ -48,13 +44,6 @@ const SideBar = ({ handleOption, select }) => {
         >
           <MdSettingsInputAntenna />
           Diffusion
-        </a>
-        <a
-          onClick={() => handleOption("Publish")}
-          className={`link ${select == "Publish" ? "link-active" : ""}`}
-        >
-          <MdContentCopy />
-          Publish
         </a>
         <a
           onClick={() => handleOption("Analitics")}

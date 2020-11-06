@@ -5,8 +5,8 @@ import Asociate from "../components/Asociate";
 import SuscribeForm from "../components/SuscribeForm";
 import EventAbout from "../components/EventAbout";
 import Countdown from "react-countdown";
-import logo from "../assets/static/logo-white.svg";
 import FormatDate from "../utils/FormatDate";
+import { MdPlace, MdEvent } from "react-icons/md";
 
 class Template2 extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class Template2 extends React.Component {
             <div className="cover__title">
               <img
                 className="cover__logo"
-                src={logo}
+                src={this.props.data.logo}
                 alt="Event logo"
                 height="100px"
                 id="eventLogo"
@@ -31,22 +31,22 @@ class Template2 extends React.Component {
             </div>
             <div className="date__container">
               <h3 className="date__item" id="date">
-                {FormatDate(this.props.data.date_)}
+                <MdEvent /> {FormatDate(this.props.data.date_)}
               </h3>
               <h3 className="date__item" id="url">
                 <a href={this.props.data.url} target="blank">
-                  {this.props.data.url}
+                  <MdPlace /> {this.props.data.url}
                 </a>
               </h3>
             </div>
-            <SuscribeForm />
+            <SuscribeForm eventId={this.props.data.id_event_} />
           </div>
         </div>
 
         <main>
           <EventAbout
             name={this.props.data.event_name}
-            image="https://www.revistaneo.com/sites/default/files/2019-06/Team%20Platzi-2.jpg"
+            image={this.props.data.banner}
             description={this.props.data.description_}
           />
           <h2 className="title">Schedule</h2>

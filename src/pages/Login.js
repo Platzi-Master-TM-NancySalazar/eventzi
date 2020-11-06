@@ -7,60 +7,53 @@ import axios from "axios";
 import { Context } from "../context/Context";
 
 const Login = () => {
-  let history = useHistory();
-  const { activateAuth } = useContext(Context);
-  const [form, setForm] = useState(null);
+  let history = useHistory()
+  const { activateAuth } = useContext(Context)
+  const [form, setForm] = useState(null)
 
   const handleInput = (event) => {
     setForm({
       ...form,
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    loginUser(form, "/");
-  };
+    event.preventDefault()
+    loginUser(form, "/admin_panel")
+  }
 
   const loginUser = ({ email, password }, redirectUrl) => {
-    console.log("aqui");
-    console.log(email, password);
+    console.log('aqui')
+    console.log(email, password)
     axios({
-      method: "POST",
-      url: "https://eventziapi.herokuapp.com/users/validate",
+      method: 'POST',
+      url: 'https://eventziapi.herokuapp.com/users/validate',
       data: {
         email: email,
         psswd: password,
-      },
+      }
     })
       .then((data) => {
-        console.log("llegaste");
-        console.log("tu info es: ", data);
+        let token = data.data.token
+        console.log(token)
         if (data.data.data.length > 0) {
-          history.push(redirectUrl);
+          history.push(redirectUrl)
         }
-        activateAuth();
+        activateAuth(token)
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
 
   return (
     <div className="login">
-      <div className="blackscreen">
+      <div className="negro">
         <form className="login__container" onSubmit={handleSubmit}>
           <label htmlFor="email">
-            <span>
-              <MdMailOutline />
-            </span>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Email Address"
-              onChange={handleInput}
-            />
+            <span><MdMailOutline /></span>
+            <input type="text" id="email" name="email" placeholder="Email Address" onChange={handleInput} />
           </label>
+
 
           <label htmlFor="password2">
             <span>

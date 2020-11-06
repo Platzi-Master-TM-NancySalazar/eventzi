@@ -1,22 +1,24 @@
-import React from 'react'
+import React from "react";
 
-const Talk = () => {
-  return (
-    <div className="talk">
-      <div className="talk__day">
-        <p id="talkDay">day</p>
+class Talk extends React.Component {
+  render() {
+    return (
+      <div className="talk">
+        <div className="talk__day">
+          <p>{this.props.day}</p>
+        </div>
+        <div className="talk__time">
+          <p>{this.props.time}</p>
+        </div>
+        <div className="talk__name">
+          <p className="talk__name--strong">{this.props.title}</p>
+          <p>{this.props.speaker}</p>
+        </div>
+        <div className="talk__description">
+          <p>{this.props.description}</p>
+        </div>
       </div>
-      <div className="talk__time">
-        <p id="talkTime">time</p>
-      </div>
-      <div className="talk__name">
-        <p id="talkName">name</p>
-      </div>
-      <div className="talk__description">
-        <p id="talkDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus repudiandae voluptates incidunt, quas quibusdam dignissimos perspiciatis et perferendis cumque assumenda</p>
-      </div>
-    </div>
-  )
+    );
+  }
 }
-
-export default Talk
+export default Talk;

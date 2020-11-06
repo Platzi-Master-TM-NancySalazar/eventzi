@@ -1,0 +1,219 @@
+html{
+    font-size: 62.5%;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.overlay.active{
+    visibility: visible;
+}
+
+.popup--container-details{
+    font-size: 1.8rem;
+    color: #313131;
+    background-color: #F4F4F4;
+    width: 50%;
+    height: 45%;
+    box-shadow: 5px 5px 5px 0 #20212447;
+    padding: 20px;
+    display: grid;
+    grid-template: repeat(5, 1fr) / 1fr;
+    border-radius: 5px;
+    transition: .3s ease all;
+    opacity: 0;
+    transform: scale(0.7);
+}
+
+/* .popup--container-details > *{
+    border: 1px solid red;
+} */
+
+.popup--details-form{
+    /* background-color: red; */
+    float: left;
+    height: 30px;
+    /* width: 27.33%; */
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup--details-form > input{
+    width: 75%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #ACACAC;
+    outline: none;
+    line-height: 15px;
+    padding: 5px;
+}
+
+.popup--input ~ .popup--input-focus{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3399ff;
+    transition: 0.4s;
+}
+
+.popup--input:focus ~ .popup--input-focus{
+    width: 75%;
+    transition: 0.4s;
+}
+
+.button-popup{
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    background-color: #C4C4C4;
+    color: white;
+    margin-right: 0;
+}
+
+.container--details{
+    display: flex;
+    border-bottom: 1px solid #ACACAC;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container--details > img{
+    border-radius: 5rem;
+    height: 25px;
+    margin-left: 1rem;
+}
+
+.container--details > p{
+    margin-left: 25px;
+}
+
+.icon-close-outline{
+    margin-left: 330px;
+    color: #ACACAC;
+}
+
+.icon-close-outline:hover{
+    color: black;
+}
+
+.section-close{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button--popup-close{
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2D9CDB;
+    color: white;
+    margin-top: 30px;
+    outline:none;
+    cursor: pointer;
+    transition: .4s ease all;
+}
+
+.button--popup-close:hover{
+    /* background-color: rgba(0, 125, 227, .9);
+    color: rgba(200, 200, 200, .9); */
+    background-color: white;
+    color: #2D9CDB;
+    border: 1px solid #2D9CDB;
+}
+
+/* Animation popup */
+
+.popup--container-details.active{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.newOrganizator{
+    height: 50px;
+    width: 50%;
+    background-color: white;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 5px 0 #20212447;
+    border: 1px solid #20212447;
+    position: relative;
+    /* top: -5px; */
+}
+
+.newOrganizator > a{
+    /* border: 1px solid red; */
+    /* height: 100%;
+    width: 100%; */
+    /* text-align: center; */
+    color: #20212447;
+    padding-left: 10px;
+}
+
+.icon-user-plus{
+    color: #20212447;
+}
+
+.newOrganizator > a:hover, .icon-user-plus:hover{
+    color: #C4C4C4;
+}
+
+.overlay-second{
+    background-color: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.overlay-second.active{
+    visibility: active;
+}
+
+.popup--container-add{
+    font-size: 1.8rem;
+    color: #313131;
+    background-color: #F4F4F4;
+    width: 60%;
+    height: 55%;
+    box-shadow: 5px 5px 5px 0 #20212447;
+    padding: 20px;
+    display: grid;
+    grid-template: repeat(5, 1fr) / 1fr;
+    transition: .3s ease all;
+    opacity: 0;
+    transform: scale(0.7); 
+    /* display: grid;
+    grid-template: repeat(5, 1fr) / 1fr;
+    border-radius: 5px;
+    transition: .3s ease all;
+    opacity: 0;
+    transform: scale(0.7); */
+}

@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+import Modal from './Modal_Organization'
 import logo_white from '../assets/static/logo-white.svg'
 
 const Events = () => {
+
+  const [openModal, setOpenModal] = useState(false)
+  const modalOpen = () => {
+    setOpenModal(true)
+  }
+
+  const modalClose = () => {
+    setOpenModal(false)
+  }
 
   const eventsList = [
     {
@@ -14,10 +24,16 @@ const Events = () => {
       eventId: 2
     }
   ]
+
+
+
   return (
     <div className='events'>
+      {
+        openModal && <Modal modalClose={modalClose} />
+      }
       <div className='events_buttons'>
-        <button className='events_button'>Create organization</button>
+        <button onClick={modalOpen} className='events_button'>Create organization</button>
         <button className='events_button events_button-light'>
           Organizations
         </button>

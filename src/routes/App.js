@@ -8,12 +8,7 @@ import Login from "../pages/Login";
 import Event from "../pages/Event";
 import EventPanel from "../pages/EventPanel";
 import NotFound from "../pages/NotFound";
-<<<<<<< HEAD
-import AdminPanel from "../pages/AdminPanel"
-// import admin from '../pages/AdminConsole'
-=======
 import AdminPanel from "../pages/AdminPanel";
->>>>>>> b8f886d275e4c86586229b65ce79f93e5368cefb
 
 import { Context } from "../context/Context";
 

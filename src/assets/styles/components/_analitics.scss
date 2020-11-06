@@ -1,0 +1,17 @@
+.analitics {
+
+  &_title{
+    border-bottom: 2px solid $auxiliar-color2;
+  }
+
+  &_display {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 400px);
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+
+}
+

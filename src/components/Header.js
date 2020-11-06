@@ -5,11 +5,7 @@ import { Context } from "../context/Context";
 
 export default function NavBar() {
   const { removeAuth } = useContext(Context);
-
-  // const handleLogout = (event) => {
-  //   event.preventDefault()
-
-  // }
+  const { isAuth } = useContext(Context);
 
   return (
     <header className="header">
@@ -24,19 +20,30 @@ export default function NavBar() {
             type="text"
             placeholder="Search event"
           />
+
+          {isAuth ? (<>
+          <Link to="/login" className="header-nav__logout">
+            <ul className="header--nav-link" onClick={() => removeAuth()}>
+              Log out<output></output>
+            </ul>
+          </Link> 
+          </>
+          )
+          :
+          (
+            <>
           <Link to="/signup" className="header--nav-link">
             <ul>Sign up</ul>
           </Link>
 
           <Link to="/login">
             <ul className="header--nav-link">Log in</ul>
-          </Link>
+          </Link> 
+          </>         
+          )
+          
+          }
 
-          <Link to="/login" className="header-nav__logout">
-            <ul className="header--nav-link" onClick={() => removeAuth()}>
-              Log out<output></output>
-            </ul>
-          </Link>
         </ul>
       </nav>
     </header>

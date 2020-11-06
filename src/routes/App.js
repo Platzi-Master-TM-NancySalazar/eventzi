@@ -20,15 +20,15 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          {/* {isAuth ? (
-            <Route exact path="/eventPanel" component={EventPanel} />
+          
+          {isAuth ? (
+            <Route exact path="/admin_panel" component={AdminPanel} />
           ) : (
-            <Route exact path="/eventPanel" component={Login} />
-          )} */}
+            <Route exact path="/admin_panel" component={Login} />
+          )}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/events/:eventId" component={Event} />
-          <Route exact path="/admin_panel" component={AdminPanel} />
-          {/* <Route exact path="/admin" component={admin} /> */}
+          {/* <Route exact path="/admin_panel" component={AdminPanel} /> */}
           <Route component={NotFound} />
         </Switch>
       </Layout>

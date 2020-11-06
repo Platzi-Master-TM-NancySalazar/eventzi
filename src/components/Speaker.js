@@ -1,5 +1,6 @@
 import React from "react";
 import twitterIcon from "../assets/static/twitter-icon.png";
+import { AiOutlineTwitter } from "react-icons/ai";
 
 class Speaker extends React.Component {
   render() {
@@ -21,7 +22,7 @@ class Speaker extends React.Component {
                 href={`https://twitter.com/${this.props.twitter}`}
                 target="blank"
               >
-                <img src={twitterIcon} alt="" />
+                <AiOutlineTwitter />
               </a>
             </div>
           </div>

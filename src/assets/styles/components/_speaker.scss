@@ -31,10 +31,12 @@
     }
 
     &__twitter {
+      cursor: pointer;
+      color: $white-color;
       height: 50px;
       width: 50px;
-      cursor: pointer;
       margin-left: auto;
+      font-size: 47px;
     }
   }
   @include sm {

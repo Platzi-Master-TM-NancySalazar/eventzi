@@ -16,6 +16,7 @@
   padding: 23px;
 
   &:hover {
+    cursor: pointer;
     color: $auxiliar-color2;
     padding: 23px;
   }
@@ -23,7 +24,7 @@
   &-active {
     font-size: 2rem;
     font-weight: 700;
-    background-color: white;
+    background-color: $white-color;
     color: $auxiliar-color2;
     border-left: 4px solid $auxiliar-color2;
   }
@@ -37,15 +38,16 @@
     left: -300px;
     transition: 850ms;
     z-index: 2;
+    &.active {
+      left: 0px;
+      transition: 350ms;
+    }
   }
-  .nav-menu.active {
-    left: 0px;
-    transition: 350ms;
-  }
+
   .nav-menu__menuButon {
     opacity: 0.8;
-    color: #ffffff;
-    background-color: #313131;
+    color: $white-color;
+    background-color: $primary-color;
     border-radius: 0 0 20px 0;
     padding: 6px;
     display: flex;

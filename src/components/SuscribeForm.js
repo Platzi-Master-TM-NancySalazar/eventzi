@@ -4,21 +4,33 @@ class SuscribeForm extends React.Component {
   state = {};
 
   handleChange = (e) => {
-    console.log({
-      name: e.target.name,
-      value: e.target.value,
-    });
+    // console.log({
+    //   name: e.target.name,
+    //   value: e.target.value,
+    // });
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
 
-  handleClick = (e) => {};
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.email.value != undefined || "")
-      alert(`Email ${this.state.email} was regitered`);
-    alert(`Enter a valid mail`);
+    if (this.state.email != undefined && this.state.email != "") {
+      alert(`Email ${this.state.email} was registered`);
+      var url = `https://eventziapi.herokuapp.com/events/${this.props.eventId}/register`;
+      var data = this.state;
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .catch((error) => console.error("Error:", error))
+        .then((response) => console.log("Success:", response));
+    } else alert(`Enter a valid mail ${this.state.email}`);
   };
   render() {
     return (

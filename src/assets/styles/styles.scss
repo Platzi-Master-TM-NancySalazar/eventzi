@@ -80,6 +80,8 @@ $screen-xl-min: 1200px;
 @import "pages/template1";
 @import "pages/template2";
 @import "pages/admin-console";
+@import "pages/configuration";
+@import "pages/signup";
 // @import "pages/analyticsPanel";
 
 //Components
@@ -96,3 +98,7 @@ $screen-xl-min: 1200px;
 @import "components/events";
 @import "components/modal";
 @import "components/popup-first";
+@import "components/lecturer";
+@import "components/agenda";
+@import "components/general";
+@import "components/associates";

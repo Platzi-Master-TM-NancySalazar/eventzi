@@ -1,0 +1,131 @@
+.event {
+  height: 100%;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-template-rows: 100%;
+  padding-top: 50px;
+}
+
+.panel__title {
+  border-bottom: 2px solid $auxiliar-color2;
+  margin-bottom: 5px;
+}
+
+.main-container {
+  grid-template-columns: 1;
+
+  &_main {
+    background-color: $bg-color;
+    // margin: 20px 125px 0px 125px;
+    margin: 0;
+    border-radius: 14px;
+    padding: 10px;
+
+    figure {
+      padding-top: 10px;
+      img {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 10px;
+      }
+    }
+
+    button {
+      background-color: $auxiliar-color2;
+      color: $white-color;
+      height: 30px;
+      width: 120px;
+      border-radius: 5px;
+      border: none;
+      margin: 20px;
+    }
+    p {
+      text-align: initial;
+      margin: 10px;
+      margin-left: 30px;
+    }
+
+    form {
+      text-align: center;
+      margin: 0px;
+    }
+
+    input {
+      width: 90%;
+      height: 40px;
+      padding-left: 10px;
+      background-color: $white-color;
+      border: 1px solid $gray-color;
+    }
+    input::placeholder {
+      color: black;
+      padding-left: 10px;
+    }
+    .input-message {
+      height: 300px;
+      justify-content: flex-start;
+    }
+
+    // input{
+    //     width: 90%;
+    //     margin: 0px 40px;
+    //     height: 40px;
+    //     padding-left: 30px;
+    //     color: black;
+    // }
+    // .input-message{
+    //     height: 300px;
+    //     justify-content: flex-start;
+    // }
+  }
+  .logo-image {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .social-media {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+}
+
+.outside {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0px;
+  p {
+    font-size: 18px;
+  }
+  button {
+    background-color: $auxiliar-color2;
+    color: $white-color;
+    height: 30px;
+    width: 120px;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    top: 10px;
+    left: 160px;
+  }
+}
+
+@include sm {
+  .main-container_main figure img {
+    width: 50px;
+  }
+  .outside p {
+    font-size: 1.2rem;
+  }
+}

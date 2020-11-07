@@ -29,13 +29,9 @@ const App = () => {
           )}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/events/:eventId" component={Event} />
-<<<<<<< HEAD
           <Route exact path="/admin_panel" component={AdminPanel} />
           <Route exact path="/modalapp" component={ModalPopup} />
           {/* <Route exact path="/admin" component={admin} /> */}
-=======
-          {/* <Route exact path="/admin_panel" component={AdminPanel} /> */}
->>>>>>> 21f006dda1754509924c3c414c29b48fc6534de5
           <Route component={NotFound} />
         </Switch>
       </Layout>

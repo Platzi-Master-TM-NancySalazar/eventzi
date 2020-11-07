@@ -14,19 +14,14 @@ const Analitics = () => {
       <h3 className='analitics_title'>Detailed statistics of your event</h3>
       <section className='analitics_display'>
         <div>
-          <h4>User information</h4>
-          <p>Gender of users</p>
+          <h4 className='analitics_titles'>User information</h4>
           <UserGender />
-          <p>Nationality of users</p>
           <UserCountry />
-          <p>User status</p>
           <UserStatus />
         </div>
         <div>
-          <h4>Event information</h4>
-          <p>Event type</p>
+          <h4 className='analitics_titles'>Event information</h4>
           <EventType />
-          <p>Event status</p>
           <EventStatus />
         </div>
       </section>

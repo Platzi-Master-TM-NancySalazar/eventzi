@@ -1,5 +1,35 @@
 .events {
 
+  &__form{
+    width: 600px;
+    display: grid;
+    grid-template-columns: 75% 25%;
+  }
+
+  &__upload{
+    width: 120px;
+    height: 120px;
+    margin-top: 30px;
+    margin-left: 20px;
+
+    &-input{
+      display: none;
+    }
+  }
+
+  &__logos{
+    margin-top: 50px;
+
+    &-image{
+      height: 60px;
+    }
+  }
+
+  &__save-area{
+    margin-top: 50px;
+    text-align: center;
+  }
+
   &_buttons{
     display: flex;
     justify-content: space-between;

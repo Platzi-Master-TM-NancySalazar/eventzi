@@ -5,7 +5,7 @@ import logo_white from "../assets/static/logo-white.svg";
 import CreateOrganization from "../components/CreateOrganization";
 
 const Events = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(true);
   const modalOpen = () => {
     setOpenModal(true);
   };

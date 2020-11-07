@@ -5,7 +5,7 @@
 }
 html {
   font-size: 62.5%;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -85,22 +85,67 @@ $screen-xl-min: 1200px;
     border: 1px solid $auxiliar-color2;
   }
 }
-.button-area {
-  text-align: center;
-}
 
-.form {
-  margin: 20px;
-  label {
-    display: block;
-    font-size: 2rem;
-  }
-  input {
-    margin-bottom: 5px;
-    height: 3rem;
+.input-material {
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  max-width: 400px;
+  position: relative;
+  overflow: hidden;
+
+  &__input {
     width: 100%;
-    border-style: none;
-    border: 1px solid $gray-color;
-    border-bottom: 2px solid $gray-color;
+    height: 100%;
+    background: none;
+    color: black;
+    padding-top: 20px;
+    border: none;
+    outline: 0px;
+
+    &:focus + .input-material__label .input-material__text,
+    &:valid + .input-material__label .input-material__text {
+      transform: translateY(-130%);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: $auxiliar-color2;
+    }
+
+    &:focus + .input-material__label:after,
+    &:valid + .input-material__label:after {
+      transform: translateX(0%);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid $gray-color;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid $auxiliar-color2;
+      transform: translateX(-100%);
+      transition: all 300ms ease;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transition: all 200ms ease;
+    color: black;
+    font-size: 1.6rem;
+    text-transform: capitalize;
   }
 }

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import c3 from 'c3';
-import Loader from '../components/Loader';
+import React, { useEffect, useState } from 'react'
+import c3 from 'c3'
+import Loader from '../components/Loader'
 
 const UserGender = () => {
   const [loading, setLoading] = useState(true)
@@ -15,6 +15,9 @@ const UserGender = () => {
           ['Male', data[1]],
         ],
         type: 'pie',
+      },
+      color: {
+        pattern: ['#f73378', '#2196f3'],
       },
     })
   }
@@ -31,10 +34,11 @@ const UserGender = () => {
   }, [data])
 
   return (
-    <>
+    <div className='analitics_chart'>
+      <p>Gender of users</p>
       <div id='user_gender' />
       {loading ? <Loader /> : generateChart()}
-    </>
+    </div>
   )
 }
 

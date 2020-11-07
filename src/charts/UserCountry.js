@@ -21,8 +21,30 @@ const UserCountry = () => {
     c3.generate({
       bindto: '#user_country',
       data: {
-        columns: [['PER', data[9]], ['URU', data[6]], ['ESP', data[5]], ['PAR', data[8]], ['BRA', data[3]], ['COL', data[0]], ['MÉX', data[1]], ['CHI', data[2]], ['ECU', data[4]], ['ARG', data[7]]],
+        columns: [
+          ['Users', 30, 200, 100, 400, 150, 250, 50, 100, 250, 12]
+        ],
         type: 'bar',
+      },
+      axis: {
+        x: {
+          type: 'category',
+          categories: [
+            'COL',
+            'MÉX',
+            'CHI',
+            'BRA',
+            'ECU',
+            'ESP',
+            'URU',
+            'ARG',
+            'PAR',
+            'PER',
+          ],
+        },
+      },
+      color: {
+        pattern: ['#2196f3'],
       },
       bar: {
         width: {
@@ -44,10 +66,11 @@ const UserCountry = () => {
   }
 
   return (
-    <>
-      <div id='user_country' className='analitics_chart' />
+    <div className='analitics_chart'>
+      <p>Nationality of users</p>
+      <div id='user_country' />
       {loading ? <Loader /> : generateChart()}
-    </>
+    </div>
   )
 }
 

@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Event from "../pages/Event";
 import NotFound from "../pages/NotFound";
 import AdminPanel from "../pages/AdminPanel";
-import ModalPopup from '../components/ModalPopup'
+import ModalPopup from "../components/ModalPopup";
 
 import { Context } from "../context/Context";
 
@@ -21,7 +21,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          
+
           {isAuth ? (
             <Route exact path="/admin_panel" component={AdminPanel} />
           ) : (
@@ -29,13 +29,9 @@ const App = () => {
           )}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/events/:eventId" component={Event} />
-<<<<<<< HEAD
           <Route exact path="/admin_panel" component={AdminPanel} />
           <Route exact path="/modalapp" component={ModalPopup} />
           {/* <Route exact path="/admin" component={admin} /> */}
-=======
-          {/* <Route exact path="/admin_panel" component={AdminPanel} /> */}
->>>>>>> 21f006dda1754509924c3c414c29b48fc6534de5
           <Route component={NotFound} />
         </Switch>
       </Layout>

@@ -21,12 +21,12 @@ const UserCountry = () => {
     c3.generate({
       bindto: '#user_country',
       data: {
-        columns: [['Countries'].concat(data)],
+        columns: [['PER', data[9]], ['URU', data[6]], ['ESP', data[5]], ['PAR', data[8]], ['BRA', data[3]], ['COL', data[0]], ['MÉX', data[1]], ['CHI', data[2]], ['ECU', data[4]], ['ARG', data[7]]],
         type: 'bar',
       },
       bar: {
         width: {
-          ratio: 0.5, 
+          ratio: 0.5,
         },
       },
       grid: {

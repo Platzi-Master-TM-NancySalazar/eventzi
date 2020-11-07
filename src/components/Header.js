@@ -21,29 +21,25 @@ export default function NavBar() {
             placeholder="Search event"
           />
 
-          {isAuth ? (<>
-          <Link to="/login" className="header-nav__logout">
-            <ul className="header--nav-link" onClick={() => removeAuth()}>
-              Log out<output></output>
-            </ul>
-          </Link> 
-          </>
-          )
-          :
-          (
+          {isAuth ? (
             <>
-          <Link to="/signup" className="header--nav-link">
-            <ul>Sign up</ul>
-          </Link>
+              <Link to="/login" className="header-nav__logout">
+                <ul className="header--nav-link" onClick={() => removeAuth()}>
+                  Log out<output></output>
+                </ul>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/signup" className="header--nav-link">
+                <ul>Sign up</ul>
+              </Link>
 
-          <Link to="/login">
-            <ul className="header--nav-link">Log in</ul>
-          </Link> 
-          </>         
-          )
-          
-          }
-
+              <Link to="/login">
+                <ul className="header--nav-link">Log in</ul>
+              </Link>
+            </>
+          )}
         </ul>
       </nav>
     </header>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import c3 from 'c3'
-import Loader from '../components/Loader'
+import React, { useEffect, useState } from 'react';
+import c3 from 'c3';
+import Loader from '../components/Loader';
 
 const UserGender = () => {
   const [loading, setLoading] = useState(true)

@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Event from "../pages/Event";
 import NotFound from "../pages/NotFound";
 import AdminPanel from "../pages/AdminPanel";
-import ModalPopup from '../components/ModalPopup'
+import ModalPopup from "../components/ModalPopup";
 
 import { Context } from "../context/Context";
 
@@ -21,7 +21,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          
+
           {isAuth ? (
             <Route exact path="/admin_panel" component={AdminPanel} />
           ) : (

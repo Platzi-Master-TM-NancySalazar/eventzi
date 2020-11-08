@@ -1,22 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Input from './input'
 import redes from '../assets/static/redes-sociales.png'
 import upload from '../assets/static/upload.png'
 
-const CreateOrganization = () => {
+const CreateOrganization = ({ submit }) => {
+
+  const [form, setForm] = useState({})
+
+  const handleChange = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const handleClick = () => {
+    submit(form)
+  }
+
   return (
     <div className=''>
       <form className='events__form'>
         <div>
-          <Input text='name' />
-          <Input text='website' />
-          <Input text='description' />
+          <Input text='name' event={handleChange}/>
+          <Input text='website' event={handleChange}/>
+          <Input text='description' event={handleChange}/>
         </div>
         <div>
-          <label for="file-input">
+          <label >
             <img className='events__upload' src={upload} alt='redes sociales' />
+            <input id="file-input" type='file' className='events__upload-input'/>
           </label>
-          <input id="file-input" type='file' className='events__upload-input'/>
+          
         </div>
       </form>
 
@@ -24,12 +39,10 @@ const CreateOrganization = () => {
         <img className='events__logos-image' src={redes} alt='redes sociales' />
       </div>
       <div className='events__save-area'>
-          <input
-            type='submit'
-            className='events_button'
-            value='Create organization'
-          />
-        </div>
+        <button onClick={handleClick} className='events_button'>
+          Create organization
+        </button>
+      </div>
     </div>
   )
 }

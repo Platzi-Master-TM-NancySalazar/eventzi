@@ -18,7 +18,7 @@ const App = () => {
     <BrowserRouter>
       <Layout>
         <Switch>
-          <Route exact path="/" component={AdminPanel} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
 
           {isAuth ? (

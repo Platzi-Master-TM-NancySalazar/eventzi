@@ -39,6 +39,16 @@ const ApiEventzi = {
   upcoming() {
     return callApiGet(`/events/upcoming`)
   },
+  getOrganizations(){
+    return callApiGet('/organizations/orgsByUser')
+  },
+  newOrganization(organization_name, description){
+    let data = {
+      organization_name,
+      description,
+    }
+    return callApiPost('/organizations', data)
+  }
 }
 
 export default ApiEventzi

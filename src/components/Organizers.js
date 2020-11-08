@@ -3,8 +3,14 @@ import { HiCog } from "react-icons/hi";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import PopupFirst from './PopupFirst';
 import AddOrganizator from './AddOrganizator';
+import ApiEventzi from '../utils/ApiEventzi';
 
 const Organizers = () => {
+
+  ApiEventzi.getOrganizers(25)
+  .then((response) => console.log(response))
+  .catch((error) => console.log(error))
+
   const [Omodal, setOmodal] = useState(false)
 
   const handleOpenModal = () =>{

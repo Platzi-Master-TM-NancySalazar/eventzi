@@ -48,6 +48,10 @@ const ApiEventzi = {
       description,
     }
     return callApiPost('/organizations', data)
+  },
+
+  getOrganizers(organizationId){
+    return callApiGet(`/organizations/${organizationId}/events/organizers`)
   }
 }
 

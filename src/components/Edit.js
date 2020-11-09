@@ -40,19 +40,19 @@ export default function Edit() {
             <div className="configuration">
 
                 <div className="configurarion__general">
-                    <General />
+                    <General organizationId={organizationId} />
                 </div>
 
                 <div className="configurarion__lecturer">
-                    <Lecturer />
+                    <Lecturer organizationId={organizationId} />
                 </div>
 
                 <div className="configurarion__agenda">
-                    <Agenda />
+                    <Agenda organizationId={organizationId} />
                 </div>
 
                 <div className="configurarion__associates">
-                    <Associates />
+                    <Associates organizationId={organizationId} />
                 </div>
             </div>
         </>

@@ -149,4 +149,17 @@ $screen-xl-min: 1200px;
     font-size: 1.6rem;
     text-transform: capitalize;
   }
+  &.__text-date{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transition: all 200ms ease;
+    color: black;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+  }
+}
+.img-template{
+  height: 90px;
+  margin: 10px 5px;
 }

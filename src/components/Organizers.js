@@ -1,33 +1,69 @@
 import React, {useState} from 'react'
 import { HiCog } from "react-icons/hi";
-import { HiPencil } from "react-icons/hi";
-import { HiSearch } from "react-icons/hi";
-import { HiTrash } from "react-icons/hi";
-import { HiOutlineTrash } from "react-icons/hi";
-import { MdKeyboardArrowLeft } from "react-icons/hi";
-import { MdKeyboardArrowRight } from "react-icons/hi";
 import { HiOutlinePlusCircle } from "react-icons/hi";
-import PopupFirst from './PopupFirst'
-// import ReactDOM from 'react-dom'
-// import PruebaModal from './PruebaModal'
-
+import PopupFirst from './PopupFirst';
+import AddOrganizator from './AddOrganizator';
+import ApiEventzi from '../utils/ApiEventzi';
 
 const Organizers = () => {
+
   const [Omodal, setOmodal] = useState(false)
 
   const handleOpenModal = () =>{
-    console.log('boton activado')
     setOmodal(!Omodal)
   }
 
+  
+  
+  // ApiEventzi.getOrganizers(25)
+  // .then((response) => {
+  //   let badge = response.data.data
+  //   console.log('badge', badge)
+  // } )
+  // .catch((error) => console.log(error))
+
+
+
+  // Props para componente AddOrganizator
+  // const [badge, setBadge] = useState([{
+  //     'id':'123',
+  //     'name':'Francisco Araujo',
+  //     'email':'pan.x92@gmail.com',
+  //     'event':'Event 2020'
+  //   },
+  //   {
+  //     'id':'234',
+  //     'name':'Nancy Salazar',
+  //     'email':'nancysalazar@platzi.com',
+  //     'event':'Event 2021'
+  //   },
+  //   {
+  //     'id':'387',
+  //     'name':'Jairo Ramirez',
+  //     'email':'trolljairo@gmail.com',
+  //     'event':'Algun dia'
+  //   }
+  // ])
+
+  const [badge, setBadge] = useState('')
+
+  React.useEffect(()=> {
+    ApiEventzi.getOrganizers(25)
+    .then(response => {
+      console.log('info', response.data.data)
+      let newBadge = response.data.data
+      setBadge(newBadge)
+    })
+  },[])
+
   return (
+
     <>
-      <div className='main--container-buttons'>
+    <div className='main--container-buttons'>
         <button onClick={handleOpenModal}>
           <HiOutlinePlusCircle className='icon-add-outline'/>Add Organizator
         </button>
         {Omodal ? <PopupFirst evenChange={handleOpenModal}/>: null}
-        {/* <PopupFirst evenChange={handleOpenModal}/> */}
       </div>
       <div className='second--main'>
         <div className='second--main-table'>
@@ -41,36 +77,10 @@ const Organizers = () => {
           <HiCog className="icon-ajustes"/>
         </div>
         <div className='second--main-content'>
-          <div className='second--main-details'>
-            <div className='check'>
-              <input type='checkbox'/>
-              <p>112</p>
-            </div>
-            <p className='content-name'>Francisco Araujo</p>
-            <p className='content-email'>pan.x92@gmail.com</p>
-            <p className='content-event'>Event 2020</p>
-            <div>
-              <a href='#'><HiPencil className='icon-details-pencil'/></a>
-              <a href='#'><HiOutlineTrash className='icon-details'/></a>
-            </div>
-          </div>
-          <div className='second--main-details'>
-            <div className='check'>
-              <input type='checkbox' />
-              <p>10</p>
-            </div>
-            <p className='content-name'>Nancy Salazar</p>
-            <p className='content-email'>nancysalazar@platzi.com</p>
-            <p className='content-event'>Event 2021</p>
-            <div>
-              <a href='#'>
-              <HiPencil className='icon-details-pencil'/>
-              </a>
-              <a href='#'>
-              <HiOutlineTrash className='icon-details'/>
-              </a>
-            </div>
-          </div>
+
+          {/* <AddOrganizator badges={badge}/> */}
+          {/* <AddOrganizator badges={badge}/> */}
+          
         </div>
       </div>
       <div className='show--details'>
@@ -83,15 +93,6 @@ const Organizers = () => {
             <option value='value3'>20</option>
           </select>
           <small>entries per page</small>
-        </div>
-        <div>
-            {/* <MdKeyboardArrowLeft className='icon-details'/> */}
-          {/* <button>
-          </button> */}
-          <input type='text' value='1' className='input-page-value' />
-            {/* <MdKeyboardArrowRight className='icon-details'/> */}
-          {/* <button>
-          </button> */}
         </div>
       </div>
     </>

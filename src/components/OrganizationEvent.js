@@ -29,7 +29,6 @@ const Event = ({ id_organization }) => {
     ApiEventzi.getEventsByOrganization(id_organization)
       .then((response) => {
         if (response.data.data.length > 0) {
-          console.log(response.data.data)
           setEvents(response.data.data)
         } else {
           setMensaje('there are no events associated with the organization')

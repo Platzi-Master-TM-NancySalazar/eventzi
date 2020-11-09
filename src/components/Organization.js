@@ -4,6 +4,7 @@ import CreateEvent from "../components/CreateEvent";
 import logo_white from "../assets/static/logo-white.svg";
 import ApiEventzi from "../utils/ApiEventzi";
 import { PostFormat } from "../utils/FormatDate";
+import Event from './OrganizationEvent'
 
 import {
   MdKeyboardArrowUp,

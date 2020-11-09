@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import axios from "axios"
+import ApiEventzi from '../utils/ApiEventzi'
+
 
 export default function Agenda() {
     const config = {
@@ -24,19 +25,32 @@ export default function Agenda() {
         sendagenda(form)
     }
 
-    const sendagenda = ({ agenda__date, agenda__description, agenda__title }) => {
-        console.log(form)
-        axios({
-            method: 'POST',
-            url: 'https://eventziapi.herokuapp.com/events/1/speaker/1/schedule',
-            data: {
-                title: agenda__title,
-                description_: agenda__description,
-                time_: `${agenda__date}:00`
-            }
-        })
+    // const sendagenda = ({ agenda__date, agenda__description, agenda__title }) => {
+    //     console.log(form)
+    //     axios({
+    //         method: 'POST',
+    //         url: 'https://eventziapi.herokuapp.com/events/1/speaker/1/schedule',
+    //         data: {
+    //             title: agenda__title,
+    //             description_: agenda__description,
+    //             time_: `${agenda__date}:00`
+    //         }
+    //     })
+    //         .then(data => console.log(data))
+    //         .catch((err) => console.log(err))
+    // }
+    // const agendaApi = ({agenda__date, agenda__description, agenda__title}) => {
+    const sendagenda = () => {
+        // const data = {
+        //     title: agenda__title,
+        //         description_: agenda__description,
+        //         time_: `${agenda__date}:00`
+        // }
+        // ApiEventzi.sendagenda(userId, organizationId, data)
+        //     .then(data => console.log(data))
+        //     .catch((err) => console.log(err))
+        ApiEventzi.getOrganizations()
             .then(data => console.log(data))
-            .catch((err) => console.log(err))
     }
 
     return (

@@ -52,6 +52,9 @@ const ApiEventzi = {
 
   getOrganizers(organizationId){
     return callApiGet(`/organizations/${organizationId}/events/organizers`)
+  },
+  sendAgenda(userId, organizationId, data ){
+    return callApiPost(`events/${userId}/speaker/${organizationId}/schedule`, data)
   }
 }
 

@@ -74,13 +74,11 @@
 
   &-table {
     display: grid;
-    grid-template: repeat(1, 40px) / repeat(5, 14rem);
+    grid-template: repeat(1, 40px) / repeat(5, 10rem);
     align-items: center;
     justify-content: right;
-    // text-align: left;
     grid-gap: 20px;
     color: #313131;
-    // border: 1px solid red;
 
     & p {
       font-size: 18px;
@@ -95,10 +93,28 @@
   }
 }
 
+.content-name {
+  margin-left: -23rem;
+  width: fit-content;
+  font-size: 1.6rem;
+}
+
+.content-email {
+  margin-left: -210px;
+  width: fit-content;
+  font-size: 16px;
+}
+
+.content-event {
+  margin-left: -12rem;
+  font-size: 1.6rem;
+  width: fit-content;
+}
+
 .icon-ajustes {
-  height: 25px;
-  width: 25px;
-  margin-left: 80px;
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-left: 3rem;
 }
 
 .show--details {

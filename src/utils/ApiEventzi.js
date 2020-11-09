@@ -52,6 +52,9 @@ const ApiEventzi = {
 
   getOrganizers(organizationId){
     return callApiGet(`/organizations/${organizationId}/events/organizers`)
+  },
+  getEvents(organizationId){
+    return callApiGet(`organizations/${organizationId}/events`)
   }
 }
 

@@ -13,51 +13,18 @@ const Organizers = () => {
     setOmodal(!Omodal)
   }
 
-  
-  
-  // ApiEventzi.getOrganizers(25)
-  // .then((response) => {
-  //   let badge = response.data.data
-  //   console.log('badge', badge)
-  // } )
-  // .catch((error) => console.log(error))
-
-
-
-  // Props para componente AddOrganizator
-  // const [badge, setBadge] = useState([{
-  //     'id':'123',
-  //     'name':'Francisco Araujo',
-  //     'email':'pan.x92@gmail.com',
-  //     'event':'Event 2020'
-  //   },
-  //   {
-  //     'id':'234',
-  //     'name':'Nancy Salazar',
-  //     'email':'nancysalazar@platzi.com',
-  //     'event':'Event 2021'
-  //   },
-  //   {
-  //     'id':'387',
-  //     'name':'Jairo Ramirez',
-  //     'email':'trolljairo@gmail.com',
-  //     'event':'Algun dia'
-  //   }
-  // ])
-
-  const [badge, setBadge] = useState('')
+  const [badge, setBadge] = useState([])
 
   React.useEffect(()=> {
     ApiEventzi.getOrganizers(25)
     .then(response => {
-      console.log('info', response.data.data)
       let newBadge = response.data.data
       setBadge(newBadge)
     })
+    .catch((error) => console.log(error))
   },[])
 
   return (
-
     <>
     <div className='main--container-buttons'>
         <button onClick={handleOpenModal}>
@@ -78,9 +45,8 @@ const Organizers = () => {
         </div>
         <div className='second--main-content'>
 
-          {/* <AddOrganizator badges={badge}/> */}
-          {/* <AddOrganizator badges={badge}/> */}
-          
+          <AddOrganizator badges={badge}/>
+
         </div>
       </div>
       <div className='show--details'>

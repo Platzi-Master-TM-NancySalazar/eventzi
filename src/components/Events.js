@@ -12,12 +12,14 @@ const Events = () => {
   const [organizations, setOrganizations] = useState([])
 
   useEffect(() => {
-    ApiEventzi.getOrganizations()
-      .then((response) => {
-        setOrganizations(response.data.data)
-      })
-      .catch((err) => console.log(err))
-  }, [])
+    if (!organizations.length) {
+      ApiEventzi.getOrganizations()
+        .then((response) => {
+          setOrganizations(response.data.data)
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [organizations])
 
   const modalOpen = () => {
     setOpenModal(true)
@@ -31,6 +33,7 @@ const Events = () => {
     ApiEventzi.newOrganization(form.name, form.description)
       .then((response) => {
         if (response.status) {
+          setOrganizations([])
           setOpenModal(false)
         }
       })

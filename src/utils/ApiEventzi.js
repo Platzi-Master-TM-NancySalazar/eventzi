@@ -28,6 +28,16 @@ async function callApiGet(url) {
   return response
 }
 
+async function callApiDelete(url) {
+  const response = await instance({
+    method: 'DELETE',
+    url,
+  })
+
+  return response
+}
+
+
 const ApiEventzi = {
   login(email, password) {
     let data = {
@@ -88,6 +98,9 @@ const ApiEventzi = {
   getOrganizers(organizationId) {
     return callApiGet(`/organizations/${organizationId}/events/organizers`)
   },
+  deleteEvent(eventId){
+    return callApiDelete(`events/${eventId}`)
+  }
 }
 
 export default ApiEventzi

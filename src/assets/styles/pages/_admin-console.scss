@@ -8,7 +8,7 @@
   }
 
   &-list {
-    width: 90%;
+    width: 80%;
     margin-top: 0;
     margin-bottom: 50px;
     margin-left: auto;
@@ -74,13 +74,13 @@
 
   &-table {
     display: grid;
-    grid-template: repeat(1, 40px) / repeat(5, 180px);
+    grid-template: repeat(1, 40px) / repeat(5, 14rem);
     align-items: center;
     justify-content: right;
     // text-align: left;
     grid-gap: 20px;
     color: #313131;
-    border: 1px solid red;
+    // border: 1px solid red;
 
     & p {
       font-size: 18px;
@@ -93,36 +93,12 @@
     background-color: white;
     font-size: 1.2rem;
   }
-
-  &-details {
-    display: grid;
-    grid-template: repeat(1, 40px) / repeat(5, 180px);
-    align-items: center;
-    justify-content: right;
-    text-align: left;
-    grid-gap: 20px;
-  }
-}
-
-.item--iconConfig {
-  border: 1px solid red;
 }
 
 .icon-ajustes {
   height: 25px;
   width: 25px;
   margin-left: 80px;
-}
-
-.icon-details {
-  height: 20px;
-  width: 20px;
-
-  &-pencil {
-    height: 20px;
-    width: 20px;
-    margin-left: 70px;
-  }
 }
 
 .show--details {

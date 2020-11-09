@@ -12,7 +12,8 @@ import AdminPanel from "../pages/AdminPanel";
 import { Context } from "../context/Context";
 
 const App = () => {
-  const { isAuth } = useContext(Context);
+  // const { isAuth } = useContext(Context);
+  const isAuth = true
   console.log(isAuth);
   return (
     <BrowserRouter>
@@ -20,7 +21,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          
+
           {isAuth ? (
             <Route exact path="/admin_panel" component={AdminPanel} />
           ) : (
@@ -28,7 +29,7 @@ const App = () => {
           )}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/events/:eventId" component={Event} />
-          {/* <Route exact path="/admin_panel" component={AdminPanel} /> */}
+          <Route exact path="/admin_panel" component={AdminPanel} />
           <Route component={NotFound} />
         </Switch>
       </Layout>

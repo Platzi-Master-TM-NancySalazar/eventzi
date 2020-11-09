@@ -1,51 +1,45 @@
-import React, { useEffect } from 'react';
-import c3 from 'c3';
-import axios from "axios";
-
-let data = () => {
-    axios({
-        method: 'GET',
-        url: 'https://eventziapi.herokuapp.com/dashboard/MaleFemale/total'
-    }).then(res => {
-        return (res)
-    }).catch(err => console.log(err))
-}
+import React, { useEffect, useState } from 'react'
+import c3 from 'c3'
+import Loader from '../components/Loader'
 
 const EventType = () => {
-    useEffect(() => {
-        c3.generate({
-            bindto: '#event_type',
-            // size: {
-            //   height: 400,
-            //   width: 600
-            // },
-            data: {
-                // iris data from R
-                columns: [
-                    [
-                        'Online',
-                        90
-                    ],
-                    [
-                        'Presential',
-                        10
-                    ],
-                ],
-                type: 'pie',
-                onclick: function (d, i) {
-                    console.log('onclick', d, i)
-                },
-                onmouseover: function (d, i) {
-                    console.log('onmouseover', d, i)
-                },
-                onmouseout: function (d, i) {
-                    console.log('onmouseout', d, i)
-                },
-            },
-        })
-    }, [])
+  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState([])
 
-    return <div id='event_type' />
+  const generateChart = () => {
+    c3.generate({
+      bindto: '#event_type',
+      data: {
+        columns: [
+          ['Online', data[0]],
+          ['Presential', data[1]],
+        ],
+        type: 'pie',
+      },
+      color: {
+        pattern: ['#00e676', '#2196f3'],
+      },
+    })
+  }
+
+  useEffect(() => {
+    if (!data.length) {
+      fetch('https://eventziapi.herokuapp.com/dashboard/events/type')
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data)
+          setLoading(false)
+        })
+    }
+  }, [data])
+
+  return (
+    <div className='analitics_chart'>
+      <p>Event type</p>
+      <div id='event_type' />
+      {loading ? <Loader /> : generateChart()}
+    </div>
+  )
 }
 
 export default EventType

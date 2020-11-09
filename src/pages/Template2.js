@@ -10,6 +10,9 @@ import { MdPlace, MdEvent } from "react-icons/md";
 
 class Template2 extends React.Component {
   render() {
+    this.props.talks.sort((a, b) =>
+      a.time_ > b.time_ ? 1 : b.time_ > a.time_ ? -1 : 0
+    );
     return (
       <div className="template2">
         <div className="cover">

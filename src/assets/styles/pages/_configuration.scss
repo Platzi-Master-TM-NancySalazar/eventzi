@@ -31,26 +31,8 @@
 @media screen and(max-width: 720px) {
     .configuration{
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
+    grid-template-columns: 100%;
+    grid-template-rows: 35% 27% 25% 14%;
     height: auto;
 }
-.configuration__general{
-    grid-column-start: 1;
-    grid-row-start: 1;
-}
-.configuration__lecturer{
-    grid-column-start: 1;
-    grid-row-start: 2;
-}
-
-.configuration__associates{
-    grid-column-start: 2;
-    grid-row-start: 2;
-}
-.configuration__agenda{
-    grid-column-start: 2;
-    grid-row-start: 1;
-}
-
 }

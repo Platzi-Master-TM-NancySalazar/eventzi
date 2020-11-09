@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import axios from "axios"
 
-export default function Associates() {
+export default function Associates(props) {
+    console.log('props', props)
     const [form, setForm] = useState(null)
 
     const handleInput = (event) => {
@@ -35,7 +36,6 @@ export default function Associates() {
             .then(data => console.log(data))
             .catch((err) => console.log(err))
     }
-
 
     return (
         <div className="associates">

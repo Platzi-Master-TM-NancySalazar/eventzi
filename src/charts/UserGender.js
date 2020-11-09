@@ -16,6 +16,9 @@ const UserGender = () => {
         ],
         type: 'pie',
       },
+      color: {
+        pattern: ['#f73378', '#2196f3'],
+      },
     })
   }
 
@@ -31,10 +34,11 @@ const UserGender = () => {
   }, [data])
 
   return (
-    <>
+    <div className='analitics_chart'>
+      <p>Gender of users</p>
       <div id='user_gender' />
       {loading ? <Loader /> : generateChart()}
-    </>
+    </div>
   )
 }
 

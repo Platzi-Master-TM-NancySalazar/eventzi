@@ -1,6 +1,40 @@
 .events {
+  &__form {
+    width: 600px;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    .marginbtm{margin-bottom: -20px;}
+    p {
+      font-size: 1.6rem;
+    }
+  }
 
-  &_buttons{
+  &__upload {
+    width: 120px;
+    height: 120px;
+    margin-top: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+
+    &-input {
+      display: none;
+    }
+  }
+
+  &__logos {
+    margin-top: 50px;
+
+    &-image {
+      height: 60px;
+    }
+  }
+
+  &__save-area {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  &_buttons {
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
@@ -9,16 +43,22 @@
 
   &_button {
     height: 30px;
-    width: 130px;
+    width: 160px;
     border-radius: 5px;
     border: none;
     background-color: $auxiliar-color2;
     color: white;
     cursor: pointer;
     outline: none;
+    font-size: 1.4rem;
     transition: 0.4s ease all;
 
-    
+    &__icon{
+      margin-right: 4px;
+      margin-bottom: -4px;
+      font-size: 18px;
+    }
+
     &:hover {
       background-color: white;
       color: $auxiliar-color2;
@@ -29,35 +69,52 @@
       border: none;
     }
 
-    &-light{
+    &-light {
       background-color: $gray-color;
     }
-
   }
   
   &_organization{
+    width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #f4f4f4;
+    background-color: $bg-color;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid $secondary-color;
-    
+
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    &-title{
+    &-open{
+      margin-bottom: 0px;
+    }
+
+    &-header{
+      display: flex;
+      align-items: center;
+    }
+
+    &-title {
       margin-left: 10px;
       font-size: 2.5rem;
       letter-spacing: 1.1px;
       line-height: 24px;
       font-weight: 700;
     }
+
+    &-button{
+      margin-right: 20px;
+      font-size: 32px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: $bg-color;
+    }
   }
 
-
-
-  &_container_logo{
+  &_container_logo {
     width: 50px;
     height: 50px;
     background-color: $gray-color;
@@ -65,9 +122,8 @@
     text-align: center;
   }
 
-  &_logo{
+  &_logo {
     width: 40px;
     height: 40px;
   }
-
 }

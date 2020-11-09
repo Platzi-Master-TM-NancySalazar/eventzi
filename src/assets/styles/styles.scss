@@ -1,73 +1,4 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-html {
-  font-size: 62.5%;
-  font-family: "Roboto", sans-serif;
-}
-
-h1 {
-  font-weight: bold;
-  font-size: 12rem;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 4.8rem;
-}
-
-h3 {
-  font-weight: bold;
-  font-size: 3.2rem;
-}
-
-p {
-  font-weight: normal;
-  font-size: 2rem;
-}
-
-small {
-  font-weight: normal;
-  font-size: 1.4rem;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a.link-unstyled {
-  color: inherit;
-}
-
-a.link-unstyled:hover {
-  color: inherit;
-  text-decoration: none;
-}
-
-//Variables
-$primary-color: #313131;
-$secondary-color: #8f8ea7;
-$bg-color: #f8f8f8;
-$gray-color: #acacac;
-$white-color: #ffffff;
-$auxiliar-color1: #ff00ba;
-$auxiliar-color2: #2d9cdb;
-$template1-text: #284a7c;
-$template2-text: #9c2a12;
-$template1-lightbg: #f2f7ff;
-$template2-lightbg: #fbf0ee;
-$template1-deg: linear-gradient(180deg, #284a7c 0%, #1d3558 100%);
-$template1-btn: #6094e2;
-$template2-btn: #d4471b;
-$template1-deg: 0deg, rgba(29, 53, 88, 1) 0%, rgba(40, 74, 124, 1) 100%;
-
-$screen-sm-min: 676px;
-$screen-md-min: 768px;
-$screen-lg-min: 992px;
-$screen-xl-min: 1200px;
+@import "components/globals";
 
 //mixins
 @import "mixins";
@@ -102,3 +33,5 @@ $screen-xl-min: 1200px;
 @import "components/agenda";
 @import "components/general";
 @import "components/associates";
+@import "components/addorganizator";
+@import "components/organizationEvent";

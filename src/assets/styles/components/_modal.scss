@@ -1,21 +1,31 @@
-.modal{
-  background-color: rgba(0,0,0,.8);
-  position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &_container{
-    background-color: white;
-    width:600px;
-    height: 600px;
+  &__container {
+    background-color: $bg-color;
+    min-width: 500px;
+    max-width: 70%;
     padding: 20px;
     position: relative;
     border-radius: 12px;
+    box-shadow: 5px 5px 5px 0 #20212447;
+    &-header {
+      display: flex;
+      justify-content: space-between;
+    }
+    &--close {
+      font-size: 4rem;
+      border-style: none;
+      background: transparent;
+      cursor: pointer;
+      outline: none;
+    }
   }
-
 }

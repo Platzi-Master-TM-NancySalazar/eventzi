@@ -36,7 +36,6 @@ export default function Associates() {
             .catch((err) => console.log(err))
     }
 
-
     return (
         <div className="associates">
 

@@ -74,6 +74,9 @@ const ApiEventzi = {
     };
     console.log(data);
     return callApiPost(`/events/organizations/59`, data);
+    },
+  getOrganizers(organizationId){
+    return callApiGet(`/organizations/${organizationId}/events/organizers`)
   }
 };
 

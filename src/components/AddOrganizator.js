@@ -3,10 +3,10 @@ import { HiOutlineTrash } from "react-icons/hi";
 import { HiPencil } from "react-icons/hi";
 
 const AddOrganizator = ({badges}) =>{
-
+console.log('badges', badges)
     return(
         <>
-            {badges.map((data) => {
+            {/* {badges.map((data) => {
                 return(
                     <div className='second__main-details' key={data.id}>
                         <div className='check'>
@@ -22,7 +22,7 @@ const AddOrganizator = ({badges}) =>{
                         </div>
                     </div>
                 )
-            })}
+            })} */}
         </>
     )
 }

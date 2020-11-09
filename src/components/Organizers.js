@@ -7,36 +7,41 @@ import ApiEventzi from '../utils/ApiEventzi';
 
 const Organizers = () => {
 
-  ApiEventzi.getOrganizers(25)
-  .then((response) => console.log(response))
-  .catch((error) => console.log(error))
-
   const [Omodal, setOmodal] = useState(false)
 
   const handleOpenModal = () =>{
     setOmodal(!Omodal)
   }
 
+  ApiEventzi.getOrganizers(25)
+  .then((response) => (response.data.data))
+  .catch((error) => console.log(error))
+
+//   .then(response => {
+//     console.log(response.data.data)
+//     let badge = response.data.data
+// })
+
   // Props para componente AddOrganizator
-  const [badge, setBadge] = useState([{
-      'id':'123',
-      'name':'Francisco Araujo',
-      'email':'pan.x92@gmail.com',
-      'event':'Event 2020'
-    },
-    {
-      'id':'234',
-      'name':'Nancy Salazar',
-      'email':'nancysalazar@platzi.com',
-      'event':'Event 2021'
-    },
-    {
-      'id':'387',
-      'name':'Jairo Ramirez',
-      'email':'trolljairo@gmail.com',
-      'event':'Algun dia'
-    }
-  ])
+  // const [badge, setBadge] = useState([{
+  //     'id':'123',
+  //     'name':'Francisco Araujo',
+  //     'email':'pan.x92@gmail.com',
+  //     'event':'Event 2020'
+  //   },
+  //   {
+  //     'id':'234',
+  //     'name':'Nancy Salazar',
+  //     'email':'nancysalazar@platzi.com',
+  //     'event':'Event 2021'
+  //   },
+  //   {
+  //     'id':'387',
+  //     'name':'Jairo Ramirez',
+  //     'email':'trolljairo@gmail.com',
+  //     'event':'Algun dia'
+  //   }
+  // ])
 
   return (
     <>

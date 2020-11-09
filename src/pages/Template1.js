@@ -6,7 +6,6 @@ import SuscribeForm from "../components/SuscribeForm";
 import EventAbout from "../components/EventAbout";
 import Countdown from "react-countdown";
 import FormatDate from "../utils/FormatDate";
-
 import { MdPlace, MdEvent } from "react-icons/md";
 
 class Template1 extends React.Component {

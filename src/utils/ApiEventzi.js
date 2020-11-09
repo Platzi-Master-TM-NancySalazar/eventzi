@@ -39,21 +39,56 @@ const ApiEventzi = {
   upcoming() {
     return callApiGet(`/events/upcoming`)
   },
-  getOrganizations(){
+  getOrganizations() {
     return callApiGet('/organizations/orgsByUser')
   },
-  newOrganization(organization_name, description){
+  newOrganization(organization_name, description) {
     let data = {
       organization_name,
       description,
     }
     return callApiPost('/organizations', data)
   },
-
-  getOrganizers(organizationId){
+  getEventsByOrganization(organizationId) {
+    return callApiGet(`/organizations/${organizationId}/events`)
+  },
+  newEvent(
+    id_organization,
+    event_name,
+    event_type,
+    status_,
+    event_description,
+    date,
+    url,
+    template
+  ) {
+    let data = {
+      event_name,
+      event_type,
+      status_,
+      event_description,
+      date,
+      url,
+      template,
+    }
+    return callApiPost(`/events/organizations/${id_organization}`, data)
+  },
+  testEvent() {
+    let data = {
+      event_name: 'Testing',
+      event_type: 'Online',
+      status_: 'Published',
+      event_description: 'Insert description',
+      date: '2020-11-11 18:00:00',
+      url: 'www.google.com',
+      template: 'Template 1',
+    }
+    return callApiPost(`/events/organizations/59`, data)
+  },
+  getOrganizers(organizationId) {
     return callApiGet(`/organizations/${organizationId}/events/organizers`)
   },
-  sendAgenda(userId, organizationId, data ){
+  sendAgenda(userId, organizationId, data) {
     return callApiPost(`events/${userId}/speaker/${organizationId}/schedule`, data)
   }
 }

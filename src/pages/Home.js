@@ -26,7 +26,13 @@ const Home = () => {
               sensitivity: "base",
             })
           );
-          setState({ ...state, loading: false, data: data });
+          console.log(data)
+          if (data.length > 0) {
+            setState({ ...state, loading: false, data: data });
+          } else {
+            setState({ ...state, loading: false, error: true });
+          }
+          
         })
         .catch((err) => {
           console.log(err);

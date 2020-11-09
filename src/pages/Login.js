@@ -24,6 +24,7 @@ const Login = () => {
   }
 
   const loginUser = ({ email, password }, redirectUrl) => {
+
     ApiEventzi.login(email, password)
       .then((response) => {
         let token = response.data.token

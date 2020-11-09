@@ -5,17 +5,21 @@ import Organization from './Organization'
 import CreateOrganization from '../components/CreateOrganization'
 import ApiEventzi from '../utils/ApiEventzi'
 
+import { HiOutlinePlusCircle } from 'react-icons/hi'
+
 const Events = () => {
   const [openModal, setOpenModal] = useState(false)
   const [organizations, setOrganizations] = useState([])
 
   useEffect(() => {
-    ApiEventzi.getOrganizations()
-    .then((response) => {
-      setOrganizations(response.data.data)
-    })
-    .catch((err) => console.log(err))
-  }, [])
+    if (!organizations.length) {
+      ApiEventzi.getOrganizations()
+        .then((response) => {
+          setOrganizations(response.data.data)
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [organizations])
 
   const modalOpen = () => {
     setOpenModal(true)
@@ -29,6 +33,7 @@ const Events = () => {
     ApiEventzi.newOrganization(form.name, form.description)
       .then((response) => {
         if (response.status) {
+          setOrganizations([])
           setOpenModal(false)
         }
       })
@@ -49,15 +54,15 @@ const Events = () => {
       )}
       <div className='events_buttons'>
         <button onClick={modalOpen} className='events_button'>
+          <HiOutlinePlusCircle className='events_button__icon' />
           Create organization
-        </button>
-        <button className='events_button events_button-light'>
-          Organizations
         </button>
       </div>
 
       {organizations.map((organization) => {
-        return <Organization {...organization} key={organization.id_organization} />
+        return (
+          <Organization {...organization} key={organization.id_organization} />
+        )
       })}
     </div>
   )

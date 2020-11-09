@@ -12,7 +12,8 @@ import AdminPanel from "../pages/AdminPanel";
 import { Context } from "../context/Context";
 
 const App = () => {
-  const { isAuth } = useContext(Context);
+  // const { isAuth } = useContext(Context);
+  const isAuth = true
   console.log(isAuth);
   return (
     <BrowserRouter>

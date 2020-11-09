@@ -1,5 +1,59 @@
 .organization-event{
-  width: 94%;
-  height: 80px;
-  background-color: blue;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: $bg-color;
+  margin: 20px; 
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.20);
+
+  &:not(:first-of-type){
+    padding-top: 0px;
+  }
+
+  &__setup{
+    margin-top: 20px;
+    margin-right: 10px;
+    font-size: 24px;
+    color: #ff1744;
+  }
+
+  &__message{
+    color: $primary-color;
+    font-size: 1.6rem;
+  }
+
+  &__container{
+    width: 100%;
+  }
+
+  &__detail{
+    position: absolute;
+    top: 0;
+    left: 20px;
+    margin-top: 10px;
+  }
+
+  &__text{
+    color: $white-color;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+  
+  &__figure{
+    width: 220px;
+    height: 70px;
+    background-color: #333333;
+    position: relative;
+
+    &::after{
+      position: absolute;
+      bottom: 0;
+      left: 100%;
+      content: '';
+      border-bottom: 70px solid transparent;
+      border-left: 60px solid #333333;
+    }
+  }
 }

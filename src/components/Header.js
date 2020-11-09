@@ -5,7 +5,12 @@ import { Context } from "../context/Context";
 
 export default function NavBar() {
   const { removeAuth } = useContext(Context);
-  const { isAuth } = useContext(Context);
+  const { isAuth  } = useContext(Context);
+  const { setSearch  } = useContext(Context);
+
+  const handleChange = (event) => {
+    setSearch(event.target.value)
+  }
 
   return (
     <header className="header">
@@ -16,6 +21,7 @@ export default function NavBar() {
       <nav className="header--nav">
         <ul className="header--nav-link">
           <input
+            onChange={handleChange}
             className="header--search"
             type="text"
             placeholder="Search event"

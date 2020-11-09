@@ -13,29 +13,16 @@ const Organizers = () => {
     setOmodal(!Omodal)
   }
 
-<<<<<<< HEAD
   const [badge, setBadge] = useState([])
-=======
-  const [badge, setBadge] = useState('')
->>>>>>> c1198238db90025602f6cea14d265b6ce3fe6d14
 
   React.useEffect(() => {
     ApiEventzi.getOrganizers(25)
-<<<<<<< HEAD
     .then(response => {
       let newBadge = response.data.data
       setBadge(newBadge)
     })
     .catch((error) => console.log(error))
   },[])
-=======
-      .then(response => {
-        console.log('info', response.data.data)
-        let newBadge = response.data.data
-        setBadge(newBadge)
-      })
-  }, [])
->>>>>>> c1198238db90025602f6cea14d265b6ce3fe6d14
 
   return (
     <>
@@ -58,12 +45,8 @@ const Organizers = () => {
         </div>
         <div className='second--main-content'>
 
-<<<<<<< HEAD
-          <AddOrganizator badges={badge}/>
-=======
           <AddOrganizator badges={badge} />
 
->>>>>>> c1198238db90025602f6cea14d265b6ce3fe6d14
 
         </div>
       </div>

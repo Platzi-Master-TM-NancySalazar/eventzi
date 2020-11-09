@@ -3,11 +3,6 @@ import { HiOutlineTrash } from "react-icons/hi";
 import { HiPencil } from "react-icons/hi";
 
 const AddOrganizator = ({badges}) =>{
-<<<<<<< HEAD
-=======
-console.log('badges', badges)
-
->>>>>>> c1198238db90025602f6cea14d265b6ce3fe6d14
     return(
         <>
             {badges.map((data) => {

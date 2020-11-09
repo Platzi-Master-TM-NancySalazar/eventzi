@@ -4,6 +4,7 @@ import { HiPencil } from "react-icons/hi";
 
 const AddOrganizator = ({badges}) =>{
 console.log('badges', badges)
+
     return(
         <>
             {/* {badges.map((data) => {

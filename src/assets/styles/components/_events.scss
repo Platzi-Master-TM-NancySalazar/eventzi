@@ -40,14 +40,21 @@
 
   &_button {
     height: 30px;
-    width: 130px;
+    width: 160px;
     border-radius: 5px;
     border: none;
     background-color: $auxiliar-color2;
     color: white;
     cursor: pointer;
     outline: none;
+    font-size: 1.4rem;
     transition: 0.4s ease all;
+
+    &__icon{
+      margin-right: 4px;
+      margin-bottom: -4px;
+      font-size: 18px;
+    }
 
     
     &:hover {
@@ -70,7 +77,7 @@
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #f4f4f4;
+    background-color: $bg-color;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid $secondary-color;
@@ -78,6 +85,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &-open{
+      margin-bottom: 0px;
+    }
 
     &-header{
       display: flex;
@@ -98,6 +109,7 @@
       border: none;
       outline: none;
       cursor: pointer;
+      background-color: $bg-color;
     }
   }
 

@@ -17,7 +17,7 @@ const Organization = ({ id_organization, organization_name }) => {
 
   return (
     <>
-      <div className='events_organization'>
+      <div className={`events_organization ${openEvents && 'events_organization-open'}`}>
         <div className='events_organization-header'>
           <figure className='events_container_logo'>
             <img src={logo_white} className='events_logo' />
@@ -33,10 +33,9 @@ const Organization = ({ id_organization, organization_name }) => {
           </button>
         </div>
       </div>
-      {
-        openEvents && <Event />
-      }
-      
+      <div className='organization-event__container'>
+        {openEvents && <Event id_organization={id_organization} />}
+      </div>
     </>
   )
 }

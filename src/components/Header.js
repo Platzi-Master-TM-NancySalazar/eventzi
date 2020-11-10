@@ -1,30 +1,53 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import logo from '../assets/static/logo_full.png'
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/static/logo_full.png";
+import { Context } from "../context/Context";
 
 export default function NavBar() {
+  const { removeAuth } = useContext(Context);
+  const { isAuth  } = useContext(Context);
+  const { setSearch  } = useContext(Context);
+
+  const handleChange = (event) => {
+    setSearch(event.target.value)
+  }
+
   return (
-    <header className='header'>
-      <Link to='/'>
-        <img className='header--img' src={logo} alt='Logo Eventzi' />
+    <header className="header">
+      <Link to="/">
+        <img className="header--img" src={logo} alt="Logo Eventzi" />
       </Link>
 
-      <nav className='header--nav'>
-        <ul className='header--nav-link'>
+      <nav className="header--nav">
+        <ul className="header--nav-link">
           <input
-            className='header--search'
-            type='text'
-            placeholder='Search event'
+            onChange={handleChange}
+            className="header--search"
+            type="text"
+            placeholder="Search event"
           />
-        </ul>
-        <Link to='/singup' className='header--nav-link'>
-          <ul>Sign up</ul>
-        </Link>
 
-        <Link to='/login'>
-          <ul className='header--nav-link'>Log in</ul>
-        </Link>
+          {isAuth ? (
+            <>
+              <Link to="/login" className="header-nav__logout">
+                <ul className="header--nav-link" onClick={() => removeAuth()}>
+                  Log out<output></output>
+                </ul>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/signup" className="header--nav-link">
+                <ul>Sign up</ul>
+              </Link>
+
+              <Link to="/login">
+                <ul className="header--nav-link">Log in</ul>
+              </Link>
+            </>
+          )}
+        </ul>
       </nav>
     </header>
-  )
+  );
 }

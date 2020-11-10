@@ -1,30 +1,32 @@
-import React from 'react'
-import image from '../assets/static/Elon-Musk-2010.jpg'
+import React from "react";
+import { AiOutlineTwitter } from "react-icons/ai";
 
-const Speaker = () => {
+const Speaker = (props) => {
   return (
-    <div className="speaker__card">
+    <div className={"speaker__card"}>
       <div className="speaker__overlay">
         <div className="speaker__info">
           <div className="speaker__name">
-            <p>Elon Musk</p>
+            <p>{props.name}</p>
           </div>
           <div className="speaker__title">
-            <p>CEO of SpaceX</p>
+            <p>{props.title}</p>
           </div>
           <div className="speaker__description">
-            <small>Elon Reeve Musk is the founder, CEO, CTO and chief designer of SpaceX</small>
+            <small>{props.description}</small>
           </div>
           <div className="speaker__twitter">
-            <a href=""></a>
-          </div>    
+            <a href={`https://twitter.com/${props.twitter}`} target="blank">
+              <AiOutlineTwitter />
+            </a>
+          </div>
         </div>
       </div>
       <div className="speaker__image-container">
-        <img className="speaker__image" src={image} alt="Speaker image"/>
+        <img className="speaker__image" src={props.image} alt="Speaker image" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Speaker
+export default Speaker;

@@ -1,39 +1,86 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { MdLockOutline, MdMailOutline } from "react-icons/md";
+import { MdLockOutline, MdMailOutline } from 'react-icons/md'
+import ApiEventzi from '../utils/ApiEventzi'
 
+import { Context } from '../context/Context'
 
-export default function Login() {
-    return (
-        <div className="login">
-            <div className="negro">
+const Login = () => {
+  let history = useHistory()
+  const { activateAuth } = useContext(Context)
+  const [form, setForm] = useState(null)
 
-                <form className="login__container">
-                    <label htmlFor="email">
-                        <span><MdMailOutline /></span>
-                        <input type="text" id="email" name="email" placeholder="Email Address" />
-                    </label>
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    })
+  }
 
-                    <label htmlFor="password2">
-                        <span><MdLockOutline /></span>
-                        <input type="text" name="password" placeholder="Password" />
-                    </label>
-                    <div className="login__container-more">
-                        <p><input type="checkbox" value="1" id="checkboxOneInput" />Remember me</p>
-                        <p className="italic">Forgot Password?</p>
-                    </div>
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    loginUser(form, '/admin_panel')
+  }
 
-                    <button>LOGIN</button>
+  const loginUser = ({ email, password }, redirectUrl) => {
 
-                </form>
-                <Link to="/" className="login__bottom">
-                    <p>Create a new account</p>
-                </Link>
+    ApiEventzi.login(email, password)
+      .then((response) => {
+        let token = response.data.token
+        if (token) {
+          history.push(redirectUrl)
+        }
+        activateAuth(token)
+      })
+      .catch((err) => console.log(err))
 
+  }
 
+  return (
+    <div className='login'>
+      <div className='negro'>
+        <form className='login__container' onSubmit={handleSubmit}>
+          <label htmlFor='email'>
+            <span>
+              <MdMailOutline />
+            </span>
+            <input
+              type='text'
+              id='email'
+              name='email'
+              placeholder='Email Address'
+              onChange={handleInput}
+            />
+          </label>
 
-            </div>
+          <label htmlFor='password2'>
+            <span>
+              <MdLockOutline />
+            </span>
+            <input
+              type='password'
+              name='password'
+              placeholder='Password'
+              onChange={handleInput}
+            />
+          </label>
+          <div className='login__container-more'>
+            <p>
+              <input type='checkbox' value='1' id='checkboxOneInput' />
+              Remember me
+            </p>
+            <p className='italic'>Forgot Password?</p>
+          </div>
 
-        </div>
-    )
+          <button type='submit'>LOGIN</button>
+        </form>
+        <Link to='/signup' className='login__bottom'>
+          <p>Create a new account</p>
+        </Link>
+      </div>
+    </div>
+  )
 }
+
+export default Login

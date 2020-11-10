@@ -1,22 +1,22 @@
-import React from 'react'
+import React from "react";
 
-const Talk = () => {
+const Talk = (props) => {
   return (
     <div className="talk">
       <div className="talk__day">
-        <p id="talkDay">day</p>
+        <p>{props.day}</p>
       </div>
       <div className="talk__time">
-        <p id="talkTime">time</p>
+        <p>{props.time}</p>
       </div>
       <div className="talk__name">
-        <p id="talkName">name</p>
+        <p className="talk__name--strong">{props.title}</p>
+        <p>{props.speaker}</p>
       </div>
       <div className="talk__description">
-        <p id="talkDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus repudiandae voluptates incidunt, quas quibusdam dignissimos perspiciatis et perferendis cumque assumenda</p>
+        <p>{props.description}</p>
       </div>
     </div>
-  )
-}
-
-export default Talk
+  );
+};
+export default Talk;

@@ -1,26 +1,40 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React, { useContext } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Layout from '../components/Layout'
-import Home from '../pages/Home'
-import SignUp from '../pages/SignUp'
-import SignUp2 from '../pages/SignUp2'
-import Login from '../pages/Login'
-import Template1 from '../pages/Template1'
+import Layout from "../components/Layout";
+import Home from "../pages/Home";
+import SignUp from "../pages/SignUp";
+import Login from "../pages/Login";
+import Event from "../pages/Event";
+import NotFound from "../pages/NotFound";
+import AdminPanel from "../pages/AdminPanel";
 
+import { Context } from "../context/Context";
 
-const App = () => (
+const App = () => {
+  // const { isAuth } = useContext(Context);
+  const isAuth = true
+  console.log(isAuth);
+  return (
     <BrowserRouter>
-        <Layout>
-            <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/singup' component={SignUp} />
-                <Route exact path='/signup2' component={SignUp2} />
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/template1' component={Template1} />
-            </Switch>
-        </Layout>
-    </BrowserRouter>
-)
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
 
-export default App
+          {isAuth ? (
+            <Route exact path="/admin_panel" component={AdminPanel} />
+          ) : (
+            <Route exact path="/admin_panel" component={Login} />
+          )}
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/events/:eventId" component={Event} />
+          <Route exact path="/admin_panel" component={AdminPanel} />
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
+  );
+};
+
+export default App;

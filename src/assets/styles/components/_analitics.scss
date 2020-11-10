@@ -1,0 +1,27 @@
+.analitics {
+  width: 100%;
+
+  &_title{
+    border-bottom: 2px solid $auxiliar-color2;
+  }
+
+  &_display {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 460px);
+    gap: 50px;
+    justify-content: space-between;
+  }
+
+  &_titles {
+    font-size: 2.5rem;
+    color: $primary-color;
+    margin-bottom: 20px;
+  }
+
+  &_chart{
+    text-align: left;
+    margin-bottom: 40px;
+  }
+}
+

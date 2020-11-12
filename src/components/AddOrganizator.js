@@ -3,27 +3,25 @@ import { HiOutlineTrash } from "react-icons/hi";
 import { HiPencil } from "react-icons/hi";
 
 const AddOrganizator = ({badges}) =>{
-console.log('badges', badges)
-
     return(
         <>
-            {/* {badges.map((data) => {
+            {badges.map((data) => {
                 return(
-                    <div className='second__main-details' key={data.id}>
+                    <div className='second__main-details' key={data.id_user}>
                         <div className='check'>
                             <input type='checkbox'/>
-                            <p>{data.id}</p>
+                            <p>{data.id_user}</p>
                         </div>
-                        <p className='content-name'>{data.name}</p>
+                        <p className='content-name'>{data.full_name}</p>
                         <p className='content-email'>{data.email}</p>
-                        <p className='content-event'>{data.event}</p>
+                        <p className='content-event'>{data.event_name}</p>
                         <div>
                             <a href='#'><HiPencil className='icon-details-pencil'/></a>
                             <a href='#'><HiOutlineTrash className='icon-details'/></a>
                         </div>
                     </div>
                 )
-            })} */}
+            })}
         </>
     )
 }

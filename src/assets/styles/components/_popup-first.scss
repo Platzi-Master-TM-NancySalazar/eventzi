@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // visibility: hidden;
 }
 
 .popup--container-details {
@@ -22,33 +21,28 @@
   display: grid;
   grid-template: repeat(5, 1fr) / 1fr;
   border-radius: 5px;
-  transition: 0.3s ease all;
-  //   opacity: 0;
-  transform: scale(0.7);
+
+  & p {
+    font-size: 16px;
+  }
 }
 
-/* .popup--container-details > *{
-    border: 1px solid red;
-} */
-
 .popup--details-form {
-  /* background-color: red; */
   float: left;
   height: 30px;
-  /* width: 27.33%; */
   position: relative;
   display: flex;
   justify-content: space-between;
-}
 
-.popup--details-form > input {
-  width: 75%;
-  height: 30px;
-  border: none;
-  border-bottom: 1px solid #acacac;
-  outline: none;
-  line-height: 15px;
-  padding: 5px;
+  & > input {
+    width: 50%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #acacac;
+    outline: none;
+    line-height: 15px;
+    padding: 5px;
+  }
 }
 
 .popup--input ~ .popup--input-focus {
@@ -62,8 +56,15 @@
 }
 
 .popup--input:focus ~ .popup--input-focus {
-  width: 75%;
+  width: 50%;
   transition: 0.4s;
+}
+
+.popup--details-select {
+  width: 30%;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #acacac;
 }
 
 .button-popup {
@@ -121,19 +122,10 @@
 }
 
 .button--popup-close:hover {
-  /* background-color: rgba(0, 125, 227, .9);
-    color: rgba(200, 200, 200, .9); */
   background-color: white;
   color: #2d9cdb;
   border: 1px solid #2d9cdb;
 }
-
-/* Animation popup */
-
-// .popup--container-details.active {
-//   opacity: 1;
-//   transform: scale(1);
-// }
 
 .newOrganizator {
   height: 50px;
@@ -146,14 +138,9 @@
   box-shadow: 5px 5px 5px 0 #20212447;
   border: 1px solid #20212447;
   position: relative;
-  /* top: -5px; */
 }
 
 .newOrganizator > a {
-  /* border: 1px solid red; */
-  /* height: 100%;
-    width: 100%; */
-  /* text-align: center; */
   color: #20212447;
   padding-left: 10px;
 }
@@ -177,12 +164,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  //   visibility: hidden;
 }
-
-// .overlay-second.active {
-//   visibility: active;
-// }
 
 .popup--container-add {
   font-size: 1.8rem;
@@ -195,12 +177,5 @@
   display: grid;
   grid-template: repeat(5, 1fr) / 1fr;
   transition: 0.3s ease all;
-  //   opacity: 0;
   transform: scale(0.7);
-  /* display: grid;
-    grid-template: repeat(5, 1fr) / 1fr;
-    border-radius: 5px;
-    transition: .3s ease all;
-    opacity: 0;
-    transform: scale(0.7); */
 }

@@ -1,27 +1,39 @@
-import React from 'react'
-// import Portal from './Portal'
-// import ReactDOM from 'react-dom'
-// import Portal2 from './Portal2'
+import React, {useState} from 'react'
+import ApiEventzi from '../utils/ApiEventzi'
+import Select from './Select'
 
 const PopupFirst = ({evenChange}) => {
+
+    const [badge, setBadge] = useState([])
+
+    React.useEffect(()=> {
+        ApiEventzi.getEvents(25)
+        .then(response => {
+            let newBagde = response.data.data
+            setBadge(newBagde)
+        })
+        .catch((error) => console.log(error))
+    }, [])
+
+    const [change, setChange] = useState('')
+
+    const handleChange = (event)=>{
+        setChange(event.target.value)
+    }
 
     return (
             <section className="overlay" id="overlay">
              <div className="popup--container-details" id="popup--container-details">
-                 <h2>Add Organizations to event</h2>
+                 <h2>Add organizers to the event</h2>
                  <p>No trabajes solo, agrega organizadores al evento para que te den una mano</p>
                  <div className="popup--details-form">
-                     <input id="input_text" className="popup--input" type="text" placeholder="Escribe un nombre" autoComplete="off"/>
+                     <input onChange={handleChange} name="input_text" className="popup--input" type="text" placeholder="Write a name" autoComplete="off"/>
                      <span className="popup--input-focus"></span>
+                     <Select badges={badge}/>
+                         
                      <button className="button-popup">Add</button>
                  </div>
-                 <div className="newOrganizator">
-                     <span className="icon-user-plus"></span>
-                     <a href="#" id="newOrganizator">Add Jairo Ramirez Castaño as Organizer</a>
-                 </div>
                  <div className="container--details">
-                     <img src="https://lh3.googleusercontent.com/ogw/ADGmqu_ksm6Ql15mCzcSRiahXsgeljHqXoPqOfDWWnlo=s32-c-mo" alt=""/>
-                     <p>Jairo Ramirez Castaño</p>
                      <a href="#"><span className="icon-close-outline"></span></a>
                  </div>
                  <div className="section-close">

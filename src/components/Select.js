@@ -5,10 +5,11 @@ const Select = ({badges})=>{
         <>
             {badges.map((data)=>{
                 return(
-                    <select className='popup--details-select' key={badges.id_event_}>
-                        <option>Select event</option>
-                            <option >{data.event_name}</option>
-                    </select>
+                    // <select className='popup--details-select' key={badges.id_event_}>
+                    //     <option>Select event</option>
+                    //     <option>{data.event_name}</option>
+                    // </select>
+                    <p>{data.event_name}</p>
                 )
             })}
         </>

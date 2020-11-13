@@ -97,6 +97,9 @@ const ApiEventzi = {
   getOrganizers(organizationId) {
     return callApiGet(`/organizations/${organizationId}/events/organizers`)
   },
+  getEvents(organizationId){
+    return callApiGet(`organizations/${organizationId}/events`)
+  },
   deleteEvent(eventId) {
     return callApiDelete(`events/${eventId}`)
   },

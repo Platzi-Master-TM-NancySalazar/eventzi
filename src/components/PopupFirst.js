@@ -19,7 +19,10 @@ const PopupFirst = ({evenChange}) => {
 
     const handleChange = (event)=>{
         setChange(event.target.value)
+        console.log(event.target.value)
     }
+
+    
 
     return (
             <section className="overlay" id="overlay">
@@ -29,8 +32,12 @@ const PopupFirst = ({evenChange}) => {
                  <div className="popup--details-form">
                      <input onChange={handleChange} name="input_text" className="popup--input" type="text" placeholder="Write a name" autoComplete="off"/>
                      <span className="popup--input-focus"></span>
-                     <Select badges={badge}/>
-                         
+                     <select className='popup--details-select'>
+                        <option>Select event</option>
+                        <Select badges={badge}/>
+                    </select>
+                     
+                    
                      <button className="button-popup">Add</button>
                  </div>
                  <div className="container--details">

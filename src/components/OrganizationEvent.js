@@ -3,8 +3,9 @@ import ApiEventzi from '../utils/ApiEventzi'
 import SpeakerModal from '../modals/SpeakerModal'
 import GeneralModal from '../modals/GeneralModal'
 import AssociateModal from '../modals/AssociateModal'
-
-import CreateEvent from '../components/CreateEvent'
+// import EditAssociate from '../modals/EditAssociate'
+// import EditGeneral from '../modals/EditGeneral'
+// import EditSpeaker from '../modals/EditSpeaker'
 
 import { MdDelete } from 'react-icons/md'
 
@@ -42,11 +43,23 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
     console.log('Associates', id_event_)
   }
 
+  const speakerClose = () => {
+    setOpenSpeaker(false)
+  }
+
+  const associateClose = () => {
+    setOpenAssociate(false)
+  }
+
+  const generalClose = () => {
+    setOpenGeneral(false)
+  }
+
   const handleSubmit = () => {
     console.log('click')
-    // setOpenModal(true)
-
   }
+
+
   return (
     <div className='organization-event'>
       <div className='organization-event__figure'>
@@ -61,27 +74,30 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
       <button onClick={() => handleSpeakers(id_event_)}>Editar speakers</button>
       {openSpeaker && (
         <SpeakerModal
-        // title='Create event'
-        // content={<CreateEvent submit={handleSubmit} />}
-        // modalClose={modalClose}
+          title='Speakers'
+          // content={<EditSpeaker submit={handleSubmit} />}
+          speakerClose={speakerClose}
+          id={id_event_}
         />
       )}{' '}
 
       <button onClick={() => handleAssociates(id_event_)}>Editar Associates</button>
       {openAssociate && (
         <AssociateModal
-        // title='Create event'
-        // content={<CreateEvent submit={handleSubmit} />}
-        // modalClose={modalClose}
+          title='Associates'
+          // content={<EditAssociate submit={handleSubmit} />}
+          associateClose={associateClose}
+          id={id_event_}
         />
       )}{' '}
 
       <button onClick={() => handleGeneral(id_event_)}>Editar General</button>
       {openGeneral && (
         <GeneralModal
-        // title='Create event'
-        // content={<CreateEvent submit={handleSubmit} />}
-        // modalClose={modalClose}
+          title='General information'
+          // content={<CreateEvent submit={handleSubmit} />}
+          generalClose={generalClose}
+          id={id_event_}
         />
       )}{' '}
     </div>

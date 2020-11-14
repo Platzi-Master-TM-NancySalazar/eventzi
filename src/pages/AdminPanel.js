@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SideBar from "../components/SideBar";
 
 import Events from "../components/Events";
-import Edit from "../components/Edit";
+// import Edit from "../components/Edit";
 import Organizers from "../components/Organizers";
 import Diffusion from "../components/Diffusion";
 import Analitics from "../components/Analitics";
@@ -23,8 +23,8 @@ const AdminPanel = () => {
       case "Events":
         return <Events />;
 
-      case "Edit":
-        return <Edit />;
+      // case "Edit":
+      //   return <Edit />;
 
       case "Organizers":
         return <Organizers />;

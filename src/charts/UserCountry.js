@@ -67,7 +67,7 @@ const UserCountry = () => {
 
   return (
     <div className='analitics_chart'>
-      <p>Nationality of users</p>
+      <p className='analitics__chart-title'>Nationality of users</p>
       <div id='user_country' />
       {loading ? <Loader /> : generateChart()}
     </div>

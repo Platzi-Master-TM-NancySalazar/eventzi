@@ -35,7 +35,7 @@ const UserStatus = () => {
 
   return (
     <div className='analitics_chart'>
-      <p>User status</p>
+      <p className='analitics__chart-title'>User status</p>
       <div id='user_status' />
       {loading ? <Loader /> : generateChart()}
     </div>

@@ -34,8 +34,8 @@ const UserGender = () => {
   }, [data])
 
   return (
-    <div className='analitics_chart'>
-      <p>Gender of users</p>
+    <div className='analitics__chart'>
+      <p className='analitics__chart-title'>Gender of users</p>
       <div id='user_gender' />
       {loading ? <Loader /> : generateChart()}
     </div>

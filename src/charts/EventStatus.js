@@ -36,7 +36,7 @@ const EventStatus = () => {
 
   return (
     <div className='analitics_chart'>
-      <p>Event status</p>
+      <p className='analitics__chart-title'>Event status</p>
       <div id='event_status' />
       {loading ? <Loader /> : generateChart()}
     </div>

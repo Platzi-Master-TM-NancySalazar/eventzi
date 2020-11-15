@@ -19,35 +19,35 @@ const SideBar = ({ handleOption, select }) => {
           onClick={() => handleOption('Events')}
           className={`link ${select === 'Events' ? 'link-active' : ''}`}
         >
-          <MdEventNote />
+          <MdEventNote className='link__icon'/>
           Events
         </a>
         <a
           onClick={() => handleOption('Edit')}
           className={`link ${select === 'Edit' ? 'link-active' : ''}`}
         >
-          <MdEdit />
+          <MdEdit className='link__icon'/>
           Edit
         </a>
         <a
           onClick={() => handleOption('Organizers')}
           className={`link ${select === 'Organizers' ? 'link-active' : ''}`}
         >
-          <MdPeopleOutline />
+          <MdPeopleOutline className='link__icon'/>
           Organizers
         </a>
         <a
           onClick={() => handleOption('Diffusion')}
           className={`link ${select === 'Diffusion' ? 'link-active' : ''}`}
         >
-          <MdSettingsInputAntenna />
+          <MdSettingsInputAntenna className='link__icon'/>
           Diffusion
         </a>
         <a
           onClick={() => handleOption('Analitics')}
           className={`link ${select === 'Analitics' ? 'link-active' : ''}`}
         >
-          <MdInsertChart />
+          <MdInsertChart className='link__icon'/>
           Analitics
         </a>
       </section>

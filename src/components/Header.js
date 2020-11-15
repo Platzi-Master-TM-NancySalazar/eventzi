@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/static/logo_full.png'
-import { Context } from '../context/Context'
+
+import globalContext from '../context/globalContext'
 
 export default function NavBar () {
-  const { removeAuth } = useContext(Context)
-  const { isAuth } = useContext(Context)
-  const { setSearch } = useContext(Context)
+  const { user: { isAuth, userName }, logout, setSearch } = useContext(globalContext)
+
+  const { pathname } = useLocation()
 
   const handleChange = (event) => {
     setSearch(event.target.value)
@@ -20,18 +21,24 @@ export default function NavBar () {
 
       <nav className="header--nav">
         <ul className="header--nav-link">
-          <input
-            onChange={handleChange}
-            className="header--search"
-            type="text"
-            placeholder="Search event"
-          />
+          {
+            pathname === '/' && <input
+              onChange={handleChange}
+              className="header--search"
+              type="text"
+              placeholder="Search event"
+            />
+          }
 
           {isAuth
             ? <>
-              <Link to="/login" className="header-nav__logout">
-                <ul className="header--nav-link" onClick={() => removeAuth()}>
-                  Log out<output></output>
+              <p>{userName}</p>
+              <Link to="/admin_panel" className="header--nav-link">
+                <ul>Admin Panel</ul>
+              </Link>
+              <Link to="/" className="header-nav__logout">
+                <ul className="header--nav-link" onClick={() => logout()}>
+                  Logout<output></output>
                 </ul>
               </Link>
             </>
@@ -41,7 +48,7 @@ export default function NavBar () {
               </Link>
 
               <Link to="/login">
-                <ul className="header--nav-link">Log in</ul>
+                <ul className="header--nav-link">Login</ul>
               </Link>
             </>
           }

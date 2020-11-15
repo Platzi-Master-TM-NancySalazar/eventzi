@@ -8,7 +8,8 @@ import { MdClose } from "react-icons/md";
 const SpeakerModal = ({ speakerClose, title, id }) => {
     const [speakers, setSpeakers] = useState([])
     const [addNewSpeaker, setAddNewSpeaker] = useState(false)
-    const [editSpeaker, setEditSpeaker] = useState(false)
+    const [editSpeaker, setEditSpeaker] = useState([])
+
 
     useEffect(() => {
         ApiEventzi.getSpeakers(id)
@@ -21,8 +22,8 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
         setAddNewSpeaker(true)
     }
 
-    const handleEditSpeaker = () => {
-        setEditSpeaker(true)
+    const handleEditSpeaker = (speaker) => {
+        setEditSpeaker([true, speaker])
     }
 
     const addNewSpeakerClose = () => {
@@ -32,6 +33,8 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
     const editSpeakerClose = () => {
         setEditSpeaker(false)
     }
+
+    let speakerModalInfo = editSpeaker[1]
 
     return (
         <Portal>
@@ -43,7 +46,6 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
                             <MdClose />
                         </button>
                     </div>
-                    {/* <div>{content}</div> */}
 
                     {speakers.length === 0
                         ?
@@ -52,14 +54,10 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
                         </>
                         :
                         speakers.map(speaker => {
-                            console.log('info del speaker', speaker)
                             return (
                                 <>
-                                    <p>{speaker.fullname}</p>
-                                    {/* <p>{speaker.bio}</p>
-                                    <p>{speaker.role_}</p>
-                                    <p>{speaker.twitter}</p> */}
-                                    <button onClick={() => { handleEditSpeaker() }}>Edit speaker</button>
+                                    <p key={speaker.id_speaker}>{speaker.fullname}</p>
+                                    <button onClick={() => { handleEditSpeaker(speaker) }}>Edit speaker</button>
                                 </>
                             )
                         })
@@ -73,12 +71,12 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
                         />
                     )}
 
-                    {editSpeaker && (
+                    {editSpeaker[0] === true && (
                         <EditSpeakerModal
                             title='Edit Speaker'
                             id={id}
                             editSpeakerClose={editSpeakerClose}
-                            speakers={speakers}
+                            speakerModalInfo={speakerModalInfo}
                         />
                     )}
 

@@ -31,13 +31,13 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
   }
 
   const handleAssociates = (id_event_) => {
-    console.log('Associates', id_event_)
     setOpenAssociate(true)
   }
 
   const handleGeneral = (id_event_) => {
     setOpenGeneral(true)
-    console.log('Associates', id_event_)
+    ApiEventzi.getGeneral(id_event_)
+      .then(console.log)
   }
 
   const speakerClose = () => {

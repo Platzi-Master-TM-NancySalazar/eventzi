@@ -67,6 +67,10 @@ const ApiEventzi = {
   getPartners(eventId) {
     return callApiGet(`/partners/events/${eventId}`)
   },
+  getGeneral(eventId) {
+    console.log('id que envias', eventId)
+    return callApiGet(`/events/${eventId}`)
+  },
   newEvent(
     id_organization,
     event_name,

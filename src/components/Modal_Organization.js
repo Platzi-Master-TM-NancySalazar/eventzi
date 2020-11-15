@@ -1,6 +1,6 @@
-import React from "react";
-import Portal from "./Portal";
-import { MdClose } from "react-icons/md";
+import React from 'react'
+import Portal from './Portal'
+import { MdClose } from 'react-icons/md'
 
 const Modal = ({ modalClose, title, content }) => {
   return (
@@ -17,7 +17,7 @@ const Modal = ({ modalClose, title, content }) => {
         </div>
       </div>
     </Portal>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

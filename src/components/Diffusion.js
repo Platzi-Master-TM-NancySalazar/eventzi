@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import logo from "../assets/static/logo-black.svg";
-import axios from "axios";
+import React, { useState } from 'react'
+import logo from '../assets/static/logo-black.svg'
+import axios from 'axios'
 
 const EventPanel = () => {
-  const [form, setForm] = useState(null);
+  const [form, setForm] = useState(null)
 
   const handleInput = (event) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value,
-    });
-  };
+      [event.target.name]: event.target.value
+    })
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    sendEmail(form);
-  };
+    event.preventDefault()
+    sendEmail(form)
+  }
 
   const sendEmail = ({ eventPanelTitle, eventPanelMessage }) => {
-    console.log("eventPanelTitle", eventPanelTitle);
-    console.log("eventPanelMessage", eventPanelMessage);
+    console.log('eventPanelTitle', eventPanelTitle)
+    console.log('eventPanelMessage', eventPanelMessage)
     axios({
-      method: "POST",
-      url: "https://eventziapi.herokuapp.com/difusion/events/1",
+      method: 'POST',
+      url: 'https://eventziapi.herokuapp.com/difusion/events/1',
       data: {
         title: eventPanelTitle,
-        message: eventPanelMessage,
-      },
+        message: eventPanelMessage
+      }
     })
       .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
 
   return (
     <>
@@ -75,7 +75,7 @@ const EventPanel = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default EventPanel;
+export default EventPanel

@@ -8,7 +8,7 @@ import Event from './OrganizationEvent'
 
 import {
   MdKeyboardArrowUp,
-  MdKeyboardArrowDown,
+  MdKeyboardArrowDown
 } from 'react-icons/md'
 
 const Organization = ({ id_organization, organization_name }) => {

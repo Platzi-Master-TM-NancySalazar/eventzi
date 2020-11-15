@@ -5,34 +5,31 @@ import General from './General'
 import Associates from './Associates'
 import ApiEventzi from '../utils/ApiEventzi'
 
-export default function Edit() {
-    const [organization, setOrganization] = useState('')
-    const [organizationOptions, setOrganizationOptions] = useState([])
+export default function Edit () {
+  const [organization, setOrganization] = useState('')
+  const [organizationOptions, setOrganizationOptions] = useState([])
 
-    React.useEffect(() => {
-        ApiEventzi.getOrganizations()
-            .then((data) => {
-                let orgInfo = data.data.data
-                console.log(orgInfo)
-                setOrganizationOptions(orgInfo)
-            })
-    }, [])
-    console.log('organization opt', organizationOptions)
-    const organizationId = organization
-    console.log('organizationId', organizationId)
-    return (
+  React.useEffect(() => {
+    ApiEventzi.getOrganizations()
+      .then((data) => {
+        const orgInfo = data.data.data
+        setOrganizationOptions(orgInfo)
+      })
+  }, [])
+  const organizationId = organization
+  return (
         <>
             <label htmlFor="organization">Organization
             <select
                     className="edit__organization"
                     id="organization"
                     onChange={(e) => {
-                        setOrganization(e.target.value)
+                      setOrganization(e.target.value)
                     }}
                 >
                     <option defaultValue></option>
                     {organizationOptions.map((option) => (
-                        <option id={option.id_organization}>{option.organization_name}</option>
+                        <option id={option.id_organization} key={option.id_organization}>{option.organization_name}</option>
                     ))}
 
                 </select>
@@ -56,6 +53,5 @@ export default function Edit() {
                 </div>
             </div>
         </>
-    )
+  )
 }
-

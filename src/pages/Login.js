@@ -1,20 +1,20 @@
 import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
+
 import { MdLockOutline, MdMailOutline } from 'react-icons/md'
 import ApiEventzi from '../utils/ApiEventzi'
 
 import { Context } from '../context/Context'
 
 const Login = () => {
-  let history = useHistory()
+  const history = useHistory()
   const { activateAuth } = useContext(Context)
   const [form, setForm] = useState(null)
 
   const handleInput = (event) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
   }
 
@@ -24,17 +24,15 @@ const Login = () => {
   }
 
   const loginUser = ({ email, password }, redirectUrl) => {
-
     ApiEventzi.login(email, password)
       .then((response) => {
-        let token = response.data.token
+        const token = response.data.token
         if (token) {
           history.push(redirectUrl)
         }
         activateAuth(token)
       })
       .catch((err) => console.log(err))
-
   }
 
   return (

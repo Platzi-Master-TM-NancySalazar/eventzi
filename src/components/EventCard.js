@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import event_image from "../assets/static/event_image.png";
+import event_image from '../assets/static/event_image.png'
 
 const EventCard = (props) => {
   return (
@@ -13,7 +13,7 @@ const EventCard = (props) => {
         <p className="event_card--text">{props.organizer}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EventCard;
+export default EventCard

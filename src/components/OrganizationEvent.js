@@ -3,18 +3,18 @@ import ApiEventzi from '../utils/ApiEventzi'
 
 import { MdDelete } from 'react-icons/md'
 
-const ContainerEvent = ({ event_name, date_, id_event_, clear } ) => {
+const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
   const handleDelete = (id_event_) => {
     ApiEventzi.deleteEvent(id_event_)
-    .then((response) => {
-      if (response.status == 200) {
-        clear([])
-      }
-    })
-    .catch((err) => console.log(err))
+      .then((response) => {
+        if (response.status === 200) {
+          clear([])
+        }
+      })
+      .catch((err) => console.log(err))
   }
 
-  let date = new Date(date_)
+  const date = new Date(date_)
   return (
     <div className='organization-event'>
       <div className='organization-event__figure'>

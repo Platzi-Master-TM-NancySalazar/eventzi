@@ -1,27 +1,26 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import ApiEventzi from '../utils/ApiEventzi'
 import Select from './Select'
 
-const PopupFirst = ({evenChange}) => {
+const PopupFirst = ({ evenChange }) => {
+  const [badge, setBadge] = useState([])
 
-    const [badge, setBadge] = useState([])
+  React.useEffect(() => {
+    ApiEventzi.getEventsByOrganization(25)
+      .then(response => {
+        const newBagde = response.data.data
+        setBadge(newBagde)
+      })
+      .catch((error) => console.log(error))
+  }, [])
 
-    React.useEffect(()=> {
-        ApiEventzi.getEventsByOrganization(25)
-        .then(response => {
-            let newBagde = response.data.data
-            setBadge(newBagde)
-        })
-        .catch((error) => console.log(error))
-    }, [])
+  const [setChange] = useState('')
 
-    const [change, setChange] = useState('')
+  const handleChange = (event) => {
+    setChange(event.target.value)
+  }
 
-    const handleChange = (event)=>{
-        setChange(event.target.value)
-    }
-
-    return (
+  return (
             <section className="overlay" id="overlay">
              <div className="popup--container-details" id="popup--container-details">
                  <h2>Add organizers to the event</h2>
@@ -30,7 +29,7 @@ const PopupFirst = ({evenChange}) => {
                      <input onChange={handleChange} name="input_text" className="popup--input" type="text" placeholder="Write a name" autoComplete="off"/>
                      <span className="popup--input-focus"></span>
                      <Select badges={badge}/>
-                         
+
                      <button className="button-popup">Add</button>
                  </div>
                  <div className="container--details">
@@ -42,7 +41,7 @@ const PopupFirst = ({evenChange}) => {
                  </div>
              </div>
          </section>
-    )
+  )
 }
 
 export default PopupFirst

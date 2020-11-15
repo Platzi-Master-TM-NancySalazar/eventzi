@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 class EventAbout extends React.Component {
-  render() {
+  render () {
     return (
       <section className="about">
         <h2 className="title">{this.props.name}</h2>
@@ -10,7 +10,7 @@ class EventAbout extends React.Component {
           <p id="aboutDescription">{this.props.description}</p>
         </div>
       </section>
-    );
+    )
   }
 }
-export default EventAbout;
+export default EventAbout

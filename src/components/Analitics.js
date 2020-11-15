@@ -1,6 +1,6 @@
 import React from 'react'
 
-import 'c3/c3.css';
+import 'c3/c3.css'
 
 import UserGender from '../charts/UserGender'
 import UserStatus from '../charts/UserStatus'

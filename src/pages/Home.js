@@ -14,7 +14,7 @@ const Home = () => {
     loading: true,
     data: [],
     filterData: [],
-    error: false,
+    error: false
   })
 
   const { search } = useContext(Context)
@@ -32,18 +32,17 @@ const Home = () => {
     if (data.length > 0 && !search) {
       setState({ ...state, filterData: data })
     }
-
   }, [data, search])
 
   useEffect(() => {
     if (!state.data.length && !state.error) {
       ApiEventzi.upcoming()
         .then((response) => {
-          let data = response.data.data
+          const data = response.data.data
           data.sort((a, b) =>
             a.event_name.localeCompare(b.event_name, undefined, {
               numeric: true,
-              sensitivity: 'base',
+              sensitivity: 'base'
             })
           )
           if (data.length > 0) {
@@ -67,7 +66,7 @@ const Home = () => {
     return <Error />
   }
 
-  console.log(state.filterData.length == 0)
+  console.log(state.filterData.length === 0)
   return (
     <>
       <div className='hero'>
@@ -78,7 +77,7 @@ const Home = () => {
         <h3 className='home_container--title'>Upcoming</h3>
         <div className='home_container--cards'>
           {
-            state.filterData.length == 0 && <h3 style={{marginBottom: '300px'}} >no search results.</h3>
+            state.filterData.length === 0 && <h3 style={{ marginBottom: '300px' }} >no search results.</h3>
           }
 
           {state.filterData.map((card) => {

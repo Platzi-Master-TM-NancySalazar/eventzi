@@ -1,43 +1,38 @@
 import React, { useState } from 'react'
-import axios from "axios"
+import axios from 'axios'
 
-export default function Associates(props) {
-    console.log('props', props)
-    const [form, setForm] = useState(null)
+export default function Associates (props) {
+  console.log('props', props)
+  const [form, setForm] = useState(null)
 
-    const handleInput = (event) => {
-        setForm({
-            ...form,
-            [event.target.name]: event.target.value,
-        })
-    }
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    })
+  }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        sendAssociates(form)
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    sendAssociates(form)
+  }
 
-    const upload = (e) => {
-        // console.log(e.target.files[0])
-        const image = e.target.files[0]
-    }
+  const sendAssociates = ({ associates__name, associates__url, associates__image }) => {
+    console.log(form)
+    axios({
+      method: 'POST',
+      url: 'https://eventziapi.herokuapp.com/partners/organizations/2/events/56',
+      data: {
+        name_: associates__name,
+        url: associates__url,
+        logo: associates__image
+      }
+    })
+      .then(data => console.log(data))
+      .catch((err) => console.log(err))
+  }
 
-    const sendAssociates = ({ associates__name, associates__url, associates__image }) => {
-        console.log(form)
-        axios({
-            method: 'POST',
-            url: 'https://eventziapi.herokuapp.com/partners/organizations/2/events/56',
-            data: {
-                name_: associates__name,
-                url: associates__url,
-                logo: associates__image
-            }
-        })
-            .then(data => console.log(data))
-            .catch((err) => console.log(err))
-    }
-
-    return (
+  return (
         <div className="associates">
 
             <div className="associates__container">
@@ -65,5 +60,5 @@ export default function Associates(props) {
 
             </div>
         </div>
-    )
+  )
 }

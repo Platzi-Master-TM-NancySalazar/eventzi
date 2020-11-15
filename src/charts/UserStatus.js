@@ -12,13 +12,13 @@ const UserStatus = () => {
       data: {
         columns: [
           ['Inactive', data[0]],
-          ['Active', data[1]],
+          ['Active', data[1]]
         ],
-        type: 'pie',
+        type: 'pie'
       },
       color: {
-        pattern: ['#9e9e9e','#00e676'],
-      },
+        pattern: ['#9e9e9e', '#00e676']
+      }
     })
   }
 

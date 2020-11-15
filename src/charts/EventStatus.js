@@ -13,13 +13,13 @@ const EventStatus = () => {
         columns: [
           ['Created', data[0]],
           ['Done', data[1]],
-          ['Published', data[2]],
+          ['Published', data[2]]
         ],
-        type: 'pie',
+        type: 'pie'
       },
       color: {
-        pattern: ['#2196f3', '#9e9e9e', '#00e676'],
-      },
+        pattern: ['#2196f3', '#9e9e9e', '#00e676']
+      }
     })
   }
 

@@ -12,13 +12,13 @@ const EventType = () => {
       data: {
         columns: [
           ['Online', data[0]],
-          ['Presential', data[1]],
+          ['Presential', data[1]]
         ],
-        type: 'pie',
+        type: 'pie'
       },
       color: {
-        pattern: ['#00e676', '#2196f3'],
-      },
+        pattern: ['#00e676', '#2196f3']
+      }
     })
   }
 

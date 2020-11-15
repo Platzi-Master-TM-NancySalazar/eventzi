@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { HiCog } from "react-icons/hi";
-import { HiOutlinePlusCircle } from "react-icons/hi";
-import PopupFirst from './PopupFirst';
-import AddOrganizator from './AddOrganizator';
-import ApiEventzi from '../utils/ApiEventzi';
+import { HiCog, HiOutlinePlusCircle } from 'react-icons/hi'
+
+import PopupFirst from './PopupFirst'
+import AddOrganizator from './AddOrganizator'
+import ApiEventzi from '../utils/ApiEventzi'
 
 const Organizers = () => {
-
   const [Omodal, setOmodal] = useState(false)
 
   const handleOpenModal = () => {
@@ -17,12 +16,12 @@ const Organizers = () => {
 
   React.useEffect(() => {
     ApiEventzi.getOrganizers(25)
-    .then(response => {
-      let newBadge = response.data.data
-      setBadge(newBadge)
-    })
-    .catch((error) => console.log(error))
-  },[])
+      .then(response => {
+        const newBadge = response.data.data
+        setBadge(newBadge)
+      })
+      .catch((error) => console.log(error))
+  }, [])
 
   return (
     <>
@@ -46,7 +45,6 @@ const Organizers = () => {
         <div className='second--main-content'>
 
           <AddOrganizator badges={badge} />
-
 
         </div>
       </div>

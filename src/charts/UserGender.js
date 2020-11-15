@@ -12,13 +12,13 @@ const UserGender = () => {
       data: {
         columns: [
           ['Female', data[0]],
-          ['Male', data[1]],
+          ['Male', data[1]]
         ],
-        type: 'pie',
+        type: 'pie'
       },
       color: {
-        pattern: ['#f73378', '#2196f3'],
-      },
+        pattern: ['#f73378', '#2196f3']
+      }
     })
   }
 

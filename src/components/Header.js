@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import logo from "../assets/static/logo_full.png";
-import { Context } from "../context/Context";
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import logo from '../assets/static/logo_full.png'
+import { Context } from '../context/Context'
 
-export default function NavBar() {
-  const { removeAuth } = useContext(Context);
-  const { isAuth  } = useContext(Context);
-  const { setSearch  } = useContext(Context);
+export default function NavBar () {
+  const { removeAuth } = useContext(Context)
+  const { isAuth } = useContext(Context)
+  const { setSearch } = useContext(Context)
 
   const handleChange = (event) => {
     setSearch(event.target.value)
@@ -27,16 +27,15 @@ export default function NavBar() {
             placeholder="Search event"
           />
 
-          {isAuth ? (
-            <>
+          {isAuth
+            ? <>
               <Link to="/login" className="header-nav__logout">
                 <ul className="header--nav-link" onClick={() => removeAuth()}>
                   Log out<output></output>
                 </ul>
               </Link>
             </>
-          ) : (
-            <>
+            : <>
               <Link to="/signup" className="header--nav-link">
                 <ul>Sign up</ul>
               </Link>
@@ -45,9 +44,9 @@ export default function NavBar() {
                 <ul className="header--nav-link">Log in</ul>
               </Link>
             </>
-          )}
+          }
         </ul>
       </nav>
     </header>
-  );
+  )
 }

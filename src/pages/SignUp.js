@@ -1,25 +1,25 @@
-import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { MdLockOutline, MdMailOutline } from "react-icons/md";
-import { FiUser } from "react-icons/fi";
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-export default function SignUp() {
-  let history = useHistory()
+import axios from 'axios'
+import { MdLockOutline, MdMailOutline } from 'react-icons/md'
+import { FiUser } from 'react-icons/fi'
+
+export default function SignUp () {
+  const history = useHistory()
   const [form, setForm] = useState(null)
 
   const handleInput = (event) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
     console.log(form)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    signUp(form, "/login")
+    signUp(form, '/login')
   }
 
   const signUp = ({ name, email, password, confirmPassword }, redirectUrl) => {
@@ -30,7 +30,7 @@ export default function SignUp() {
         data: {
           fullname: name,
           email: email,
-          psswd: password,
+          psswd: password
         }
       })
         .then((data) => {
@@ -44,9 +44,6 @@ export default function SignUp() {
       console.log('las contraseñas no coinciden')
     }
   }
-
-
-
 
   return (
     <div className="signup">

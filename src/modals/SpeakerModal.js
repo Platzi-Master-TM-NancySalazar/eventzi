@@ -30,10 +30,11 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
                         <p>No speaker added</p>
                         :
                         speakers.map(speaker => {
+                            console.log('info del speaker', speaker)
                             return (
                                 <>
-                                    <p>{speaker.bio}</p>
                                     <p>{speaker.fullname}</p>
+                                    <p>{speaker.bio}</p>
                                     <p>{speaker.role_}</p>
                                     <p>{speaker.twitter}</p>
 

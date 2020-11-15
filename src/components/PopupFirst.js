@@ -7,7 +7,7 @@ const PopupFirst = ({evenChange}) => {
     const [badge, setBadge] = useState([])
 
     React.useEffect(()=> {
-        ApiEventzi.getEvents(25)
+        ApiEventzi.getEventsByOrganization(25)
         .then(response => {
             let newBagde = response.data.data
             setBadge(newBagde)

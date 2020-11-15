@@ -97,11 +97,6 @@ const ApiEventzi = {
   getOrganizers(organizationId) {
     return callApiGet(`/organizations/${organizationId}/events/organizers`)
   },
-<<<<<<< HEAD
-  getEvents(organizationId){
-    return callApiGet(`organizations/${organizationId}/events`)
-  }
-=======
   deleteEvent(eventId) {
     return callApiDelete(`events/${eventId}`)
   },
@@ -111,7 +106,6 @@ const ApiEventzi = {
       data
     )
   },
->>>>>>> c1198238db90025602f6cea14d265b6ce3fe6d14
 }
 
 export default ApiEventzi

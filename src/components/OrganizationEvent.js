@@ -3,9 +3,6 @@ import ApiEventzi from '../utils/ApiEventzi'
 import SpeakerModal from '../modals/SpeakerModal'
 import GeneralModal from '../modals/GeneralModal'
 import AssociateModal from '../modals/AssociateModal'
-// import EditAssociate from '../modals/EditAssociate'
-// import EditGeneral from '../modals/EditGeneral'
-// import EditSpeaker from '../modals/EditSpeaker'
 
 import { MdDelete } from 'react-icons/md'
 
@@ -75,7 +72,6 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
       {openSpeaker && (
         <SpeakerModal
           title='Speakers'
-          // content={<EditSpeaker submit={handleSubmit} />}
           speakerClose={speakerClose}
           id={id_event_}
         />
@@ -85,7 +81,6 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
       {openAssociate && (
         <AssociateModal
           title='Associates'
-          // content={<EditAssociate submit={handleSubmit} />}
           associateClose={associateClose}
           id={id_event_}
         />
@@ -95,7 +90,6 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
       {openGeneral && (
         <GeneralModal
           title='General information'
-          // content={<CreateEvent submit={handleSubmit} />}
           generalClose={generalClose}
           id={id_event_}
         />
@@ -113,8 +107,6 @@ const Event = ({ id_organization }) => {
       ApiEventzi.getEventsByOrganization(id_organization)
         .then((response) => {
           if (response.data.data.length > 0) {
-            // console.log('esta es la respuesta que te interesa', response)
-            console.log(response.data.data)
             setEvents(response.data.data)
           } else {
             setMensaje('there are no events associated with the organization')

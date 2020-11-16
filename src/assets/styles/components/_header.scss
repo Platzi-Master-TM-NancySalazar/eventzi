@@ -31,11 +31,60 @@
 
   &--nav {
     display: flex;
+    align-items: center;
+    position: relative;
 
     &-link {
-      display: inline-block;
- 
+      display: flex;
+      align-items: center;
       margin: 0 15px;
+    }
+  }
+
+  &__user {
+    &-menu {
+      box-sizing: content-box;
+      position: absolute;
+      display: none;
+      top: 40px;
+      right: 0px;
+      width: 120px;
+      padding: 10px;
+      color: $primary-color;
+      background-color: $bg-color;
+      @include shadow;
+
+      &.active {
+        display: inline;
+      }
+
+      &-icon {
+        font-size: 24px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-left: 4px;
+
+        &:hover {
+          background-color: $auxiliar-color2;
+          @include shadow;
+        }
+      }
+    }
+
+    &-link {
+      display: flex;
+      padding: 4px 0;
+      margin: 10px 0;
+      transition: color 300ms ease-in-out;
+
+      &:hover {
+        color: $auxiliar-color2;
+      }
+
+      &-icon {
+        margin-right: 5px;
+      }
     }
   }
 }

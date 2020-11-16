@@ -25,12 +25,12 @@ const Organizers = () => {
 
   return (
     <>
-      <div className='main--container-buttons'>
-        <button onClick={handleOpenModal}>
-          <HiOutlinePlusCircle className='icon-add-outline' />Add Organizator
-        </button>
-        {Omodal ? <PopupFirst evenChange={handleOpenModal} /> : null}
-      </div>
+
+      <button onClick={handleOpenModal} className='button small'>
+        <HiOutlinePlusCircle className='button__icon'/>Add Organizator
+      </button>
+      {Omodal ? <PopupFirst evenChange={handleOpenModal} /> : null}
+
       <div className='second--main'>
         <div className='second--main-table'>
           <div className='check'>

@@ -26,7 +26,6 @@ const Login = () => {
     ApiEventzi.login(email, password)
       .then((response) => {
         if (response.data.data.length) {
-          console.log(response.data.data)
           setUser({
             userId: response.data.data[0].id_user,
             userName: response.data.data[0].email,
@@ -85,11 +84,12 @@ const Login = () => {
             <p className='italic'>Forgot Password?</p>
           </div>
 
-          <button type='submit'>LOGIN</button>
+          <button className='button large' type='submit'>login</button>
+          <Link to='/signup' className='button text'>
+            <p>Create a new account</p>
+          </Link>
         </form>
-        <Link to='/signup' className='login__bottom'>
-          <p>Create a new account</p>
-        </Link>
+
       </div>
     </div>
   )

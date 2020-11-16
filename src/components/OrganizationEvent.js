@@ -19,7 +19,7 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
     <div className='organization-event'>
       <div className='organization-event__figure'>
         <div className='organization-event__detail'>
-          <h3 className='organization-event__text'>{event_name}</h3>
+          <h4 className='organization-event__text'>{event_name}</h4>
           <p className='organization-event__text'>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`}</p>
         </div>
       </div>

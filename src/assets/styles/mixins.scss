@@ -1,24 +1,24 @@
 @mixin sm {
   @media (max-width: #{$screen-sm-min}) {
-      @content;
+    @content;
   }
 }
 
 @mixin md {
   @media (max-width: #{$screen-md-min}) {
-      @content;
+    @content;
   }
 }
 
 @mixin lg {
   @media (max-width: #{$screen-lg-min}) {
-      @content;
+    @content;
   }
 }
 
 @mixin xl {
   @media (max-width: #{$screen-xl-min}) {
-      @content;
+    @content;
   }
 }
 
@@ -35,4 +35,10 @@
       opacity: 1;
     }
   }
+}
+
+@mixin shadow {
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  transition: all 1s ease;
 }

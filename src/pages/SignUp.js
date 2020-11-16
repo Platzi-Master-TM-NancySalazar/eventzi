@@ -69,7 +69,7 @@ export default function SignUp () {
             <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" onChange={handleInput} />
           </label>
 
-          <button type="submit">SIGN UP</button>
+          <button className='button large' type="submit">sign up</button>
 
         </form>
       </div>

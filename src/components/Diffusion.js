@@ -60,7 +60,7 @@ const EventPanel = () => {
                 onChange={handleInput}
               />
             </label>
-            <button type="submit">Save</button>
+            <button className='button medium' type="submit">Save</button>
           </form>
 
           <figure className="logo-image">

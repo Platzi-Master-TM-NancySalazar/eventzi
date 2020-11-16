@@ -15,15 +15,11 @@ const PopupFirst = ({evenChange}) => {
         .catch((error) => console.log(error))
     }, [])
 
-    const [change, setChange] = useState('')
+    const [change, setChange] = useState({disabled:true})
 
-    const handleChange = (event)=>{
-        setChange(event.target.value)
-        console.log(event.target.value)
+    const handleChange = (event) => {
+        event.target.value ? setChange({disabled:false}) : setChange({disabled:true})
     }
-
-    
-
     return (
             <section className="overlay" id="overlay">
              <div className="popup--container-details" id="popup--container-details">

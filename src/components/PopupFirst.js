@@ -7,7 +7,7 @@ const PopupFirst = ({evenChange}) => {
     const [badge, setBadge] = useState([])
 
     React.useEffect(()=> {
-        ApiEventzi.getEventsByOrganization(25)
+        ApiEventzi.getEvents(25)
         .then(response => {
             let newBagde = response.data.data
             setBadge(newBagde)
@@ -15,12 +15,11 @@ const PopupFirst = ({evenChange}) => {
         .catch((error) => console.log(error))
     }, [])
 
-    const [change, setChange] = useState('')
+    const [change, setChange] = useState({disabled:true})
 
-    const handleChange = (event)=>{
-        setChange(event.target.value)
+    const handleChange = (event) => {
+        event.target.value ? setChange({disabled:false}) : setChange({disabled:true})
     }
-
     return (
             <section className="overlay" id="overlay">
              <div className="popup--container-details" id="popup--container-details">
@@ -29,8 +28,12 @@ const PopupFirst = ({evenChange}) => {
                  <div className="popup--details-form">
                      <input onChange={handleChange} name="input_text" className="popup--input" type="text" placeholder="Write a name" autoComplete="off"/>
                      <span className="popup--input-focus"></span>
-                     <Select badges={badge}/>
-                         
+                     <select className='popup--details-select'>
+                        <option>Select event</option>
+                        <Select badges={badge}/>
+                    </select>
+                     
+                    
                      <button className="button-popup">Add</button>
                  </div>
                  <div className="container--details">

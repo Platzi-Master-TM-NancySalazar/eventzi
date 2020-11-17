@@ -48,8 +48,6 @@
 
 .icon-add-outline {
   margin-right: 6px;
-  // height: 20px;
-  // width: 20px;
 }
 
 .main--input-search {
@@ -77,10 +75,9 @@
     grid-template: repeat(1, 40px) / repeat(5, 14rem);
     align-items: center;
     justify-content: right;
-    // text-align: left;
     grid-gap: 20px;
     color: #313131;
-    // border: 1px solid red;
+    border: 1px solid red;
 
     & p {
       font-size: 18px;

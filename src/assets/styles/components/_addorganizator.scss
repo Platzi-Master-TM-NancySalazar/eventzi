@@ -1,10 +1,11 @@
 .second__main-details {
   display: grid;
-  grid-template: repeat(1, 46px) / repeat(5, 10rem);
+  grid-template: repeat(1, 46px) / repeat(5, 10arem);
   align-items: center;
   justify-content: right;
   text-align: left;
   grid-gap: 20px;
+  border: 1px solid red;
   @mixin lg {
     grid-template: repeat(1, 46px) / repeat(5, 8rem);
   }

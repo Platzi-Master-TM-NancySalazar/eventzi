@@ -6,10 +6,29 @@ import AssociateModal from '../modals/AssociateModal'
 
 import { MdDelete } from 'react-icons/md'
 
-const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
+const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear }) => {
   const [openSpeaker, setOpenSpeaker] = useState(false)
-  const [openGeneral, setOpenGeneral] = useState(false)
   const [openAssociate, setOpenAssociate] = useState(false)
+  const [openGeneral, setOpenGeneral] = useState([])
+
+  let arrayTest = ['',
+    {
+      banner: '',
+      created: '',
+      date_: '',
+      description_: '',
+      event_name: '',
+      event_type: '',
+      id_event_: '',
+      id_organization: '',
+      logo: '',
+      modified: '',
+      status_: '',
+      template: '',
+      url: ''
+    }
+  ]
+
 
 
   const handleDelete = (id_event_) => {
@@ -27,7 +46,10 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
   const handleSpeakers = (id_event_) => {
     setOpenSpeaker(true)
     ApiEventzi.getSpeakers(id_event_)
-      .then(res => console.log(res.data.data))
+      .then(response => {
+        let speakerInfo = response.data.data
+        setOpenSpeaker([true, speakerInfo])
+      })
   }
 
   const handleAssociates = (id_event_) => {
@@ -37,7 +59,14 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
   const handleGeneral = (id_event_) => {
     setOpenGeneral(true)
     ApiEventzi.getGeneral(id_event_)
-      .then(console.log)
+      .then(response => {
+        if (response.data.data.length === 0) {
+          setOpenGeneral([true, arrayTest])
+        } else {
+          let generalInfo = response.data.data
+          setOpenGeneral([true, generalInfo])
+        }
+      })
   }
 
   const speakerClose = () => {
@@ -56,12 +85,15 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
     console.log('click')
   }
 
+  let generalModalInfo = openGeneral[1]
+
+
 
   return (
     <div className='organization-event'>
       <div className='organization-event__figure'>
         <div className='organization-event__detail'>
-          <h3 className='organization-event__text'>{event_name}</h3>
+          <h3 className='organization-event__text'>{eventName}</h3>
           <p className='organization-event__text'>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`}</p>
         </div>
       </div>
@@ -87,11 +119,12 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear }) => {
       )}{' '}
 
       <button onClick={() => handleGeneral(id_event_)}>Editar General</button>
-      {openGeneral && (
+      {openGeneral[0] === true && (
         <GeneralModal
           title='General information'
           generalClose={generalClose}
           id={id_event_}
+          generalModalInfo={generalModalInfo}
         />
       )}{' '}
     </div>

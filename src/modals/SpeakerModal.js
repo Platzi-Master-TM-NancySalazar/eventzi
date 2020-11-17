@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ApiEventzi from '../utils/ApiEventzi'
-import SpeakerNewModal from '../modals/SpeakerNewModal'
-import EditSpeakerModal from '../modals/EditSpeakerModal'
+import SpeakerNewModal from './SpeakerNewModal'
+import EditSpeakerModal from './EditSpeakerModal'
 import Portal from "../components/Portal";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdEdit, MdAddCircleOutline } from "react-icons/md";
+
 
 const SpeakerModal = ({ speakerClose, title, id }) => {
     const [speakers, setSpeakers] = useState([])
     const [addNewSpeaker, setAddNewSpeaker] = useState(false)
     const [editSpeaker, setEditSpeaker] = useState([])
-
 
     useEffect(() => {
         ApiEventzi.getSpeakers(id)
@@ -57,12 +57,12 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
                             return (
                                 <>
                                     <p key={speaker.id_speaker}>{speaker.fullname}</p>
-                                    <button onClick={() => { handleEditSpeaker(speaker) }}>Edit speaker</button>
+                                    <button className="event_button" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
                                 </>
                             )
                         })
                     }
-                    <button onClick={() => handleNewSpeaker()}>Add new speaker</button>
+                    <button className="event_button" onClick={() => handleNewSpeaker()}>Add new speaker <MdAddCircleOutline /></button>
                     {addNewSpeaker && (
                         <SpeakerNewModal
                             title='Add new speaker'

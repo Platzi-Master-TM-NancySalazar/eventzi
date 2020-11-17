@@ -19,6 +19,21 @@ async function callApiPost(url, data) {
   return response
 }
 
+async function callApiPut(url, data) {
+  const response = await instance({
+    method: 'PUT',
+    url,
+    data,
+  })
+
+  if (response.data.token) {
+    instance.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${response.data.token}`
+  }
+  return response
+}
+
 async function callApiGet(url) {
   const response = await instance({
     method: 'GET',
@@ -68,8 +83,16 @@ const ApiEventzi = {
     return callApiGet(`/partners/events/${eventId}`)
   },
   getGeneral(eventId) {
-    console.log('id que envias', eventId)
     return callApiGet(`/events/${eventId}`)
+  },
+  postSpeaker(eventId, data) {
+    return callApiPost(`/events/${eventId}/speakers/new`, data)
+  },
+  putSpeaker(speakerId, data) {
+    return callApiPut(`/events/speakers/${speakerId}`, data)
+  },
+  putAssociate(associateId, data) {
+    return callApiPut(`/partners/${associateId}, data`)
   },
   newEvent(
     id_organization,

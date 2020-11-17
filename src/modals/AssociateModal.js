@@ -1,19 +1,40 @@
 import React, { useEffect, useState } from "react";
 import ApiEventzi from '../utils/ApiEventzi'
+import AssociateNewModal from './AssociateNewModal'
+import EditAssociateModal from './EditAssociateModal'
 import Portal from "../components/Portal";
 import { MdClose, MdUnfoldLess } from "react-icons/md";
 
 const AssociateModal = ({ associateClose, title, id }) => {
     const [associates, setAssociates] = useState([])
-    console.log('llega id', id)
+    const [addNewAssociate, setAddNewAssociate] = useState(false)
+    const [editAssociate, setEditAssociate] = useState([])
 
     useEffect(() => {
         ApiEventzi.getPartners(id)
             .then(response => {
-                // partners = response.data.data
                 setAssociates(response.data.data)
             })
     }, [])
+
+    const handleNewAssociate = () => {
+        setAddNewAssociate(true)
+    }
+
+    const handleEditAssociate = (associate) => {
+        setEditAssociate([true, associate])
+    }
+
+    const addNewAssociateClose = () => {
+        setAddNewAssociate(false)
+    }
+
+    const editAssociateClose = () => {
+        setEditAssociate(false)
+    }
+
+    let associateModalInfo = editAssociate[1]
+
     return (
         <Portal>
             <div className="modal">
@@ -24,7 +45,6 @@ const AssociateModal = ({ associateClose, title, id }) => {
                             <MdClose />
                         </button>
                     </div>
-                    {/* <div>{content}</div> */}
                     {associates.length === 0
                         ?
                         <p>No associate added</p>
@@ -32,12 +52,31 @@ const AssociateModal = ({ associateClose, title, id }) => {
                         associates.map(associate => {
                             return (
                                 <>
-                                    <p>{associate.name_}</p>
-                                    <p>{associate.url}</p>
+                                    <p key={associate.name}>{associate.name_}</p>
+                                    <button onClick={() => { handleEditAssociate(associate) }}>Edit associate</button>
                                 </>
                             )
                         })
                     }
+                    <button onClick={() => handleNewAssociate()}>Add new associate</button>
+
+
+                    {addNewAssociate && (
+                        <AssociateNewModal
+                            title='Add new associate'
+                            id={id}
+                            addNewAssociateClose={addNewAssociateClose}
+                        />
+                    )}
+
+                    {editAssociate[0] === true && (
+                        <EditAssociateModal
+                            title='Edit associate'
+                            id={id}
+                            editAssociateClose={editAssociateClose}
+                            associateModalInfo={associateModalInfo}
+                        />
+                    )}
 
                 </div>
             </div>

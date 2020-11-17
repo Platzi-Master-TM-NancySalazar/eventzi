@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import Input from '../components/input'
 import Portal from "../components/Portal";
 import { MdClose } from "react-icons/md";
+import ApiEventzi from '../utils/ApiEventzi'
 
-const SpeakerNewModal = (props) => {
+const EditSpeakerModal = (props) => {
     const { title, id, speakerModalInfo, editSpeakerClose } = props
+    console.log('props edit speaker', props)
+    let { id_speaker } = speakerModalInfo
 
     const [fullname, setFullname] = useState(speakerModalInfo.fullname)
     const [bio, setBio] = useState(speakerModalInfo.bio)
     const [role_, setRole_] = useState(speakerModalInfo.role_)
     const [twitter, setTwitter] = useState(speakerModalInfo.twitter)
+    const [description, setDescription] = useState(speakerModalInfo.description)
 
     let form = {
         fullname,
@@ -27,11 +31,14 @@ const SpeakerNewModal = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        newSpeaker(form)
+        editSpeaker(form)
     }
 
-    const newSpeaker = (form) => {
+    //Corregir, enviar el id del speaker no del evento
+    const editSpeaker = (form) => {
         console.log('form', form)
+        ApiEventzi.putSpeaker(id_speaker, form)
+            .then(console.log)
     }
 
 
@@ -41,7 +48,6 @@ const SpeakerNewModal = (props) => {
                 <div className="modal__container">
                     <div className="modal__container-header">
                         <h3>{title}</h3>
-                        {/* <h3>{event_name}</h3> */}
                         <button className="modal__container--close" onClick={editSpeakerClose}>
                             <MdClose />
                         </button>
@@ -63,12 +69,12 @@ const SpeakerNewModal = (props) => {
 
 
 
-                        {/* <div className='input-material'>
-                            <input type='text' className='input-material__input' name='description' onChange={handleInput} required />
+                        <div className='input-material'>
+                            <input type='text' className='input-material__input' name='description' value={description} onChange={(e) => setDescription(e.target.value)} required />
                             <label className='input-material__label'>
                                 <span className='input-material__text'>Description</span>
                             </label>
-                        </div> */}
+                        </div>
 
                         <div className='input-material'>
                             <input type='text' className='input-material__input' name='twitter' value={twitter} onChange={(e) => setTwitter(e.target.value)} required />
@@ -96,4 +102,4 @@ const SpeakerNewModal = (props) => {
     );
 };
 
-export default SpeakerNewModal;
+export default EditSpeakerModal;

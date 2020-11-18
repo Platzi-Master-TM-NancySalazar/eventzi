@@ -23,6 +23,7 @@ const GeneralModal = (props) => {
     //         date_ = ''
     //     )
     // }
+    // console.log('template', template)
 
     const [eventName, setEventName] = useState(generalModalInfo[0].event_name || '')
     const [eventType, setEventType] = useState(generalModalInfo[0].event_type || '')
@@ -30,9 +31,11 @@ const GeneralModal = (props) => {
     const [description, setDescription] = useState(generalModalInfo[0].description_ || '')
     const [url, setUrl] = useState(generalModalInfo[0].url || '')
     const [date, setDate] = useState(generalModalInfo[0].date_ || '')
+    // const [template, setTemplate] = useState(generalModalInfo[0].template)
 
     let form = {
-        eventName, eventType, status, description, url, date
+        eventName, eventType, status, description, url, date,
+        // template
     }
 
     const handleChange = (event) => {
@@ -111,16 +114,16 @@ const GeneralModal = (props) => {
                                     </label>
                                 </div>
 
-
-
                                 <p>Select Template:</p>
+
+
                                 <input
                                     type="radio"
                                     name="template"
                                     value="Template 1"
                                     text="template"
                                     required
-                                    onChange={handleChange}
+                                // onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp1} alt="Template 1" className="img-template" />
                                 <input
@@ -128,9 +131,13 @@ const GeneralModal = (props) => {
                                     name="template"
                                     value="Template 2"
                                     text="template"
-                                    onChange={handleChange}
+                                // onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp2} alt="Template 2" className="img-template" />
+
+
+
+
                             </div>
                             <div>
                                 <label>
@@ -150,6 +157,8 @@ const GeneralModal = (props) => {
                                     />
                                 </label>
                             </div>
+
+
                         </form>
                         <div className="events__save-area">
                             <button onClick={handleClick} className="events_button">

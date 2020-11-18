@@ -6,7 +6,7 @@ import AssociateModal from '../modals/AssociateModal'
 
 import { MdDelete } from 'react-icons/md'
 
-const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear }) => {
+const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmin }) => {
   const [openSpeaker, setOpenSpeaker] = useState(false)
   const [openAssociate, setOpenAssociate] = useState(false)
   const [openGeneral, setOpenGeneral] = useState([])
@@ -97,10 +97,8 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear }) => {
           <p className='organization-event__text'>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`}</p>
         </div>
       </div>
-      <div onClick={() => handleDelete(id_event_)}>
-        <MdDelete className='organization-event__setup' />
-      </div>
-      <button onClick={() => handleSpeakers(id_event_)}>Editar speakers</button>
+
+      <button onClick={() => handleSpeakers(id_event_)}>Speakers</button>
       {openSpeaker && (
         <SpeakerModal
           title='Speakers'
@@ -109,7 +107,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear }) => {
         />
       )}{' '}
 
-      <button onClick={() => handleAssociates(id_event_)}>Editar Associates</button>
+      <button onClick={() => handleAssociates(id_event_)}>Associates</button>
       {openAssociate && (
         <AssociateModal
           title='Associates'
@@ -118,7 +116,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear }) => {
         />
       )}{' '}
 
-      <button onClick={() => handleGeneral(id_event_)}>Editar General</button>
+      <button onClick={() => handleGeneral(id_event_)}>General Information</button>
       {openGeneral[0] === true && (
         <GeneralModal
           title='General information'
@@ -127,6 +125,13 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear }) => {
           generalModalInfo={generalModalInfo}
         />
       )}{' '}
+
+      {IsAdmin &&
+        <div onClick={() => handleDelete(id_event_)}>
+          <MdDelete className='organization-event__setup' />
+        </div>
+      }
+
     </div>
   )
 }

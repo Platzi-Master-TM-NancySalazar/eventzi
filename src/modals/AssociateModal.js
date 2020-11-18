@@ -3,7 +3,7 @@ import ApiEventzi from '../utils/ApiEventzi'
 import AssociateNewModal from './AssociateNewModal'
 import EditAssociateModal from './EditAssociateModal'
 import Portal from "../components/Portal";
-import { MdClose, MdUnfoldLess } from "react-icons/md";
+import { MdClose, MdEdit, MdAddCircleOutline } from "react-icons/md";
 
 const AssociateModal = ({ associateClose, title, id }) => {
     const [associates, setAssociates] = useState([])
@@ -52,13 +52,15 @@ const AssociateModal = ({ associateClose, title, id }) => {
                         associates.map(associate => {
                             return (
                                 <>
-                                    <p key={associate.name}>{associate.name_}</p>
-                                    <button onClick={() => { handleEditAssociate(associate) }}>Edit associate</button>
+                                    <div className="options__modal">
+                                        <button className="modal__button" onClick={() => { handleEditAssociate(associate) }}>Edit <MdEdit /> </button>
+                                        <p key={associate.name}>{associate.name_}</p>
+                                    </div>
                                 </>
                             )
                         })
                     }
-                    <button onClick={() => handleNewAssociate()}>Add new associate</button>
+                    <button className="modal__button-add" onClick={() => handleNewAssociate()}>Add new associate <MdAddCircleOutline /></button>
 
 
                     {addNewAssociate && (

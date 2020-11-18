@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Input from '../components/input'
 import Portal from "../components/Portal";
 import { MdClose } from "react-icons/md";
+import ApiEventzi from '../utils/ApiEventzi'
 
 const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
     const [form, setForm] = useState(null)
@@ -19,11 +20,9 @@ const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
     }
 
     const newAssociate = (form) => {
-        console.log('form', form)
+        ApiEventzi.postAssociate(id, form)
+            .then(() => addNewAssociateClose())
     }
-
-
-
 
     return (
         <Portal>
@@ -37,7 +36,7 @@ const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
                     </div>
                     <form className='events__form' onSubmit={handleSubmit}>
                         <div className='input-material'>
-                            <input type='text' className='input-material__input' name='name' onChange={handleInput} required />
+                            <input type='text' className='input-material__input' name='name_' onChange={handleInput} required />
                             <label className='input-material__label'>
                                 <span className='input-material__text'>Name</span>
                             </label>
@@ -50,7 +49,7 @@ const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
                             </label>
                         </div>
 
-                        <button type='submit'>Add Associate</button>
+                        <button type='submit' className="modal__button">Add Associate</button>
                     </form>
 
 

@@ -91,8 +91,11 @@ const ApiEventzi = {
   putSpeaker(speakerId, data) {
     return callApiPut(`/events/speakers/${speakerId}`, data)
   },
+  postAssociate(eventId, data) {
+    return callApiPost(`/partners/events/${eventId}`, data)
+  },
   putAssociate(associateId, data) {
-    return callApiPut(`/partners/${associateId}, data`)
+    return callApiPut(`/partners/${associateId}`, data)
   },
   newEvent(
     id_organization,

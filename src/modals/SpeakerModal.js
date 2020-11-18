@@ -56,13 +56,15 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
                         speakers.map(speaker => {
                             return (
                                 <>
-                                    <p key={speaker.id_speaker}>{speaker.fullname}</p>
-                                    <button className="event_button" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
+                                    <div className="options__modal">
+                                        <button className="modal__button" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
+                                        <p key={speaker.id_speaker}>{speaker.fullname}</p>
+                                    </div>
                                 </>
                             )
                         })
                     }
-                    <button className="event_button" onClick={() => handleNewSpeaker()}>Add new speaker <MdAddCircleOutline /></button>
+                    <button className="modal__button-add" onClick={() => handleNewSpeaker()}>Add new speaker <MdAddCircleOutline /></button>
                     {addNewSpeaker && (
                         <SpeakerNewModal
                             title='Add new speaker'

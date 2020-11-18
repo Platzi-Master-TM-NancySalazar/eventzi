@@ -31,7 +31,7 @@ const EditAssociateModal = (props) => {
     const editAssociate = (form) => {
         console.log('form', form)
         ApiEventzi.putAssociate(id_partner, form)
-            .then(console.log)
+            .then(() => editAssociateClose())
     }
 
 
@@ -61,7 +61,7 @@ const EditAssociateModal = (props) => {
                             </label>
                         </div>
 
-                        <button type='submit'>Save Associate Changes</button>
+                        <button type='submit' className="modal__button">Save Associate Changes</button>
                     </form>
 
 

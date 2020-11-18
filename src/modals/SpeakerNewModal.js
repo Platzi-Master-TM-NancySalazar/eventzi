@@ -3,14 +3,18 @@ import Input from '../components/input'
 import Portal from "../components/Portal";
 import { MdClose } from "react-icons/md";
 import ApiEventzi from '../utils/ApiEventzi'
+import PostFormat from '../utils/FormatDate'
+
 
 const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
     const [form, setForm] = useState(null)
+    const [date_, setDate] = useState()
 
     const handleInput = (event) => {
         setForm({
             ...form,
             [event.target.name]: event.target.value,
+            date_
         })
     }
 
@@ -21,8 +25,9 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
 
     const newSpeaker = (form) => {
         console.log(form)
-        ApiEventzi.postSpeaker(id, form)
-            .then(console.log)
+        // ApiEventzi.postSpeaker(id, form)
+        //     .then(console.log)
+        // .then(() => addNewSpeakerClose())
     }
 
 
@@ -76,9 +81,21 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                             </label>
                         </div>
 
+                        <div className='input-material'>
+                            <input type='datetime-local' className='input-material__input' id="meeting-time" name='date_' value={date_} onChange={(e) => setDate(PostFormat(e.target.value))} required />
+                            <label className='input-material__label'>
+                                <span className='input-material__text-date'>Date</span>
+                            </label>
+                        </div>
 
+                        <div className='input-material'>
+                            <input type='text' className='input-material__input' name='title' onChange={handleInput} required />
+                            <label className='input-material__label'>
+                                <span className='input-material__text'>Title of the talk</span>
+                            </label>
+                        </div>
 
-                        <button type='submit'>Add Speaker</button>
+                        <button type='submit' className="modal__button">Add Speaker</button>
                     </form>
 
 

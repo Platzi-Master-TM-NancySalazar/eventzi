@@ -37,7 +37,7 @@ class Template2 extends React.Component {
                 <MdEvent /> {FormatDate(this.props.data.date_)}
               </h3>
               <h3 className="date__item" id="url">
-                <a href={this.props.data.url} target="blank">
+                <a href={`http://${this.props.data.url}`} target="blank">
                   <MdPlace /> {this.props.data.url}
                 </a>
               </h3>

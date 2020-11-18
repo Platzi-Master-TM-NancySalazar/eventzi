@@ -61,39 +61,19 @@ const ApiEventzi = {
   getEventsByOrganization(organizationId) {
     return callApiGet(`/organizations/${organizationId}/events`)
   },
-  newEvent(
-    id_organization,
-    event_name,
-    event_type,
-    status_,
-    event_description,
-    date,
-    url,
-    template
-  ) {
-    let data = {
-      event_name,
-      event_type,
-      status_,
-      event_description,
-      date,
-      url,
-      template,
-    }
-    return callApiPost(`/events/organizations/${id_organization}`, data)
+  newEvent(id_organization, event_name, event_type, event_description, date, url, template) {
+
+    var bodyFormData = new FormData();
+    bodyFormData.append('event_name', event_name);
+    bodyFormData.append('event_type', event_type);
+    bodyFormData.append('event_description', event_description);
+    bodyFormData.append('date', date);
+    bodyFormData.append('url', url);
+    bodyFormData.append('template', template);
+
+    return callApiPost(`/events/organizations/${id_organization}`, bodyFormData)
   },
-  testEvent() {
-    let data = {
-      event_name: 'Testing',
-      event_type: 'Online',
-      status_: 'Published',
-      event_description: 'Insert description',
-      date: '2020-11-11 18:00:00',
-      url: 'www.google.com',
-      template: 'Template 1',
-    }
-    return callApiPost(`/events/organizations/59`, data)
-  },
+ 
   getOrganizers(organizationId) {
     return callApiGet(`/organizations/${organizationId}/events/organizers`)
   },

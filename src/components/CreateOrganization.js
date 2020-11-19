@@ -22,16 +22,16 @@ const CreateOrganization = ({ submit }) => {
     <div className=''>
       <form className='events__form'>
         <div>
-          <Input text='name' event={handleChange}/>
-          <Input text='website' event={handleChange}/>
-          <Input text='description' event={handleChange}/>
+          <Input text='name' event={handleChange} />
+          <Input text='website' event={handleChange} />
+          <Input text='description' event={handleChange} />
         </div>
         <div>
           <label >
             <img className='events__upload' src={upload} alt='redes sociales' />
-            <input id="file-input" type='file' className='events__upload-input'/>
+            <input id="file-input" type='file' className='events__upload-input' />
           </label>
-          
+
         </div>
       </form>
 
@@ -40,7 +40,7 @@ const CreateOrganization = ({ submit }) => {
       </div>
       <div className='events__save-area'>
         <button onClick={handleClick} className='events_button'>
-          Create organization
+          Save Changes
         </button>
       </div>
     </div>

@@ -168,10 +168,10 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
 
       <div className='organization-event__icon-container'>
 
-        {/* {status_ === 'Published'
+        {status_ === 'Published'
           ? <div className='organization-event__status--published'>{status_}</div>
           : <div onClick={() => handlePublish(id_event_)} className='organization-event__status'>Publish</div>
-        } */}
+        }
         <Tooltip text='speakers' >
           <MdRecordVoiceOver className='organization-event__icon speakers' onClick={() => handleSpeakers(id_event_)} />
         </Tooltip>

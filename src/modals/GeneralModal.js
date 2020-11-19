@@ -5,25 +5,12 @@ import Input, { InputDate } from '../components/input'
 import upload from '../assets/static/upload.png'
 import temp1 from "../assets/static/temp1.png";
 import temp2 from "../assets/static/temp2.png";
+import ApiEventzi from '../utils/ApiEventzi'
 
 const GeneralModal = (props) => {
     const { generalClose, title, id, generalModalInfo } = props
     console.log('general modal props', props)
-    //props que llegan: date_, description_, event_name, event_type, id_event_, id_organization, logo, status_, template, url
 
-    //props que uso: event_name, event_type, status_, description_, url, date_
-
-    // if (generalModalInfo[0].length === 0) {
-    //     generalModalInfo[0].push(
-    //         event_name = '',
-    //         event_type = '',
-    //         status_ = '',
-    //         description = '',
-    //         url = '',
-    //         date_ = ''
-    //     )
-    // }
-    // console.log('template', template)
 
     const [eventName, setEventName] = useState(generalModalInfo[0].event_name || '')
     const [eventType, setEventType] = useState(generalModalInfo[0].event_type || '')
@@ -31,11 +18,10 @@ const GeneralModal = (props) => {
     const [description, setDescription] = useState(generalModalInfo[0].description_ || '')
     const [url, setUrl] = useState(generalModalInfo[0].url || '')
     const [date, setDate] = useState(generalModalInfo[0].date_ || '')
-    // const [template, setTemplate] = useState(generalModalInfo[0].template)
+    const [template, setTemplate] = useState(generalModalInfo[0].template)
 
     let form = {
-        eventName, eventType, status, description, url, date,
-        // template
+        eventName, eventType, status, description, url, date, template
     }
 
     const handleChange = (event) => {
@@ -45,8 +31,15 @@ const GeneralModal = (props) => {
         })
     }
 
-    const handleClick = () => {
-        console.log(form)
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        putGeneral(form)
+    }
+
+    const putGeneral = (form) => {
+        ApiEventzi.putGeneral(id, form)
+            .then(() => generalClose())
+            .catch((err) => console.error(err))
     }
 
     return (
@@ -62,7 +55,7 @@ const GeneralModal = (props) => {
                     {/* <div>{content}</div> */}
 
                     <div>
-                        <form className="events__form">
+                        <form className="events__form" onSubmit={handleSubmit}>
                             <div>
 
                                 {/* <Input text="name" event={handleChange} /> */}
@@ -159,12 +152,12 @@ const GeneralModal = (props) => {
                             </div>
 
 
-                        </form>
-                        <div className="events__save-area">
-                            <button onClick={handleClick} className="events_button">
-                                Save changes
+                            <div className="events__save-area">
+                                <button type="submit" className="events_button">
+                                    Save changes
                             </button>
-                        </div>
+                            </div>
+                        </form>
                     </div>
 
                 </div>

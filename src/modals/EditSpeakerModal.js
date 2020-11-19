@@ -6,13 +6,9 @@ import ApiEventzi from '../utils/ApiEventzi'
 import FormatDate from '../utils/FormatDate'
 
 const EditSpeakerModal = (props) => {
-    console.log('editSpeaker ver como llega la fecha', props.speakerModalInfo)
     const { id, speakerModalInfo, editSpeakerClose } = props
     let { id_speaker } = speakerModalInfo
 
-
-
-    // console.log('fecha', goodDate)
 
     const [fullname, setFullname] = useState(speakerModalInfo.fullname)
     const [bio, setBio] = useState(speakerModalInfo.bio)
@@ -53,10 +49,9 @@ const EditSpeakerModal = (props) => {
 
     const editSpeaker = (form) => {
         console.log('editSpeaker form', form)
-        console.log('form', form)
-        console.log('id speaker', id_speaker)
         ApiEventzi.putSpeaker(id_speaker, form)
             .then(() => editSpeakerClose())
+            .catch((err) => console.error(err))
     }
 
 

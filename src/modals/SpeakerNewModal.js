@@ -3,7 +3,7 @@ import Input from '../components/input'
 import Portal from "../components/Portal";
 import { MdClose } from "react-icons/md";
 import ApiEventzi from '../utils/ApiEventzi'
-import PostFormat from '../utils/FormatDate'
+import { PostFormat } from '../utils/FormatDate'
 
 
 const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
@@ -24,10 +24,9 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
     }
 
     const newSpeaker = (form) => {
-        console.log(form)
-        // ApiEventzi.postSpeaker(id, form)
-        //     .then(console.log)
-        // .then(() => addNewSpeakerClose())
+        ApiEventzi.postSpeaker(id, form)
+            .then(() => addNewSpeakerClose())
+            .catch((err) => console.error(err))
     }
 
 

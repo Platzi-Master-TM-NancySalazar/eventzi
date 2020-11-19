@@ -11,6 +11,9 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
   const [openAssociate, setOpenAssociate] = useState(false)
   const [openGeneral, setOpenGeneral] = useState([])
 
+  console.log('isAdmin', IsAdmin)
+
+
   let arrayTest = ['',
     {
       banner: '',
@@ -126,7 +129,8 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
         />
       )}{' '}
 
-      {IsAdmin &&
+      {IsAdmin
+        &&
         <div onClick={() => handleDelete(id_event_)}>
           <MdDelete className='organization-event__setup' />
         </div>

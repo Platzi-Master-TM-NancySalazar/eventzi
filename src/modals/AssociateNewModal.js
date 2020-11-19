@@ -22,6 +22,7 @@ const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
     const newAssociate = (form) => {
         ApiEventzi.postAssociate(id, form)
             .then(() => addNewAssociateClose())
+            .catch((err) => console.error(err))
     }
 
     return (

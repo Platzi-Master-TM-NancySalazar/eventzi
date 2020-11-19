@@ -97,6 +97,9 @@ const ApiEventzi = {
   putAssociate(associateId, data) {
     return callApiPut(`/partners/${associateId}`, data)
   },
+  putGeneral(eventId, data) {
+    return callApiPut(`events/${eventId}`)
+  },
   newEvent(
     id_organization,
     event_name,

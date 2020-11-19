@@ -9,20 +9,24 @@ import ApiEventzi from '../utils/ApiEventzi'
 
 const GeneralModal = (props) => {
     const { generalClose, title, id, generalModalInfo } = props
-    console.log('generalModalInfo props', generalModalInfo)
+    const initialDate = generalModalInfo[0].date_
 
-    const [event_name, setevent_name] = useState(generalModalInfo[0].event_name)
-    const [event_type, setevent_type] = useState(generalModalInfo[0].event_type)
-    // const [status_, setStatus] = useState(generalModalInfo[0].status_ || '')
+
+    const [event_name, setEvent_name] = useState(generalModalInfo[0].event_name)
     const [description_, setDescription] = useState(generalModalInfo[0].description_)
     const [url, setUrl] = useState(generalModalInfo[0].url)
-    const [date_, setDate] = useState(generalModalInfo[0].date_)
+    const [date_, setDate] = useState(initialDate)
     const [template, setTemplate] = useState(generalModalInfo[0].template)
 
+
+    const modifyDate = (fullDate) => {
+        fullDate = fullDate.split('T')
+        const formated = fullDate[0] + ' ' + fullDate[1] + ':00'
+        return formated
+    }
+
     const form = {
-        event_name, event_type, description_, url,
-        date_,
-        template
+        event_name, description_, url, date_, template
     }
 
     const handleChange = (event) => {
@@ -34,27 +38,30 @@ const GeneralModal = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        putGeneral(form)
+        let { date_, description_, event_name, template, url } = form
+        let newDate = modifyDate(date_)
+        console.log(newDate)
+        let data = {
+            description_,
+            event_name,
+            template,
+            url,
+            date_: newDate
+        }
+
+        putGeneral(data)
     }
 
-    //Tengo que pasar de esto "2020-11-19T17:15:54.000Z"
-    //A esto "2020-11-19T11:58"
-    // let date_ = modifyDate(date) || ''
 
-    const modifyDate = (date_) => {
-        console.log('asi entra date', date)
-        date = date.split('T', '.')
-        let formated = date[0] + ' ' + date[1]
-        console.log('formated', formated)
-    }
 
-    const putGeneral = (form) => {
-        console.log(form)
+    const putGeneral = (data) => {
+        console.log('data final', data)
         ApiEventzi.putGeneral(id, form)
             .then(console.log)
             .then(() => generalClose())
-        // .catch((err) => console.error(err))
+            .catch((err) => console.error(err))
     }
+
 
     return (
         <Portal>
@@ -64,7 +71,6 @@ const GeneralModal = (props) => {
                         <h2>{title}</h2>
                         <MdClose className="modal__container--close" onClick={generalClose} />
                     </div>
-                    {/* <div>{content}</div> */}
 
                     <div>
                         <form className="events__form" onSubmit={handleSubmit}>
@@ -72,27 +78,13 @@ const GeneralModal = (props) => {
 
                                 {/* <Input text="name" event={handleChange} /> */}
                                 <div className='input-material'>
-                                    <input type='text' className='input-material__input' name='name' value={event_name} onChange={(e) => setevent_name(e.target.value)} required />
+                                    <input type='text' className='input-material__input' name='name' value={event_name} onChange={(e) => setEvent_name(e.target.value)} required />
                                     <label className='input-material__label'>
                                         <span className='input-material__text'>Event Name</span>
                                     </label>
                                 </div>
 
-                                {/* <Input text="type" event={handleChange} /> */}
-                                <div className='input-material'>
-                                    <input type='text' className='input-material__input' name='type' value={event_type} onChange={(e) => setevent_type(e.target.value)} required />
-                                    <label className='input-material__label'>
-                                        <span className='input-material__text'>Event Type</span>
-                                    </label>
-                                </div>
 
-                                {/* <Input text="status" event={handleChange} /> */}
-                                {/* <div className='input-material'>
-                                    <input type='text' className='input-material__input' name='status' value={status_} onChange={(e) => setStatus(e.target.value)} required />
-                                    <label className='input-material__label'>
-                                        <span className='input-material__text'>Satus</span>
-                                    </label>
-                                </div> */}
 
                                 {/* <Input text="description" event={handleChange} /> */}
                                 <div className='input-material'>
@@ -113,7 +105,7 @@ const GeneralModal = (props) => {
                                 <p className="marginbtm">Date / Time</p>
                                 {/* <InputDate text="date" event={handleChange} /> */}
                                 <div className='input-material'>
-                                    <input type='datetime-local' className='input-material__input' name='date' value={date} onChange={(e) => setDate(e.target.value)} required />
+                                    <input type='datetime-local' className='input-material__input' name='date' value={date_} onChange={(e) => setDate(e.target.value)} required />
                                     <label className='input-material__label'>
                                         <span className='input-material__text-date'>Date</span>
                                     </label>
@@ -128,7 +120,7 @@ const GeneralModal = (props) => {
                                     text="template"
                                     checked={template === 'Template 1'}
                                     required
-                                onChange={(e) => setTemplate(e.target.value)}
+                                    onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp1} alt="Template 1" className="img-template" />
                                 <input
@@ -137,42 +129,29 @@ const GeneralModal = (props) => {
                                     value="Template 2"
                                     text="template"
                                     checked={template === 'Template 2'}
-                                onChange={(e) => setTemplate(e.target.value)}
+                                    onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp2} alt="Template 2" className="img-template" />
 
-                            </div>
-                            <div>
-                                <label>
-                                    <img className="events__upload" src={upload} alt="Load logo" />
-                                    <input
-                                        type="file"
-                                        className="events__upload-input"
-                                        text="logo"
-                                    />
-                                </label>
-                                <label>
-                                    <img className="events__upload" src={upload} alt="Load banner" />
-                                    <input
-                                        type="file"
-                                        className="events__upload-input"
-                                        text="banner"
-                                    />
-                                </label>
                             </div>
 
                             <div className="events__save-area">
                                 <button type="submit" className="button small">
                                     Save changes
-                            </button>
+                                </button>
                             </div>
                         </form>
                     </div>
 
                 </div>
             </div>
+
+
         </Portal>
     )
 }
 
 export default GeneralModal
+
+
+

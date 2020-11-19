@@ -52,7 +52,7 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
               return (
                 <>
                   <div className="options__modal">
-                    <button className="modal__button" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
+                    <button className="button small" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
                     <p key={speaker.id_speaker}>{speaker.fullname}</p>
                   </div>
                 </>

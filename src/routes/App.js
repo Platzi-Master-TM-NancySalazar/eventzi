@@ -8,6 +8,7 @@ import Login from '../pages/Login'
 import Event from '../pages/Event'
 import NotFound from '../pages/NotFound'
 import AdminPanel from '../pages/AdminPanel'
+import Test from '../pages/Test'
 
 import globalContext from '../context/globalContext'
 
@@ -18,6 +19,7 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/admin_panel">

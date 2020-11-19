@@ -26,6 +26,30 @@ async function callApiGet (url) {
   return response
 }
 
+async function callApiImage (url) {
+  const response = await instance({
+    method: 'GET',
+    url
+  })
+
+  const ImgBase64 = Buffer.from(response.data.image.data, 'hex').toString('base64')
+  return `data:image/jpeg;base64,${ImgBase64}`
+}
+
+async function callApiPostMulti (url, formData) {
+  const response = await instance({
+    method: 'POST',
+    url,
+    // headers: {
+    //   'Content-Type': 'multipart/form-data'
+    // },
+    data: formData
+  })
+
+  console.log(response)
+  return response
+}
+
 async function callApiDelete (url) {
   const response = await instance({
     method: 'DELETE',
@@ -49,12 +73,8 @@ const ApiEventzi = {
   getOrganizations () {
     return callApiGet('/organizations/orgsByUser')
   },
-  newOrganization (organization_name, description) {
-    const data = {
-      organization_name,
-      description
-    }
-    return callApiPost('/organizations', data)
+  newOrganization (formData) {
+    return callApiPostMulti('/organizations', formData)
   },
   getEventsByOrganization (organizationId) {
     return callApiGet(`/organizations/${organizationId}/events`)
@@ -103,6 +123,9 @@ const ApiEventzi = {
       `events/${userId}/speaker/${organizationId}/schedule`,
       data
     )
+  },
+  getImage (idEvent) {
+    return callApiImage(`/events/${idEvent}/media`)
   }
 }
 

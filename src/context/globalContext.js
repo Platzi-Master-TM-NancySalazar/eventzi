@@ -27,7 +27,7 @@ export function GlobalContextProvider ({ children }) {
         type: null,
         message: ''
       })
-    }, 5000)
+    }, 8000)
   }
 
   function logout () {

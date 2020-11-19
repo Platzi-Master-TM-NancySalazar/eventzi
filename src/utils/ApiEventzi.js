@@ -92,17 +92,17 @@ const ApiEventzi = {
   getEventsByOrganization (organizationId) {
     return callApiGet(`/organizations/${organizationId}/events`)
   },
-  // newEvent (id_organization, event_name, event_type, event_description, date, url, template) {
-  //   const bodyFormData = new FormData()
-  //   bodyFormData.append('event_name', event_name)
-  //   bodyFormData.append('event_type', event_type)
-  //   bodyFormData.append('event_description', event_description)
-  //   bodyFormData.append('date', date)
-  //   bodyFormData.append('url', url)
-  //   bodyFormData.append('template', template)
+  newEvent (id_organization, event_name, event_type, event_description, date, url, template) {
+    const bodyFormData = new FormData()
+    bodyFormData.append('event_name', event_name)
+    bodyFormData.append('event_type', event_type)
+    bodyFormData.append('event_description', event_description)
+    bodyFormData.append('date', date)
+    bodyFormData.append('url', url)
+    bodyFormData.append('template', template)
 
-  //   return callApiPost(`/events/organizations/${id_organization}`, bodyFormData)
-  // },
+    return callApiPost(`/events/organizations/${id_organization}`, bodyFormData)
+  },
   getSpeakers (eventId) {
     return callApiGet(`events/${eventId}/speakers`)
   },
@@ -126,27 +126,6 @@ const ApiEventzi = {
   },
   putGeneral (eventId) {
     return callApiPut(`events/${eventId}`)
-  },
-  newEvent (
-    id_organization,
-    event_name,
-    event_type,
-    status_,
-    event_description,
-    date,
-    url,
-    template
-  ) {
-    const data = {
-      event_name,
-      event_type,
-      status_,
-      event_description,
-      date,
-      url,
-      template
-    }
-    return callApiPost(`/events/organizations/${id_organization}`, data)
   },
   testEvent () {
     const data = {

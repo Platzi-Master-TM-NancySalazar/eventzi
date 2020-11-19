@@ -15,7 +15,7 @@ const Organizers = () => {
   const [badge, setBadge] = useState([])
 
   React.useEffect(() => {
-    ApiEventzi.getOrganizers(25)
+    ApiEventzi.getOrganizers()
       .then(response => {
         const newBadge = response.data.data
         setBadge(newBadge)

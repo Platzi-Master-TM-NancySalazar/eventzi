@@ -46,10 +46,8 @@ const GeneralModal = (props) => {
             <div className="modal">
                 <div className="modal__container">
                     <div className="modal__container-header">
-                        <h3>{title}</h3>
-                        <button className="modal__container--close" onClick={generalClose}>
-                            <MdClose />
-                        </button>
+                        <h2>{title}</h2>
+                        <MdClose className="modal__container--close" onClick={generalClose}/>
                     </div>
                     {/* <div>{content}</div> */}
 

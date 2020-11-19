@@ -50,7 +50,7 @@ const CreateOrganization = ({ submit }) => {
         <img className='events__logos-image' src={redes} alt='redes sociales' />
       </div>
       <div className='events__save-area'>
-        <button onClick={handleClick} className='events_button'>
+        <button onClick={handleClick} className='button'>
           Save Changes
         </button>
       </div>

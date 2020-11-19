@@ -1,67 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 import ApiEventzi from '../utils/ApiEventzi'
 import AssociateNewModal from './AssociateNewModal'
 import EditAssociateModal from './EditAssociateModal'
-import Portal from "../components/Portal";
-import { MdClose, MdEdit, MdAddCircleOutline } from "react-icons/md";
+import Portal from '../components/Portal'
+import { MdClose, MdEdit, MdAddCircleOutline } from 'react-icons/md'
 
 const AssociateModal = ({ associateClose, title, id }) => {
-    const [associates, setAssociates] = useState([])
-    const [addNewAssociate, setAddNewAssociate] = useState(false)
-    const [editAssociate, setEditAssociate] = useState([])
+  const [associates, setAssociates] = useState([])
+  const [addNewAssociate, setAddNewAssociate] = useState(false)
+  const [editAssociate, setEditAssociate] = useState([])
 
-    useEffect(() => {
-        ApiEventzi.getPartners(id)
-            .then(response => {
-                setAssociates(response.data.data)
-            })
-    }, [])
+  useEffect(() => {
+    ApiEventzi.getPartners(id)
+      .then(response => {
+        setAssociates(response.data.data)
+      })
+  }, [])
 
-    const handleNewAssociate = () => {
-        setAddNewAssociate(true)
-    }
+  const handleNewAssociate = () => {
+    setAddNewAssociate(true)
+  }
 
-    const handleEditAssociate = (associate) => {
-        setEditAssociate([true, associate])
-    }
+  const handleEditAssociate = (associate) => {
+    setEditAssociate([true, associate])
+  }
 
-    const addNewAssociateClose = () => {
-        setAddNewAssociate(false)
-    }
+  const addNewAssociateClose = () => {
+    setAddNewAssociate(false)
+  }
 
-    const editAssociateClose = () => {
-        setEditAssociate(false)
-    }
+  const editAssociateClose = () => {
+    setEditAssociate(false)
+  }
 
-    let associateModalInfo = editAssociate[1]
+  const associateModalInfo = editAssociate[1]
 
-    return (
+  return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
                     <div className="modal__container-header">
-                        <h3>{title}</h3>
-                        <button className="modal__container--close" onClick={associateClose}>
-                            <MdClose />
-                        </button>
+                        <h2>{title}</h2>
+                        <MdClose className="modal__container--close" onClick={associateClose} />
                     </div>
                     {associates.length === 0
-                        ?
-                        <p>No associate added</p>
-                        :
-                        associates.map(associate => {
-                            return (
+                      ? <p>No associate added</p>
+                      : associates.map(associate => {
+                        return (
                                 <>
                                     <div className="options__modal">
                                         <button className="modal__button" onClick={() => { handleEditAssociate(associate) }}>Edit <MdEdit /> </button>
                                         <p key={associate.name}>{associate.name_}</p>
                                     </div>
                                 </>
-                            )
-                        })
+                        )
+                      })
                     }
                     <button className="modal__button-add" onClick={() => handleNewAssociate()}>Add new associate <MdAddCircleOutline /></button>
-
 
                     {addNewAssociate && (
                         <AssociateNewModal
@@ -83,7 +78,7 @@ const AssociateModal = ({ associateClose, title, id }) => {
                 </div>
             </div>
         </Portal>
-    );
-};
+  )
+}
 
-export default AssociateModal;
+export default AssociateModal

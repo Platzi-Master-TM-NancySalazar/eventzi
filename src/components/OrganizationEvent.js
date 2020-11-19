@@ -92,7 +92,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
         </div>
       </div>
 
-      <button onClick={() => handleSpeakers(id_event_)}>Speakers</button>
+      <button className='button small' onClick={() => handleSpeakers(id_event_)}>Speakers</button>
       {openSpeaker && (
         <SpeakerModal
           title='Speakers'
@@ -101,7 +101,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
         />
       )}{' '}
 
-      <button onClick={() => handleAssociates(id_event_)}>Associates</button>
+      <button className='button small' onClick={() => handleAssociates(id_event_)}>Associates</button>
       {openAssociate && (
         <AssociateModal
           title='Associates'
@@ -110,7 +110,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
         />
       )}{' '}
 
-      <button onClick={() => handleGeneral(id_event_)}>General Information</button>
+      <button className='button small' onClick={() => handleGeneral(id_event_)}>General Information</button>
       {openGeneral[0] === true && (
         <GeneralModal
           title='General information'

@@ -9,15 +9,30 @@ import ApiEventzi from '../utils/ApiEventzi'
 
 const GeneralModal = (props) => {
     const { generalClose, title, id, generalModalInfo } = props
-    const initialDate = generalModalInfo[0].date_
+
+    let fechaRecibida = generalModalInfo[0].date_
+    console.log('fechaRecibida', fechaRecibida)
+
+    const formatDate = (fecha) => {
+        fecha = fecha.split('T')
+        let time = fecha[1].split('.')
+        time = time[0].split(':')
+        const formated = fecha[0] + 'T' + time[0] + ':' + time[1] + ':00'
+        return formated
+    }
+
+    let fechaModificada = formatDate(fechaRecibida)
+    console.log('fechaModificada', fechaModificada)
+
 
 
     const [event_name, setEvent_name] = useState(generalModalInfo[0].event_name)
     const [description_, setDescription] = useState(generalModalInfo[0].description_)
     const [url, setUrl] = useState(generalModalInfo[0].url)
-    const [date_, setDate] = useState(initialDate)
     const [template, setTemplate] = useState(generalModalInfo[0].template)
+    const [date_, setDate] = useState(fechaModificada)
 
+    console.log('asi tiene que cuadrar la fecha', date_)
 
     const modifyDate = (fullDate) => {
         fullDate = fullDate.split('T')

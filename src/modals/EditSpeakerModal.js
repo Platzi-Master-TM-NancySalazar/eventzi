@@ -7,7 +7,20 @@ import FormatDate from '../utils/FormatDate'
 
 const EditSpeakerModal = (props) => {
     const { id, speakerModalInfo, editSpeakerClose } = props
+    console.log('speakerModalInfo[0]', speakerModalInfo)
     const { id_speaker } = speakerModalInfo
+
+    const formatDate = (fecha) => {
+        if (fecha > 0) {
+            return ''
+        } else {
+            fecha = fecha.split('T')
+            let time = fecha[1].split('.')
+            time = time[0].split(':')
+            const formated = fecha[0] + 'T' + time[0] + ':' + time[1] + ':00'
+            return formated
+        }
+    }
 
     const [fullname, setFullname] = useState(speakerModalInfo.fullname)
     const [bio, setBio] = useState(speakerModalInfo.bio)
@@ -15,13 +28,14 @@ const EditSpeakerModal = (props) => {
     const [twitter, setTwitter] = useState(speakerModalInfo.twitter)
     const [title, setTitle] = useState(speakerModalInfo.title)
     const [description_, setDescription] = useState(speakerModalInfo.description_)
-    const [date_, setDate] = useState(() => {
-        if (speakerModalInfo.date_ > 0) {
-            return FormatDate(speakerModalInfo.date_)
-        } else {
-            return speakerModalInfo.date_
-        }
-    })
+    // const [date_, setDate] = useState(() => {
+    //     if (speakerModalInfo.date_ > 0) {
+    //         return FormatDate(speakerModalInfo.date_)
+    //     } else {
+    //         return speakerModalInfo.date_
+    //     }
+    // })
+    const [date_, setDate] = useState(formatDate(speakerModalInfo.date_))
 
     const modifyDate = (fullDate) => {
         fullDate = fullDate.split('T')

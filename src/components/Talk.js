@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Talk = (props) => {
   return (
@@ -17,6 +17,6 @@ const Talk = (props) => {
         <p>{props.description}</p>
       </div>
     </div>
-  );
-};
-export default Talk;
+  )
+}
+export default Talk

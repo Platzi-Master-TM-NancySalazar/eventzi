@@ -52,12 +52,11 @@ const Events = () => {
           modalClose={modalClose}
         />
       )}
-      <div className='events_buttons'>
-        <button onClick={modalOpen} className='events_button'>
-          <HiOutlinePlusCircle className='events_button__icon' />
+
+      <button onClick={modalOpen} className='button small'>
+        <HiOutlinePlusCircle className='button__icon' />
           Create organization
-        </button>
-      </div>
+      </button>
 
       {organizations.map((organization) => {
         return (

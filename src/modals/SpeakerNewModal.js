@@ -1,38 +1,34 @@
-import React, { useEffect, useState } from "react";
-import Input from '../components/input'
-import Portal from "../components/Portal";
-import { MdClose } from "react-icons/md";
+import React, { useEffect, useState } from 'react'
+import Input from '../components/Input'
+import Portal from '../components/Portal'
+import { MdClose } from 'react-icons/md'
 import ApiEventzi from '../utils/ApiEventzi'
 import { PostFormat } from '../utils/FormatDate'
 
-
 const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
-    const [form, setForm] = useState(null)
-    const [date_, setDate] = useState()
+  const [form, setForm] = useState(null)
+  const [date_, setDate] = useState()
 
-    const handleInput = (event) => {
-        setForm({
-            ...form,
-            [event.target.name]: event.target.value,
-            date_
-        })
-    }
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+      date_
+    })
+  }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        newSpeaker(form)
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    newSpeaker(form)
+  }
 
-    const newSpeaker = (form) => {
-        ApiEventzi.postSpeaker(id, form)
-            .then(() => addNewSpeakerClose())
-            .catch((err) => console.error(err))
-    }
+  const newSpeaker = (form) => {
+    ApiEventzi.postSpeaker(id, form)
+      .then(() => addNewSpeakerClose())
+      .catch((err) => console.error(err))
+  }
 
-
-
-
-    return (
+  return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
@@ -56,8 +52,6 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                                 <span className='input-material__text'>Rol</span>
                             </label>
                         </div>
-
-
 
                         <div className='input-material'>
                             <input type='text' className='input-material__input' name='description_' onChange={handleInput} required />
@@ -97,11 +91,10 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                         <button type='submit' className="modal__button">Add Speaker</button>
                     </form>
 
-
                 </div>
             </div>
         </Portal>
-    );
-};
+  )
+}
 
-export default SpeakerNewModal;
+export default SpeakerNewModal

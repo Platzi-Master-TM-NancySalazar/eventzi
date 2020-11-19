@@ -23,29 +23,6 @@
   }
 }
 
-.main--container-buttons > button {
-  height: 30px;
-  width: 130px;
-  border-radius: 5px;
-  border: none;
-  background-color: #2d9cdb;
-  color: white;
-  cursor: pointer;
-  margin-top: 10px;
-  outline: none;
-  transition: 0.4s ease all;
-
-  &:hover {
-    background-color: white;
-    color: #2d9cdb;
-    border: 1px solid #2d9cdb;
-  }
-
-  &:focus {
-    border: none;
-  }
-}
-
 .icon-add-outline {
   margin-right: 6px;
   // height: 20px;

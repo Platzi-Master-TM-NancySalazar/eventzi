@@ -1,106 +1,122 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://eventziapi.herokuapp.com',
+  baseURL: 'https://eventziapi.herokuapp.com'
 })
 
-async function callApiPost(url, data) {
+async function callApiPost (url, data) {
   const response = await instance({
     method: 'POST',
     url,
-    data,
+    data
   })
 
   if (response.data.token) {
-    instance.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${response.data.token}`
+    instance.defaults.headers.common.Authorization = `Bearer ${response.data.token}`
   }
   return response
 }
 
-async function callApiPut(url, data) {
+async function callApiPut (url, data) {
   const response = await instance({
     method: 'PUT',
     url,
-    data,
+    data
   })
 
   if (response.data.token) {
-    instance.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${response.data.token}`
+    instance.defaults.headers.common.Authorization = `Bearer ${response.data.token}`
   }
   return response
 }
 
-async function callApiGet(url) {
+async function callApiGet (url) {
   const response = await instance({
     method: 'GET',
-    url,
+    url
   })
 
   return response
 }
 
-async function callApiDelete(url) {
+async function callApiImage (url) {
+  const response = await instance({
+    method: 'GET',
+    url
+  })
+
+  const ImgBase64 = Buffer.from(response.data.image.data, 'hex').toString('base64')
+  return `data:image/jpeg;base64,${ImgBase64}`
+}
+
+async function callApiPostMulti (url, formData) {
+  const response = await instance({
+    method: 'POST',
+    url,
+    // headers: {
+    //   'Content-Type': 'multipart/form-data'
+    // },
+    data: formData
+  })
+
+  console.log(response)
+  return response
+}
+
+async function callApiDelete (url) {
   const response = await instance({
     method: 'DELETE',
-    url,
+    url
   })
 
   return response
 }
 
 const ApiEventzi = {
-  login(email, password) {
-    let data = {
+  login (email, password) {
+    const data = {
       email: email,
-      psswd: password,
+      psswd: password
     }
     return callApiPost('/users/validate', data)
   },
-  upcoming() {
-    return callApiGet(`/events/upcoming`)
+  upcoming () {
+    return callApiGet('/events/upcoming')
   },
-  getOrganizations() {
+  getOrganizations () {
     return callApiGet('/organizations/orgsByUser')
   },
-  newOrganization(organization_name, description) {
-    let data = {
-      organization_name,
-      description,
-    }
-    return callApiPost('/organizations', data)
+  newOrganization (formData) {
+    return callApiPostMulti('/organizations', formData)
   },
-  getEventsByOrganization(organizationId) {
+  getEventsByOrganization (organizationId) {
     return callApiGet(`/organizations/${organizationId}/events`)
   },
-  getSpeakers(eventId) {
+  getSpeakers (eventId) {
     return callApiGet(`events/${eventId}/speakers`)
   },
-  getPartners(eventId) {
+  getPartners (eventId) {
     return callApiGet(`/partners/events/${eventId}`)
   },
-  getGeneral(eventId) {
+  getGeneral (eventId) {
     return callApiGet(`/events/${eventId}`)
   },
-  postSpeaker(eventId, data) {
+  postSpeaker (eventId, data) {
     return callApiPost(`/events/${eventId}/speakers/new`, data)
   },
-  putSpeaker(speakerId, data) {
+  putSpeaker (speakerId, data) {
     return callApiPut(`/events/speakers/${speakerId}`, data)
   },
-  postAssociate(eventId, data) {
+  postAssociate (eventId, data) {
     return callApiPost(`/partners/events/${eventId}`, data)
   },
-  putAssociate(associateId, data) {
+  putAssociate (associateId, data) {
     return callApiPut(`/partners/${associateId}`, data)
   },
-  putGeneral(eventId, data) {
+  putGeneral (eventId, data) {
     return callApiPut(`events/${eventId}`)
   },
-  newEvent(
+  newEvent (
     id_organization,
     event_name,
     event_type,
@@ -110,50 +126,56 @@ const ApiEventzi = {
     url,
     template
   ) {
-    let data = {
+    const data = {
       event_name,
       event_type,
       status_,
       event_description,
       date,
       url,
-      template,
+      template
     }
     return callApiPost(`/events/organizations/${id_organization}`, data)
   },
-  testEvent() {
-    let data = {
+  testEvent () {
+    const data = {
       event_name: 'Testing',
       event_type: 'Online',
       status_: 'Published',
       event_description: 'Insert description',
       date: '2020-11-11 18:00:00',
       url: 'www.google.com',
-      template: 'Template 1',
+      template: 'Template 1'
     }
-    return callApiPost(`/events/organizations/59`, data)
+    return callApiPost('/events/organizations/59', data)
   },
-  getOrganizers() {
-    return callApiGet(`organizations/events/organizers`)
+  getOrganizers () {
+    return callApiGet('organizations/events/organizers')
   },
-  sendOrganizers(eventId, userId, data){
+  sendOrganizers (eventId, userId, data) {
     return callApiPost(
       `events/${eventId}/users/${userId}`,
       data
     )
   },
-  getEvents(organizationId){
+  getEvents (organizationId) {
     return callApiGet(`organizations/${organizationId}/events`)
   },
-  deleteEvent(eventId) {
+  getOrganizers (organizationId) {
+    return callApiGet(`/organizations/${organizationId}/events/organizers`)
+  },
+  deleteEvent (eventId) {
     return callApiDelete(`events/${eventId}`)
   },
-  sendAgenda(userId, organizationId, data) {
+  sendAgenda (userId, organizationId, data) {
     return callApiPost(
       `events/${userId}/speaker/${organizationId}/schedule`,
       data
     )
   },
+  getImage (idEvent) {
+    return callApiImage(`/events/${idEvent}/media`)
+  }
 }
 
 export default ApiEventzi

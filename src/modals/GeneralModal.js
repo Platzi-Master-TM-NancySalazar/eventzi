@@ -1,48 +1,47 @@
-import React, { useState } from "react";
-import Portal from "../components/Portal";
-import { MdClose } from "react-icons/md";
-import Input, { InputDate } from '../components/input'
+import React, { useState } from 'react'
+import Portal from '../components/Portal'
+import { MdClose } from 'react-icons/md'
+import Input, { InputDate } from '../components/Input'
 import upload from '../assets/static/upload.png'
-import temp1 from "../assets/static/temp1.png";
-import temp2 from "../assets/static/temp2.png";
+import temp1 from '../assets/static/temp1.png'
+import temp2 from '../assets/static/temp2.png'
 import ApiEventzi from '../utils/ApiEventzi'
 
 const GeneralModal = (props) => {
-    const { generalClose, title, id, generalModalInfo } = props
-    console.log('general modal props', props)
+  const { generalClose, title, id, generalModalInfo } = props
+  console.log('general modal props', props)
 
+  const [eventName, setEventName] = useState(generalModalInfo[0].event_name || '')
+  const [eventType, setEventType] = useState(generalModalInfo[0].event_type || '')
+  const [status, setStatus] = useState(generalModalInfo[0].status_ || '')
+  const [description, setDescription] = useState(generalModalInfo[0].description_ || '')
+  const [url, setUrl] = useState(generalModalInfo[0].url || '')
+  const [date, setDate] = useState(generalModalInfo[0].date_ || '')
+  const [template, setTemplate] = useState(generalModalInfo[0].template)
 
-    const [eventName, setEventName] = useState(generalModalInfo[0].event_name || '')
-    const [eventType, setEventType] = useState(generalModalInfo[0].event_type || '')
-    const [status, setStatus] = useState(generalModalInfo[0].status_ || '')
-    const [description, setDescription] = useState(generalModalInfo[0].description_ || '')
-    const [url, setUrl] = useState(generalModalInfo[0].url || '')
-    const [date, setDate] = useState(generalModalInfo[0].date_ || '')
-    const [template, setTemplate] = useState(generalModalInfo[0].template)
+  const form = {
+    eventName, eventType, status, description, url, date, template
+  }
 
-    let form = {
-        eventName, eventType, status, description, url, date, template
-    }
+  const handleChange = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    })
+  }
 
-    const handleChange = (event) => {
-        setForm({
-            ...form,
-            [event.target.name]: event.target.value,
-        })
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    putGeneral(form)
+  }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        putGeneral(form)
-    }
+  const putGeneral = (form) => {
+    ApiEventzi.putGeneral(id, form)
+      .then(() => generalClose())
+      .catch((err) => console.error(err))
+  }
 
-    const putGeneral = (form) => {
-        ApiEventzi.putGeneral(id, form)
-            .then(() => generalClose())
-            .catch((err) => console.error(err))
-    }
-
-    return (
+  return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
@@ -109,7 +108,6 @@ const GeneralModal = (props) => {
 
                                 <p>Select Template:</p>
 
-
                                 <input
                                     type="radio"
                                     name="template"
@@ -127,9 +125,6 @@ const GeneralModal = (props) => {
                                 // onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp2} alt="Template 2" className="img-template" />
-
-
-
 
                             </div>
                             <div>
@@ -151,7 +146,6 @@ const GeneralModal = (props) => {
                                 </label>
                             </div>
 
-
                             <div className="events__save-area">
                                 <button type="submit" className="events_button">
                                     Save changes
@@ -163,7 +157,7 @@ const GeneralModal = (props) => {
                 </div>
             </div>
         </Portal>
-    );
-};
+  )
+}
 
-export default GeneralModal;
+export default GeneralModal

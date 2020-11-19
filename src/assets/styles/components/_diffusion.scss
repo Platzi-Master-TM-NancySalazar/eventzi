@@ -17,7 +17,6 @@
 
   &_main {
     background-color: $bg-color;
-    // margin: 20px 125px 0px 125px;
     margin: 0;
     border-radius: 14px;
     padding: 10px;
@@ -35,20 +34,10 @@
         border-radius: 10px;
       }
     }
-
-    button {
-      background-color: $auxiliar-color2;
-      color: $white-color;
-      height: 30px;
-      width: 120px;
-      border-radius: 5px;
-      border: none;
-      margin: 20px;
-    }
+    
     p {
       text-align: initial;
       margin: 10px;
-      margin-left: 30px;
     }
 
     form {
@@ -57,9 +46,10 @@
     }
 
     input {
-      width: 90%;
+      box-sizing: border-box;
+      width: 95%;
       height: 40px;
-      padding-left: 10px;
+      padding: 10px;
       background-color: $white-color;
       border: 1px solid $gray-color;
     }

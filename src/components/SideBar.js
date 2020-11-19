@@ -1,55 +1,53 @@
-import React from "react";
+import React, { useState } from 'react'
 import {
-  MdPermIdentity,
   MdSettingsInputAntenna,
   MdInsertChart,
   MdDehaze,
   MdPeopleOutline,
   MdEventNote,
-  MdEdit,
-} from "react-icons/md";
-import { useState } from "react";
+  MdEdit
+} from 'react-icons/md'
 
 const SideBar = ({ handleOption, select }) => {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
+  const [sidebar, setSidebar] = useState(false)
+  const showSidebar = () => setSidebar(!sidebar)
 
   return (
     <>
-      <section className={sidebar ? "nav-menu active" : "nav-menu"}>
+      <section className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <a
-          onClick={() => handleOption("Events")}
-          className={`link ${select == "Events" ? "link-active" : ""}`}
+          onClick={() => handleOption('Events')}
+          className={`link ${select === 'Events' ? 'link-active' : ''}`}
         >
-          <MdEventNote />
+          <MdEventNote className='link__icon'/>
           Events
         </a>
         <a
-          onClick={() => handleOption("Edit")}
-          className={`link ${select == "Edit" ? "link-active" : ""}`}
+          onClick={() => handleOption('Edit')}
+          className={`link ${select === 'Edit' ? 'link-active' : ''}`}
         >
-          <MdEdit />
+          <MdEdit className='link__icon'/>
           Edit
         </a>
         <a
-          onClick={() => handleOption("Organizers")}
-          className={`link ${select == "Organizers" ? "link-active" : ""}`}
+          onClick={() => handleOption('Organizers')}
+          className={`link ${select === 'Organizers' ? 'link-active' : ''}`}
         >
-          <MdPeopleOutline />
+          <MdPeopleOutline className='link__icon'/>
           Organizers
         </a>
         <a
-          onClick={() => handleOption("Diffusion")}
-          className={`link ${select == "Diffusion" ? "link-active" : ""}`}
+          onClick={() => handleOption('Diffusion')}
+          className={`link ${select === 'Diffusion' ? 'link-active' : ''}`}
         >
-          <MdSettingsInputAntenna />
+          <MdSettingsInputAntenna className='link__icon'/>
           Diffusion
         </a>
         <a
-          onClick={() => handleOption("Analitics")}
-          className={`link ${select == "Analitics" ? "link-active" : ""}`}
+          onClick={() => handleOption('Analitics')}
+          className={`link ${select === 'Analitics' ? 'link-active' : ''}`}
         >
-          <MdInsertChart />
+          <MdInsertChart className='link__icon'/>
           Analitics
         </a>
       </section>
@@ -57,7 +55,7 @@ const SideBar = ({ handleOption, select }) => {
         <MdDehaze />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

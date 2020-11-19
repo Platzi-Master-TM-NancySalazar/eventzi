@@ -1,9 +1,9 @@
-import React from "react";
-import { AiOutlineTwitter } from "react-icons/ai";
+import React from 'react'
+import { AiOutlineTwitter } from 'react-icons/ai'
 
 const Speaker = (props) => {
   return (
-    <div className={"speaker__card"}>
+    <div className={'speaker__card'}>
       <div className="speaker__overlay">
         <div className="speaker__info">
           <div className="speaker__name">
@@ -26,7 +26,7 @@ const Speaker = (props) => {
         <img className="speaker__image" src={props.image} alt="Speaker image" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Speaker;
+export default Speaker

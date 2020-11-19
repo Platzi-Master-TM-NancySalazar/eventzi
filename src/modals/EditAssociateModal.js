@@ -1,42 +1,41 @@
-import React, { useEffect, useState } from "react";
-import Input from '../components/input'
-import Portal from "../components/Portal";
-import { MdClose } from "react-icons/md";
+import React, { useEffect, useState } from 'react'
+import Input from '../components/Input'
+import Portal from '../components/Portal'
+import { MdClose } from 'react-icons/md'
 import ApiEventzi from '../utils/ApiEventzi'
 
 const EditAssociateModal = (props) => {
-    const { title, id, associateModalInfo, editAssociateClose } = props
-    let { id_partner } = associateModalInfo
+  const { title, id, associateModalInfo, editAssociateClose } = props
+  const { id_partner } = associateModalInfo
 
-    const [name_, setName] = useState(associateModalInfo.name_)
-    const [url, setUrl] = useState(associateModalInfo.url)
+  const [name_, setName] = useState(associateModalInfo.name_)
+  const [url, setUrl] = useState(associateModalInfo.url)
 
-    let form = {
-        name_,
-        url
-    }
+  const form = {
+    name_,
+    url
+  }
 
-    const handleInput = (event) => {
-        setForm({
-            ...form,
-            [event.target.name]: event.target.value,
-        })
-    }
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    })
+  }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        editAssociate(form)
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    editAssociate(form)
+  }
 
-    const editAssociate = (form) => {
-        console.log('form', form)
-        ApiEventzi.putAssociate(id_partner, form)
-            .then(() => editAssociateClose())
-            .catch((err) => console.error(err))
-    }
+  const editAssociate = (form) => {
+    console.log('form', form)
+    ApiEventzi.putAssociate(id_partner, form)
+      .then(() => editAssociateClose())
+      .catch((err) => console.error(err))
+  }
 
-
-    return (
+  return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
@@ -65,11 +64,10 @@ const EditAssociateModal = (props) => {
                         <button type='submit' className="modal__button">Save Associate Changes</button>
                     </form>
 
-
                 </div>
             </div>
         </Portal>
-    );
-};
+  )
+}
 
-export default EditAssociateModal;
+export default EditAssociateModal

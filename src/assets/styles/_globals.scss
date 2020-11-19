@@ -1,36 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
 html {
-  font-size: 62.5%;
-  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 12rem;
+  font-size: 2rem;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 4.8rem;
+  font-size: 1.5rem;
 }
 
 h3 {
   font-weight: bold;
-  font-size: 3.2rem;
+  font-size: 1.17rem;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+h5 {
+  font-weight: bold;
+  font-size: 0.83rem;
+}
+
+h6 {
+  font-weight: bold;
+  font-size: 0.67rem;
 }
 
 p {
   font-weight: normal;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 small {
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 0.8rem;
 }
 
 a {
@@ -70,30 +88,21 @@ $screen-md-min: 768px;
 $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
 
-.button-primary {
-  cursor: pointer;
-  font-size: 2rem;
-  color: $white-color;
-  background-color: $auxiliar-color2;
-  padding: 5px 15px;
-  border-radius: 9px;
-  margin-top: 10px;
-  border: 1px solid $auxiliar-color2;
-  min-width: 100px;
-  &:hover {
-    background-color: $auxiliar-lightcolor2;
-    border: 1px solid $auxiliar-color2;
-  }
-}
-
 .input-material {
   margin-top: 20px;
   margin-bottom: 10px;
   width: 100%;
-  height: 50px;
+  height: 60px;
   max-width: 400px;
   position: relative;
   overflow: hidden;
+
+  &,input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-text-fill-color: black;
+    }
 
   &__input {
     width: 100%;
@@ -103,11 +112,12 @@ $screen-xl-min: 1200px;
     border: none;
     outline: 0px;
     cursor: pointer;
+    font-size: 1.2rem;
 
     &:focus + .input-material__label .input-material__text,
     &:valid + .input-material__label .input-material__text {
-      transform: translateY(-130%);
-      font-size: 1.2rem;
+      transform: translateY(-150%);
+      font-size: 0.8rem;
       font-weight: 500;
       color: $auxiliar-color2;
     }
@@ -120,7 +130,7 @@ $screen-xl-min: 1200px;
 
   &__label {
     position: absolute;
-    bottom: 10px;
+    bottom: 14px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -128,7 +138,7 @@ $screen-xl-min: 1200px;
     border-bottom: 1px solid $gray-color;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: -1px;
@@ -146,10 +156,10 @@ $screen-xl-min: 1200px;
     left: 0;
     transition: all 200ms ease;
     color: black;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     text-transform: capitalize;
   }
-  &.__text-date{
+  &.__text-date {
     position: absolute;
     bottom: 5px;
     left: 0;
@@ -159,7 +169,16 @@ $screen-xl-min: 1200px;
     text-transform: capitalize;
   }
 }
-.img-template{
+.img-template {
   height: 90px;
   margin: 10px 5px;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff;
 }

@@ -1,18 +1,18 @@
-import React from "react";
-import Speaker from "../components/Speaker";
-import Talk from "../components/Talk";
-import Asociate from "../components/Asociate";
-import SuscribeForm from "../components/SuscribeForm";
-import EventAbout from "../components/EventAbout";
-import Countdown from "react-countdown";
-import FormatDate from "../utils/FormatDate";
-import { MdPlace, MdEvent } from "react-icons/md";
+import React from 'react'
+import Speaker from '../components/Speaker'
+import Talk from '../components/Talk'
+import Asociate from '../components/Asociate'
+import SuscribeForm from '../components/SuscribeForm'
+import EventAbout from '../components/EventAbout'
+import Countdown from 'react-countdown'
+import FormatDate from '../utils/FormatDate'
+import { MdPlace, MdEvent } from 'react-icons/md'
 
 class Template2 extends React.Component {
-  render() {
+  render () {
     this.props.talks.sort((a, b) =>
       a.time_ > b.time_ ? 1 : b.time_ > a.time_ ? -1 : 0
-    );
+    )
     return (
       <div className="template2">
         <div className="cover">
@@ -65,7 +65,7 @@ class Template2 extends React.Component {
                       description={talk.description_}
                     />
                   </div>
-                );
+                )
               })}
             </div>
           </section>
@@ -82,7 +82,7 @@ class Template2 extends React.Component {
                     image={speaker.picture}
                   />
                 </div>
-              );
+              )
             })}
           </section>
         </main>
@@ -99,12 +99,12 @@ class Template2 extends React.Component {
                     url={partner.url}
                   />
                 </div>
-              );
+              )
             })}
           </div>
         </section>
       </div>
-    );
+    )
   }
 }
-export default Template2;
+export default Template2

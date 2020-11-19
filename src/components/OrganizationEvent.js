@@ -13,8 +13,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
 
   console.log('isAdmin', IsAdmin)
 
-
-  let arrayTest = ['',
+  const arrayTest = ['',
     {
       banner: '',
       created: '',
@@ -32,25 +31,23 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
     }
   ]
 
-
-
   const handleDelete = (id_event_) => {
     ApiEventzi.deleteEvent(id_event_)
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           clear([])
         }
       })
       .catch((err) => console.log(err))
   }
 
-  let date = new Date(date_)
+  const date = new Date(date_)
 
   const handleSpeakers = (id_event_) => {
     setOpenSpeaker(true)
     ApiEventzi.getSpeakers(id_event_)
       .then(response => {
-        let speakerInfo = response.data.data
+        const speakerInfo = response.data.data
         setOpenSpeaker([true, speakerInfo])
       })
   }
@@ -66,7 +63,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
         if (response.data.data.length === 0) {
           setOpenGeneral([true, arrayTest])
         } else {
-          let generalInfo = response.data.data
+          const generalInfo = response.data.data
           setOpenGeneral([true, generalInfo])
         }
       })
@@ -84,13 +81,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
     setOpenGeneral(false)
   }
 
-  const handleSubmit = () => {
-    console.log('click')
-  }
-
-  let generalModalInfo = openGeneral[1]
-
-
+  const generalModalInfo = openGeneral[1]
 
   return (
     <div className='organization-event'>
@@ -129,8 +120,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
         />
       )}{' '}
 
-      {IsAdmin
-        &&
+      {IsAdmin &&
         <div onClick={() => handleDelete(id_event_)}>
           <MdDelete className='organization-event__setup' />
         </div>

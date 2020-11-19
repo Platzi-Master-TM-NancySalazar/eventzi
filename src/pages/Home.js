@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import hero from '../assets/static/hero_platziConf.png'
 import EventCard from '../components/EventCard'
@@ -7,17 +7,17 @@ import Loader from '../components/Loader'
 import FormatDate from '../utils/FormatDate'
 
 import ApiEventzi from '../utils/ApiEventzi'
-import { Context } from '../context/Context'
+
+import globalContext from '../context/globalContext'
 
 const Home = () => {
+  const { search } = useContext(globalContext)
   const [state, setState] = useState({
     loading: true,
     data: [],
     filterData: [],
-    error: false,
+    error: false
   })
-
-  const { search } = useContext(Context)
 
   const { data } = state
   useEffect(() => {
@@ -32,18 +32,17 @@ const Home = () => {
     if (data.length > 0 && !search) {
       setState({ ...state, filterData: data })
     }
-
   }, [data, search])
 
   useEffect(() => {
     if (!state.data.length && !state.error) {
       ApiEventzi.upcoming()
         .then((response) => {
-          let data = response.data.data
+          const data = response.data.data
           data.sort((a, b) =>
             a.event_name.localeCompare(b.event_name, undefined, {
               numeric: true,
-              sensitivity: 'base',
+              sensitivity: 'base'
             })
           )
           if (data.length > 0) {
@@ -67,7 +66,7 @@ const Home = () => {
     return <Error />
   }
 
-  console.log(state.filterData.length == 0)
+  console.log(state.filterData.length === 0)
   return (
     <>
       <div className='hero'>
@@ -75,10 +74,10 @@ const Home = () => {
         <img className='hero--img' src={hero} alt='Imagen platziConf' />
       </div>
       <div className='home_container'>
-        <h3 className='home_container--title'>Upcoming</h3>
+        <h2 className='home_container--title'>Upcoming</h2>
         <div className='home_container--cards'>
           {
-            state.filterData.length == 0 && <h3 style={{marginBottom: '300px'}} >no search results.</h3>
+            state.filterData.length === 0 && <h3 style={{ marginBottom: '300px' }} >no search results.</h3>
           }
 
           {state.filterData.map((card) => {

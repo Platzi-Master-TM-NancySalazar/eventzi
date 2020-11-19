@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { HiCog } from "react-icons/hi";
-import { HiOutlinePlusCircle } from "react-icons/hi";
-import PopupFirst from './PopupFirst';
-import AddOrganizator from './AddOrganizator';
-import ApiEventzi from '../utils/ApiEventzi';
+import { HiCog, HiOutlinePlusCircle } from 'react-icons/hi'
+
+import PopupFirst from './PopupFirst'
+import AddOrganizator from './AddOrganizator'
+import ApiEventzi from '../utils/ApiEventzi'
 
 const Organizers = () => {
-
   const [Omodal, setOmodal] = useState(false)
 
   const handleOpenModal = () => {
@@ -16,22 +15,22 @@ const Organizers = () => {
   const [badge, setBadge] = useState([])
 
   React.useEffect(() => {
-    ApiEventzi.getOrganizers()
-    .then(response => {
-      let newBadge = response.data.data
-      setBadge(newBadge)
-    })
-    .catch((error) => console.log(error))
-  },[])
+    ApiEventzi.getOrganizers(25)
+      .then(response => {
+        const newBadge = response.data.data
+        setBadge(newBadge)
+      })
+      .catch((error) => console.log(error))
+  }, [])
 
   return (
     <>
-      <div className='main--container-buttons'>
-        <button onClick={handleOpenModal}>
-          <HiOutlinePlusCircle className='icon-add-outline' />Add Organizator
-        </button>
-        {Omodal ? <PopupFirst evenChange={handleOpenModal}/> : null}
-      </div>
+
+      <button onClick={handleOpenModal} className='button small'>
+        <HiOutlinePlusCircle className='button__icon'/>Add Organizator
+      </button>
+      {Omodal ? <PopupFirst evenChange={handleOpenModal} /> : null}
+
       <div className='second--main'>
         <div className='second--main-table'>
           <div className='check'>
@@ -46,7 +45,6 @@ const Organizers = () => {
         <div className='second--main-content'>
 
           <AddOrganizator badges={badge} />
-
 
         </div>
       </div>

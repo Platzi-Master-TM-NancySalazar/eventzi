@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import Input, { InputDate } from "./input";
-import temp1 from "../assets/static/temp1.png";
-import temp2 from "../assets/static/temp2.png";
+import React, { useState } from 'react'
+import Input, { InputDate } from './Input'
+import temp1 from '../assets/static/temp1.png'
+import temp2 from '../assets/static/temp2.png'
 import upload from '../assets/static/upload.png'
 
 const CreateEvent = ({ submit }) => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({})
 
   const handleChange = (event) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value,
-    });
-  };
+      [event.target.name]: event.target.value
+    })
+  }
 
   const handleClick = () => {
-    submit(form);
-  };
+    submit(form)
+  }
 
   return (
     <div>
@@ -28,7 +28,7 @@ const CreateEvent = ({ submit }) => {
           <Input text="description" event={handleChange} />
           <Input text="url" event={handleChange} />
           <p className="marginbtm">Date / Time</p>
-          <InputDate text="date" event={handleChange} />         
+          <InputDate text="date" event={handleChange} />
           <p>Select Template:</p>
           <input
             type="radio"
@@ -73,6 +73,6 @@ const CreateEvent = ({ submit }) => {
         </button>
       </div>
     </div>
-  );
-};
-export default CreateEvent;
+  )
+}
+export default CreateEvent

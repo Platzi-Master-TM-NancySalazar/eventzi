@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 class Asociate extends React.Component {
-  render() {
+  render () {
     return (
       <div className="asociate">
         <a href={`http://${this.props.url}`}>
@@ -9,7 +9,7 @@ class Asociate extends React.Component {
         </a>
         <p className="asociate__name">{this.props.name}</p>
       </div>
-    );
+    )
   }
 }
-export default Asociate;
+export default Asociate

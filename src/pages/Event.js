@@ -1,63 +1,66 @@
-import React from "react";
-import Template1 from "./Template1";
-import Template2 from "./Template2";
-import Loader from "../components/Loader";
-import Error from "./Error";
-import NotFound from "./NotFound";
+import React from 'react'
+import Template1 from './Template1'
+import Template2 from './Template2'
+import Loader from '../components/Loader'
+import Error from './Error'
+import NotFound from './NotFound'
 
 class Event extends React.Component {
-  state = {
-    loading: true,
-    error: null,
-    data: undefined,
-    speakers: undefined,
-    talks: undefined,
-  };
-
-  componentDidMount() {
-    this.fetchData();
+  constructor () {
+    super()
+    this.state = {
+      loading: true,
+      error: null,
+      data: undefined,
+      speakers: undefined,
+      talks: undefined
+    }
   }
 
-  fetchData = async () => {
-    this.setState({ loading: true, error: null });
-    const API = "https://eventziapi.herokuapp.com/";
-    let eventId = this.props.match.params.eventId;
-    try {
-      const response = await fetch(`${API}events/${eventId}`);
-      const response2 = await fetch(`${API}events/${eventId}/speakers`);
-      const response3 = await fetch(`${API}events/${eventId}/schedule`);
-      const response4 = await fetch(`${API}partners/events/${eventId}`);
+  componentDidMount () {
+    this.fetchData()
+  }
 
-      const data = await response.json();
-      const speakers = await response2.json();
-      const talks = await response3.json();
-      const partners = await response4.json();
+  async fetchData () {
+    this.setState({ loading: true, error: null })
+    const API = 'https://eventziapi.herokuapp.com/'
+    const eventId = this.props.match.params.eventId
+    try {
+      const response = await fetch(`${API}events/${eventId}`)
+      const response2 = await fetch(`${API}events/${eventId}/speakers`)
+      const response3 = await fetch(`${API}events/${eventId}/schedule`)
+      const response4 = await fetch(`${API}partners/events/${eventId}`)
+
+      const data = await response.json()
+      const speakers = await response2.json()
+      const talks = await response3.json()
+      const partners = await response4.json()
 
       this.setState({
         loading: false,
         data: data,
         speakers: speakers,
         talks: talks,
-        partners: partners,
-      });
+        partners: partners
+      })
     } catch (error) {
-      this.setState({ loading: false, error: error });
+      this.setState({ loading: false, error: error })
     }
   };
 
-  render() {
+  render () {
     if (this.state.loading === true) {
-      return <Loader />;
+      return <Loader />
     }
 
     if (this.state.error) {
-      return <Error />;
+      return <Error />
     }
 
-    if (this.state.data.data[0] == undefined) {
-      return <NotFound />;
+    if (this.state.data.data[0] === undefined) {
+      return <NotFound />
     }
-    if (this.state.data.data[0].template == "Template 2") {
+    if (this.state.data.data[0].template === 'Template 2') {
       return (
         <Template1
           data={this.state.data.data[0]}
@@ -65,7 +68,7 @@ class Event extends React.Component {
           talks={this.state.talks.data}
           partners={this.state.partners.data}
         />
-      );
+      )
     } else {
       return (
         <Template2
@@ -74,8 +77,8 @@ class Event extends React.Component {
           talks={this.state.talks.data}
           partners={this.state.partners.data}
         />
-      );
+      )
     }
   }
 }
-export default Event;
+export default Event

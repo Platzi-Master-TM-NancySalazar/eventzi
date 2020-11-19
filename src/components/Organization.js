@@ -8,7 +8,7 @@ import Event from './OrganizationEvent'
 
 import {
   MdKeyboardArrowUp,
-  MdKeyboardArrowDown,
+  MdKeyboardArrowDown
 } from 'react-icons/md'
 
 const Organization = ({ id_organization, organization_name }) => {
@@ -66,10 +66,10 @@ const Organization = ({ id_organization, organization_name }) => {
           <figure className='events_container_logo'>
             <img src={logo_white} className='events_logo' />
           </figure>
-          <h4 className='events_organization-title'>{organization_name}</h4>
+          <h3 className='events_organization-title'>{organization_name}</h3>
         </div>
         <div>
-          <button onClick={modalOpen} className='events_button'>
+          <button onClick={modalOpen} className='button small'>
             Create event
           </button>
           <button className='events_organization-button' onClick={handleChange}>

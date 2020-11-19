@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
-import Input from '../components/input'
-import Portal from "../components/Portal";
-import { MdClose } from "react-icons/md";
+import React, { useEffect, useState } from 'react'
+import Input from '../components/Input'
+import Portal from '../components/Portal'
+import { MdClose } from 'react-icons/md'
 import ApiEventzi from '../utils/ApiEventzi'
 
 const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
-    const [form, setForm] = useState(null)
+  const [form, setForm] = useState(null)
 
-    const handleInput = (event) => {
-        setForm({
-            ...form,
-            [event.target.name]: event.target.value,
-        })
-    }
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    })
+  }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        newAssociate(form)
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    newAssociate(form)
+  }
 
-    const newAssociate = (form) => {
-        ApiEventzi.postAssociate(id, form)
-            .then(() => addNewAssociateClose())
-            .catch((err) => console.error(err))
-    }
+  const newAssociate = (form) => {
+    ApiEventzi.postAssociate(id, form)
+      .then(() => addNewAssociateClose())
+      .catch((err) => console.error(err))
+  }
 
-    return (
+  return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
@@ -53,11 +53,10 @@ const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
                         <button type='submit' className="modal__button">Add Associate</button>
                     </form>
 
-
                 </div>
             </div>
         </Portal>
-    );
-};
+  )
+}
 
-export default AssociateNewModal;
+export default AssociateNewModal

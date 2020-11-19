@@ -12,13 +12,13 @@ const UserGender = () => {
       data: {
         columns: [
           ['Female', data[0]],
-          ['Male', data[1]],
+          ['Male', data[1]]
         ],
-        type: 'pie',
+        type: 'pie'
       },
       color: {
-        pattern: ['#f73378', '#2196f3'],
-      },
+        pattern: ['#f73378', '#2196f3']
+      }
     })
   }
 
@@ -34,8 +34,8 @@ const UserGender = () => {
   }, [data])
 
   return (
-    <div className='analitics_chart'>
-      <p>Gender of users</p>
+    <div className='analitics__chart'>
+      <p className='analitics__chart-title'>Gender of users</p>
       <div id='user_gender' />
       {loading ? <Loader /> : generateChart()}
     </div>

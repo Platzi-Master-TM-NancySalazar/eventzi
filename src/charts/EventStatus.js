@@ -13,13 +13,13 @@ const EventStatus = () => {
         columns: [
           ['Created', data[0]],
           ['Done', data[1]],
-          ['Published', data[2]],
+          ['Published', data[2]]
         ],
-        type: 'pie',
+        type: 'pie'
       },
       color: {
-        pattern: ['#2196f3', '#9e9e9e', '#00e676'],
-      },
+        pattern: ['#2196f3', '#9e9e9e', '#00e676']
+      }
     })
   }
 
@@ -36,7 +36,7 @@ const EventStatus = () => {
 
   return (
     <div className='analitics_chart'>
-      <p>Event status</p>
+      <p className='analitics__chart-title'>Event status</p>
       <div id='event_status' />
       {loading ? <Loader /> : generateChart()}
     </div>

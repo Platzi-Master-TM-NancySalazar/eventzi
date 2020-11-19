@@ -24,7 +24,7 @@ const UserCountry = () => {
         columns: [
           ['Users', 30, 200, 100, 400, 150, 250, 50, 100, 250, 12]
         ],
-        type: 'bar',
+        type: 'bar'
       },
       axis: {
         x: {
@@ -39,35 +39,35 @@ const UserCountry = () => {
             'URU',
             'ARG',
             'PAR',
-            'PER',
-          ],
-        },
+            'PER'
+          ]
+        }
       },
       color: {
-        pattern: ['#2196f3'],
+        pattern: ['#2196f3']
       },
       bar: {
         width: {
-          ratio: 0.5,
-        },
+          ratio: 0.5
+        }
       },
       grid: {
         focus: {
-          show: true,
+          show: true
         },
         x: {
-          show: false,
+          show: false
         },
         y: {
-          show: true,
-        },
-      },
+          show: true
+        }
+      }
     })
   }
 
   return (
     <div className='analitics_chart'>
-      <p>Nationality of users</p>
+      <p className='analitics__chart-title'>Nationality of users</p>
       <div id='user_country' />
       {loading ? <Loader /> : generateChart()}
     </div>

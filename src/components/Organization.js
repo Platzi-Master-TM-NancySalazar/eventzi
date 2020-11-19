@@ -31,7 +31,6 @@ const Organization = ({ id_organization, organization_name }) => {
       id_organization,
       form.name,
       form.type,
-      form.status,
       form.description,
       PostFormat(form.date),
       form.url,

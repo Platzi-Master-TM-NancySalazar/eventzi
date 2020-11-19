@@ -24,7 +24,6 @@ const CreateEvent = ({ submit }) => {
         <div>
           <Input text="name" event={handleChange} />
           <Input text="type" event={handleChange} />
-          <Input text="status" event={handleChange} />
           <Input text="description" event={handleChange} />
           <Input text="url" event={handleChange} />
           <p className="marginbtm">Date / Time</p>

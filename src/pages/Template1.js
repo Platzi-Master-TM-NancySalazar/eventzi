@@ -47,7 +47,7 @@ class Template1 extends React.Component {
               </h3>
               <h3 className="date__item" id="url">
                 <MdPlace />
-                <a href={this.props.data.url}> {this.props.data.url}</a>
+                <a href={`http://${this.props.data.url}`} target="blank"> {this.props.data.url}</a>
               </h3>
             </div>
           </div>

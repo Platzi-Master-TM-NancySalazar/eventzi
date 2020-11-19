@@ -13,10 +13,8 @@
   }
 
   &__status {
-    top: 5px;
-    right: 40px;
+    margin-right: 10px;
     padding: 1px 9px;
-    position: absolute;
     cursor: pointer;
     background-color: #ffa05d;
     border: solid #c6641e;
@@ -24,11 +22,10 @@
     font-weight: bold;
     text-align: center;
     font-size: 12px;
+
     &--published {
-      top: 5px;
-      right: 40px;
+      margin-right: 10px;
       padding: 1px 9px;
-      position: absolute;
       cursor: pointer;
       background-color: #74e599;
       border: solid #4c845e;
@@ -49,6 +46,10 @@
     cursor: pointer;
     font-size: 24px;
     padding: 4px;
+
+    &.large{
+      font-size: 32px;
+    }
     
     &.speakers {
       color: $auxiliar-color2;

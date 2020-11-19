@@ -158,6 +158,9 @@ const ApiEventzi = {
   deleteEvent (eventId) {
     return callApiDelete(`events/${eventId}`)
   },
+  deleteOrganizations (organizationId) {
+    return callApiDelete(`/organizations/${organizationId}`)
+  },
   sendAgenda (userId, organizationId, data) {
     return callApiPost(
       `events/${userId}/speaker/${organizationId}/schedule`,

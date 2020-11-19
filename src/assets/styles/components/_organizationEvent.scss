@@ -56,4 +56,17 @@
       border-left: 60px solid #333333;
     }
   }
+  button{
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2d9cdb;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.4rem;
+    transition: 0.4s ease all;
+    align-self: center;
+  }
 }

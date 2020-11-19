@@ -88,12 +88,18 @@ const ContainerEvent = ({
           }
         })
         .catch((err) => console.log(err));
-    } else
+    } else {
       sendAlert({
         show: true,
-        type: "error",
-        message: 'Text',
+        type: "warning",
+        message: "Missing banner",
       });
+      // sendAlert({
+      //   show: true,
+      //   type: "error",
+      //   message: "Add all info before publish",
+      // });
+    }
   };
   const handleNoPublish = () => {
     ApiEventzi.unPublishEvent(id_event_)

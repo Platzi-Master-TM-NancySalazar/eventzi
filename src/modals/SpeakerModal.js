@@ -36,50 +36,53 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
   const speakerModalInfo = editSpeaker[1]
 
   return (
-        <Portal>
-            <div className="modal">
-                <div className="modal__container">
-                    <div className="modal__container-header">
-                        <h2>{title}</h2>
-                        <MdClose className="modal__container--close" onClick={speakerClose} />
-                    </div>
+    <Portal>
+      <div className="modal">
+        <div className="modal__container">
+          <div className="modal__container-header">
+            <h2>{title}</h2>
+            <MdClose className="modal__container--close" onClick={speakerClose} />
+          </div>
 
-                    {speakers.length === 0
-                      ? <>
-                            <p>No speaker added</p>
-                        </>
-                      : speakers.map(speaker => {
-                        return (
-                                <>
-                                    <div className="options__modal">
-                                        <button className="modal__button" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
-                                        <p key={speaker.id_speaker}>{speaker.fullname}</p>
-                                    </div>
-                                </>
-                        )
-                      })
-                    }
-                    <button className="modal__button-add" onClick={() => handleNewSpeaker()}>Add new speaker <MdAddCircleOutline /></button>
-                    {addNewSpeaker && (
-                        <SpeakerNewModal
-                            title='Add new speaker'
-                            id={id}
-                            addNewSpeakerClose={addNewSpeakerClose}
-                        />
-                    )}
+          {speakers.length === 0
+            ? <>
+              <p>No speaker added</p>
+            </>
+            : speakers.map(speaker => {
+              return (
+                <>
+                  <div className="options__modal">
+                    <button className="modal__button" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
+                    <p key={speaker.id_speaker}>{speaker.fullname}</p>
+                  </div>
+                </>
+              )
+            })
+          }
+          <div className='modal__button-add'>
+            <button className="button small" onClick={() => handleNewSpeaker()}>Add new speaker <MdAddCircleOutline /></button>
+          </div>
 
-                    {editSpeaker[0] === true && (
-                        <EditSpeakerModal
-                            title='Edit Speaker'
-                            id={id}
-                            editSpeakerClose={editSpeakerClose}
-                            speakerModalInfo={speakerModalInfo}
-                        />
-                    )}
+          {addNewSpeaker && (
+            <SpeakerNewModal
+              title='Add new speaker'
+              id={id}
+              addNewSpeakerClose={addNewSpeakerClose}
+            />
+          )}
 
-                </div>
-            </div>
-        </Portal>
+          {editSpeaker[0] === true && (
+            <EditSpeakerModal
+              title='Edit Speaker'
+              id={id}
+              editSpeakerClose={editSpeakerClose}
+              speakerModalInfo={speakerModalInfo}
+            />
+          )}
+
+        </div>
+      </div>
+    </Portal>
   )
 }
 

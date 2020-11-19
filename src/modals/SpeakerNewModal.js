@@ -34,9 +34,7 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                 <div className="modal__container">
                     <div className="modal__container-header">
                         <h3>{title}</h3>
-                        <button className="modal__container--close" onClick={addNewSpeakerClose}>
-                            <MdClose />
-                        </button>
+                        <MdClose className="modal__container--close" onClick={addNewSpeakerClose} />
                     </div>
                     <form className='events__form' onSubmit={handleSubmit}>
                         <div className='input-material'>
@@ -88,7 +86,7 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                             </label>
                         </div>
 
-                        <button type='submit' className="modal__button">Add Speaker</button>
+                        <button type='submit' className="button small">Add Speaker</button>
                     </form>
 
                 </div>

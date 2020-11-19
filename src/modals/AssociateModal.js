@@ -36,48 +36,49 @@ const AssociateModal = ({ associateClose, title, id }) => {
   const associateModalInfo = editAssociate[1]
 
   return (
-        <Portal>
-            <div className="modal">
-                <div className="modal__container">
-                    <div className="modal__container-header">
-                        <h2>{title}</h2>
-                        <MdClose className="modal__container--close" onClick={associateClose} />
-                    </div>
-                    {associates.length === 0
-                      ? <p>No associate added</p>
-                      : associates.map(associate => {
-                        return (
-                                <>
-                                    <div className="options__modal">
-                                        <button className="modal__button" onClick={() => { handleEditAssociate(associate) }}>Edit <MdEdit /> </button>
-                                        <p key={associate.name}>{associate.name_}</p>
-                                    </div>
-                                </>
-                        )
-                      })
-                    }
-                    <button className="modal__button-add" onClick={() => handleNewAssociate()}>Add new associate <MdAddCircleOutline /></button>
+    <Portal>
+      <div className="modal">
+        <div className="modal__container">
+          <div className="modal__container-header">
+            <h2>{title}</h2>
+            <MdClose className="modal__container--close" onClick={associateClose} />
+          </div>
+          {associates.length === 0
+            ? <p>No associate added</p>
+            : associates.map(associate => {
+              return (
+                <>
+                  <div className="options__modal">
+                    <p className="options__modal-name" key={associate.name}>{associate.name_}</p>
+                    <button className="button small" onClick={() => { handleEditAssociate(associate) }}>Edit <MdEdit /> </button>
+                  </div>
+                </>
+              )
+            })
+          }
+          <div className='modal__button-add'>
+            <button className="button small" onClick={() => handleNewAssociate()}>Add new associate <MdAddCircleOutline /></button>
+          </div>
+          {addNewAssociate && (
+            <AssociateNewModal
+              title='Add new associate'
+              id={id}
+              addNewAssociateClose={addNewAssociateClose}
+            />
+          )}
 
-                    {addNewAssociate && (
-                        <AssociateNewModal
-                            title='Add new associate'
-                            id={id}
-                            addNewAssociateClose={addNewAssociateClose}
-                        />
-                    )}
+          {editAssociate[0] === true && (
+            <EditAssociateModal
+              title='Edit associate'
+              id={id}
+              editAssociateClose={editAssociateClose}
+              associateModalInfo={associateModalInfo}
+            />
+          )}
 
-                    {editAssociate[0] === true && (
-                        <EditAssociateModal
-                            title='Edit associate'
-                            id={id}
-                            editAssociateClose={editAssociateClose}
-                            associateModalInfo={associateModalInfo}
-                        />
-                    )}
-
-                </div>
-            </div>
-        </Portal>
+        </div>
+      </div>
+    </Portal>
   )
 }
 

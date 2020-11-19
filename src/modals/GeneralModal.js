@@ -126,8 +126,9 @@ const GeneralModal = (props) => {
                                     name="template"
                                     value="Template 1"
                                     text="template"
+                                    checked={template === 'Template 1'}
                                     required
-                                // onChange={(e) => setTemplate(e.target.value)}
+                                onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp1} alt="Template 1" className="img-template" />
                                 <input
@@ -135,7 +136,8 @@ const GeneralModal = (props) => {
                                     name="template"
                                     value="Template 2"
                                     text="template"
-                                // onChange={(e) => setTemplate(e.target.value)}
+                                    checked={template === 'Template 2'}
+                                onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp2} alt="Template 2" className="img-template" />
 
@@ -160,7 +162,7 @@ const GeneralModal = (props) => {
                             </div>
 
                             <div className="events__save-area">
-                                <button type="submit" className="events_button">
+                                <button type="submit" className="button small">
                                     Save changes
                             </button>
                             </div>

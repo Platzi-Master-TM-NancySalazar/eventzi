@@ -1,13 +1,15 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import ApiEventzi from '../utils/ApiEventzi'
 import Select from './Select'
 
-const PopupFirst = ({evenChange}) => {
+const PopupFirst = ({ evenChange }) => {
+  const [badge, setBadge] = useState([])
 
-    // console.log(`popupfirst ${badges}`)
+  // console.log(`popupfirst ${badges}`)
 
-    const [badgePop, setBadgePopup] = useState([])
+  const [badgePop, setBadgePopup] = useState([])
 
+<<<<<<< HEAD
     React.useEffect(()=> {
         ApiEventzi.getEvents()
         .then(response => {
@@ -17,17 +19,28 @@ const PopupFirst = ({evenChange}) => {
         })
         .catch((error) => console.log(error))
     }, [])
+=======
+  React.useEffect(() => {
+    ApiEventzi.getEvents(25)
+      .then(response => {
+        const newInfo = response.data.data
+        console.log(`badgePop ${response}`)
+        setBadgePopup(newInfo)
+      })
+      .catch((error) => console.log(error))
+  }, [])
+>>>>>>> e8143cf6c187a2df9f71d74a8526defae8522226
 
-    const handleClick = () => {
-        ApiEventzi.sendOrganizers(id_user)
-    }
+  const handleClick = () => {
+    ApiEventzi.sendOrganizers(id_user)
+  }
 
-    const [change, setChange] = useState({disabled:true})
+  const [change, setChange] = useState({ disabled: true })
 
-    const handleChange = (event) => {
-        event.target.value ? setChange({disabled:false}) : setChange({disabled:true})
-    }
-    return (
+  const handleChange = (event) => {
+    event.target.value ? setChange({ disabled: false }) : setChange({ disabled: true })
+  }
+  return (
             <section className="overlay" id="overlay">
              <div className="popup--container-details" id="popup--container-details">
                  <h2>Add organizers to the event</h2>
@@ -39,8 +52,7 @@ const PopupFirst = ({evenChange}) => {
                         <option>Select event</option>
                         <Select badges={badgePop}/>
                     </select>
-                     
-                    
+
                      <button onClick={handleClick} className="button-popup">Add</button>
                  </div>
                  <div className="container--details">
@@ -52,7 +64,7 @@ const PopupFirst = ({evenChange}) => {
                  </div>
              </div>
          </section>
-    )
+  )
 }
 
 export default PopupFirst

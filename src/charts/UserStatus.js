@@ -12,13 +12,13 @@ const UserStatus = () => {
       data: {
         columns: [
           ['Inactive', data[0]],
-          ['Active', data[1]],
+          ['Active', data[1]]
         ],
-        type: 'pie',
+        type: 'pie'
       },
       color: {
-        pattern: ['#9e9e9e','#00e676'],
-      },
+        pattern: ['#9e9e9e', '#00e676']
+      }
     })
   }
 
@@ -35,7 +35,7 @@ const UserStatus = () => {
 
   return (
     <div className='analitics_chart'>
-      <p>User status</p>
+      <p className='analitics__chart-title'>User status</p>
       <div id='user_status' />
       {loading ? <Loader /> : generateChart()}
     </div>

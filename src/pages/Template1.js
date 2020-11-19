@@ -1,18 +1,18 @@
-import React from "react";
-import Speaker from "../components/Speaker";
-import Talk from "../components/Talk";
-import Asociate from "../components/Asociate";
-import SuscribeForm from "../components/SuscribeForm";
-import EventAbout from "../components/EventAbout";
-import Countdown from "react-countdown";
-import FormatDate from "../utils/FormatDate";
-import { MdPlace, MdEvent } from "react-icons/md";
+import React from 'react'
+import Speaker from '../components/Speaker'
+import Talk from '../components/Talk'
+import Asociate from '../components/Asociate'
+import SuscribeForm from '../components/SuscribeForm'
+import EventAbout from '../components/EventAbout'
+import Countdown from 'react-countdown'
+import FormatDate from '../utils/FormatDate'
+import { MdPlace, MdEvent } from 'react-icons/md'
 
 class Template1 extends React.Component {
-  render() {
+  render () {
     this.props.talks.sort((a, b) =>
       a.time_ > b.time_ ? 1 : b.time_ > a.time_ ? -1 : 0
-    );
+    )
     return (
       <div className="template1">
         <div className="cover">
@@ -47,7 +47,7 @@ class Template1 extends React.Component {
               </h3>
               <h3 className="date__item" id="url">
                 <MdPlace />
-                <a href={this.props.data.url}> {this.props.data.url}</a>
+                <a href={`http://${this.props.data.url}`} target="blank"> {this.props.data.url}</a>
               </h3>
             </div>
           </div>
@@ -72,7 +72,7 @@ class Template1 extends React.Component {
                       description={talk.description_}
                     />
                   </div>
-                );
+                )
               })}
             </div>
           </section>
@@ -89,7 +89,7 @@ class Template1 extends React.Component {
                     image={speaker.picture}
                   />
                 </div>
-              );
+              )
             })}
           </section>
         </main>
@@ -105,7 +105,7 @@ class Template1 extends React.Component {
                     url={partner.url}
                   />
                 </div>
-              );
+              )
             })}
           </div>
         </section>
@@ -114,8 +114,8 @@ class Template1 extends React.Component {
           <SuscribeForm />
         </section>
       </div>
-    );
+    )
   }
 }
 
-export default Template1;
+export default Template1

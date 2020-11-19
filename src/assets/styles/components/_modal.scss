@@ -21,11 +21,19 @@
       justify-content: space-between;
     }
     &--close {
-      font-size: 4rem;
-      border-style: none;
-      background: transparent;
-      cursor: pointer;
-      outline: none;
+      box-sizing: content-box;
+      border-radius: 50%;
+      font-size: 24px;
+      padding: 8px;
+      background-color: $auxiliar-color2;
+      color: $bg-color;
+      border: none;
+      @include shadow;
+
+      &:hover {
+        background-color: $bg-color;
+        color: $auxiliar-color2;
+      }
     }
   }
 }

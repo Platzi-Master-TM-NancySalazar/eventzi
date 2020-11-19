@@ -1,31 +1,201 @@
 import React, { useEffect, useState } from 'react'
 import ApiEventzi from '../utils/ApiEventzi'
+import FormatDate from '../utils/FormatDate'
+import Tooltip from '../components/common/Tooltip'
+import Portal from './Portal'
+import { MdClose, MdSupervisorAccount, MdRecordVoiceOver, MdDeleteForever, MdPlaylistAdd } from 'react-icons/md'
 
-import { MdDelete } from 'react-icons/md'
+import SpeakerModal from '../modals/SpeakerModal'
+import GeneralModal from '../modals/GeneralModal'
+import AssociateModal from '../modals/AssociateModal'
 
-const ContainerEvent = ({ event_name, date_, id_event_, clear } ) => {
-  const handleDelete = (id_event_) => {
-    ApiEventzi.deleteEvent(id_event_)
-    .then((response) => {
-      if (response.status == 200) {
-        clear([])
-      }
-    })
-    .catch((err) => console.log(err))
-  }
+import { Link } from 'react-router-dom'
 
-  let date = new Date(date_)
+const DeleteConfirm = ({ done, cancel, id }) => {
   return (
-    <div className='organization-event'>
-      <div className='organization-event__figure'>
-        <div className='organization-event__detail'>
-          <h3 className='organization-event__text'>{event_name}</h3>
-          <p className='organization-event__text'>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`}</p>
+    <Portal>
+      <div className="modal">
+        <div className="modal__container">
+          <div className="modal__container-header">
+            <h2>Delete confirm</h2>
+            <MdClose onClick={cancel} className="modal__container--close" />
+          </div>
+          <div>
+            <p>
+              are you sure you want to delete this event ?
+          </p>
+          <div className="events__save-area">
+            <button className='button small' onClick={cancel} >Cancel</button>
+            {' '}
+            <button className='button small' onClick={() => done(id)} >Confirm</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div onClick={() => handleDelete(id_event_)}>
-        <MdDelete className='organization-event__setup' />
+    </Portal>
+  )
+}
+
+const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ }) => {
+  const [openSpeaker, setOpenSpeaker] = useState(false)
+  const [openAssociate, setOpenAssociate] = useState(false)
+  const [openGeneral, setOpenGeneral] = useState([])
+  const [openDelete, setOpenDelete] = useState(false)
+
+  console.log('isAdmin', IsAdmin)
+
+  const arrayTest = ['',
+    {
+      banner: '',
+      created: '',
+      date_: '',
+      description_: '',
+      event_name: '',
+      event_type: '',
+      id_event_: '',
+      id_organization: '',
+      logo: '',
+      modified: '',
+      status_: '',
+      template: '',
+      url: ''
+    }
+  ]
+
+  const handlePublish = () => {
+    ApiEventzi.publishEvent(id_event_)
+      .then((response) => {
+        if (response.status === 200) {
+          clear([])
+        }
+      })
+      .catch((err) => console.log(err))
+  }
+  const handleNoPublish = () => {
+    ApiEventzi.unPublishEvent(id_event_)
+      .then((response) => {
+        if (response.status === 200) {
+          clear([])
+        }
+      })
+      .catch((err) => console.log(err))
+  }
+
+  const handleCancel = () => {
+    setOpenDelete(false)
+  }
+  const handleDelete = (id_event_) => {
+    ApiEventzi.deleteEvent(id_event_)
+      .then((response) => {
+        if (response.status === 200) {
+          clear([])
+        }
+      })
+      .catch((err) => console.log(err))
+  }
+
+  const handleSpeakers = (id_event_) => {
+    setOpenSpeaker(true)
+    ApiEventzi.getSpeakers(id_event_)
+      .then(response => {
+        const speakerInfo = response.data.data
+        setOpenSpeaker([true, speakerInfo])
+      })
+  }
+
+  const handleAssociates = (id_event_) => {
+    setOpenAssociate(true)
+  }
+
+  const handleGeneral = (id_event_) => {
+    setOpenGeneral(true)
+    ApiEventzi.getGeneral(id_event_)
+      .then(response => {
+        if (response.data.data.length === 0) {
+          setOpenGeneral([true, arrayTest])
+        } else {
+          const generalInfo = response.data.data
+          setOpenGeneral([true, generalInfo])
+        }
+      })
+  }
+
+  const speakerClose = () => {
+    setOpenSpeaker(false)
+  }
+
+  const associateClose = () => {
+    setOpenAssociate(false)
+  }
+
+  const generalClose = () => {
+    setOpenGeneral(false)
+  }
+
+  const generalModalInfo = openGeneral[1]
+
+  return (
+    <div className='organization-event'>
+      <Link to={`events/${id_event_}`}>
+        <div className='organization-event__figure'>
+          <div className='organization-event__detail'>
+            <h3 className='organization-event__text'>{event_name}</h3>
+            <p className='organization-event__text'>{FormatDate(date_)}</p>
+          </div>
+        </div>
+      </Link>
+
+      {
+        openDelete && <DeleteConfirm done={handleDelete} cancel={handleCancel} id={id_event_} />
+      }
+
+      {openSpeaker && (
+        <SpeakerModal
+          title='Speakers'
+          speakerClose={speakerClose}
+          id={id_event_}
+        />
+      )}
+
+      {openAssociate && (
+        <AssociateModal
+          title='Associates'
+          associateClose={associateClose}
+          id={id_event_}
+        />
+      )}
+
+      {openGeneral[0] === true && (
+        <GeneralModal
+          title='General information'
+          generalClose={generalClose}
+          id={id_event_}
+          generalModalInfo={generalModalInfo}
+        />
+      )}
+
+      <div className='organization-event__icon-container'>
+
+        {status_ === 'Published'
+          ? <div onClick={() => handleNoPublish(id_event_)} className='organization-event__status--published'>Published</div>
+          : <div onClick={() => handlePublish(id_event_)} className='organization-event__status'>Publish</div>
+        }
+        <Tooltip text='speakers' >
+          <MdRecordVoiceOver className='organization-event__icon speakers' onClick={() => handleSpeakers(id_event_)} />
+        </Tooltip>
+        <Tooltip text='associates'>
+          <MdSupervisorAccount className='organization-event__icon associates' onClick={() => handleAssociates(id_event_)} />
+        </Tooltip>
+        <Tooltip text='general info'>
+          <MdPlaylistAdd className='organization-event__icon general' onClick={() => handleGeneral(id_event_)} />
+        </Tooltip>
+        {IsAdmin &&
+          <Tooltip text='delete'>
+            <MdDeleteForever className='organization-event__icon delete' onClick={() => setOpenDelete(true)} />
+          </Tooltip>
+        }
       </div>
+
     </div>
   )
 }
@@ -39,7 +209,6 @@ const Event = ({ id_organization }) => {
       ApiEventzi.getEventsByOrganization(id_organization)
         .then((response) => {
           if (response.data.data.length > 0) {
-            console.log(response.data.data)
             setEvents(response.data.data)
           } else {
             setMensaje('there are no events associated with the organization')

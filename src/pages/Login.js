@@ -1,20 +1,19 @@
 import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
+
 import { MdLockOutline, MdMailOutline } from 'react-icons/md'
 import ApiEventzi from '../utils/ApiEventzi'
-
-import { Context } from '../context/Context'
+import globalContext from '../context/globalContext'
 
 const Login = () => {
-  let history = useHistory()
-  const { activateAuth } = useContext(Context)
+  const history = useHistory()
+  const { setUser, sendAlert } = useContext(globalContext)
   const [form, setForm] = useState(null)
 
   const handleInput = (event) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
   }
 
@@ -24,17 +23,29 @@ const Login = () => {
   }
 
   const loginUser = ({ email, password }, redirectUrl) => {
-
     ApiEventzi.login(email, password)
       .then((response) => {
-        let token = response.data.token
-        if (token) {
+        if (response.data.data.length) {
+          setUser({
+            userId: response.data.data[0].id_user,
+            userName: response.data.data[0].email,
+            isAuth: true
+          })
+          sendAlert({
+            show: true,
+            type: 'success',
+            message: 'user logged in'
+          })
           history.push(redirectUrl)
+        } else {
+          sendAlert({
+            show: true,
+            type: 'error',
+            message: response.data.error
+          })
         }
-        activateAuth(token)
       })
       .catch((err) => console.log(err))
-
   }
 
   return (
@@ -73,11 +84,12 @@ const Login = () => {
             <p className='italic'>Forgot Password?</p>
           </div>
 
-          <button type='submit'>LOGIN</button>
+          <button className='button large' type='submit'>login</button>
+          <Link to='/signup' className='button text'>
+            <p>Create a new account</p>
+          </Link>
         </form>
-        <Link to='/signup' className='login__bottom'>
-          <p>Create a new account</p>
-        </Link>
+
       </div>
     </div>
   )

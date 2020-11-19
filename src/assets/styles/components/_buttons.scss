@@ -1,0 +1,67 @@
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: $auxiliar-color2;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: .5px;
+  cursor: pointer;
+
+  &.secondary {
+    color: $primary-color;
+  }
+
+  &.small{
+    margin: 0;
+    padding: 0 10px;
+    height: 30px;
+  }
+
+  &.medium{
+    width: 120px;
+    padding: 0 10px;
+    height: 30px;
+  }
+
+  &.large{
+    width: 324px;
+  }
+
+  &.text {
+    text-transform: inherit;
+    background-color: transparent;
+
+    &:hover{
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  &__icon {
+    margin-right: 4px;
+    margin-bottom: -4px;
+    font-size: 18px;
+  }
+
+  &:hover {
+    background-color: white;
+    color: $auxiliar-color2;
+    border: 1px solid $auxiliar-color2;
+  }
+
+  &:focus {
+    border: none;
+  }
+
+  &-light {
+    background-color: $gray-color;
+  }
+}

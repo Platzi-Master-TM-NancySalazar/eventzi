@@ -1,40 +1,39 @@
 import React, { useState } from 'react'
-import axios from "axios"
+import axios from 'axios'
 
+export default function Lecturer () {
+  const [form, setForm] = useState(null)
 
-export default function Lecturer() {
-    const [form, setForm] = useState(null)
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    })
+  }
 
-    const handleInput = (event) => {
-        setForm({
-            ...form,
-            [event.target.name]: event.target.value,
-        })
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    sendLecturer(form)
+  }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        sendLecturer(form)
-    }
+  const sendLecturer = ({ lecturer__biography, lecturer__rol, lecturer__name, lecturer__twitter }) => {
+    console.log(lecturer__biography, lecturer__rol, lecturer__name, lecturer__twitter)
+    axios({
+      method: 'POST',
+      url: 'https://eventziapi.herokuapp.com/events/1/speaker/new',
+      data: {
+        fullname: lecturer__name,
+        bio: lecturer__biography,
+        twitter: `@${lecturer__twitter}`,
+        rol: lecturer__rol,
+        status_: 'active'
+      }
+    })
+      .then(data => console.log(data))
+      .catch((err) => console.log(err))
+  }
 
-    const sendLecturer = ({ lecturer__biography, lecturer__rol, lecturer__name, lecturer__twitter }) => {
-        console.log(lecturer__biography, lecturer__rol, lecturer__name, lecturer__twitter)
-        axios({
-            method: 'POST',
-            url: 'https://eventziapi.herokuapp.com/events/1/speaker/new',
-            data: {
-                fullname: lecturer__name,
-                bio: lecturer__biography,
-                twitter: `@${lecturer__twitter}`,
-                rol: lecturer__rol,
-                status_: "active"
-            }
-        })
-            .then(data => console.log(data))
-            .catch((err) => console.log(err))
-    }
-
-    return (
+  return (
         <div className="lecturer">
 
             <div className="lecturer__container">
@@ -70,5 +69,5 @@ export default function Lecturer() {
             </div>
         </div>
 
-    )
+  )
 }

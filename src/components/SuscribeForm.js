@@ -1,34 +1,38 @@
-import React from "react";
+import React from 'react'
 
 class SuscribeForm extends React.Component {
-  state = {};
+  constructor (props) {
+    super(props)
+    this.state = {}
+  }
 
-  handleChange = (e) => {
+  handleChange (e) {
     this.setState({
-      [e.target.name]: e.target.value,
-    });
+      [e.target.name]: e.target.value
+    })
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    if (this.state.email != undefined && this.state.email != "") {
-      alert(`Email ${this.state.email} was registered`);
-      var url = `https://eventziapi.herokuapp.com/events/${this.props.eventId}/register`;
-      var data = this.state;
+  handleSubmit (e) {
+    e.preventDefault()
+    if (this.state.email !== undefined && this.state.email !== '') {
+      alert(`Email ${this.state.email} was registered`)
+      const url = `https://eventziapi.herokuapp.com/events/${this.props.eventId}/register`
+      const data = this.state
 
       fetch(url, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(data),
         headers: {
-          "Content-Type": "application/json",
-        },
+          'Content-Type': 'application/json'
+        }
       })
         .then((res) => res.json())
-        .catch((error) => console.error("Error:", error))
-        .then((response) => console.log("Success:", response));
-    } else alert(`Enter a valid mail ${this.state.email}`);
+        .catch((error) => console.error('Error:', error))
+        .then((response) => console.log('Success:', response))
+    } else alert(`Enter a valid mail ${this.state.email}`)
   };
-  render() {
+
+  render () {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -43,7 +47,7 @@ class SuscribeForm extends React.Component {
           Suscribe
         </button>
       </form>
-    );
+    )
   }
 }
-export default SuscribeForm;
+export default SuscribeForm

@@ -4,7 +4,7 @@
   "description": "Event management system",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode=development",
+    "lint": "eslint . --fix",
     "build": "webpack --mode=production",
     "dev": "webpack-dev-server"
   },
@@ -29,6 +29,12 @@
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^6.0.2",
     "css-loader": "^4.3.0",
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.5",
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^0.11.2",

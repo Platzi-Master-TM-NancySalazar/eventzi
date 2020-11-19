@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-export default function Loading() {
+export default function Loading () {
   return (
     <div className="notFound">
       <div className="lds-spinner">
@@ -18,5 +18,5 @@ export default function Loading() {
         <div></div>
       </div>
     </div>
-  );
+  )
 }

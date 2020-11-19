@@ -1,12 +1,11 @@
 import React from 'react'
-import { HiOutlineTrash } from "react-icons/hi";
-import { HiPencil } from "react-icons/hi";
+import { HiOutlineTrash, HiPencil } from 'react-icons/hi'
 
-const AddOrganizator = ({badges}) =>{
-    return(
+const AddOrganizator = ({ badges }) => {
+  return (
         <>
             {badges.map((data) => {
-                return(
+              return (
                     <div className='second__main-details' key={data.id_user}>
                         <div className='check'>
                             <input type='checkbox'/>
@@ -20,10 +19,10 @@ const AddOrganizator = ({badges}) =>{
                             <a href='#'><HiOutlineTrash className='icon-details'/></a>
                         </div>
                     </div>
-                )
+              )
             })}
         </>
-    )
+  )
 }
 
 export default AddOrganizator

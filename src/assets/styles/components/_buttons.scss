@@ -15,6 +15,10 @@
   letter-spacing: .5px;
   cursor: pointer;
 
+  &.secondary {
+    color: $primary-color;
+  }
+
   &.small{
     margin: 0;
     padding: 0 10px;
@@ -31,7 +35,7 @@
     width: 324px;
   }
 
-  &.text{
+  &.text {
     text-transform: inherit;
     background-color: transparent;
 

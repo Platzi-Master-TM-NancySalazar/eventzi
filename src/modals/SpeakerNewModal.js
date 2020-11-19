@@ -7,7 +7,7 @@ import { PostFormat } from '../utils/FormatDate'
 
 const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
     const [form, setForm] = useState(null)
-    const [date_, setDate] = useState('2020-12-12T16:00')
+    const [date_, setDate] = useState('')
 
     const modifyDate = (fullDate) => {
         fullDate = fullDate.split('T')

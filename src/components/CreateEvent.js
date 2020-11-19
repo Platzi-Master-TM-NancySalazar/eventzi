@@ -1,29 +1,34 @@
-import React, { useState } from 'react'
-import Input, { InputDate } from './Input'
-import temp1 from '../assets/static/temp1.png'
-import temp2 from '../assets/static/temp2.png'
-import upload from '../assets/static/upload.png'
+import React, { useState } from "react";
+import Input, { InputDate } from "./Input";
+import temp1 from "../assets/static/temp1.png";
+import temp2 from "../assets/static/temp2.png";
+import upload from "../assets/static/upload.png";
 
 const CreateEvent = ({ submit }) => {
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({});
 
   const handleChange = (event) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value
-    })
-  }
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const handleClick = () => {
-    submit(form)
-  }
+    submit(form);
+  };
 
   return (
     <div>
       <form className="events__form">
         <div>
           <Input text="name" event={handleChange} />
-          <Input text="type" event={handleChange} />
+          <label htmlFor="type">Type: </label>
+          <select id="type" text="type" onChange={handleChange}>
+            <option value="Online">Online</option>
+            <option value="Presential">Presential</option>
+            <option value="Mixed">Mixed</option>
+          </select>
           <Input text="description" event={handleChange} />
           <Input text="url" event={handleChange} />
           <p className="marginbtm">Date / Time</p>
@@ -50,19 +55,11 @@ const CreateEvent = ({ submit }) => {
         <div>
           <label>
             <img className="events__upload" src={upload} alt="Load logo" />
-            <input
-              type="file"
-              className="events__upload-input"
-              text="logo"
-            />
+            <input type="file" className="events__upload-input" text="logo" />
           </label>
           <label>
             <img className="events__upload" src={upload} alt="Load banner" />
-            <input
-              type="file"
-              className="events__upload-input"
-              text="banner"
-            />
+            <input type="file" className="events__upload-input" text="banner" />
           </label>
         </div>
       </form>
@@ -72,6 +69,6 @@ const CreateEvent = ({ submit }) => {
         </button>
       </div>
     </div>
-  )
-}
-export default CreateEvent
+  );
+};
+export default CreateEvent;

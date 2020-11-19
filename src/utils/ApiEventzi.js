@@ -32,22 +32,6 @@ async function callApiPut(url, data) {
   }
   return response
 }
-
-async function callApiPut(url, data) {
-  const response = await instance({
-    method: 'PUT',
-    url,
-    data,
-  })
-
-  if (response.data.token) {
-    instance.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${response.data.token}`
-  }
-  return response
-}
-
 async function callApiGet(url) {
   const response = await instance({
     method: 'GET',
@@ -125,27 +109,6 @@ const ApiEventzi = {
   },
   putGeneral(eventId, data) {
     return callApiPut(`events/${eventId}`)
-  },
-  newEvent(
-    id_organization,
-    event_name,
-    event_type,
-    status_,
-    event_description,
-    date,
-    url,
-    template
-  ) {
-    let data = {
-      event_name,
-      event_type,
-      status_,
-      event_description,
-      date,
-      url,
-      template,
-    }
-    return callApiPost(`/events/organizations/${id_organization}`, data)
   },
   getOrganizers() {
     return callApiGet(`organizations/events/organizers`)

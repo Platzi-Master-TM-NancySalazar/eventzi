@@ -5,21 +5,9 @@ import SpeakerModal from '../modals/SpeakerModal'
 import GeneralModal from '../modals/GeneralModal'
 import AssociateModal from '../modals/AssociateModal'
 import { MdDelete } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
-const ContainerEvent = ({ event_name, date_, id_event_, clear, status_ } ) => {
-  const [status, setStatus] = useState(status_)
-
-  const handlePublish=()=>{
-    ApiEventzi.publishEvent(id_event_)
-    .then((response) => {
-      if (response.status == 200) {
-        clear([])
-      }
-    })
-    .catch((err) => console.log(err))
-  }
-
-const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmin }) => {
+const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_  }) => {
   const [openSpeaker, setOpenSpeaker] = useState(false)
   const [openAssociate, setOpenAssociate] = useState(false)
   const [openGeneral, setOpenGeneral] = useState([])
@@ -45,6 +33,16 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
     }
   ]
 
+  const handlePublish=()=>{
+    ApiEventzi.publishEvent(id_event_)
+    .then((response) => {
+      if (response.status == 200) {
+        clear([])
+      }
+    })
+    .catch((err) => console.log(err))
+  }
+
   const handleDelete = (id_event_) => {
     ApiEventzi.deleteEvent(id_event_)
       .then((response) => {
@@ -54,6 +52,8 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
       })
       .catch((err) => console.log(err))
   }
+
+  let date = new Date(date_)
 
   const handleSpeakers = (id_event_) => {
     setOpenSpeaker(true)
@@ -103,13 +103,14 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
 
   return (
     <div className='organization-event'>
+    <Link to={`events/${id_event_}`}>
       <div className='organization-event__figure'>
         <div className='organization-event__detail'>
-          <h3 className='organization-event__text'>{eventName}</h3>
+          <h3 className='organization-event__text'>{event_name}</h3>
           <p className='organization-event__text'>{FormatDate(date_)}</p>
         </div>
       </div>
-
+      </Link>
       <button onClick={() => handleSpeakers(id_event_)}>Speakers</button>
       {openSpeaker && (
         <SpeakerModal
@@ -137,7 +138,7 @@ const ContainerEvent = ({ event_name: eventName, date_, id_event_, clear, IsAdmi
           generalModalInfo={generalModalInfo}
         />
       )}{' '}
-      {status=="Published" ? <div className='organization-event__status--published'>{status}</div> : <div onClick={() => handlePublish(id_event_)} className='organization-event__status'>{status}</div>}
+      {status_=="Published" ? <div className='organization-event__status--published'>{status_}</div> : <div onClick={() => handlePublish(id_event_)} className='organization-event__status'>Publish</div>}
       {IsAdmin
         &&
         <div onClick={() => handleDelete(id_event_)}>

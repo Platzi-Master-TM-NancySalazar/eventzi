@@ -145,7 +145,7 @@ const GeneralModal = (props) => {
                             </div>
 
                             <div className="events__save-area">
-                                <button type="submit" className="events_button">
+                                <button type="submit" className="button small">
                                     Save changes
                             </button>
                             </div>

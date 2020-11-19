@@ -100,7 +100,7 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
         <div className='organization-event__figure'>
           <div className='organization-event__detail'>
             <h3 className='organization-event__text'>{event_name}</h3>
-            <p className='organization-event__text'>{date_}</p>
+            <p className='organization-event__text'>{FormatDate(date_)}</p>
           </div>
         </div>
 

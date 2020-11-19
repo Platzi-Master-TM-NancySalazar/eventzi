@@ -31,9 +31,8 @@ const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
                 <div className="modal__container">
                     <div className="modal__container-header">
                         <h3>{title}</h3>
-                        <button className="modal__container--close" onClick={addNewAssociateClose}>
-                            <MdClose />
-                        </button>
+                        <MdClose className="modal__container--close" onClick={addNewAssociateClose} />
+
                     </div>
                     <form className='events__form' onSubmit={handleSubmit}>
                         <div className='input-material'>
@@ -50,7 +49,9 @@ const AssociateNewModal = ({ addNewAssociateClose, title, id, eventName }) => {
                             </label>
                         </div>
 
-                        <button type='submit' className="modal__button">Add Associate</button>
+                        <div className='modal__button-add'>
+                            <button type='submit' className="button small">Add Associate</button>
+                        </div>
                     </form>
 
                 </div>

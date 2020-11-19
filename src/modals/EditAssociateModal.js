@@ -42,9 +42,7 @@ const EditAssociateModal = (props) => {
                     <div className="modal__container-header">
                         <h3>{title}</h3>
                         {/* <h3>{event_name}</h3> */}
-                        <button className="modal__container--close" onClick={editAssociateClose}>
-                            <MdClose />
-                        </button>
+                            <MdClose className="modal__container--close" onClick={editAssociateClose}/>
                     </div>
                     <form className='events__form' onSubmit={handleSubmit}>
                         <div className='input-material'>
@@ -61,7 +59,7 @@ const EditAssociateModal = (props) => {
                             </label>
                         </div>
 
-                        <button type='submit' className="modal__button">Save Associate Changes</button>
+                        <button type='submit' className="button small">Save Associate Changes</button>
                     </form>
 
                 </div>

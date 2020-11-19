@@ -67,7 +67,7 @@ const CreateEvent = ({ submit }) => {
         </div>
       </form>
       <div className="events__save-area">
-        <button onClick={handleClick} className="events_button">
+        <button onClick={handleClick} className="button small">
           Create event
         </button>
       </div>

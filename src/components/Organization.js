@@ -41,7 +41,7 @@ const DeleteConfirm = ({ done, cancel, id }) => {
   )
 }
 
-const Organization = ({ id_organization, organization_name, reload }) => {
+const Organization = ({ id_organization, organization_name, IsAdmin, reload }) => {
   const [openModal, setOpenModal] = useState(false)
   const [openEvents, setOpenEvents] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
@@ -82,6 +82,7 @@ const Organization = ({ id_organization, organization_name, reload }) => {
     setOpenDelete(false)
   }
   const handleDelete = (id_organization) => {
+    console.log(id_organization)
     ApiEventzi.deleteOrganizations(id_organization)
       .then((response) => {
         if (response.status === 200) {
@@ -126,9 +127,13 @@ const Organization = ({ id_organization, organization_name, reload }) => {
           <Tooltip text='create new event' >
             <MdAddCircle onClick={modalOpen} className='organization-event__icon large general' />
           </Tooltip>
-          <Tooltip text='delete organization' >
-            <MdDeleteForever className='organization-event__icon large delete' onClick={() => setOpenDelete(true)} />
-          </Tooltip>
+          {
+            IsAdmin
+              ? <Tooltip text='delete organization' >
+                <MdDeleteForever className='organization-event__icon large delete' onClick={() => setOpenDelete(true)} />
+              </Tooltip>
+              : <span></span>
+          }
         </div>
       </div>
       <div className='organization-event__container'>

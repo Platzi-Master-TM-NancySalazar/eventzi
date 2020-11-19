@@ -40,13 +40,14 @@
 }
 @include lg {
   .nav-menu {
+    height: 100vh;
     position: fixed;
     left: -300px;
-    transition: 850ms;
+    transition: 300ms;
     z-index: 2;
     &.active {
       left: 0px;
-      transition: 350ms;
+      transition: 300ms;
     }
   }
 
@@ -61,10 +62,13 @@
     cursor: pointer;
     position: fixed;
     z-index: 3;
+    left: 0;
+    transition: left 300ms ease;
   }
   .nav-menu__menuButon.active {
-    display: block;
-    cursor: pointer;
-    position: fixed;
+    left: 250px;
+    // display: block;
+    // cursor: pointer;
+    // position: fixed;
   }
 }

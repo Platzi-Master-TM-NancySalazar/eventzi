@@ -8,46 +8,61 @@ import temp2 from '../assets/static/temp2.png'
 import ApiEventzi from '../utils/ApiEventzi'
 
 const GeneralModal = (props) => {
-  const { generalClose, title, id, generalModalInfo } = props
-  console.log('general modal props', props)
+    const { generalClose, title, id, generalModalInfo } = props
+    console.log('generalModalInfo props', generalModalInfo)
 
-  const [eventName, setEventName] = useState(generalModalInfo[0].event_name || '')
-  const [eventType, setEventType] = useState(generalModalInfo[0].event_type || '')
-  const [status, setStatus] = useState(generalModalInfo[0].status_ || '')
-  const [description, setDescription] = useState(generalModalInfo[0].description_ || '')
-  const [url, setUrl] = useState(generalModalInfo[0].url || '')
-  const [date, setDate] = useState(generalModalInfo[0].date_ || '')
-  const [template, setTemplate] = useState(generalModalInfo[0].template)
+    const [event_name, setevent_name] = useState(generalModalInfo[0].event_name)
+    const [event_type, setevent_type] = useState(generalModalInfo[0].event_type)
+    // const [status_, setStatus] = useState(generalModalInfo[0].status_ || '')
+    const [description_, setDescription] = useState(generalModalInfo[0].description_)
+    const [url, setUrl] = useState(generalModalInfo[0].url)
+    const [date_, setDate] = useState(generalModalInfo[0].date_)
+    const [template, setTemplate] = useState(generalModalInfo[0].template)
 
-  const form = {
-    eventName, eventType, status, description, url, date, template
-  }
+    const form = {
+        event_name, event_type, description_, url,
+        date_,
+        template
+    }
 
-  const handleChange = (event) => {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value
-    })
-  }
+    const handleChange = (event) => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value
+        })
+    }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    putGeneral(form)
-  }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        putGeneral(form)
+    }
 
-  const putGeneral = (form) => {
-    ApiEventzi.putGeneral(id, form)
-      .then(() => generalClose())
-      .catch((err) => console.error(err))
-  }
+    //Tengo que pasar de esto "2020-11-19T17:15:54.000Z"
+    //A esto "2020-11-19T11:58"
+    // let date_ = modifyDate(date) || ''
 
-  return (
+    const modifyDate = (date_) => {
+        console.log('asi entra date', date)
+        date = date.split('T', '.')
+        let formated = date[0] + ' ' + date[1]
+        console.log('formated', formated)
+    }
+
+    const putGeneral = (form) => {
+        console.log(form)
+        ApiEventzi.putGeneral(id, form)
+            .then(console.log)
+            .then(() => generalClose())
+        // .catch((err) => console.error(err))
+    }
+
+    return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
                     <div className="modal__container-header">
                         <h2>{title}</h2>
-                        <MdClose className="modal__container--close" onClick={generalClose}/>
+                        <MdClose className="modal__container--close" onClick={generalClose} />
                     </div>
                     {/* <div>{content}</div> */}
 
@@ -57,7 +72,7 @@ const GeneralModal = (props) => {
 
                                 {/* <Input text="name" event={handleChange} /> */}
                                 <div className='input-material'>
-                                    <input type='text' className='input-material__input' name='name' value={eventName} onChange={(e) => setEventName(e.target.value)} required />
+                                    <input type='text' className='input-material__input' name='name' value={event_name} onChange={(e) => setevent_name(e.target.value)} required />
                                     <label className='input-material__label'>
                                         <span className='input-material__text'>Event Name</span>
                                     </label>
@@ -65,23 +80,23 @@ const GeneralModal = (props) => {
 
                                 {/* <Input text="type" event={handleChange} /> */}
                                 <div className='input-material'>
-                                    <input type='text' className='input-material__input' name='type' value={eventType} onChange={(e) => setEventType(e.target.value)} required />
+                                    <input type='text' className='input-material__input' name='type' value={event_type} onChange={(e) => setevent_type(e.target.value)} required />
                                     <label className='input-material__label'>
                                         <span className='input-material__text'>Event Type</span>
                                     </label>
                                 </div>
 
                                 {/* <Input text="status" event={handleChange} /> */}
-                                <div className='input-material'>
-                                    <input type='text' className='input-material__input' name='status' value={status} onChange={(e) => setStatus(e.target.value)} required />
+                                {/* <div className='input-material'>
+                                    <input type='text' className='input-material__input' name='status' value={status_} onChange={(e) => setStatus(e.target.value)} required />
                                     <label className='input-material__label'>
                                         <span className='input-material__text'>Satus</span>
                                     </label>
-                                </div>
+                                </div> */}
 
                                 {/* <Input text="description" event={handleChange} /> */}
                                 <div className='input-material'>
-                                    <input type='text' className='input-material__input' name='description' value={description} onChange={(e) => setDescription(e.target.value)} required />
+                                    <input type='text' className='input-material__input' name='description' value={description_} onChange={(e) => setDescription(e.target.value)} required />
                                     <label className='input-material__label'>
                                         <span className='input-material__text'>Description</span>
                                     </label>
@@ -155,7 +170,7 @@ const GeneralModal = (props) => {
                 </div>
             </div>
         </Portal>
-  )
+    )
 }
 
 export default GeneralModal

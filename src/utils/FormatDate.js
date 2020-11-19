@@ -1,4 +1,7 @@
 const FormatDate = (fullDate) => {
+  if (fullDate === null) {
+    return ''
+  }
   fullDate = fullDate.split('T')
   let time = fullDate[1].split('.')
   time = time[0].split(':')

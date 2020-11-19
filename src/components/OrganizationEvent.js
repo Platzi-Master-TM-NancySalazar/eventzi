@@ -2,17 +2,45 @@ import React, { useEffect, useState } from 'react'
 import ApiEventzi from '../utils/ApiEventzi'
 import FormatDate from '../utils/FormatDate'
 import Tooltip from '../components/common/Tooltip'
+import Portal from './Portal'
+import { MdClose, MdSupervisorAccount, MdRecordVoiceOver, MdDeleteForever, MdPlaylistAdd } from 'react-icons/md'
 
 import SpeakerModal from '../modals/SpeakerModal'
 import GeneralModal from '../modals/GeneralModal'
 import AssociateModal from '../modals/AssociateModal'
-import { MdSupervisorAccount, MdRecordVoiceOver, MdDeleteForever, MdPlaylistAdd } from 'react-icons/md'
+
 import { Link } from 'react-router-dom'
+
+const DeleteConfirm = ({ done, cancel, id }) => {
+  return (
+    <Portal>
+      <div className="modal">
+        <div className="modal__container">
+          <div className="modal__container-header">
+            <h2>Delete confirm</h2>
+            <MdClose onClick={cancel} className="modal__container--close" />
+          </div>
+          <div>
+            <p>
+              are you sure you want to delete this event ?
+          </p>
+          <div className="events__save-area">
+            <button className='button small' onClick={cancel} >Cancel</button>
+            {' '}
+            <button className='button small' onClick={() => done(id)} >Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Portal>
+  )
+}
 
 const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ }) => {
   const [openSpeaker, setOpenSpeaker] = useState(false)
   const [openAssociate, setOpenAssociate] = useState(false)
   const [openGeneral, setOpenGeneral] = useState([])
+  const [openDelete, setOpenDelete] = useState(false)
 
   console.log('isAdmin', IsAdmin)
 
@@ -44,6 +72,9 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
       .catch((err) => console.log(err))
   }
 
+  const handleCancel = () => {
+    setOpenDelete(false)
+  }
   const handleDelete = (id_event_) => {
     ApiEventzi.deleteEvent(id_event_)
       .then((response) => {
@@ -106,6 +137,10 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
 
       </Link>
 
+      {
+        openDelete && <DeleteConfirm done={handleDelete} cancel={handleCancel} id={id_event_} />
+      }
+
       {openSpeaker && (
         <SpeakerModal
           title='Speakers'
@@ -148,7 +183,7 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
         </Tooltip>
         {IsAdmin &&
           <Tooltip text='delete'>
-            <MdDeleteForever className='organization-event__icon delete' onClick={() => handleDelete(id_event_)} />
+            <MdDeleteForever className='organization-event__icon delete' onClick={() => setOpenDelete(true)} />
           </Tooltip>
         }
       </div>

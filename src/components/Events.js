@@ -60,7 +60,7 @@ const Events = () => {
 
       {organizations.map((organization) => {
         return (
-          <Organization {...organization} key={organization.id_organization} />
+          <Organization {...organization} key={organization.id_organization} reload={setOrganizations}/>
         )
       })}
     </div>

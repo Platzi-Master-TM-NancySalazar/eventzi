@@ -51,9 +51,10 @@ const EventPanel = () => {
 
             <p>Message</p>
             <label htmlFor="eventPanel-message">
-              <input
+              <textarea
                 type="text"
                 id="eventPanelMessage"
+                rows="10"
                 className="input-message"
                 name="eventPanelMessage"
                 placeholder="Write here your invitation..."

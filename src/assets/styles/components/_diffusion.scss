@@ -45,7 +45,7 @@
       margin: 0px;
     }
 
-    input {
+    input, textarea{
       box-sizing: border-box;
       width: 95%;
       height: 40px;
@@ -53,26 +53,19 @@
       background-color: $white-color;
       border: 1px solid $gray-color;
     }
-    input::placeholder {
+    input::placeholder, textarea {
       color: black;
-      padding-left: 10px;
+      font-family: "Roboto", sans-serif;
     }
     .input-message {
       height: 300px;
       justify-content: flex-start;
+      align-items: flex-start;
+      &::placeholder{
+        color: black;
+      }
     }
 
-    // input{
-    //     width: 90%;
-    //     margin: 0px 40px;
-    //     height: 40px;
-    //     padding-left: 30px;
-    //     color: black;
-    // }
-    // .input-message{
-    //     height: 300px;
-    //     justify-content: flex-start;
-    // }
   }
   .logo-image {
     width: 150px;

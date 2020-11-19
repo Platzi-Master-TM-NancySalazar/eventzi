@@ -20,19 +20,13 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
+          <Route exact path="/events/:eventId" component={Event} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/admin_panel">
             {
               user.isAuth
                 ? <AdminPanel />
-                : <Redirect to='/login' />
-            }
-          </Route>
-          <Route exact path="/events/:eventId">
-            {
-              user.isAuth
-                ? <Event />
                 : <Redirect to='/login' />
             }
           </Route>

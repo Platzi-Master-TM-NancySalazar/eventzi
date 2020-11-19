@@ -47,7 +47,7 @@ const GeneralModal = (props) => {
                 <div className="modal__container">
                     <div className="modal__container-header">
                         <h2>{title}</h2>
-                        <MdClose className="modal__container--close" onClick={generalClose}/>
+                        <MdClose className="modal__container--close" onClick={generalClose} />
                     </div>
                     {/* <div>{content}</div> */}
 
@@ -111,8 +111,9 @@ const GeneralModal = (props) => {
                                     name="template"
                                     value="Template 1"
                                     text="template"
+                                    checked={template === 'Template 1'}
                                     required
-                                // onChange={(e) => setTemplate(e.target.value)}
+                                onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp1} alt="Template 1" className="img-template" />
                                 <input
@@ -120,7 +121,8 @@ const GeneralModal = (props) => {
                                     name="template"
                                     value="Template 2"
                                     text="template"
-                                // onChange={(e) => setTemplate(e.target.value)}
+                                    checked={template === 'Template 2'}
+                                onChange={(e) => setTemplate(e.target.value)}
                                 />
                                 <img src={temp2} alt="Template 2" className="img-template" />
 

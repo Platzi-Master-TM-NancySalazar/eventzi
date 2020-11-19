@@ -94,10 +94,10 @@ const ApiEventzi = {
     }
     return callApiPost(`/events/organizations/59`, data)
   },
-  getOrganizers(organizationId) {
-    return callApiGet(`/organizations/${organizationId}/events/organizers`)
+  getOrganizers() {
+    return callApiGet(`organizations/events/organizers`)
   },
-  sendOrganizers(eventId, userId){
+  sendOrganizers(eventId, userId, data){
     return callApiPost(
       `events/${eventId}/users/${userId}`,
       data

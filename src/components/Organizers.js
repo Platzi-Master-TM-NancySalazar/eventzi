@@ -16,7 +16,7 @@ const Organizers = () => {
   const [badge, setBadge] = useState([])
 
   React.useEffect(() => {
-    ApiEventzi.getOrganizers(25)
+    ApiEventzi.getOrganizers()
     .then(response => {
       let newBadge = response.data.data
       setBadge(newBadge)
@@ -30,7 +30,7 @@ const Organizers = () => {
         <button onClick={handleOpenModal}>
           <HiOutlinePlusCircle className='icon-add-outline' />Add Organizator
         </button>
-        {Omodal ? <PopupFirst evenChange={handleOpenModal} /> : null}
+        {Omodal ? <PopupFirst evenChange={handleOpenModal}/> : null}
       </div>
       <div className='second--main'>
         <div className='second--main-table'>

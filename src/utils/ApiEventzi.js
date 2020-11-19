@@ -18,6 +18,20 @@ async function callApiPost(url, data) {
   }
   return response
 }
+async function callApiPut(url, data) {
+  const response = await instance({
+    method: 'PUT',
+    url,
+    data,
+  })
+
+  if (response.data.token) {
+    instance.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${response.data.token}`
+  }
+  return response
+}
 
 async function callApiGet(url) {
   const response = await instance({
@@ -95,6 +109,11 @@ const ApiEventzi = {
       data
     )
   },
+  publishEvent(eventId){
+    return callApiPut(
+      `events/${eventId}/publish`
+    )
+  }
 }
 
 export default ApiEventzi

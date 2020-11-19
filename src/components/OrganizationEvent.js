@@ -71,6 +71,15 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
       })
       .catch((err) => console.log(err))
   }
+  const handleNoPublish = () => {
+    ApiEventzi.unPublishEvent(id_event_)
+      .then((response) => {
+        if (response.status === 200) {
+          clear([])
+        }
+      })
+      .catch((err) => console.log(err))
+  }
 
   const handleCancel = () => {
     setOpenDelete(false)
@@ -134,7 +143,6 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
             <p className='organization-event__text'>{FormatDate(date_)}</p>
           </div>
         </div>
-
       </Link>
 
       {
@@ -169,7 +177,7 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
       <div className='organization-event__icon-container'>
 
         {status_ === 'Published'
-          ? <div className='organization-event__status--published'>{status_}</div>
+          ? <div onClick={() => handleNoPublish(id_event_)} className='organization-event__status--published'>Published</div>
           : <div onClick={() => handlePublish(id_event_)} className='organization-event__status'>Publish</div>
         }
         <Tooltip text='speakers' >

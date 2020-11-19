@@ -172,7 +172,12 @@ const ApiEventzi = {
   },
   publishEvent (eventId) {
     return callApiPut(
-      `events/${eventId}/publish`
+      `/events/${eventId}/publish`
+    )
+  },
+  unPublishEvent (eventId) {
+    return callApiPut(
+      `/events/${eventId}/unpublish`
     )
   }
 }

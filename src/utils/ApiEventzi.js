@@ -86,8 +86,12 @@ const ApiEventzi = {
   getOrganizations () {
     return callApiGet('/organizations/orgsByUser')
   },
-  newOrganization (formData) {
-    return callApiPostMulti('/organizations', formData)
+  newOrganization (name, description) {
+    const data = {
+      organization_name: name,
+      description
+    }
+    return callApiPost('/organizations', data)
   },
   getEventsByOrganization (organizationId) {
     return callApiGet(`/organizations/${organizationId}/events`)

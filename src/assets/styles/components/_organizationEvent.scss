@@ -39,12 +39,33 @@
     }
   }
 
-  &__setup {
+  &__icon-container{
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    box-sizing: content-box;
     cursor: pointer;
-    margin-top: 20px;
-    margin-right: 10px;
     font-size: 24px;
-    color: #ff1744;
+    padding: 4px;
+    
+    &.speakers {
+      color: $auxiliar-color2;
+      font-size: 20px;
+    }
+
+    &.associates {
+      color: $auxiliar-color2;
+    }
+
+    &.general {
+      color: $auxiliar-color2;
+    }
+
+    &.delete {
+      color: #ff1744;
+    }
   }
 
   &__message {

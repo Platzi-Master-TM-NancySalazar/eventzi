@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import ApiEventzi from '../utils/ApiEventzi'
 import FormatDate from '../utils/FormatDate'
+import Tooltip from '../components/common/Tooltip'
+
 import SpeakerModal from '../modals/SpeakerModal'
 import GeneralModal from '../modals/GeneralModal'
 import AssociateModal from '../modals/AssociateModal'
-import { MdDelete } from 'react-icons/md'
+import { MdSupervisorAccount, MdRecordVoiceOver, MdDeleteForever, MdPlaylistAdd } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
 const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ }) => {
@@ -98,11 +100,10 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
         <div className='organization-event__figure'>
           <div className='organization-event__detail'>
             <h3 className='organization-event__text'>{event_name}</h3>
-            <p className='organization-event__text'>{FormatDate(date_)}</p>
+            <p className='organization-event__text'>{date_}</p>
           </div>
         </div>
 
-        <button className='button small' onClick={() => handleSpeakers(id_event_)}>Speakers</button>
       </Link>
 
       {openSpeaker && (
@@ -111,18 +112,16 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
           speakerClose={speakerClose}
           id={id_event_}
         />
-      )}{' '}
+      )}
 
-      <button className='button small' onClick={() => handleAssociates(id_event_)}>Associates</button>
       {openAssociate && (
         <AssociateModal
           title='Associates'
           associateClose={associateClose}
           id={id_event_}
         />
-      )}{' '}
+      )}
 
-      <button className='button small' onClick={() => handleGeneral(id_event_)}>General Information</button>
       {openGeneral[0] === true && (
         <GeneralModal
           title='General information'
@@ -130,15 +129,29 @@ const ContainerEvent = ({ event_name, date_, id_event_, clear, IsAdmin, status_ 
           id={id_event_}
           generalModalInfo={generalModalInfo}
         />
-      )}{' '}
+      )}
 
-      {status_ === 'Published' ? <div className='organization-event__status--published'>{status_}</div> : <div onClick={() => handlePublish(id_event_)} className='organization-event__status'>Publish</div>}
+      <div className='organization-event__icon-container'>
 
-      {IsAdmin &&
-        <div onClick={() => handleDelete(id_event_)}>
-          <MdDelete className='organization-event__setup' />
-        </div>
-      }
+        {/* {status_ === 'Published'
+          ? <div className='organization-event__status--published'>{status_}</div>
+          : <div onClick={() => handlePublish(id_event_)} className='organization-event__status'>Publish</div>
+        } */}
+        <Tooltip text='speakers' >
+          <MdRecordVoiceOver className='organization-event__icon speakers' onClick={() => handleSpeakers(id_event_)} />
+        </Tooltip>
+        <Tooltip text='associates'>
+          <MdSupervisorAccount className='organization-event__icon associates' onClick={() => handleAssociates(id_event_)} />
+        </Tooltip>
+        <Tooltip text='general info'>
+          <MdPlaylistAdd className='organization-event__icon general' onClick={() => handleGeneral(id_event_)} />
+        </Tooltip>
+        {IsAdmin &&
+          <Tooltip text='delete'>
+            <MdDeleteForever className='organization-event__icon delete' onClick={() => handleDelete(id_event_)} />
+          </Tooltip>
+        }
+      </div>
 
     </div>
   )

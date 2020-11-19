@@ -22,8 +22,8 @@
   }
 }
 
-@mixin animationIn {
-  animation-duration: 1.5s;
+@mixin animationIn ($duration: 1.5s) {
+  animation-duration: $duration;
   animation-name: slidein;
 
   @keyframes slidein {

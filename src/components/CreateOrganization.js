@@ -23,10 +23,7 @@ const CreateOrganization = ({ submit }) => {
   }
 
   const handleClick = () => {
-    const myForm = document.getElementById('myForm')
-    const formData = new FormData(myForm)
-    console.log(formData)
-    // submit(form)
+    submit(form)
   }
 
   return (
@@ -50,7 +47,7 @@ const CreateOrganization = ({ submit }) => {
         <img className='events__logos-image' src={redes} alt='redes sociales' />
       </div>
       <div className='events__save-area'>
-        <button onClick={handleClick} className='button'>
+        <button onClick={handleClick} className='button small'>
           Save Changes
         </button>
       </div>

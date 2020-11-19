@@ -23,7 +23,12 @@ const CreateEvent = ({ submit }) => {
       <form className="events__form">
         <div>
           <Input text="name" event={handleChange} />
-          <Input text="type" event={handleChange} />
+          <label htmlFor="type">Type: </label>
+          <select id="type" text="type" onChange={handleChange}>
+            <option value="Online">Online</option>
+            <option value="Presential">Presential</option>
+            <option value="Mixed">Mixed</option>
+          </select>
           <Input text="description" event={handleChange} />
           <Input text="url" event={handleChange} />
           <p className="marginbtm">Date / Time</p>
@@ -50,19 +55,11 @@ const CreateEvent = ({ submit }) => {
         <div>
           <label>
             <img className="events__upload" src={upload} alt="Load logo" />
-            <input
-              type="file"
-              className="events__upload-input"
-              text="logo"
-            />
+            <input type="file" className="events__upload-input" text="logo" />
           </label>
           <label>
             <img className="events__upload" src={upload} alt="Load banner" />
-            <input
-              type="file"
-              className="events__upload-input"
-              text="banner"
-            />
+            <input type="file" className="events__upload-input" text="banner" />
           </label>
         </div>
       </form>

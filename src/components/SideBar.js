@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   MdSettingsInputAntenna,
   MdInsertChart,
@@ -11,6 +11,15 @@ import {
 const SideBar = ({ handleOption, select }) => {
   const [sidebar, setSidebar] = useState(false)
   const showSidebar = () => setSidebar(!sidebar)
+
+  useEffect(() => {
+    if (sidebar) {
+      document.addEventListener('click', showSidebar)
+    }
+    return () => {
+      document.removeEventListener('click', showSidebar)
+    }
+  }, [sidebar])
 
   return (
     <>
@@ -51,7 +60,7 @@ const SideBar = ({ handleOption, select }) => {
           Analitics
         </a>
       </section>
-      <div className="nav-menu__menuButon" onClick={showSidebar}>
+      <div className={`nav-menu__menuButon ${sidebar && 'active'}`} onClick={showSidebar}>
         <MdDehaze />
       </div>
     </>

@@ -3,33 +3,17 @@ import ApiEventzi from '../utils/ApiEventzi'
 import Select from './Select'
 
 const PopupFirst = ({ evenChange }) => {
-  const [badge, setBadge] = useState([])
-
-  // console.log(`popupfirst ${badges}`)
 
   const [badgePop, setBadgePopup] = useState([])
 
-<<<<<<< HEAD
     React.useEffect(()=> {
         ApiEventzi.getEvents()
         .then(response => {
             let newInfo = response.data.data
-            console.log(`badgePop ${response}`)
             setBadgePopup(newInfo)
         })
         .catch((error) => console.log(error))
     }, [])
-=======
-  React.useEffect(() => {
-    ApiEventzi.getEvents(25)
-      .then(response => {
-        const newInfo = response.data.data
-        console.log(`badgePop ${response}`)
-        setBadgePopup(newInfo)
-      })
-      .catch((error) => console.log(error))
-  }, [])
->>>>>>> e8143cf6c187a2df9f71d74a8526defae8522226
 
   const handleClick = () => {
     ApiEventzi.sendOrganizers(id_user)
@@ -48,12 +32,9 @@ const PopupFirst = ({ evenChange }) => {
                  <div className="popup--details-form">
                      <input onChange={handleChange} name="input_text" className="popup--input" type="text" placeholder="Write a name" autoComplete="off"/>
                      <span className="popup--input-focus"></span>
-                     <select className='popup--details-select'>
-                        <option>Select event</option>
                         <Select badges={badgePop}/>
-                    </select>
 
-                     <button onClick={handleClick} className="button-popup">Add</button>
+                     <button onClick={handleClick} disabled={change} className="button-popup">Add</button>
                  </div>
                  <div className="container--details">
                      <a href="#"><span className="icon-close-outline"></span></a>

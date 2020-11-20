@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { HiCog, HiOutlinePlusCircle } from 'react-icons/hi'
-
 import PopupFirst from './PopupFirst'
 import AddOrganizator from './AddOrganizator'
 import ApiEventzi from '../utils/ApiEventzi'
@@ -18,6 +17,7 @@ const Organizers = () => {
     ApiEventzi.getOrganizers()
       .then(response => {
         const newBadge = response.data.data
+        console.log('organizers', newBadge)
         setBadge(newBadge)
       })
       .catch((error) => console.log(error))
@@ -25,7 +25,6 @@ const Organizers = () => {
 
   return (
     <>
-
       <button onClick={handleOpenModal} className='button small'>
         <HiOutlinePlusCircle className='button__icon'/>Add Organizator
       </button>

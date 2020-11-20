@@ -152,8 +152,8 @@ const ApiEventzi = {
       data
     )
   },
-  getEvents (organizationId) {
-    return callApiGet(`organizations/${organizationId}/events`)
+  getEvents () {
+    return callApiGet(`events/byAdmin`)
   },
   deleteEvent (eventId) {
     return callApiDelete(`events/${eventId}`)

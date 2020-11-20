@@ -1,5 +1,6 @@
 import React from 'react'
 import { HiOutlineTrash } from 'react-icons/hi'
+import Tooltip from './common/Tooltip'
 
 const AddOrganizator = ({ badges, handleDelete }) => {
   return (
@@ -11,7 +12,9 @@ const AddOrganizator = ({ badges, handleDelete }) => {
             <p className='content__email'>{data.email}</p>
             <p className='content__event'>{data.event_name}</p>
             <div>
-              <HiOutlineTrash className='icon-details' onClick={() => handleDelete(data.id_user_event)} />
+              <Tooltip text='Delete organizer'>
+                <HiOutlineTrash className='icon-details' onClick={() => handleDelete(data.id_user_event)} />
+              </Tooltip>
             </div>
           </div>
         )

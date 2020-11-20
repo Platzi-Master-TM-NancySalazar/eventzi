@@ -20,10 +20,12 @@ const PopupFirst = ({ evenChange }) => {
     ApiEventzi.sendOrganizers(id_user)
   }
 
-  const [change, setChange] = useState({ disabled: true })
+  const [change, setChange] = useState( false )
 
   const handleChange = (event) => {
-    event.target.value ? setChange({ disabled: false }) : setChange({ disabled: true })
+    event.preventdefault()
+    !!event.target.value ? setChange( true ) : setChange( false )
+    console.log(!!event.target.value)
   }
   return (
             <section className="overlay" id="overlay">

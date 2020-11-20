@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Select = ({ badges }) => {
-  console.log('componente select', badges)
   return (
         <>
             <select className='popup__sleect'>

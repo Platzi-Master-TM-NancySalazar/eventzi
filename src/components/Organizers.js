@@ -43,9 +43,9 @@ const Organizers = () => {
 
       <div className='second--main'>
         <div className='second--main-table'>
-          <p className='content-name'>Name</p>
-          <p className='content-email'>Email</p>
-          <p className='content-event'>Event</p>
+          <p className='title-name'>Name</p>
+          <p className='title-email'>Email</p>
+          <p className='title-event'>Event</p>
           <HiCog className="icon-ajustes" />
         </div>
         <div className='second--main-content'>
@@ -54,18 +54,6 @@ const Organizers = () => {
 
         </div>
       </div>
-      {/* <div className='show--details'>
-        <div>
-          <select className='select' defaultValue='value1'>
-            <option value='value1'>
-              10
-            </option>
-            <option value='value2'>15</option>
-            <option value='value3'>20</option>
-          </select>
-          <small>entries per page</small>
-        </div>
-      </div> */}
     </>
   )
 }

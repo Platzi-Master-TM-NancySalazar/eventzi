@@ -3,7 +3,7 @@ import React from 'react'
 const Select = ({ name, badges, handleChange }) => {
   return (
     <>
-      <select name={name} className='popup__sleect' onChange={handleChange}>
+      <select name={name} className='popup__select' onChange={handleChange}>
         <option value=''>Select event</option>
         {badges.map(date => {
           return (

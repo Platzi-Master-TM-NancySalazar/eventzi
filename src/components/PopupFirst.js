@@ -48,12 +48,12 @@ const PopupFirst = ({ evenChange, setBadge }) => {
     })
   }
   return (
-    <section className="overlay" id="overlay">
-      <div className="popup--container-details" id="popup--container-details">
+    <section className="overlay">
+      <div className="popup--container-details">
         <h2>Add organizers to the event</h2>
-        <p>No trabajes solo, agrega organizadores al evento para que te den una mano</p>
+        <p>Don't work alone, add organizers to the event to give you a hand</p>
         <div className="popup--details-form">
-          <input onChange={handleChange} name="email" className="popup--input" type="text" placeholder="Write a user email" autoComplete="off" />
+          <input onChange={handleChange} name="email" className="popup--input" type="email" placeholder="Write a user email" autoComplete="off" />
           <span className="popup--input-focus"></span>
           <Select badges={badgePop} handleChange={handleChange} name='id_event_' />
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function General () {
+export default function General() {
   const [form, setForm] = useState(null)
 
   const handleInput = (event) => {

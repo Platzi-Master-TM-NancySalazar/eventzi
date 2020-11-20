@@ -15,7 +15,8 @@ const PopupFirst = ({ evenChange }) => {
         .catch((error) => console.log(error))
     }, [])
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+      event.preventDefault()
     ApiEventzi.sendOrganizers(id_user)
   }
 

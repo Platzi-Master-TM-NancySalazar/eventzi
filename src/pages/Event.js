@@ -60,7 +60,7 @@ class Event extends React.Component {
     if (this.state.data.data[0] === undefined) {
       return <NotFound />
     }
-    if (this.state.data.data[0].template === 'Template 2') {
+    if (this.state.data.data[0].template === 'Template 1') {
       return (
         <Template1
           data={this.state.data.data[0]}

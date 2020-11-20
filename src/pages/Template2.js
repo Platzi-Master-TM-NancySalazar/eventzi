@@ -5,7 +5,7 @@ import Asociate from '../components/Asociate'
 import SuscribeForm from '../components/SuscribeForm'
 import EventAbout from '../components/EventAbout'
 import Countdown from 'react-countdown'
-import FormatDate from '../utils/FormatDate'
+import FormatDate, {TalkDay, TalkTime} from '../utils/FormatDate'
 import { MdPlace, MdEvent } from 'react-icons/md'
 
 class Template2 extends React.Component {
@@ -60,7 +60,8 @@ class Template2 extends React.Component {
                   <div key={talk.title}>
                     <Talk
                       title={talk.title}
-                      time={talk.time_}
+                      time={TalkTime(talk.date_)}
+                      day={TalkDay(talk.date_)}
                       speaker={talk.fullname}
                       description={talk.description_}
                     />

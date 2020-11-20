@@ -6,29 +6,40 @@ import ApiEventzi from '../utils/ApiEventzi'
 import { PostFormat } from '../utils/FormatDate'
 
 const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
-  const [form, setForm] = useState(null)
-  const [date_, setDate] = useState()
+    const [form, setForm] = useState(null)
+    const [date_, setDate] = useState('')
 
-  const handleInput = (event) => {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-      date_
-    })
-  }
+    const modifyDate = (fullDate) => {
+        fullDate = fullDate.split('T')
+        const formated = fullDate[0] + ' ' + fullDate[1] + ':00'
+        return formated
+    }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    newSpeaker(form)
-  }
+    const handleInput = (event) => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value,
+            date_
+        })
+    }
 
-  const newSpeaker = (form) => {
-    ApiEventzi.postSpeaker(id, form)
-      .then(() => addNewSpeakerClose())
-      .catch((err) => console.error(err))
-  }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        let { fullname, bio, role_, twitter, title, description_, date_ } = form
+        let newDate = modifyDate(date_)
+        let data = {
+            fullname, bio, role_, twitter, title, description_, date_: newDate
+        }
+        newSpeaker(data)
+    }
 
-  return (
+    const newSpeaker = (form) => {
+        ApiEventzi.postSpeaker(id, form)
+            .then(() => addNewSpeakerClose())
+            .catch((err) => console.error(err))
+    }
+
+    return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
@@ -73,16 +84,16 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                         </div>
 
                         <div className='input-material'>
-                            <input type='datetime-local' className='input-material__input' id="meeting-time" name='date_' value={date_} onChange={(e) => setDate(PostFormat(e.target.value))} required />
+                            <input type='text' className='input-material__input' name='title' onChange={handleInput} required />
                             <label className='input-material__label'>
-                                <span className='input-material__text-date'>Date</span>
+                                <span className='input-material__text'>Title of the talk</span>
                             </label>
                         </div>
 
                         <div className='input-material'>
-                            <input type='text' className='input-material__input' name='title' onChange={handleInput} required />
+                            <input type='datetime-local' className='input-material__input' id="meeting-time" name='date_' value={date_} onChange={(e) => setDate(e.target.value)} required />
                             <label className='input-material__label'>
-                                <span className='input-material__text'>Title of the talk</span>
+                                <span className='input-material__text-date'>Date</span>
                             </label>
                         </div>
 
@@ -92,7 +103,7 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                 </div>
             </div>
         </Portal>
-  )
+    )
 }
 
 export default SpeakerNewModal

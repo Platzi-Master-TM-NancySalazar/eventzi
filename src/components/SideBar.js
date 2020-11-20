@@ -31,13 +31,13 @@ const SideBar = ({ handleOption, select }) => {
           <MdEventNote className='link__icon'/>
           Events
         </a>
-        <a
+        {/* <a
           onClick={() => handleOption('Edit')}
           className={`link ${select === 'Edit' ? 'link-active' : ''}`}
         >
           <MdEdit className='link__icon'/>
           Edit
-        </a>
+        </a> */}
         <a
           onClick={() => handleOption('Organizers')}
           className={`link ${select === 'Organizers' ? 'link-active' : ''}`}

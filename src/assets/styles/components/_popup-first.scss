@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-.popup--container-details {
+.popup__container-details {
   font-size: 1.8rem;
   color: #313131;
   background-color: #f4f4f4;
@@ -27,7 +27,7 @@
   }
 }
 
-.popup--details-form {
+.popup__details-form {
   float: left;
   height: 30px;
   position: relative;
@@ -45,7 +45,7 @@
   }
 }
 
-.popup--input ~ .popup--input-focus {
+.popup__input ~ .popup__input-focus {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -55,16 +55,9 @@
   transition: 0.4s;
 }
 
-.popup--input:focus ~ .popup--input-focus {
+.popup__input:focus ~ .popup__input-focus {
   width: 40%;
   transition: 0.4s;
-}
-
-.popup--details-select {
-  width: 30%;
-  height: 30px;
-  border: none;
-  border-bottom: 1px solid #acacac;
 }
 
 .button-popup {
@@ -77,38 +70,19 @@
   margin-right: 0;
 }
 
-.container--details {
+.container__details {
   display: flex;
   border-bottom: 1px solid #acacac;
   align-items: center;
   justify-content: space-between;
 }
 
-.container--details > img {
-  border-radius: 5rem;
-  height: 25px;
-  margin-left: 1rem;
-}
-
-.container--details > p {
-  margin-left: 25px;
-}
-
-.icon-close-outline {
-  margin-left: 330px;
-  color: #acacac;
-}
-
-.icon-close-outline:hover {
-  color: black;
-}
-
-.section-close {
+.section__close {
   display: flex;
   justify-content: space-between;
 }
 
-.button--popup-close {
+.button-close {
   height: 30px;
   width: 100px;
   border-radius: 5px;
@@ -121,7 +95,7 @@
   transition: 0.4s ease all;
 }
 
-.button--popup-close:hover {
+.button-close:hover {
   background-color: white;
   color: #2d9cdb;
   border: 1px solid #2d9cdb;

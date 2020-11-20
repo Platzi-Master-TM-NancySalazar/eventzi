@@ -49,22 +49,21 @@ const PopupFirst = ({ evenChange, setBadge }) => {
   }
   return (
     <section className="overlay">
-      <div className="popup--container-details">
+      <div className="popup__container-details">
         <h2>Add organizers to the event</h2>
         <p>Don't work alone, add organizers to the event to give you a hand</p>
-        <div className="popup--details-form">
-          <input onChange={handleChange} name="email" className="popup--input" type="email" placeholder="Write a user email" autoComplete="off" />
-          <span className="popup--input-focus"></span>
+        <div className="popup__details-form">
+          <input onChange={handleChange} name="email" className="popup__input" type="email" placeholder="Write a user email" autoComplete="off" />
+          <span className="popup__input-focus"></span>
           <Select badges={badgePop} handleChange={handleChange} name='id_event_' />
 
           <button onClick={handleClick} disabled={change} className="button-popup">Add</button>
         </div>
-        <div className="container--details">
-          <a href="#"><span className="icon-close-outline"></span></a>
+        <div className="container__details">
         </div>
-        <div className="section-close">
+        <div className="section__close">
           <div></div>
-          <button className="button--popup-close" onClick={evenChange}>Close</button>
+          <button className="button-close" onClick={evenChange}>Close</button>
         </div>
       </div>
     </section>

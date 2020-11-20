@@ -41,14 +41,14 @@ const Organizers = () => {
       </button>
       {Omodal && <PopupFirst evenChange={handleOpenModal} setBadge={setBadge} />}
 
-      <div className='second--main'>
-        <div className='second--main-table'>
-          <p className='title-name'>Name</p>
-          <p className='title-email'>Email</p>
-          <p className='title-event'>Event</p>
+      <div className='second__main'>
+        <div className='second__main-table'>
+          <p className='title__name'>Name</p>
+          <p className='title__email'>Email</p>
+          <p className='title__event'>Event</p>
           <HiCog className="icon-ajustes" />
         </div>
-        <div className='second--main-content'>
+        <div className='second__main-content'>
 
           <AddOrganizator badges={badge} handleDelete={handleDelete} />
 

@@ -7,31 +7,17 @@
   grid-gap: 20px;
 }
 
-.check {
-  display: flex;
-  width: fit-content;
-  margin-left: -23rem;
-
-  & p {
-    margin-left: -2rem;
-  }
-
-  & input {
-    margin-right: 6rem;
-  }
-}
-
-.content-name {
+.content__name {
   margin-left: -28rem;
   width: fit-content;
 }
 
-.content-email {
+.content__email {
   margin-left: -19.6rem;
   width: fit-content;
 }
 
-.content-event {
+.content__event {
   margin-left: -12rem;
   width: fit-content;
 }

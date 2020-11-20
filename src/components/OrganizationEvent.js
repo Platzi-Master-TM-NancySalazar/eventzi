@@ -80,7 +80,12 @@ const ContainerEvent = ({
 
   const handlePublish = () => {
     1;
-    if (banner !== null) {
+    if (banner == null) {
+      sendAlert({
+        show: true,
+        type: "warning",
+        message: "Missing values",
+      });
       ApiEventzi.publishEvent(id_event_)
         .then((response) => {
           if (response.status === 200) {
@@ -88,17 +93,6 @@ const ContainerEvent = ({
           }
         })
         .catch((err) => console.log(err));
-    } else {
-      sendAlert({
-        show: true,
-        type: "warning",
-        message: "Missing banner",
-      });
-      // sendAlert({
-      //   show: true,
-      //   type: "error",
-      //   message: "Add all info before publish",
-      // });
     }
   };
   const handleNoPublish = () => {

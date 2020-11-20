@@ -11,7 +11,6 @@ const GeneralModal = (props) => {
     const { generalClose, title, id, generalModalInfo } = props
 
     let fechaRecibida = generalModalInfo[0].date_
-    console.log('fechaRecibida', fechaRecibida)
 
     const formatDate = (fecha) => {
         fecha = fecha.split('T')
@@ -22,7 +21,6 @@ const GeneralModal = (props) => {
     }
 
     let fechaModificada = formatDate(fechaRecibida)
-    console.log('fechaModificada', fechaModificada)
 
 
 
@@ -31,8 +29,9 @@ const GeneralModal = (props) => {
     const [url, setUrl] = useState(generalModalInfo[0].url)
     const [template, setTemplate] = useState(generalModalInfo[0].template)
     const [date_, setDate] = useState(fechaModificada)
+    const [event_type, setType] = useState(generalModalInfo[0].event_type)
 
-    console.log('asi tiene que cuadrar la fecha', date_)
+    console.log('asi me tira el type', event_type)
 
     const modifyDate = (fullDate) => {
         fullDate = fullDate.split('T')
@@ -53,7 +52,7 @@ const GeneralModal = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        let { date_, description_, event_name, template, url } = form
+        let { date_, description_, event_name, template, url, event_type } = form
         let newDate = modifyDate(date_)
         console.log(newDate)
         let data = {
@@ -61,7 +60,8 @@ const GeneralModal = (props) => {
             event_name,
             template,
             url,
-            date_: newDate
+            date_: newDate,
+            event_type
         }
 
         putGeneral(data)
@@ -97,6 +97,15 @@ const GeneralModal = (props) => {
                                     <label className='input-material__label'>
                                         <span className='input-material__text'>Event Name</span>
                                     </label>
+                                </div>
+
+                                <div className="input-material">
+                                    <label htmlFor="type">Type: </label>
+                                    <select id="type" text="type" value={event_type} onChange={(e) => setType(e.target.value)}>
+                                        <option value="Presential">Presential</option>
+                                        <option value="Online">Online</option>
+                                        <option value="Mixed">Mixed</option>
+                                    </select>
                                 </div>
 
 

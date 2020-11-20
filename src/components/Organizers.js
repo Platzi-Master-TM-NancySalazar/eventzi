@@ -14,28 +14,35 @@ const Organizers = () => {
   const [badge, setBadge] = useState([])
 
   React.useEffect(() => {
-    ApiEventzi.getOrganizers()
-      .then(response => {
-        const newBadge = response.data.data
-        console.log('organizers', newBadge)
-        setBadge(newBadge)
+    if (badge.length === 0) {
+      ApiEventzi.getOrganizers()
+        .then(response => {
+          const newBadge = response.data.data
+          setBadge(newBadge)
+        })
+        .catch((error) => console.log(error))
+    }
+  }, [badge])
+
+  const handleDelete = (id_user_event) => {
+    ApiEventzi.deleteOrganizers(id_user_event)
+      .then((response) => {
+        if (response.status === 200) {
+          setBadge([])
+        }
       })
-      .catch((error) => console.log(error))
-  }, [])
+      .catch((err) => console.log(err))
+  }
 
   return (
     <>
       <button onClick={handleOpenModal} className='button small'>
-        <HiOutlinePlusCircle className='button__icon'/>Add Organizator
+        <HiOutlinePlusCircle className='button__icon' />Add Organizator
       </button>
-      {Omodal ? <PopupFirst evenChange={handleOpenModal} /> : null}
+      {Omodal && <PopupFirst evenChange={handleOpenModal} setBadge={setBadge} />}
 
       <div className='second--main'>
         <div className='second--main-table'>
-          <div className='check'>
-            <input type='checkbox' />
-            <p>Id</p>
-          </div>
           <p className='content-name'>Name</p>
           <p className='content-email'>Email</p>
           <p className='content-event'>Event</p>
@@ -43,14 +50,14 @@ const Organizers = () => {
         </div>
         <div className='second--main-content'>
 
-          <AddOrganizator badges={badge} />
+          <AddOrganizator badges={badge} handleDelete={handleDelete} />
 
         </div>
       </div>
-      <div className='show--details'>
+      {/* <div className='show--details'>
         <div>
-          <select className='select'>
-            <option value='value1' selected>
+          <select className='select' defaultValue='value1'>
+            <option value='value1'>
               10
             </option>
             <option value='value2'>15</option>
@@ -58,7 +65,7 @@ const Organizers = () => {
           </select>
           <small>entries per page</small>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

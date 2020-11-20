@@ -1,17 +1,17 @@
 import React from 'react'
 
-const Select = ({ badges }) => {
+const Select = ({ name, badges, handleChange }) => {
   return (
-        <>
-            <select className='popup__sleect'>
-                <option>Select event</option>
-                {badges.map(date => {
-                    return(
-                        <option key={date.id_event_}>{date.event_name}</option>
-                    )
-                })}
-            </select>
-        </>
+    <>
+      <select name={name} className='popup__sleect' onChange={handleChange}>
+        <option value=''>Select event</option>
+        {badges.map(date => {
+          return (
+            <option value={date.id_event_} key={date.id_event_} >{date.event_name}</option>
+          )
+        })}
+      </select>
+    </>
   )
 }
 

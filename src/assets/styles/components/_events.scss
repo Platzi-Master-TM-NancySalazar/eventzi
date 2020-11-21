@@ -1,20 +1,42 @@
 .events {
   &__form {
-    width: 600px;
+    width: 700px;
     display: grid;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 44% 30% 26%;
+    gap: 20px;
+
+    &.speakers {
+      width: 600px;
+    }
+    
     .marginbtm{margin-bottom: -20px;}
     p {
-      font-size: 1.6rem;
+      font-size: 1.2rem;
     }
   }
 
+
+
   &__upload {
-    width: 120px;
-    height: 120px;
-    margin-top: 30px;
-    margin-left: 20px;
+    box-sizing: content-box;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
     cursor: pointer;
+
+    &-container{
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &-text {
+      font-size: 0.8rem;
+    }
 
     &-input {
       display: none;

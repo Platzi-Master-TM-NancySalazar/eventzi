@@ -14,7 +14,6 @@ export default function SignUp () {
       ...form,
       [event.target.name]: event.target.value
     })
-    console.log(form)
   }
 
   const handleSubmit = (event) => {
@@ -34,7 +33,6 @@ export default function SignUp () {
         }
       })
         .then((data) => {
-          console.log(data.data)
           if (data.data.data.length > 0) {
             history.push(redirectUrl)
           }

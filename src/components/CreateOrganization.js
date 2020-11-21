@@ -7,7 +7,6 @@ const CreateOrganization = ({ submit }) => {
   const [form, setForm] = useState({})
 
   const handleChange = (event) => {
-    // console.log(event.target.files[0])
     if (event.target.name === 'logo') {
       const logo = event.target.files[0]
       setForm({

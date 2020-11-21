@@ -18,8 +18,6 @@ const EventPanel = () => {
   }
 
   const sendEmail = ({ eventPanelTitle, eventPanelMessage }) => {
-    console.log('eventPanelTitle', eventPanelTitle)
-    console.log('eventPanelMessage', eventPanelMessage)
     axios({
       method: 'POST',
       url: 'https://eventziapi.herokuapp.com/difusion/events/1',

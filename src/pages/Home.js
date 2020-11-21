@@ -66,7 +66,6 @@ const Home = () => {
     return <Error />
   }
 
-  console.log(state.filterData.length === 0)
   return (
     <>
       <div className='hero'>

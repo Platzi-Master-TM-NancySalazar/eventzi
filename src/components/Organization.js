@@ -82,7 +82,6 @@ const Organization = ({ id_organization, organization_name, IsAdmin, reload }) =
     setOpenDelete(false)
   }
   const handleDelete = (id_organization) => {
-    console.log(id_organization)
     ApiEventzi.deleteOrganizations(id_organization)
       .then((response) => {
         if (response.status === 200) {

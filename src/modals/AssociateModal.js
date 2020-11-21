@@ -46,14 +46,10 @@ const AssociateModal = ({ associateClose, title, id }) => {
           {associates.length === 0
             ? <p>No associate added</p>
             : associates.map(associate => {
-              return (
-                <>
-                  <div className="options__modal">
-                    <p className="options__modal-name" key={associate.name}>{associate.name_}</p>
-                    <button className="button small" onClick={() => { handleEditAssociate(associate) }}>Edit <MdEdit /> </button>
-                  </div>
-                </>
-              )
+              return <div className="options__modal" key={associate.id_partner}>
+                <p className="options__modal-name" >{associate.name_}</p>
+                <button className="button small" onClick={() => { handleEditAssociate(associate) }}>Edit <MdEdit /> </button>
+              </div>
             })
           }
           <div className='modal__button-add'>

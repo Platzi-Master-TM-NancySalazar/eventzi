@@ -59,7 +59,6 @@ async function callApiPostMulti (url, formData) {
     data: formData
   })
 
-  console.log(response)
   return response
 }
 

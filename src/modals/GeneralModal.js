@@ -29,8 +29,6 @@ const GeneralModal = (props) => {
   const [date_, setDate] = useState(fechaModificada)
   const [event_type, setType] = useState(generalModalInfo[0].event_type)
 
-  console.log('asi me tira el type', event_type)
-
   const modifyDate = (fullDate) => {
     fullDate = fullDate.split('T')
     const formated = fullDate[0] + ' ' + fullDate[1] + ':00'
@@ -52,7 +50,6 @@ const GeneralModal = (props) => {
     event.preventDefault()
     const { date_, description_, event_name, template, url, event_type } = form
     const newDate = modifyDate(date_)
-    console.log(newDate)
     const data = {
       description_,
       event_name,
@@ -66,9 +63,7 @@ const GeneralModal = (props) => {
   }
 
   const putGeneral = (data) => {
-    console.log('data final', data)
     ApiEventzi.putGeneral(id, form)
-      .then(console.log)
       .then(() => generalClose())
       .catch((err) => console.error(err))
   }

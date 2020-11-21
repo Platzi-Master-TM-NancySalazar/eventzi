@@ -5,6 +5,11 @@ import temp2 from '../assets/static/temp2.png'
 import upload from '../assets/static/upload.png'
 
 const CreateEvent = ({ submit }) => {
+  const [state, setState] = useState({
+    file: '',
+    event_logo: upload,
+    event_banner: upload
+  })
   const [form, setForm] = useState({})
 
   const handleChange = (event) => {
@@ -16,6 +21,20 @@ const CreateEvent = ({ submit }) => {
 
   const handleClick = () => {
     submit(form)
+  }
+
+  const handleImgChange = (event) => {
+    const file = event.target.files[0]
+    const reader = new FileReader()
+    const nameEvent = event.target.name
+
+    reader.onloadend = function () {
+      setState({
+        ...state,
+        [nameEvent]: reader.result
+      })
+    }
+    reader.readAsDataURL(file)
   }
 
   return (
@@ -33,6 +52,8 @@ const CreateEvent = ({ submit }) => {
           <Input text="url" event={handleChange} />
 
           <InputDate text="date" event={handleChange} />
+        </div>
+        <div>
           <p>Select Template:</p>
           <input
             type="radio"
@@ -52,15 +73,17 @@ const CreateEvent = ({ submit }) => {
           />
           <img src={temp2} alt="Template 2" className="img-template" />
         </div>
-        <div>
+        <div className='events__upload-container'>
           <label>
-            <img className="events__upload" src={upload} alt="Load logo" />
-            <input type="file" className="events__upload-input" text="logo" />
+            <img className="events__upload" src={state.event_logo} alt="Load logo" />
+            <input name='event_logo' type="file" className="events__upload-input" text="logo" onChange={handleImgChange} />
           </label>
+          <span className="events__upload-text" >Event Logo</span>
           <label>
-            <img className="events__upload" src={upload} alt="Load banner" />
-            <input type="file" className="events__upload-input" text="banner" />
+            <img className="events__upload" src={state.event_banner} alt="Load banner" />
+            <input name='event_banner' type="file" className="events__upload-input" text="banner" onChange={handleImgChange} />
           </label>
+          <span className="events__upload-text" >Event Banner</span>
         </div>
       </form>
       <div className="events__save-area">

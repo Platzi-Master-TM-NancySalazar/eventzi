@@ -8,18 +8,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   &__container {
+    box-sizing: content-box;
     background-color: $bg-color;
-    min-width: 500px;
-    max-width: 70%;
+    min-width: 700px;
+    max-width: 80%;
     padding: 20px;
     position: relative;
     border-radius: 12px;
     box-shadow: 5px 5px 5px 0 #20212447;
+
     &-header {
       display: flex;
       justify-content: space-between;
     }
+
     &--close {
       box-sizing: content-box;
       border-radius: 50%;

@@ -17,7 +17,6 @@ export default function Lecturer () {
   }
 
   const sendLecturer = ({ lecturer__biography, lecturer__rol, lecturer__name, lecturer__twitter }) => {
-    console.log(lecturer__biography, lecturer__rol, lecturer__name, lecturer__twitter)
     axios({
       method: 'POST',
       url: 'https://eventziapi.herokuapp.com/events/1/speaker/new',

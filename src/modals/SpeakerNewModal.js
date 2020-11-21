@@ -6,40 +6,40 @@ import ApiEventzi from '../utils/ApiEventzi'
 import { PostFormat } from '../utils/FormatDate'
 
 const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
-    const [form, setForm] = useState(null)
-    const [date_, setDate] = useState('')
+  const [form, setForm] = useState(null)
+  const [date_, setDate] = useState('')
 
-    const modifyDate = (fullDate) => {
-        fullDate = fullDate.split('T')
-        const formated = fullDate[0] + ' ' + fullDate[1] + ':00'
-        return formated
+  const modifyDate = (fullDate) => {
+    fullDate = fullDate.split('T')
+    const formated = fullDate[0] + ' ' + fullDate[1] + ':00'
+    return formated
+  }
+
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+      date_
+    })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const { fullname, bio, role_, twitter, title, description_, date_ } = form
+    const newDate = modifyDate(date_)
+    const data = {
+      fullname, bio, role_, twitter, title, description_, date_: newDate
     }
+    newSpeaker(data)
+  }
 
-    const handleInput = (event) => {
-        setForm({
-            ...form,
-            [event.target.name]: event.target.value,
-            date_
-        })
-    }
+  const newSpeaker = (form) => {
+    ApiEventzi.postSpeaker(id, form)
+      .then(() => addNewSpeakerClose())
+      .catch((err) => console.error(err))
+  }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        let { fullname, bio, role_, twitter, title, description_, date_ } = form
-        let newDate = modifyDate(date_)
-        let data = {
-            fullname, bio, role_, twitter, title, description_, date_: newDate
-        }
-        newSpeaker(data)
-    }
-
-    const newSpeaker = (form) => {
-        ApiEventzi.postSpeaker(id, form)
-            .then(() => addNewSpeakerClose())
-            .catch((err) => console.error(err))
-    }
-
-    return (
+  return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
@@ -47,7 +47,7 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                         <h3>{title}</h3>
                         <MdClose className="modal__container--close" onClick={addNewSpeakerClose} />
                     </div>
-                    <form className='events__form' onSubmit={handleSubmit}>
+                    <form className='events__form speakers' onSubmit={handleSubmit}>
                         <div className='input-material'>
                             <input type='text' className='input-material__input' name='fullname' onChange={handleInput} required />
                             <label className='input-material__label'>
@@ -103,7 +103,7 @@ const SpeakerNewModal = ({ addNewSpeakerClose, title, id, eventName }) => {
                 </div>
             </div>
         </Portal>
-    )
+  )
 }
 
 export default SpeakerNewModal

@@ -6,80 +6,78 @@ import ApiEventzi from '../utils/ApiEventzi'
 import FormatDate from '../utils/FormatDate'
 
 const EditSpeakerModal = (props) => {
-    const { id, speakerModalInfo, editSpeakerClose } = props
-    console.log('speakerModalInfo[0]', speakerModalInfo)
-    const { id_speaker } = speakerModalInfo
+  const { id, speakerModalInfo, editSpeakerClose } = props
+  const { id_speaker } = speakerModalInfo
 
-    const formatDate = (fecha) => {
-        if (fecha === null) {
-            return ''
-        } else {
-            fecha = fecha.split('T')
-            let time = fecha[1].split('.')
-            time = time[0].split(':')
-            const formated = fecha[0] + 'T' + time[0] + ':' + time[1] + ':00'
-            return formated
-        }
+  const formatDate = (fecha) => {
+    if (fecha === null) {
+      return ''
+    } else {
+      fecha = fecha.split('T')
+      let time = fecha[1].split('.')
+      time = time[0].split(':')
+      const formated = fecha[0] + 'T' + time[0] + ':' + time[1] + ':00'
+      return formated
     }
+  }
 
-    let fechaModificada = formatDate(speakerModalInfo.date_)
+  const fechaModificada = formatDate(speakerModalInfo.date_)
 
-    const [fullname, setFullname] = useState(speakerModalInfo.fullname)
-    const [bio, setBio] = useState(speakerModalInfo.bio)
-    const [role_, setRole_] = useState(speakerModalInfo.role_)
-    const [twitter, setTwitter] = useState(speakerModalInfo.twitter)
-    const [title, setTitle] = useState(speakerModalInfo.title)
-    const [description_, setDescription] = useState(speakerModalInfo.description_)
-    // const [date_, setDate] = useState(() => {
-    //     if (speakerModalInfo.date_ > 0) {
-    //         return FormatDate(speakerModalInfo.date_)
-    //     } else {
-    //         return speakerModalInfo.date_
-    //     }
-    // })
-    const [date_, setDate] = useState(fechaModificada)
+  const [fullname, setFullname] = useState(speakerModalInfo.fullname)
+  const [bio, setBio] = useState(speakerModalInfo.bio)
+  const [role_, setRole_] = useState(speakerModalInfo.role_)
+  const [twitter, setTwitter] = useState(speakerModalInfo.twitter)
+  const [title, setTitle] = useState(speakerModalInfo.title)
+  const [description_, setDescription] = useState(speakerModalInfo.description_)
+  // const [date_, setDate] = useState(() => {
+  //     if (speakerModalInfo.date_ > 0) {
+  //         return FormatDate(speakerModalInfo.date_)
+  //     } else {
+  //         return speakerModalInfo.date_
+  //     }
+  // })
+  const [date_, setDate] = useState(fechaModificada)
 
-    const modifyDate = (fullDate) => {
-        fullDate = fullDate.split('T')
-        const formated = fullDate[0] + ' ' + fullDate[1] + ':00'
-        return formated
+  const modifyDate = (fullDate) => {
+    fullDate = fullDate.split('T')
+    const formated = fullDate[0] + ' ' + fullDate[1] + ':00'
+    return formated
+  }
+
+  const form = {
+    fullname,
+    bio,
+    role_,
+    twitter,
+    title,
+    description_,
+    date_
+  }
+
+  const handleInput = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const { fullname, bio, role_, twitter, title, description_, date_ } = form
+    const newDate = modifyDate(date_)
+    const data = {
+      fullname, bio, role_, twitter, title, description_, date_: newDate
     }
+    editSpeaker(data)
+  }
 
-    const form = {
-        fullname,
-        bio,
-        role_,
-        twitter,
-        title,
-        description_,
-        date_
-    }
+  const editSpeaker = (form) => {
+    ApiEventzi.putSpeaker(id_speaker, form)
+      .then(() => editSpeakerClose())
+      .catch((err) => console.error(err))
+  }
 
-    const handleInput = (event) => {
-        setForm({
-            ...form,
-            [event.target.name]: event.target.value
-        })
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        let { fullname, bio, role_, twitter, title, description_, date_ } = form
-        let newDate = modifyDate(date_)
-        let data = {
-            fullname, bio, role_, twitter, title, description_, date_: newDate
-        }
-        editSpeaker(data)
-    }
-
-    const editSpeaker = (form) => {
-        console.log('editSpeaker form', form)
-        ApiEventzi.putSpeaker(id_speaker, form)
-            .then(() => editSpeakerClose())
-            .catch((err) => console.error(err))
-    }
-
-    return (
+  return (
         <Portal>
             <div className="modal">
                 <div className="modal__container">
@@ -147,7 +145,7 @@ const EditSpeakerModal = (props) => {
                 </div>
             </div>
         </Portal>
-    )
+  )
 }
 
 export default EditSpeakerModal

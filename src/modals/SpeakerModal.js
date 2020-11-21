@@ -49,14 +49,10 @@ const SpeakerModal = ({ speakerClose, title, id }) => {
               <p>No speaker added</p>
             </>
             : speakers.map(speaker => {
-              return (
-                <>
-                  <div className="options__modal">
-                    <p className="options__modal-name" key={speaker.id_speaker}>{speaker.fullname}</p>
-                    <button className="button small" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
-                  </div>
-                </>
-              )
+              return <div className="options__modal" key={speaker.id_speaker}>
+                <p className="options__modal-name" key={speaker.id_speaker}>{speaker.fullname}</p>
+                <button className="button small" onClick={() => { handleEditSpeaker(speaker) }}>Edit <MdEdit /> </button>
+              </div>
             })
           }
           <div className='modal__button-add'>

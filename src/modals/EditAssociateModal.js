@@ -29,7 +29,6 @@ const EditAssociateModal = (props) => {
   }
 
   const editAssociate = (form) => {
-    console.log('form', form)
     ApiEventzi.putAssociate(id_partner, form)
       .then(() => editAssociateClose())
       .catch((err) => console.error(err))

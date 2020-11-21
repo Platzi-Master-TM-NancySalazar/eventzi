@@ -31,7 +31,7 @@ const CreateEvent = ({ submit }) => {
           </select>
           <Input text="description" event={handleChange} />
           <Input text="url" event={handleChange} />
-          <p className="marginbtm">Date / Time</p>
+
           <InputDate text="date" event={handleChange} />
           <p>Select Template:</p>
           <input

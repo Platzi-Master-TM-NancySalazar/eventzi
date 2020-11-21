@@ -159,13 +159,13 @@ $screen-xl-min: 1200px;
     font-size: 1.2rem;
     text-transform: capitalize;
   }
-  &.__text-date {
+  &__text-date {
     position: absolute;
-    bottom: 5px;
+    bottom: 25px;
     left: 0;
     transition: all 200ms ease;
     color: black;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     text-transform: capitalize;
   }
 }

@@ -1,22 +1,22 @@
-import React, { useEffect, useState, useContext } from "react";
-import ApiEventzi from "../utils/ApiEventzi";
-import FormatDate from "../utils/FormatDate";
-import Tooltip from "../components/common/Tooltip";
-import Portal from "./Portal";
+import React, { useEffect, useState, useContext } from 'react'
+import ApiEventzi from '../utils/ApiEventzi'
+import FormatDate from '../utils/FormatDate'
+import Tooltip from '../components/common/Tooltip'
+import Portal from './Portal'
 import {
   MdClose,
   MdSupervisorAccount,
   MdRecordVoiceOver,
   MdDeleteForever,
-  MdPlaylistAdd,
-} from "react-icons/md";
+  MdPlaylistAdd
+} from 'react-icons/md'
 
-import SpeakerModal from "../modals/SpeakerModal";
-import GeneralModal from "../modals/GeneralModal";
-import AssociateModal from "../modals/AssociateModal";
-import globalContext from "../context/globalContext";
+import SpeakerModal from '../modals/SpeakerModal'
+import GeneralModal from '../modals/GeneralModal'
+import AssociateModal from '../modals/AssociateModal'
+import globalContext from '../context/globalContext'
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 const DeleteConfirm = ({ done, cancel, id }) => {
   return (
@@ -32,7 +32,7 @@ const DeleteConfirm = ({ done, cancel, id }) => {
             <div className="events__save-area">
               <button className="button small" onClick={cancel}>
                 Cancel
-              </button>{" "}
+              </button>{' '}
               <button className="button small" onClick={() => done(id)}>
                 Confirm
               </button>
@@ -41,8 +41,8 @@ const DeleteConfirm = ({ done, cancel, id }) => {
         </div>
       </div>
     </Portal>
-  );
-};
+  )
+}
 
 const ContainerEvent = ({
   event_name,
@@ -51,110 +51,109 @@ const ContainerEvent = ({
   clear,
   IsAdmin,
   status_,
-  banner,
+  banner
 }) => {
-  const [openSpeaker, setOpenSpeaker] = useState(false);
-  const [openAssociate, setOpenAssociate] = useState(false);
-  const [openGeneral, setOpenGeneral] = useState([]);
-  const [openDelete, setOpenDelete] = useState(false);
-  const { sendAlert } = useContext(globalContext);
+  const [openSpeaker, setOpenSpeaker] = useState(false)
+  const [openAssociate, setOpenAssociate] = useState(false)
+  const [openGeneral, setOpenGeneral] = useState([])
+  const [openDelete, setOpenDelete] = useState(false)
+  const { sendAlert } = useContext(globalContext)
 
   const arrayTest = [
-    "",
+    '',
     {
-      banner: "",
-      created: "",
-      date_: "",
-      description_: "",
-      event_name: "",
-      event_type: "",
-      id_event_: "",
-      id_organization: "",
-      logo: "",
-      modified: "",
-      status_: "",
-      template: "",
-      url: "",
-    },
-  ];
+      banner: '',
+      created: '',
+      date_: '',
+      description_: '',
+      event_name: '',
+      event_type: '',
+      id_event_: '',
+      id_organization: '',
+      logo: '',
+      modified: '',
+      status_: '',
+      template: '',
+      url: ''
+    }
+  ]
 
   const handlePublish = () => {
-    1;
     if (banner == null) {
       sendAlert({
         show: true,
-        type: "warning",
-        message: "Missing values",
-      });
+        type: 'warning',
+        message: 'Missing values'
+      })
       ApiEventzi.publishEvent(id_event_)
         .then((response) => {
           if (response.status === 200) {
-            clear([]);
+            clear([])
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
     }
-  };
+  }
   const handleNoPublish = () => {
     ApiEventzi.unPublishEvent(id_event_)
       .then((response) => {
         if (response.status === 200) {
-          clear([]);
+          clear([])
         }
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
 
   const handleCancel = () => {
-    setOpenDelete(false);
-  };
+    setOpenDelete(false)
+  }
   const handleDelete = (id_event_) => {
     ApiEventzi.deleteEvent(id_event_)
       .then((response) => {
         if (response.status === 200) {
-          clear([]);
+          clear([])
         }
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
 
   const handleSpeakers = (id_event_) => {
-    setOpenSpeaker(true);
+    setOpenSpeaker(true)
     ApiEventzi.getSpeakers(id_event_).then((response) => {
-      const speakerInfo = response.data.data;
-      setOpenSpeaker([true, speakerInfo]);
-    });
-  };
+      const speakerInfo = response.data.data
+      setOpenSpeaker([true, speakerInfo])
+    })
+  }
 
   const handleAssociates = (id_event_) => {
-    setOpenAssociate(true);
-  };
+    setOpenAssociate(true)
+  }
 
   const handleGeneral = (id_event_) => {
-    setOpenGeneral(true);
+    setOpenGeneral(true)
     ApiEventzi.getGeneral(id_event_).then((response) => {
       if (response.data.data.length === 0) {
-        setOpenGeneral([true, arrayTest]);
+        setOpenGeneral([true, arrayTest])
       } else {
-        const generalInfo = response.data.data;
-        setOpenGeneral([true, generalInfo]);
+        const generalInfo = response.data.data
+        setOpenGeneral([true, generalInfo])
       }
-    });
-  };
+    })
+  }
 
   const speakerClose = () => {
-    setOpenSpeaker(false);
-  };
+    setOpenSpeaker(false)
+  }
 
   const associateClose = () => {
-    setOpenAssociate(false);
-  };
+    setOpenAssociate(false)
+  }
 
   const generalClose = () => {
-    setOpenGeneral(false);
-  };
+    setOpenGeneral(false)
+  }
 
-  const generalModalInfo = openGeneral[1];
+  const generalModalInfo = openGeneral[1]
 
   return (
     <div className="organization-event">
@@ -201,21 +200,22 @@ const ContainerEvent = ({
       )}
 
       <div className="organization-event__icon-container">
-        {status_ === "Published" ? (
-          <div
-            onClick={() => handleNoPublish(id_event_)}
-            className="organization-event__status--published"
-          >
-            Published
-          </div>
-        ) : (
-          <div
-            onClick={() => handlePublish(id_event_)}
-            className="organization-event__status"
-          >
-            Publish
-          </div>
-        )}
+        {status_ === 'Published'
+          ? (
+            <div
+              onClick={() => handleNoPublish(id_event_)}
+              className="organization-event__status--published"
+            >
+              Published
+            </div>)
+          : (
+            <div
+              onClick={() => handlePublish(id_event_)}
+              className="organization-event__status"
+            >
+              Publish
+            </div>)
+        }
         <Tooltip text="speakers">
           <MdRecordVoiceOver
             className="organization-event__icon speakers"
@@ -244,26 +244,26 @@ const ContainerEvent = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const Event = ({ id_organization }) => {
-  const [events, setEvents] = useState([]);
-  const [mensaje, setMensaje] = useState(false);
+  const [events, setEvents] = useState([])
+  const [mensaje, setMensaje] = useState(false)
 
   useEffect(() => {
     if (!events.length) {
       ApiEventzi.getEventsByOrganization(id_organization)
         .then((response) => {
           if (response.data.data.length > 0) {
-            setEvents(response.data.data);
+            setEvents(response.data.data)
           } else {
-            setMensaje("there are no events associated with the organization");
+            setMensaje('there are no events associated with the organization')
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
     }
-  }, [id_organization, events]);
+  }, [id_organization, events])
 
   return (
     <>
@@ -275,10 +275,10 @@ const Event = ({ id_organization }) => {
       {events.map((event) => {
         return (
           <ContainerEvent {...event} key={event.id_event_} clear={setEvents} />
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
 
-export default Event;
+export default Event

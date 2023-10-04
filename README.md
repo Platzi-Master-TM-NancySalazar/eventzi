@@ -31,7 +31,7 @@ npm run build
 ## Contributors
 
 - Francisco Araujo : [https://github.com/fjarauj0](https://github.com/fjarauj0)
-- Jairo Ramirez : [https://github.com/fjarauj0](https://github.com/fjarauj0)
+- Jairo Ramirez : [https://github.com/JairoRamirezC](https://github.com/JairoRamirezC)
 - Jhon Angulo : [https://github.com/JhonAngulo](https://github.com/JhonAngulo)
 - Juan Fernando : [https://github.com/JuanFeA98](https://github.com/JuanFeA98)
 - Luis Lopez : [https://github.com/luisglopez7777](https://github.com/luisglopez7777)
